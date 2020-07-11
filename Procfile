@@ -1,1 +1,1 @@
-worker: node saitama.js
+worker: node rick.js
