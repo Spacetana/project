@@ -150,20 +150,6 @@ client.on('message', async message => {
   if (message.content.startsWith(prefix + 'whitelist')) {
 
     let user = message.mentions.users.first();
-    
-    let standardliste = new Discord.MessageEmbed()
-    .setColor(couleur)
-    .setTitle("NON WHITELIST")
-    .setDescription("❌ Votre **ID** ne figure pas dans la liste des administrateurs de **Rick\🛸**")
-    .addField("Liste des `ID` whitelist :", whitelist)
-    .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
-
-    let avancéliste = new Discord.MessageEmbed()
-    .setColor(couleur)
-    .setTitle("WHITELIST")
-    .setDescription("✅ Vous êtes certifié **whitelist** \🛸 !")
-    .addField("Liste des `ID` whitelist :", whitelist)
-    .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)  
 
     if (user) {
     
@@ -196,7 +182,20 @@ client.on('message', async message => {
 
     if (user, user.id = message.author.id && !whitelist.includes(user.id)) return message.channel.send(standardliste);
     if (user, user.id = message.author.id && whitelist.includes(user.id)) return message.channel.send(avancéliste);
+    
+    let standardliste = new Discord.MessageEmbed()
+    .setColor(couleur)
+    .setTitle("NON WHITELIST")
+    .setDescription("❌ Votre **ID** ne figure pas dans la liste des administrateurs de **Rick\🛸**")
+    .addField("Liste des `ID` whitelist :", whitelist)
+    .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
+    let avancéliste = new Discord.MessageEmbed()
+    .setColor(couleur)
+    .setTitle("WHITELIST")
+    .setDescription("✅ Vous êtes certifié **whitelist** \🛸 !")
+    .addField("Liste des `ID` whitelist :", whitelist)
+    .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)  
   }
     
   if (message.content.startsWith(prefix + 'exec')) {
