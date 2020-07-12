@@ -170,9 +170,6 @@ client.on('message', async message => {
       let member = message.guild.member(user);
     
       if (member) {
-              
-        if (user, user.id = message.author.id && !whitelist.includes(user.id)) return message.channel.send(standardliste);
-        if (user, user.id = message.author.id && whitelist.includes(user.id)) return message.channel.send(avancéliste);   
 
         let standardliste1 = new Discord.MessageEmbed()
         .setColor(couleur)
@@ -190,6 +187,9 @@ client.on('message', async message => {
 
         if (user, user.id - message.author.id && !whitelist.includes(user.id)) return message.channel.send(standardliste1);
         if (user, user.id - message.author.id && whitelist.includes(user.id)) return message.channel.send(avancéliste1);
+
+        if (user.id = message.author.id && !whitelist.includes(user.id)) return message.channel.send(standardliste);
+        if (user.id = message.author.id && whitelist.includes(user.id)) return message.channel.send(avancéliste);   
 
       }
     }
