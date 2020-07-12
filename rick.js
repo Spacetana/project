@@ -80,8 +80,10 @@ client.on('message', async message => {
     .setColor(couleur)
     .setTitle("Page 5/"+totalpage+" - Commandes NSFW :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
+    .addField(`\`${PREFIX}pussy\``, "Vous permet d'afficher des vagins")
     .addField(`\`${PREFIX}ass\``, "Vous permet d'afficher des culs de femme")
     .addField(`\`${PREFIX}anal\``, "Vous permet d'afficher des actes sexuels anal")
+    .addField(`\`${PREFIX}fuck\``, "Vous permet d'afficher des actes sexuels hard")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     message.channel.send(mod);
   }
