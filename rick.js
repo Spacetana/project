@@ -520,7 +520,7 @@ client.on('message', async message => {
 
   if (message.content.startsWith(prefix + "biflette")) {
 
-    let biflettelink = ["https://cdn.discordapp.com/attachments/731551525691850792/731961158612811847/bifle_biflette_hard_porno_violente_visage_brune.gif", "https://cdn.discordapp.com/attachments/731551525691850792/731932546153185350/biflette_pov_jeune_pornstar_bite_sur_le_visage.gif"];
+    let biflettelink = ["", "https://cdn.discordapp.com/attachments/731551525691850792/731962477197393970/552611507860699.gif", "https://cdn.discordapp.com/attachments/731551525691850792/731962185667838032/biflette_grosse_bite_jeune_rousse.gif", "https://cdn.discordapp.com/attachments/731551525691850792/731962118030491755/48.gif", "http://www.la-biffle.com/la-biffle.com/image/la_biffle.gif",  "https://cdn.discordapp.com/attachments/731551525691850792/731961158612811847/bifle_biflette_hard_porno_violente_visage_brune.gif", "https://cdn.discordapp.com/attachments/731551525691850792/731932546153185350/biflette_pov_jeune_pornstar_bite_sur_le_visage.gif"];
 
     let biflette = new Discord.MessageEmbed()
     .setColor(couleur)
@@ -531,6 +531,20 @@ client.on('message', async message => {
    if (message.channel.nsfw) return message.channel.send(biflette).catch(console.error);
    if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
   }
+
+  if (message.content.startsWith(prefix + "suce")) {
+
+    let sucelink = ["https://cdn.discordapp.com/attachments/731551525691850792/731962819918168105/gifs-porno-29.gif"];
+
+    let suce = new Discord.MessageEmbed()
+    .setColor(couleur)
+    .setTitle("SUCE")
+    .setImage(sucelink[Math.floor(Math.random() * (sucelink.length))])
+    .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+   if (message.channel.nsfw) return message.channel.send(suce).catch(console.error);
+   if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
+  }  
 
   if (message.content.startsWith(prefix + "invisible")) {
    message.channel.send("️");
