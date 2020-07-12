@@ -1,25 +1,14 @@
 {
-
-    "name": "rick",
-
-    "description": "Meilleur bot de tout les temps",
-  
-    "version": "0.6.3",
-  
-    "main": "rick.js",
-  
-    "scripts": {
-  
-      "start": "node rick.js"
-  
-    },
-  
-    "dependencies": {
-  
-      "discord.js": "12.2.0",
-  
-      "request": "2.88.2"
-  
-    }
-  
+  "name": "rick",
+  "description": "Meilleur bot de tout les temps",
+  "version": "0.6.3",
+  "main": "rick.js",
+  "scripts": {
+    "start": "node rick.js"
+  },
+  "dependencies": {
+    "discord.js": "12.2.0",
+    "neko-love": "^2.0.2",
+    "request": "2.88.2"
   }
+}

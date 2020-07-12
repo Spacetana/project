@@ -1,5 +1,6 @@
 const Discord                                         = require('discord.js');
 const {TOKEN, PREFIX, VERSION, WHITELIST}             = require('./config.js');
+const Neko                                            = require("neko-love");
 const client                                          = new Discord.Client({disableMentions: "everyone"});
 
 client.commands = new Discord.Collection()
