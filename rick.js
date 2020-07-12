@@ -520,7 +520,7 @@ client.on('message', async message => {
 
   if (message.content.startsWith(prefix + "biflette")) {
 
-    let biflettelink = ["https://cdn.discordapp.com/attachments/731551525691850792/731932546153185350/biflette_pov_jeune_pornstar_bite_sur_le_visage.gif"];
+    let biflettelink = ["https://cdn.discordapp.com/attachments/731551525691850792/731961158612811847/bifle_biflette_hard_porno_violente_visage_brune.gif", "https://cdn.discordapp.com/attachments/731551525691850792/731932546153185350/biflette_pov_jeune_pornstar_bite_sur_le_visage.gif"];
 
     let biflette = new Discord.MessageEmbed()
     .setColor(couleur)
