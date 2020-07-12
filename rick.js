@@ -553,11 +553,11 @@ client.on('message', async message => {
     message.channel.send("️");
   }
 
-  if (message.content.startsWith(prefix + "nekotest")) {
+  if (message.content.startsWith(prefix + "neko")) {
 
     let avatarbot = client.user.avatarURL({dynamic: true});
 
-  let erreurAPI = new Discord.MessageEmbed()
+    let erreurAPI = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("NSFW ERREUR")
   .setDescription("Une erreur est survenue avec l'API !")
