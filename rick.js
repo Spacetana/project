@@ -258,8 +258,8 @@ client.on('message', async message => {
 
     let NoPermBot = new Discord.MessageEmbed()
               .setColor(couleur)
-              .setTitle("❌ KICK ERREUR")
-              .setDescription("Je n'ai pas la permission `Expulser des membres` !")
+              .setTitle("KICK ERREUR")
+              .setDescription("❌ Je n'ai pas la permission `Expulser des membres` !")
               .setImage("https://cdn.discordapp.com/attachments/730197147441430590/730303919267512370/gif_perm_kick.gif") 
               .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)      
 
