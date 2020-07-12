@@ -518,6 +518,20 @@ client.on('message', async message => {
    if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
   }
 
+  if (message.content.startsWith(prefix + "biflette")) {
+
+    let biflettelink = ["https://cdn.discordapp.com/attachments/731551525691850792/731932546153185350/biflette_pov_jeune_pornstar_bite_sur_le_visage.gif"];
+
+    let biflette = new Discord.MessageEmbed()
+    .setColor(couleur)
+    .setTitle("BIFLETTE")
+    .setImage(biflettelink[Math.floor(Math.random() * (biflettelink.length))])
+    .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+   if (message.channel.nsfw) return message.channel.send(biflette).catch(console.error);
+   if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
+  }
+
   if (message.content.startsWith(prefix + "invisible")) {
    message.channel.send("️");
   }
