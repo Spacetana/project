@@ -112,7 +112,7 @@ client.on('message', async message => {
     .addField(`\`${PREFIX}ass\``, "Vous permet d'afficher des culs de femme")
     .addField(`\`${PREFIX}anal\``, "Vous permet d'afficher des actes sexuels anal")
     .addField(`\`${PREFIX}fuck\``, "Vous permet d'afficher des actes sexuels hard")
-    .addField(`\`${PREFIX}neko\``, "Vous permet d'afficher des images style neko")
+    .addField(`\`${PREFIX}neko\``, "Vous permet d'afficher des images de Nekomimi")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     message.channel.send(mod);
   } 
