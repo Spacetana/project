@@ -1,23 +1,25 @@
 {
-    "name": "rickjs",
-    "version": "0.5.2",
-    "description": "",
-    "main" : "rick.js",
-    "scripts": {
-        "test": "echo",
-        "start": "node rick.js"
-    },
 
-    "repository": {
-        "type": "git",
-        "url": "https://git.heroku.com/rickjs.git"
+    "name": "rick",
+
+    "description": "Meilleur bot de tout les temps",
+  
+    "version": "0.6.1",
+  
+    "main": "rick.js",
+  
+    "scripts": {
+  
+      "start": "node rick.js"
+  
     },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "homepage": "",
+  
     "dependencies": {
-        "discod.js": "12.0.0",
-        "node-opus": "0.3.3"
+  
+      "discord.js": "12.2.0",
+  
+      "request": "2.88.2"
+  
     }
-}
+  
+  }

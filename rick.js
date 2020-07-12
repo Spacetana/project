@@ -21,7 +21,7 @@ client.on('ready', () => {
                 type   = types[Math.floor(Math.random() * types.length)];
       
             client.user.setActivity(status,  {type: type})
-        }, 10000);
+        }, 15000);
     });
 
 client.on('message', async message => {
@@ -30,41 +30,30 @@ client.on('message', async message => {
       couleur   = "BLUE",
       guild     = message.guild,
       author    = message.author;
+      totalpage = "5";
 
   if (message.content === prefix + 'help' || message.content === prefix + 'h') {
 
     let standard = new Discord.MessageEmbed()
     .setColor(couleur)
-    .setDescription("**PAGE 1/2 - ALL COMMANDES**")
-    .addField("️", "**COMMANDES HELP**")
+    .setTitle("Page 1/"+totalpage+" - Toutes les commandes :")
+    .setDescription("**Pour tout problème avec le bot, voici le support** : **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
     .addField(`\`${PREFIX}help\``, "Vous y êtes actuellement")
-    .addField(`\`${PREFIX}help mod\``, "Vous permet d'accéder au help des commandes mod")
-    .addField("️", "**COMMANDES STANDARD**")
-    .addField(`\`${PREFIX}ping\``, "Vous permet d'afficher le temps de latence du bot(MS)")
-    .addField(`\`${PREFIX}8ball [question]\``, "Vous permet de poser une question lambda au bot(beta)")
-    .addField(`\`${PREFIX}pp (@user)\``, "Affiche votre pp ou celle d'un membre mentionné")
-    .addField("️", "**COMMANDES MOD**")
-    .addField(`\`${PREFIX}ban [@user] (raison)\``, "Vous permet de ban un membre mentionné")
-    .addField(`\`${PREFIX}kick [@user] (raison)\``, "Vous permet de kick un membre mentionné")
-    .addField("️", "**COMMANDES INFOS**")
-    .addField(`\`${PREFIX}whitelist (@user)\``, "Vous permet de savoir si un membre ou vous êtes whitelist dans le bot !")
+    .addField(`\`${PREFIX}help info\``, "Vous permet d'accéder à la page d'aide commandes info")
+    .addField(`\`${PREFIX}help mod\``, "Vous permet d'accéder à la page d'aide commandes mod")
+    .addField(`\`${PREFIX}help fun\``, "Vous permet d'accéder à la page d'aide des commandes fun")
+    .addField(`\`${PREFIX}help nsfw\``, "Vous permet d'accéder à la page d'aide des commandes nsfw**(+18)**")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
     let avancé = new Discord.MessageEmbed()
     .setColor(couleur)
-    .setDescription("**PAGE 1/2 - ALL COMMANDES**")
-    .addField("️", "**COMMANDES HELP**")
+    .setTitle("Page 1/"+totalpage+" - Toutes les commandes :")
+    .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
     .addField(`\`${PREFIX}help\``, "Vous y êtes actuellement")
-    .addField(`\`${PREFIX}help mod\``, "Vous permet d'accéder au help des commandes mod")
-    .addField("️", "**COMMANDES STANDARD**")
-    .addField(`\`${PREFIX}ping\``, "Vous permet d'afficher le temps de latence du bot(MS)")
-    .addField(`\`${PREFIX}8ball [question]\``, "Vous permet de poser une question lambda au bot(beta)")
-    .addField(`\`${PREFIX}pp (@user)\``, "Affiche votre pp ou celle d'un membre mentionné")
-    .addField("️", "**COMMANDES MOD**")
-    .addField(`\`${PREFIX}ban [@user] (raison)\``, "Vous permet de ban un membre mentionné")
-    .addField(`\`${PREFIX}kick [@user] (raison)\``, "Vous permet de kick un membre mentionné")
-    .addField("️", "**COMMANDES INFOS**")
-    .addField(`\`${PREFIX}whitelist (@user)\``, "Vous permet de savoir si un membre ou vous êtes whitelist dans le bot !")
+    .addField(`\`${PREFIX}help info\``, "Vous permet d'accéder à la page d'aide commandes info")
+    .addField(`\`${PREFIX}help mod\``, "Vous permet d'accéder à la page d'aide commandes mod")
+    .addField(`\`${PREFIX}help fun\``, "Vous permet d'accéder à la page d'aide des commandes fun")
+    .addField(`\`${PREFIX}help nsfw\``, "Vous permet d'accéder à la page d'aide des commandes nsfw**(+18)**")
     .addField("️", "**COMMANDES WHITELIST**")
     .addField(`\`${PREFIX}exec\``, "Vous permet d'exécuter du code en JavaScript !")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
@@ -77,12 +66,50 @@ client.on('message', async message => {
 
     let mod = new Discord.MessageEmbed()
     .setColor(couleur)
-    .setTitle("Page 2/2 | Commandes MOD :")
+    .setTitle("Page 2/"+totalpage+" - Commandes MOD :")
+    .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
     .addField(`\`${PREFIX}ban [@user] (raison)\``, "Vous permet de ban un membre mentionné")
     .addField(`\`${PREFIX}kick [@user] (raison)\``, "Vous permet de kick un membre mentionné")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     message.channel.send(mod);
   }
+
+  if (message.content === prefix + 'help nsfw' || message.content === prefix + 'h nsfw') {
+
+    let mod = new Discord.MessageEmbed()
+    .setColor(couleur)
+    .setTitle("Page 5/"+totalpage+" - Commandes NSFW :")
+    .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
+    .addField(`\`${PREFIX}ass\``, "Vous permet d'afficher des culs de femme")
+    .addField(`\`${PREFIX}anal\``, "Vous permet d'afficher des actes sexuels anal")
+    .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+    message.channel.send(mod);
+  }
+
+  if (message.content === prefix + 'help info' || message.content === prefix + 'h info') {
+
+    let mod = new Discord.MessageEmbed()
+    .setColor(couleur)
+    .setTitle("Page 3/"+totalpage+" - Commandes INFO :")
+    .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
+    .addField(`\`${PREFIX}ping\``, "Vous permet d'afficher le temps de latence du bot(MS)")
+    .addField(`\`${PREFIX}pp (@user)\``, "Affiche votre pp ou celle d'un membre mentionné")
+    .addField(`\`${PREFIX}whitelist (@user)\``, "Vous permet de savoir si un membre ou si vous êtes whitelist dans le bot !")
+    .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+    message.channel.send(mod);
+  } 
+
+  if (message.content === prefix + 'help fun' || message.content === prefix + 'h fun') {
+
+    let mod = new Discord.MessageEmbed()
+    .setColor(couleur)
+    .setTitle("Page 4/"+totalpage+" - Commandes FUN :")
+    .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
+    .addField(`\`${PREFIX}8ball [question]\``, "Vous permet de poser une question lambda au bot")
+    .addField(`\`${PREFIX}invisible\``, "Vous permet de faire envoyer un message totalement invisible par le bot")
+    .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+    message.channel.send(mod);
+  } 
 
   if (message.content.startsWith(prefix + 'whitelist')) {
 
@@ -213,22 +240,6 @@ client.on('message', async message => {
 
         message.edit(calculedepingfinit);
       }
-
-  if (message.content.startsWith(prefix + "8ball")) {
-
-      let replies  = ['Oui !', 'Absolument !',"Non !",'Vraiment pas !',"Je pense !", "Arrête de me poser des questions !", "Je suis totalement d'accord", "Hum je vais réfléchir à la question !", "AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH !"];
-      let args     = message.content.split(" ").slice(1),
-          question = args.join(" ");
-
-      let NoQuestion = new Discord.MessageEmbed()
-                .setColor(couleur)
-                .setTitle("8BALL ERREUR")
-                .setDescription("❌ Veuillez poser une question !")
-                .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
-
-      if (!question) return message.channel.send(NoQuestion);
-      if (question) return message.channel.send(replies[Math.floor(Math.random() * (replies.length))]);
-    }
 
   if (!message.guild) return;
 
@@ -403,15 +414,70 @@ client.on('message', async message => {
         }
       }
     
-      let pasdemention = new Discord.MessageEmbed()
-                  .setColor(couleur)
-                  .setTitle("AVATAR")
-                  .setDescription(`**Voici votre photo de profil !** [**(LIEN)**](${message.author.displayAvatarURL({dynamic: true})})`)
-                  .setImage(message.author.displayAvatarURL({format: 'png', dynamic: true, size: 1024}))
-                  .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
-      if (!user) return message.channel.send(pasdemention);
-      if (user, user.id = message.author.id) return message.channel.send(pasdemention);
-    }
-  });
+    let pasdemention = new Discord.MessageEmbed()
+                .setColor(couleur)
+                .setTitle("AVATAR")
+                .setDescription(`**Voici votre photo de profil !** [**(LIEN)**](${message.author.displayAvatarURL({dynamic: true})})`)
+                .setImage(message.author.displayAvatarURL({format: 'png', dynamic: true, size: 1024}))
+                .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+    if (!user) return message.channel.send(pasdemention);
+    if (user, user.id = message.author.id) return message.channel.send(pasdemention);
+  }
+
+  if (message.content.startsWith(prefix + "8ball")) {
+
+    let replies  = ['Oui !', 'Absolument !',"Non !",'Vraiment pas !',"Je pense !", "Arrête de me poser des questions !", "Je suis totalement d'accord", "Hum je vais réfléchir à la question !", "AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH !"];
+    let args     = message.content.split(" ").slice(1),
+        question = args.join(" ");
+
+    let NoQuestion = new Discord.MessageEmbed()
+              .setColor(couleur)
+              .setTitle("8BALL ERREUR")
+              .setDescription("❌ Veuillez poser une question !")
+              .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+    if (!question) return message.channel.send(NoQuestion);
+    if (question) return message.channel.send(replies[Math.floor(Math.random() * (replies.length) -1)])
+  }
+
+  let nonsfw = new Discord.MessageEmbed()
+  .setColor(couleur)
+  .setTitle("NSFW ERREUR")
+  .setDescription(message.channel.toString()+" n'est pas un channel **NSFW** !")
+  .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+  if (message.content.startsWith(prefix + "ass")) {
+
+    let asslink = ["https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQZA9k76Q1eWFC_PLcZVKWfIkAXsGjdMUEJ8g&usqp=CAU", "https://steamuserimages-a.akamaihd.net/ugc/251465670546432105/8332E9B4C2A92E9FC166253E6E5F998B002A9FE4/", "https://img.over-blog-kiwi.com/2/24/58/87/obpicFms1f8.jpeg", "https://i.pinimg.com/736x/a0/49/8e/a0498e4ec6ba09192bf4e67df8f46cac.jpg", "https://pbs.twimg.com/media/CzvAiOZXAAAgrB3.jpg"];
+
+    let ass = new Discord.MessageEmbed()
+    .setColor(couleur)
+    .setTitle("ASS")
+    .setImage(asslink[Math.floor(Math.random() * (asslink.length))])
+    .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+    
+    if (message.channel.nsfw) return message.channel.send(ass).catch(console.error);
+    if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
+  }
+
+  if (message.content.startsWith(prefix + "anal")) {
+
+    let anallink = ["https://thumb-p4.xhcdn.com/a/lexeNWz3ZAnVuCeNeT4hvw/000/226/093/294_160.gif", "https://cl.phncdn.com/gif/15237272.gif", "https://i.imgur.com/DVrhbro.gif", "https://cdn.discordapp.com/attachments/731551525691850792/731578319233089618/unnamed.gif", "https://cdn.discordapp.com/attachments/731551525691850792/731578472517861406/unnamed.gif", "https://secureservercdn.net/72.167.241.134/jz3.de7.myftpupload.com/wp-content/uploads/2019/07/ezgif-4-cca09b249c06.gif"];
+
+    let anal = new Discord.MessageEmbed()
+    .setColor(couleur)
+    .setTitle("ANAL")
+    .setImage(anallink[Math.floor(Math.random() * (anallink.length))])
+    .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+   if (message.channel.nsfw) return message.channel.send(anal).catch(console.error);
+   if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
+  }
+
+  if (message.content.startsWith(prefix + "invisible")) {
+   message.channel.send("️");
+  }
+
+});
 
 client.login(token);
