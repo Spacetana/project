@@ -409,7 +409,7 @@ client.on('message', async message => {
           let embed = new Discord.MessageEmbed()
                 .setColor(couleur)
                 .setTitle("AVATAR")
-                .setDescription(`**Voici la photo de profil de ${user} !** **[(LIEN)](${user.displayAvatarURL({dynamic: true})}**)`)
+                .setDescription(`**Voici la photo de profil de ${user} !** [(LIEN)](${user.displayAvatarURL({dynamic: true})})`)
                 .setImage(user.displayAvatarURL({format: 'png', dynamic: true, size: 1024}))
                 .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
           if (user, user.id - message.author.id) return message.channel.send(embed); 
@@ -419,7 +419,7 @@ client.on('message', async message => {
     let pasdemention = new Discord.MessageEmbed()
                 .setColor(couleur)
                 .setTitle("AVATAR")
-                .setDescription(`**Voici votre photo de profil !** **[(LIEN)](${message.author.displayAvatarURL({dynamic: true})}**)`)
+                .setDescription(`**Voici votre photo de profil !** [(LIEN)](${message.author.displayAvatarURL({dynamic: true})})`)
                 .setImage(message.author.displayAvatarURL({format: 'png', dynamic: true, size: 1024}))
                 .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     if (!user) return message.channel.send(pasdemention);
