@@ -462,7 +462,7 @@ client.on('message', async message => {
 
   if (message.content.startsWith(prefix + "anal")) {
 
-    let anallink = ["https://thumb-p4.xhcdn.com/a/lexeNWz3ZAnVuCeNeT4hvw/000/226/093/294_160.gif", "https://cl.phncdn.com/gif/15237272.gif", "https://i.imgur.com/DVrhbro.gif", "https://cdn.discordapp.com/attachments/731551525691850792/731578319233089618/unnamed.gif", "https://cdn.discordapp.com/attachments/731551525691850792/731578472517861406/unnamed.gif", "https://secureservercdn.net/72.167.241.134/jz3.de7.myftpupload.com/wp-content/uploads/2019/07/ezgif-4-cca09b249c06.gif"];
+    let anallink = ["https://cdn.discordapp.com/attachments/731551525691850792/731675705150275627/unnamed.gif", "https://cdn.discordapp.com/attachments/731551525691850792/731675540242563102/unnamed_1.gif", "https://cdn.discordapp.com/attachments/731551525691850792/731675447540187176/unnamed.gif", "https://thumb-p4.xhcdn.com/a/lexeNWz3ZAnVuCeNeT4hvw/000/226/093/294_160.gif", "https://cl.phncdn.com/gif/15237272.gif", "https://i.imgur.com/DVrhbro.gif", "https://cdn.discordapp.com/attachments/731551525691850792/731578319233089618/unnamed.gif", "https://cdn.discordapp.com/attachments/731551525691850792/731578472517861406/unnamed.gif", "https://secureservercdn.net/72.167.241.134/jz3.de7.myftpupload.com/wp-content/uploads/2019/07/ezgif-4-cca09b249c06.gif"];
 
     let anal = new Discord.MessageEmbed()
     .setColor(couleur)
