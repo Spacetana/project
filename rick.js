@@ -171,8 +171,8 @@ client.on('message', async message => {
         .addField("Liste des `ID` whitelist :", whitelist)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-        if (user, user.id - message.author.id && !whitelist.includes(message.author.id)) return message.channel.send(standardliste1);
-        if (user, user.id - message.author.id && whitelist.includes(message.author.id)) return message.channel.send(avancéliste1);
+        if (user, user.id - message.author.id && !whitelist.includes(user.id)) return message.channel.send(standardliste1);
+        if (user, user.id - message.author.id && whitelist.includes(user.id)) return message.channel.send(avancéliste1);
       }
     }
 
@@ -190,10 +190,8 @@ client.on('message', async message => {
     .addField("Liste des `ID` whitelist :", whitelist)
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)  
         
-    if (user, user.id = message.author.id && !whitelist.includes(message.author.id)) return message.channel.send(standardliste);
-    if (user, user.id = message.author.id && whitelist.includes(message.author.id)) return message.channel.send(avancéliste);
-    if (!user && !whitelist.includes(message.author.id)) return message.channel.send(standardliste);
-    if (!user &&  whitelist.includes(message.author.id)) return message.channel.send(avancéliste);
+    if (!user && user, user.id = message.author.id && !whitelist.includes(message.author.id)) return message.channel.send(standardliste);
+    if (user && user, user.id = message.author.id && whitelist.includes(message.author.id)) return message.channel.send(avancéliste);
   }
     
   if (message.content.startsWith(prefix + 'exec')) {
