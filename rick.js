@@ -559,43 +559,43 @@ client.on('message', async message => {
     let avatarbot = client.user.avatarURL({dynamic: true});
 
     let erreurAPI = new Discord.MessageEmbed()
-  .setColor(couleur)
-  .setTitle("NSFW ERREUR")
-  .setDescription("Une erreur est survenue avec l'API !")
-  .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+    .setColor(couleur)
+    .setTitle("NSFW ERREUR")
+    .setDescription("Une erreur est survenue avec l'API !")
+    .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-  if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
+    if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
 
-  get("https://neko-love.xyz/api/v1/neko", (res) => {
-      const { statusCode } = res;
-      if (statusCode !== 200) {
-          return message.channel.send(erreurAPI)
-      }
+    get("https://neko-love.xyz/api/v1/neko", (res) => {
+        const { statusCode } = res;
+        if (statusCode !== 200) {
+            return message.channel.send(erreurAPI)
+        }
 
-      res.setEncoding("utf8");
-      let rawData = "";
+        res.setEncoding("utf8");
+        let rawData = "";
 
-      res.on("data", chunk => {
+        res.on("data", chunk => { 
           rawData += chunk;
-      });
+        });
 
-      res.on("end", () => {
+        res.on("end", () => {
           try {
-              const parsedData = JSON.parse(rawData);
+            const parsedData = JSON.parse(rawData);
               
-              let image = new Discord.MessageEmbed()
-              .setColor(couleur)
-              .setTitle("NSFW")
-              .setImage(parsedData.url)
-              .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+            let image = new Discord.MessageEmbed()
+            .setColor(couleur)
+            .setTitle("NSFW")
+            .setImage(parsedData.url)
+            .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-              message.channel.send(image);
+            message.channel.send(image);
           } catch (error) {
-              console.error(error.message);
+            console.error(error.message);
           }
       });
   }).on("error", (error) => {
-      console.error(error.message);
+    console.error(error.message);
   });
 };
 
