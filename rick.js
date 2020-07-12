@@ -504,6 +504,20 @@ client.on('message', async message => {
    if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
   }
 
+  if (message.content.startsWith(prefix + "boobs")) {
+
+    let boobslink = ["https://cdn.discordapp.com/attachments/731551525691850792/731925077058256997/025_1000.gif"];
+
+    let boobs = new Discord.MessageEmbed()
+    .setColor(couleur)
+    .setTitle("BOOBS")
+    .setImage(boobslink[Math.floor(Math.random() * (boobslink.length))])
+    .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+   if (message.channel.nsfw) return message.channel.send(boobs).catch(console.error);
+   if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
+  }
+
   if (message.content.startsWith(prefix + "invisible")) {
    message.channel.send("️");
   }
