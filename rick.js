@@ -448,7 +448,7 @@ client.on('message', async message => {
 
   if (message.content.startsWith(prefix + "ass")) {
 
-    let asslink = ["https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQZA9k76Q1eWFC_PLcZVKWfIkAXsGjdMUEJ8g&usqp=CAU", "https://steamuserimages-a.akamaihd.net/ugc/251465670546432105/8332E9B4C2A92E9FC166253E6E5F998B002A9FE4/", "https://img.over-blog-kiwi.com/2/24/58/87/obpicFms1f8.jpeg", "https://i.pinimg.com/736x/a0/49/8e/a0498e4ec6ba09192bf4e67df8f46cac.jpg", "https://pbs.twimg.com/media/CzvAiOZXAAAgrB3.jpg"];
+    let asslink = ["https://p8.porn.biz/pics/SiA/87560327.jpg", "https://static-eu-cdn.eporner.com/photos/538354.jpg", "https://static-eu-cdn.eporner.com/photos/708328.jpg", "https://ci.phncdn.com/videos/201912/06/266696012/original/(m=eafTGgaaaa)(mh=CZyIb_tfBkjZqy1C)16.jpg", "https://bs1.woxcdn.com/enhanced-2/49c/c7a/49cc7a3d854498173ae6ac31bcdacca1.jpg", "https://tastyslips.com/wp-content/uploads/2019/10/1CFE3E18-30C0-473F-91D9-E09F0BF87127.jpeg", "https://i.pinimg.com/236x/06/29/36/062936722974ef64ef186227d84edab3.jpg", "https://img.over-blog-kiwi.com/2/24/58/87/obpicFms1f8.jpeg", "https://i.pinimg.com/originals/f8/90/b5/f890b54e0c6a121e5717ba52998b7a33.jpg", "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQZA9k76Q1eWFC_PLcZVKWfIkAXsGjdMUEJ8g&usqp=CAU", "https://steamuserimages-a.akamaihd.net/ugc/251465670546432105/8332E9B4C2A92E9FC166253E6E5F998B002A9FE4/", "https://img.over-blog-kiwi.com/2/24/58/87/obpicFms1f8.jpeg", "https://i.pinimg.com/736x/a0/49/8e/a0498e4ec6ba09192bf4e67df8f46cac.jpg", "https://pbs.twimg.com/media/CzvAiOZXAAAgrB3.jpg"];
 
     let ass = new Discord.MessageEmbed()
     .setColor(couleur)
