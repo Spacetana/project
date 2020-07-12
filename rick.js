@@ -171,6 +171,9 @@ client.on('message', async message => {
     
       if (member) {
               
+        if (user, user.id = message.author.id && !whitelist.includes(user.id)) return message.channel.send(standardliste);
+        if (user, user.id = message.author.id && whitelist.includes(user.id)) return message.channel.send(avancéliste);   
+
         let standardliste1 = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("NON WHITELIST")
@@ -190,9 +193,6 @@ client.on('message', async message => {
 
       }
     }
-
-    if (user, user.id = message.author.id && !whitelist.includes(message.author.id)) return message.channel.send(standardliste);
-    if (user, user.id = message.author.id && whitelist.includes(message.author.id)) return message.channel.send(avancéliste);   
 
     if (!user && !whitelist.includes(message.author.id)) return message.channel.send(standardliste);
     if (!user && whitelist.includes(message.author.id)) return message.channel.send(avancéliste);
