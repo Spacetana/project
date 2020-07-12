@@ -191,8 +191,8 @@ client.on('message', async message => {
     .addField("Liste des `ID` whitelist :", whitelist)
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)     
 
-    if (!user, user.id = message.author.id && !whitelist.includes(user.id)) return message.channel.send(standardliste);
-    if (!user, user.id = message.author.id && whitelist.includes(user.id)) return message.channel.send(avancéliste);
+    if (user, user.id = message.author.id && !whitelist.includes(user.id)) return message.channel.send(standardliste);
+    if (user, user.id = message.author.id && whitelist.includes(user.id)) return message.channel.send(avancéliste);
 
     if (!user && !whitelist.includes(message.author.id)) return message.channel.send(standardliste);
     if (!user && whitelist.includes(message.author.id)) return message.channel.send(avancéliste);
