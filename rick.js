@@ -74,20 +74,6 @@ client.on('message', async message => {
     message.channel.send(mod);
   }
 
-  if (message.content === prefix + 'help nsfw' || message.content === prefix + 'h nsfw') {
-
-    let mod = new Discord.MessageEmbed()
-    .setColor(couleur)
-    .setTitle("Page 5/"+totalpage+" - Commandes NSFW :")
-    .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
-    .addField(`\`${PREFIX}pussy\``, "Vous permet d'afficher des vagins")
-    .addField(`\`${PREFIX}ass\``, "Vous permet d'afficher des culs de femme")
-    .addField(`\`${PREFIX}anal\``, "Vous permet d'afficher des actes sexuels anal")
-    .addField(`\`${PREFIX}fuck\``, "Vous permet d'afficher des actes sexuels hard")
-    .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
-    message.channel.send(mod);
-  }
-
   if (message.content === prefix + 'help info' || message.content === prefix + 'h info') {
 
     let mod = new Discord.MessageEmbed()
@@ -99,7 +85,7 @@ client.on('message', async message => {
     .addField(`\`${PREFIX}whitelist (@user)\``, "Vous permet de savoir si un membre ou si vous êtes whitelist dans le bot !")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     message.channel.send(mod);
-  } 
+  }
 
   if (message.content === prefix + 'help fun' || message.content === prefix + 'h fun') {
 
@@ -109,6 +95,20 @@ client.on('message', async message => {
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
     .addField(`\`${PREFIX}8ball [question]\``, "Vous permet de poser une question lambda au bot")
     .addField(`\`${PREFIX}invisible\``, "Vous permet de faire envoyer un message totalement invisible par le bot")
+    .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+    message.channel.send(mod);
+  } 
+
+  if (message.content === prefix + 'help nsfw' || message.content === prefix + 'h nsfw') {
+
+    let mod = new Discord.MessageEmbed()
+    .setColor(couleur)
+    .setTitle("Page 5/"+totalpage+" - Commandes NSFW :")
+    .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
+    .addField(`\`${PREFIX}pussy\``, "Vous permet d'afficher des vagins")
+    .addField(`\`${PREFIX}ass\``, "Vous permet d'afficher des culs de femme")
+    .addField(`\`${PREFIX}anal\``, "Vous permet d'afficher des actes sexuels anal")
+    .addField(`\`${PREFIX}fuck\``, "Vous permet d'afficher des actes sexuels hard")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     message.channel.send(mod);
   } 
@@ -409,7 +409,7 @@ client.on('message', async message => {
           let embed = new Discord.MessageEmbed()
                 .setColor(couleur)
                 .setTitle("AVATAR")
-                .setDescription(`**Voici la photo de profil de ${user} !** [**(LIEN)**](${user.displayAvatarURL({dynamic: true})})`)
+                .setDescription(`**Voici la photo de profil de ${user} !** **[(LIEN)](${user.displayAvatarURL({dynamic: true})}**)`)
                 .setImage(user.displayAvatarURL({format: 'png', dynamic: true, size: 1024}))
                 .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
           if (user, user.id - message.author.id) return message.channel.send(embed); 
@@ -419,7 +419,7 @@ client.on('message', async message => {
     let pasdemention = new Discord.MessageEmbed()
                 .setColor(couleur)
                 .setTitle("AVATAR")
-                .setDescription(`**Voici votre photo de profil !** [**(LIEN)**](${message.author.displayAvatarURL({dynamic: true})})`)
+                .setDescription(`**Voici votre photo de profil !** **[(LIEN)](${message.author.displayAvatarURL({dynamic: true})}**)`)
                 .setImage(message.author.displayAvatarURL({format: 'png', dynamic: true, size: 1024}))
                 .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     if (!user) return message.channel.send(pasdemention);
