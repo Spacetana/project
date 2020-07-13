@@ -1,7 +1,6 @@
 const Discord                                         = require('discord.js');
 const {TOKEN, PREFIX, VERSION, WHITELIST}             = require('./config.js');
 const { get }                                         = require('https');
-const yts                                             = require( 'yt-search' );
 const client                                          = new Discord.Client({disableMentions: "everyone"});
 
 client.commands = new Discord.Collection()
@@ -501,35 +500,58 @@ client.on('message', async message => {
     if (question) return message.channel.send(replies[Math.floor(Math.random() * (replies.length) -1)])
   }
 
+  if (message.content.startsWith(prefix + "invisible")) {
+    message.channel.send("️");
+  }
+
   let nonsfw = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("NSFW ERREUR")
   .setDescription(message.channel.toString()+" n'est pas un channel **NSFW** !")
   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-  if (message.content.startsWith(prefix + "invisible")) {
-    message.channel.send("️");
-  }
-
-  if (message.content.startsWith(prefix + "ytsearch")) {
+  if (message.content.startsWith(prefix + "4k")) {
 
     if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
 
-    let args     = message.content.split(" ").slice(1),
-        recherche = args.join(" ");
-        
-        const yts = require('yt-search')
- 
-        yts('[Exclu] Heuss L\'enfoiré \"Benda\" ft Soolking #PlanèteRap', function (err, r) {
-          if (err) throw err
-         
-          const videos = r.videos
-          videos.forEach(function (v) {
-            const views = String(v.views).padStart(10, ' ')
-            console.log( `${views} | ${v.title} (${v.timestamp}) | ${v.author.name}` )
-          })
-        })
-    } 
+    let erreurAPI = new Discord.MessageEmbed()
+    .setColor(couleur)
+    .setTitle("4K ERREUR")
+    .setDescription("Une erreur est survenue avec l'API !")
+    .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+    get("https://nekobot.xyz/api/image/4k", (res) => {
+      
+      const { statusCode } = res;
+
+      if (statusCode !== 200) return message.channel.send(erreurAPI).catch(console.error);
+    
+      res.setEncoding("utf8");
+      let rawData = "";
+
+      res.on("data", chunk => {
+        rawData += chunk;
+      });
+
+      res.on("end", () => {
+        try {
+          const parsedData = JSON.parse(rawData);
+              
+          let image = new Discord.MessageEmbed()
+          .setColor(couleur)
+          .setTitle("4K")
+          .setImage(parsedData.url)
+          .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+          if (message.channel.nsfw) return message.channel.send(image).catch(console.error);
+        } catch (error) {
+          console.error(error.message);
+        }
+      });
+    }).on("error", (error) => {
+      console.error(error.message);
+    });
+  }
 
   if (message.content.startsWith(prefix + "nekonude")) {
 
