@@ -2,9 +2,8 @@ const Discord                                         = require('discord.js');
 const {TOKEN, PREFIX, VERSION, WHITELIST}             = require('./config.js');
 const { get }                                         = require('https');
 const superagent                                      = require("superagent");
-const Pornsearch                                      = require('pornsearch');
 const snekfetch                                       = require('snekfetch');
-const Searcher                                        = new Pornsearch('tits');
+const p                                               = require('pixula-v2');
 const client                                          = new Discord.Client({disableMentions: "everyone"});
 
 client.commands = new Discord.Collection()
@@ -675,6 +674,53 @@ if (message.content.startsWith(prefix + "boobs")) {
 
   if (message.channel.nsfw) return message.channel.send(imageE).catch(console.error);
 }
+
+if (message.content.startsWith(prefix + "boobs")) {
+
+  if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
+  
+    let erreurAPI = new Discord.MessageEmbed()
+    .setColor(couleur)
+    .setTitle("BOOBS ERREUR")
+    .setDescription("Une erreur est survenue avec l'API !")
+    .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+  const id = [Math.floor(Math.random() * 10930)];
+  const res = await snekfetch.get(`http://api.oboobs.ru/boobs/${id}`);
+  const preview = res.body[0]["PREVIEW".toLowerCase()];
+  const image = `http://media.oboobs.ru/${preview}`;
+  
+  const { statusCode } = res;
+
+  if (statusCode !== 200) return message.channel.send(erreurAPI).catch(console.error);
+            
+    let imageE = new Discord.MessageEmbed()
+    .setColor(couleur)
+    .setTitle("BOOBS")
+    .setImage(image)
+    .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+  if (message.channel.nsfw) return message.channel.send(imageE).catch(console.error);
+}
+
+if (message.content.startsWith(prefix + "boobs")) {
+
+  if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
+  
+    async function h(){
+      let img = await p.hfuck();
+      console.log(img.url)
+
+      let imageE = new Discord.MessageEmbed()
+      .setColor(couleur)
+      .setTitle("BOOBS")
+      .setImage(img.url)
+      .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+  
+      if (message.channel.nsfw) return message.channel.send(imageE).catch(console.error);
+    }
+    h();
+  }
 
   if (message.content.startsWith(prefix + "nekonude")) {
 
