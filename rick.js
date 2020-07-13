@@ -141,7 +141,7 @@ client.on('message', async message => {
     message.channel.send(mod);
   } 
 
-  if (message.content === prefix + 'help nsfw hentai' || message.content === prefix + 'h nsfw hentai') {
+  if (message.content === prefix + 'help hentai' || message.content === prefix + 'h hentai') {
 
     let mod = new Discord.MessageEmbed()
     .setColor(couleur)
