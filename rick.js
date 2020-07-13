@@ -1004,7 +1004,7 @@ if (message.content.startsWith(prefix + "slap")) {
   });
 }
 
-if (message.content.startsWith(prefix + "PAT")) {
+if (message.content.startsWith(prefix + "pat")) {
 
   let erreurAPI = new Discord.MessageEmbed()
   .setColor(couleur)
