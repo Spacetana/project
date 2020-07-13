@@ -145,7 +145,7 @@ client.on('message', async message => {
       .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)      
    
     if (!user) return message.channel.send(pasdemention);
-    if (user, user.id = message.author.id) return message.channel.send(pasdemention);
+    if (user, user.id == message.author.id) return message.channel.send(pasdemention);
   }
 
   if (message.content.startsWith(prefix + 'whitelist')) {
@@ -195,8 +195,8 @@ client.on('message', async message => {
     if (!user && !whitelist.includes(message.author.id)) return message.channel.send(standardliste);
     if (!user && whitelist.includes(message.author.id)) return message.channel.send(avancéliste);
 
-    if (user, user.id = message.author.id && !whitelist.includes(user.id)) return message.channel.send(standardliste);
-    if (user, user.id = message.author.id && whitelist.includes(user.id)) return message.channel.send(avancéliste);
+    if (user, user.id == message.author.id && !whitelist.includes(user.id)) return message.channel.send(standardliste);
+    if (user, user.id == message.author.id && whitelist.includes(user.id)) return message.channel.send(avancéliste);
 
   }
     
