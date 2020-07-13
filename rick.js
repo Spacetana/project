@@ -45,7 +45,7 @@ client.on('message', async message => {
     .addField(`\`${PREFIX}help info\``, "Vous permet d'accéder à la page d'aide commandes info")
     .addField(`\`${PREFIX}help mod\``, "Vous permet d'accéder à la page d'aide commandes mod")
     .addField(`\`${PREFIX}help fun\``, "Vous permet d'accéder à la page d'aide des commandes fun")
-    .addField(`\`${PREFIX}help neko\``, "Vous permet d'accéder à la page d'aide des commandes neko")
+    .addField(`\`${PREFIX}help love\``, "Vous permet d'accéder à la page d'aide des commandes love")
     .addField(`\`${PREFIX}help nsfw\``, "Vous permet d'accéder à la page d'aide des commandes nsfw🔞")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
@@ -57,7 +57,7 @@ client.on('message', async message => {
     .addField(`\`${PREFIX}help info\``, "Vous permet d'accéder à la page d'aide commandes info")
     .addField(`\`${PREFIX}help mod\``, "Vous permet d'accéder à la page d'aide commandes mod")
     .addField(`\`${PREFIX}help fun\``, "Vous permet d'accéder à la page d'aide des commandes fun")
-    .addField(`\`${PREFIX}help neko\``, "Vous permet d'accéder à la page d'aide des commandes neko")
+    .addField(`\`${PREFIX}help love\``, "Vous permet d'accéder à la page d'aide des commandes love")
     .addField(`\`${PREFIX}help nsfw\``, "Vous permet d'accéder à la page d'aide des commandes nsfw🔞")
     .addField("️", "**COMMANDES WHITELIST**")
     .addField(`\`${PREFIX}exec\``, "Vous permet d'exécuter du code en JavaScript !")
