@@ -701,22 +701,22 @@ if (message.content.startsWith(prefix + "boobs")) {
     .setDescription("Une erreur est survenue avec l'API !")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-  async function h(){
-    let img = await p.boobs();
+  const id = [Math.floor(Math.random() * 10930)];
+  const res = await snekfetch.get(`http://api.oboobs.ru/boobs/${id}`);
+  const preview = res.body[0]["PREVIEW".toLowerCase()];
+  const image = `http://media.oboobs.ru/${preview}`;
 
-    const { statusCode } = res;
+  const { statusCode } = res;
 
-    if (statusCode !== 200) return message.channel.send(erreurAPI).catch(console.error);
+  if (statusCode !== 200) return message.channel.send(erreurAPI).catch(console.error);
             
     let imageE = new Discord.MessageEmbed()
     .setColor(couleur)
     .setTitle("BOOBS")
-    .setImage(img)
+    .setImage(image)
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-    if (message.channel.nsfw) return message.channel.send(imageE).catch(console.error);
-  }
-  u()
+  if (message.channel.nsfw) return message.channel.send(imageE).catch(console.error);
 }
 
 if (message.content.startsWith(prefix + "hfuck")) {
