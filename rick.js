@@ -815,6 +815,7 @@ if (message.content.startsWith(prefix + "kiss")) {
             .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
             if (user) return message.channel.send(image2);
+            if (user && user.id - message.author.id) return message.channel.send(image2);
           }
         }
 
@@ -824,7 +825,15 @@ if (message.content.startsWith(prefix + "kiss")) {
         .setImage(parsedData.url)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
+        let image = new Discord.MessageEmbed()
+        .setColor(couleur)
+        .setTitle("KISS")
+        .setDescription(message.author.toString()+" se fait un bisous à lui même !")
+        .setImage(parsedData.url)
+        .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
         if (!user) return message.channel.send(image);
+        if (user && user.id == message.author.id) return message.channel.send(image);
 
       } catch (error) {
         console.error(error.message);
