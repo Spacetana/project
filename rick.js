@@ -1,7 +1,7 @@
 const Discord                                         = require('discord.js');
 const {TOKEN, PREFIX, VERSION, WHITELIST}             = require('./config.js');
 const Pornhub                                         = require('pornhub-api'); 
-const Videos                                          = new Pornhub.Videos()
+const Videos                                          = new Pornhub.Videos();
 const { get }                                         = require('https');
 const client                                          = new Discord.Client({disableMentions: "everyone"});
 
@@ -523,7 +523,7 @@ client.on('message', async message => {
         
         Videos.search({
           search: recherche
-        }).then(videos => {
+        }).then(Videos => {
           message.channel.send(Videos);
         })
       }  
