@@ -3,7 +3,7 @@ const {TOKEN, PREFIX, VERSION, WHITELIST}             = require('./config.js');
 const { get }                                         = require('https');
 const superagent                                      = require("superagent");
 const Pornsearch                                      = require('pornsearch');
-const request                                         = require('snekfetch');
+const snekfetch                                       = require('snekfetch');
 const Searcher                                        = new Pornsearch('tits');
 const client                                          = new Discord.Client({disableMentions: "everyone"});
 
