@@ -609,6 +609,47 @@ client.on('message', async message => {
     message.channel.send("️");
   }
 
+  if (message.content.startsWith(prefix + "hentai")) {
+
+    let erreurAPI = new Discord.MessageEmbed()
+    .setColor(couleur)
+    .setTitle("HENTAI ERREUR")
+    .setDescription("Une erreur est survenue avec l'API !")
+    .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+    get("https://neko-love.xyz/api/v1/nekolewd", (res) => {
+      
+      const { statusCode } = res;
+
+      if (statusCode !== 200) return message.channel.send(erreurAPI).catch(console.error);
+    
+      res.setEncoding("utf8");
+      let rawData = "";
+
+      res.on("data", chunk => {
+        rawData += chunk;
+      });
+
+      res.on("end", () => {
+        try {
+          const parsedData = JSON.parse(rawData);
+              
+          let image = new Discord.MessageEmbed()
+          .setColor(couleur)
+          .setTitle("HENTAI")
+          .setImage(parsedData.url)
+          .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+          message.channel.send(image);
+        } catch (error) {
+          console.error(error.message);
+        }
+      });
+    }).on("error", (error) => {
+      console.error(error.message);
+    });
+  }
+
   if (message.content.startsWith(prefix + "neko")) {
 
     let erreurAPI = new Discord.MessageEmbed()
