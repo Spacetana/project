@@ -111,6 +111,7 @@ client.on('message', async message => {
     .setTitle("Page 5/"+totalpage+" - Commandes NEKO :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
     .addField(`\`${PREFIX}neko \``, "Vous permet d'afficher une image de Nekomimi")
+    .addField(`\`${PREFIX}hug \``, "Vous permet de vous faire ou faire un câlin à un membre")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     message.channel.send(mod);
   } 
@@ -651,6 +652,8 @@ if (message.content.startsWith(prefix + "hug")) {
   .setDescription("Une erreur est survenue avec l'API !")
   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
+  let user = message.mentions.users.first();
+
   get("https://neko-love.xyz/api/v1/hug", (res) => {
 
     const { statusCode } = res;
@@ -674,7 +677,16 @@ if (message.content.startsWith(prefix + "hug")) {
         .setImage(parsedData.url)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-        message.channel.send(image);
+        let image2 = new Discord.MessageEmbed()
+        .setColor(couleur)
+        .setTitle("HUG")
+        .setDescription(message.author.toString()+" fait un câlin à "+user.toString()+" !")
+        .setImage(parsedData.url)
+        .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+        if (user) return message.channel.send(image2);
+        if (!user) return message.channel.send(image);
+
       } catch (error) {
         console.error(error.message);
       }
