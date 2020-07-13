@@ -137,7 +137,7 @@ client.on('message', async message => {
     .addField(`\`${PREFIX}ass\``,      "Vous permet d'afficher une image pornographique d'un gros cul")
     .addField(`\`${PREFIX}anal\``,     "Vous permet d'afficher une image/gif pornographique d'acte anal")
     .addField(`\`${PREFIX}pussy\``,    "Vous permet d'afficher une image pornographique de large vagins")
-    .addField(`\`${PREFIX}boobs\``,    "Vous permet d'afficher une image/gif pornographique de gros seins")
+    .addField(`\`${PREFIX}boobs\``,    "Vous permet d'afficher une image pornographique de gros seins")
 
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     message.channel.send(mod);
@@ -701,22 +701,22 @@ if (message.content.startsWith(prefix + "boobs")) {
     .setDescription("Une erreur est survenue avec l'API !")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-  const id = [Math.floor(Math.random() * 10930)];
-  const res = await snekfetch.get(`http://api.oboobs.ru/boobs/${id}`);
-  const preview = res.body[0]["PREVIEW".toLowerCase()];
-  const image = `http://media.oboobs.ru/${preview}`;
-  
-  const { statusCode } = res;
+  async function h(){
+    let img = await p.boobs();
 
-  if (statusCode !== 200) return message.channel.send(erreurAPI).catch(console.error);
+    const { statusCode } = res;
+
+    if (statusCode !== 200) return message.channel.send(erreurAPI).catch(console.error);
             
     let imageE = new Discord.MessageEmbed()
     .setColor(couleur)
     .setTitle("BOOBS")
-    .setImage(image)
+    .setImage(img)
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-  if (message.channel.nsfw) return message.channel.send(imageE).catch(console.error);
+    if (message.channel.nsfw) return message.channel.send(imageE).catch(console.error);
+  }
+  u()
 }
 
 if (message.content.startsWith(prefix + "hfuck")) {
