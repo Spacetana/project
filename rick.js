@@ -131,7 +131,7 @@ client.on('message', async message => {
 
     let mod = new Discord.MessageEmbed()
     .setColor(couleur)
-    .setTitle("Page 6/"+totalpage+" - Commandes NSFW NORMAL :")
+    .setTitle("Page 6/"+totalpage+" - Commandes NSFW - Normal :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
     .addField(`\`${PREFIX}4k\``,       "Vous permet d'afficher une image pornographique en 4k")
     .addField(`\`${PREFIX}ass\``,      "Vous permet d'afficher une image pornographique d'un gros cul")
@@ -147,7 +147,7 @@ client.on('message', async message => {
 
     let mod = new Discord.MessageEmbed()
     .setColor(couleur)
-    .setTitle("Page 7/"+totalpage+" - Commandes NSFW HENTAI :")
+    .setTitle("Page 7/"+totalpage+" - Commandes NSFW - Hentai :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
     .addField(`\`${PREFIX}hcum\``,     "Vous permet d'afficher un image/gif d'éjaculation")
     .addField(`\`${PREFIX}hgif\``,     "Vous permet d'afficher un gif pornographique random")
