@@ -665,32 +665,6 @@ if (message.content.startsWith(prefix + "hentai")) {
 });
 }
 
-if (message.content.startsWith(prefix + "hentai")) {
-
-  if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
-  
-  let erreurAPI = new Discord.MessageEmbed()
-  .setColor(couleur)
-  .setTitle("HENTAI ERREUR")
-  .setDescription("Une erreur est survenue avec l'API !")
-  .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
-
-  superagent.get('https://nekobot.xyz/api/image').query({type: 'hentai'}).end((err, res) => {
-  
-    const { statusCode } = res;
-
-    if (statusCode !== 200) return message.channel.send(erreurAPI).catch(console.error);
-            
-        let image = new Discord.MessageEmbed()
-        .setColor(couleur)
-        .setTitle("HENTAI")
-        .setImage(res.body.message)
-        .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
-
-        if (message.channel.nsfw) return message.channel.send(image).catch(console.error);
-});
-}
-
 if (message.content.startsWith(prefix + "boobs")) {
 
   if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
