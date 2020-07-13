@@ -1,6 +1,7 @@
 const Discord                                         = require('discord.js');
 const {TOKEN, PREFIX, VERSION, WHITELIST}             = require('./config.js');
-const Pornsearch                                      = require('pornsearch');
+const Pornhub                                         = require('pornhub-api'); 
+const Videos                                          = new Pornhub.Videos()
 const { get }                                         = require('https');
 const client                                          = new Discord.Client({disableMentions: "everyone"});
 
@@ -513,15 +514,19 @@ client.on('message', async message => {
     message.channel.send("️");
   }
 
-  if (message.content.startsWith(prefix + "pornsearchgif")) {
+  if (message.content.startsWith(prefix + "pornsearch")) {
 
     if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
 
     let args     = message.content.split(" ").slice(1),
         recherche = args.join(" ");
-
-    Pornsearch.search(recherche).gifs().then(message.channel.send(gifs));
-  }  
+        
+        Videos.search({
+          search: recherche
+        }).then(videos => {
+          message.channel.send(Videos);
+        })
+      }  
 
   if (message.content.startsWith(prefix + "nekonude")) {
 
