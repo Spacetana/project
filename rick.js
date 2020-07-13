@@ -130,6 +130,7 @@ client.on('message', async message => {
     .setTitle("Page 6/"+totalpage+" - Commandes NSFW :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
     .addField(`\`${PREFIX}4k\``, "Vous permet d'afficher des images pornographique en 4k")
+    .addField(`\`${PREFIX}ass\``, "Vous permet d'afficher des images pornographique de cul")
     .addField(`\`${PREFIX}anal\``, "Vous permet d'afficher des actes sexuel pornographique anal")
     .addField(`\`${PREFIX}nekonude\``, "Permet d'afficher des images de Nekomimi version hentai")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
@@ -563,6 +564,31 @@ if (message.content.startsWith(prefix + "anal")) {
 });
 }
 
+if (message.content.startsWith(prefix + "ass")) {
+
+  if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
+  
+  let erreurAPI = new Discord.MessageEmbed()
+  .setColor(couleur)
+  .setTitle("4K ERREUR")
+  .setDescription("Une erreur est survenue avec l'API !")
+  .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+  superagent.get('https://nekobot.xyz/api/image').query({type: 'ass'}).end((err, res) => {
+  
+    const { statusCode } = res;
+
+    if (statusCode !== 200) return message.channel.send(erreurAPI).catch(console.error);
+            
+        let image = new Discord.MessageEmbed()
+        .setColor(couleur)
+        .setTitle("4K")
+        .setImage(res.body.message)
+        .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+        if (message.channel.nsfw) return message.channel.send(image).catch(console.error);
+});
+}
 
   if (message.content.startsWith(prefix + "nekonude")) {
 
