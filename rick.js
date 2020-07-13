@@ -639,7 +639,7 @@ if (message.content.startsWith(prefix + "pussy")) {
 });
 }
 
-if (message.content.startsWith(prefix + "hentai")) {
+if (message.content.startsWith(prefix + "himg")) {
 
   if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
   
