@@ -43,11 +43,11 @@ client.on('message', async message => {
     .setTitle("Page 1/"+totalpage+" - Toutes les commandes :")
     .setDescription("**Pour tout problème avec le bot, voici le support** : **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
     .addField(`\`${PREFIX}help\``, "Vous y êtes actuellement")
-    .addField(`\`${PREFIX}help info\``, "Vous permet d'accéder à la page d'aide commandes info")
-    .addField(`\`${PREFIX}help mod\``, "Vous permet d'accéder à la page d'aide commandes mod")
-    .addField(`\`${PREFIX}help fun\``, "Vous permet d'accéder à la page d'aide des commandes fun")
-    .addField(`\`${PREFIX}help love\``, "Vous permet d'accéder à la page d'aide des commandes love")
-    .addField(`\`${PREFIX}help nsfw\``, "Vous permet d'accéder à la page d'aide des commandes nsfw🔞")
+    .addField(`\`${PREFIX}help info\``,   "Vous permet d'accéder à la page d'aide commandes info")
+    .addField(`\`${PREFIX}help mod\``,    "Vous permet d'accéder à la page d'aide commandes mod")
+    .addField(`\`${PREFIX}help fun\``,    "Vous permet d'accéder à la page d'aide des commandes fun")
+    .addField(`\`${PREFIX}help love\``,   "Vous permet d'accéder à la page d'aide des commandes love")
+    .addField(`\`${PREFIX}help nsfw\``,   "Vous permet d'accéder à la page d'aide des commandes nsfw🔞")
     .addField(`\`${PREFIX}help hentai\``, "Vous permet d'accéder à la page d'aide des commandes hentai🔞")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
@@ -66,8 +66,8 @@ client.on('message', async message => {
     .addField(`\`${PREFIX}exec\``, "Vous permet d'exécuter du code en JavaScript !")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-    if (!whitelist.includes(message.author.id)) return message.channel.send(standard);
-    if (whitelist.includes(message.author.id)) return message.channel.send(avancé);
+    if (!whitelist.includes(author.id)) return message.channel.send(standard);
+    if (whitelist.includes(author.id)) return message.channel.send(avancé);
   }
 
   if (message.content === prefix + 'help mod' || message.content === prefix + 'h mod') {
@@ -176,19 +176,19 @@ client.on('message', async message => {
                 .setDescription(`**Voici la photo de profil de ${user} !** [(LIEN)](${user.displayAvatarURL({dynamic: true})})`)
                 .setImage(user.displayAvatarURL({format: 'png', dynamic: true, size: 1024}))
                 .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
-          if (user && user.id - message.author.id) return message.channel.send(embed);
+          if (user && user.id - author.id) return message.channel.send(embed);
         }
       }
 
       let pasdemention = new Discord.MessageEmbed()
       .setColor(couleur)
       .setTitle("AVATAR")
-      .setDescription(`**Voici votre photo de profil !** [(LIEN)](${message.author.displayAvatarURL({dynamic: true})})`)
-      .setImage(message.author.displayAvatarURL({format: 'png', dynamic: true, size: 1024}))
+      .setDescription(`**Voici votre photo de profil !** [(LIEN)](${author.displayAvatarURL({dynamic: true})})`)
+      .setImage(author.displayAvatarURL({format: 'png', dynamic: true, size: 1024}))
       .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)      
    
     if (!user) return message.channel.send(pasdemention);
-    if (user && user.id == message.author.id) return message.channel.send(pasdemention);
+    if (user && user.id == author.id) return message.channel.send(pasdemention);
   }
 
   if (message.content.startsWith(prefix + 'whitelist')) {
@@ -215,8 +215,8 @@ client.on('message', async message => {
         .addField("Liste des `ID` whitelist :", whitelist)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-        if (user && user.id - message.author.id && !whitelist.includes(user.id)) return message.channel.send(standardliste1);
-        if (user && user.id - message.author.id && whitelist.includes(user.id)) return message.channel.send(avancéliste1);
+        if (user && user.id - author.id && !whitelist.includes(user.id)) return message.channel.send(standardliste1);
+        if (user && user.id - author.id && whitelist.includes(user.id)) return message.channel.send(avancéliste1);
 
       } 
     }     
@@ -235,11 +235,11 @@ client.on('message', async message => {
     .addField("Liste des `ID` whitelist :", whitelist)
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)   
 
-    if (!user && !whitelist.includes(message.author.id)) return message.channel.send(standardliste);
-    if (!user && whitelist.includes(message.author.id)) return message.channel.send(avancéliste);
+    if (!user && !whitelist.includes(author.id)) return message.channel.send(standardliste);
+    if (!user && whitelist.includes(author.id)) return message.channel.send(avancéliste);
 
-    if (user && user.id == message.author.id && !whitelist.includes(user.id)) return message.channel.send(standardliste);
-    if (user && user.id == message.author.id && whitelist.includes(user.id)) return message.channel.send(avancéliste);
+    if (user && user.id == author.id && !whitelist.includes(user.id)) return message.channel.send(standardliste);
+    if (user && user.id == author.id && whitelist.includes(user.id)) return message.channel.send(avancéliste);
 
   }
 
@@ -252,7 +252,7 @@ client.on('message', async message => {
     
   if (message.content.startsWith(prefix + 'exec')) {
   
-    if (!whitelist.includes(message.author.id)) return message.channel.send(nonWhitelist);
+    if (!whitelist.includes(author.id)) return message.channel.send(nonWhitelist);
       
       const args = message.content.split(' ');
       const command = args.shift().toLowerCase();
@@ -265,7 +265,7 @@ client.on('message', async message => {
         .setColor(couleur)
         .setTitle("ERREUR")
         .setDescription("```SyntaxError: Aucun script n'est détecté veuillez réessayer```\n ❌ **Une erreur a été identifié** ⬆️")
-        .setFooter('Saitama ©️ Copyright : Atsuki \\/ Needles', message.author.displayAvatarURL({dynamic: true}))
+        .setFooter('Saitama ©️ Copyright : Atsuki \\/ Needles', author.displayAvatarURL({dynamic: true}))
     
         if (!code) return message.channel.send(erreur)
   
@@ -275,7 +275,7 @@ client.on('message', async message => {
         .setColor(couleur)
         .setTitle("Évalutation de votre script :")
         .setDescription("```" + args.join(' ') + "```\n ✅ **Votre script fonctionne et n'a pas d'erreur identifié**")
-        .setFooter('Saitama ©️ Copyright : Atsuki \\/ Needles', message.author.displayAvatarURL({dynamic: true}))
+        .setFooter('Saitama ©️ Copyright : Atsuki \\/ Needles', author.displayAvatarURL({dynamic: true}))
         message.channel.send(embed);
   
         //console.log(inspect(evaled));
@@ -288,7 +288,7 @@ client.on('message', async message => {
         .setColor(couleur)
         .setTitle("ERREUR")
         .setDescription("```" + error + "```\n ❌ **Une erreur a était identifié** ⬆️")
-        .setFooter('Saitama ©️ Copyright : Atsuki \\/ Needles', message.author.displayAvatarURL({dynamic: true}))
+        .setFooter('Saitama ©️ Copyright : Atsuki \\/ Needles', author.displayAvatarURL({dynamic: true}))
         message.channel.send(embed);
   
       }
@@ -495,18 +495,18 @@ client.on('message', async message => {
                 .setDescription(`**Voici la photo de profil de ${user} !** [(LIEN)](${user.displayAvatarURL({dynamic: true})})`)
                 .setImage(user.displayAvatarURL({format: 'png', dynamic: true, size: 1024}))
                 .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
-          if (user, user.id - message.author.id) return message.channel.send(embed); 
+          if (user, user.id - author.id) return message.channel.send(embed); 
         }
       }
     
     let pasdemention = new Discord.MessageEmbed()
                 .setColor(couleur)
                 .setTitle("AVATAR")
-                .setDescription(`**Voici votre photo de profil !** [(LIEN)](${message.author.displayAvatarURL({dynamic: true})})`)
-                .setImage(message.author.displayAvatarURL({format: 'png', dynamic: true, size: 1024}))
+                .setDescription(`**Voici votre photo de profil !** [(LIEN)](${author.displayAvatarURL({dynamic: true})})`)
+                .setImage(author.displayAvatarURL({format: 'png', dynamic: true, size: 1024}))
                 .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     if (!user) return message.channel.send(pasdemention);
-    if (user, user.id = message.author.id) return message.channel.send(pasdemention);
+    if (user, user.id = author.id) return message.channel.send(pasdemention);
   }
 
   if (message.content.startsWith(prefix + "8ball")) {
@@ -991,11 +991,11 @@ if (message.content.startsWith(prefix + "hug")) {
             let image = new Discord.MessageEmbed()
             .setColor(couleur)
             .setTitle("HUG")
-            .setDescription(message.author.toString()+" fait un câlin à "+user.toString()+" !")
+            .setDescription(author.toString()+" fait un câlin à "+user.toString()+" !")
             .setImage(parsedData.url)
             .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     
-            if (user && user.id - message.author.id) return message.channel.send(image);
+            if (user && user.id - author.id) return message.channel.send(image);
           }
         }
 
@@ -1008,12 +1008,12 @@ if (message.content.startsWith(prefix + "hug")) {
         let image3 = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("HUG")
-        .setDescription(message.author.toString()+" se fait un câlin !")
+        .setDescription(author.toString()+" se fait un câlin !")
         .setImage(parsedData.url)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
         if (!user) return message.channel.send(image);
-        if (user && user.id == message.author.id) return message.channel.send(image3);
+        if (user && user.id == author.id) return message.channel.send(image3);
 
       } catch (error) {
         console.error(error.message);
@@ -1062,11 +1062,11 @@ if (message.content.startsWith(prefix + "punch")) {
             let image2 = new Discord.MessageEmbed()
             .setColor(couleur)
             .setTitle("PUNCH")
-            .setDescription(message.author.toString()+" donne un coup de poing à "+user.toString()+" !")
+            .setDescription(author.toString()+" donne un coup de poing à "+user.toString()+" !")
             .setImage(parsedData.url)
             .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-            if (user && user.id - message.author.id) return message.channel.send(image2);
+            if (user && user.id - author.id) return message.channel.send(image2);
           }
         }
 
@@ -1079,12 +1079,12 @@ if (message.content.startsWith(prefix + "punch")) {
         let image3 = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("PUNCH")
-        .setDescription(message.author.toString()+" se donne un coup de poing !")
+        .setDescription(author.toString()+" se donne un coup de poing !")
         .setImage(parsedData.url)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
         if (!user) return message.channel.send(image);
-        if (user && user.id == message.author.id) return message.channel.send(image3);
+        if (user && user.id == author.id) return message.channel.send(image3);
 
       } catch (error) {
         console.error(error.message);
@@ -1133,11 +1133,11 @@ if (message.content.startsWith(prefix + "kiss")) {
             let image2 = new Discord.MessageEmbed()
             .setColor(couleur)
             .setTitle("KISS")
-            .setDescription(message.author.toString()+" fait un bisous à "+user.toString()+" !")
+            .setDescription(author.toString()+" fait un bisous à "+user.toString()+" !")
             .setImage(parsedData.url)
             .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-            if (user && user.id - message.author.id) return message.channel.send(image2);
+            if (user && user.id - author.id) return message.channel.send(image2);
           }
         }
 
@@ -1150,12 +1150,12 @@ if (message.content.startsWith(prefix + "kiss")) {
         let image3 = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("KISS")
-        .setDescription(message.author.toString()+" se fait un bisous !")
+        .setDescription(author.toString()+" se fait un bisous !")
         .setImage(parsedData.url)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
         if (!user) return message.channel.send(image);
-        if (user && user.id == message.author.id) return message.channel.send(image3);
+        if (user && user.id == author.id) return message.channel.send(image3);
 
       } catch (error) {
         console.error(error.message);
@@ -1204,11 +1204,11 @@ if (message.content.startsWith(prefix + "cry")) {
             let image2 = new Discord.MessageEmbed()
             .setColor(couleur)
             .setTitle("CRY")
-            .setDescription(message.author.toString()+" fait pleurer "+user.toString()+" !")
+            .setDescription(author.toString()+" fait pleurer "+user.toString()+" !")
             .setImage(parsedData.url)
             .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-            if (user && user.id - message.author.id) return message.channel.send(image2);
+            if (user && user.id - author.id) return message.channel.send(image2);
           }
         }
 
@@ -1221,12 +1221,12 @@ if (message.content.startsWith(prefix + "cry")) {
         let image3 = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("CRY")
-        .setDescription(message.author.toString()+" pleur(e) seul(e) !")
+        .setDescription(author.toString()+" pleur(e) seul(e) !")
         .setImage(parsedData.url)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
         if (!user) return message.channel.send(image);
-        if (user && user.id == message.author.id) return message.channel.send(image3);
+        if (user && user.id == author.id) return message.channel.send(image3);
 
       } catch (error) {
         console.error(error.message);
@@ -1275,11 +1275,11 @@ if (message.content.startsWith(prefix + "slap")) {
             let image2 = new Discord.MessageEmbed()
             .setColor(couleur)
             .setTitle("SLAP")
-            .setDescription(message.author.toString()+" met une gifle à "+user.toString()+" !")
+            .setDescription(author.toString()+" met une gifle à "+user.toString()+" !")
             .setImage(parsedData.url)
             .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-            if (user && user.id - message.author.id) return message.channel.send(image2);
+            if (user && user.id - author.id) return message.channel.send(image2);
           }
         }
 
@@ -1292,12 +1292,12 @@ if (message.content.startsWith(prefix + "slap")) {
         let image3 = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("SLAP")
-        .setDescription(message.author.toString()+" se met une gifle !")
+        .setDescription(author.toString()+" se met une gifle !")
         .setImage(parsedData.url)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
         if (!user) return message.channel.send(image);
-        if (user && user.id == message.author.id) return message.channel.send(image3);
+        if (user && user.id == author.id) return message.channel.send(image3);
 
       } catch (error) {
         console.error(error.message);
@@ -1346,11 +1346,11 @@ if (message.content.startsWith(prefix + "pat")) {
             let image2 = new Discord.MessageEmbed()
             .setColor(couleur)
             .setTitle("PAT")
-            .setDescription(message.author.toString()+" tapote "+user.toString()+" !")
+            .setDescription(author.toString()+" tapote "+user.toString()+" !")
             .setImage(parsedData.url)
             .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-            if (user && user.id - message.author.id) return message.channel.send(image2);
+            if (user && user.id - author.id) return message.channel.send(image2);
           }
         }
 
@@ -1363,12 +1363,12 @@ if (message.content.startsWith(prefix + "pat")) {
         let image3 = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("PAT")
-        .setDescription(message.author.toString()+" se tapote !")
+        .setDescription(author.toString()+" se tapote !")
         .setImage(parsedData.url)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
         if (!user) return message.channel.send(image);
-        if (user && user.id == message.author.id) return message.channel.send(image3);
+        if (user && user.id == author.id) return message.channel.send(image3);
 
       } catch (error) {
         console.error(error.message);
@@ -1417,11 +1417,11 @@ if (message.content.startsWith(prefix + "smug")) {
             let image2 = new Discord.MessageEmbed()
             .setColor(couleur)
             .setTitle("SMUG")
-            .setDescription(message.author.toString()+" satisfait "+user.toString()+" !")
+            .setDescription(author.toString()+" satisfait "+user.toString()+" !")
             .setImage(parsedData.url)
             .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-            if (user && user.id - message.author.id) return message.channel.send(image2);
+            if (user && user.id - author.id) return message.channel.send(image2);
           }
         }
 
@@ -1434,12 +1434,12 @@ if (message.content.startsWith(prefix + "smug")) {
         let image3 = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("SMUG")
-        .setDescription(message.author.toString()+" est statisfait !")
+        .setDescription(author.toString()+" est statisfait !")
         .setImage(parsedData.url)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
         if (!user) return message.channel.send(image);
-        if (user && user.id == message.author.id) return message.channel.send(image3);
+        if (user && user.id == author.id) return message.channel.send(image3);
 
       } catch (error) {
         console.error(error.message);
