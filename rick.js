@@ -684,7 +684,7 @@ if (message.content.startsWith(prefix + "hug")) {
         .setImage(parsedData.url)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-        if (!user) return message.channel.send(image);
+        message.channel.send(image);
         if (user) return message.channel.send(image2);
 
       } catch (error) {
