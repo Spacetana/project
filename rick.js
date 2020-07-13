@@ -195,8 +195,11 @@ client.on('message', async message => {
     if (!user && !whitelist.includes(message.author.id)) return message.channel.send(standardliste);
     if (!user && whitelist.includes(message.author.id)) return message.channel.send(avancéliste);
 
-    if (user && user.id == message.author.id, !whitelist.includes(user.id)) return message.channel.send(standardliste);
-    if (user && user.id == message.author.id, whitelist.includes(user.id)) return message.channel.send(avancéliste);
+    if (!user) return message.channel.send(pasdemention);
+    if (user && user.id == message.author.id) return message.channel.send(pasdemention);
+
+    if (user && user.id == message.author.id && !whitelist.includes(user.id)) return message.channel.send(standardliste);
+    if (user && user.id == message.author.id && whitelist.includes(user.id)) return message.channel.send(avancéliste);
 
   }
 
@@ -592,11 +595,9 @@ client.on('message', async message => {
 
   if (message.content.startsWith(prefix + "neko")) {
 
-    let avatarbot = client.user.avatarURL({dynamic: true});
-
     let erreurAPI = new Discord.MessageEmbed()
     .setColor(couleur)
-    .setTitle("NSFW ERREUR")
+    .setTitle("NEKO ERREUR")
     .setDescription("Une erreur est survenue avec l'API !")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
@@ -621,7 +622,7 @@ client.on('message', async message => {
               
             let image = new Discord.MessageEmbed()
             .setColor(couleur)
-            .setTitle("NSFW")
+            .setTitle("NEKO")
             .setImage(parsedData.url)
             .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
