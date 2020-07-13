@@ -723,18 +723,18 @@ if (message.content.startsWith(prefix + "porngif")) {
 
   if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
   
-    async function p(){
+    async function u(){
       let img = await p.porngif();
 
       let imageE = new Discord.MessageEmbed()
       .setColor(couleur)
       .setTitle("PORN-GIFS")
-      .setImage(img.url)
+      .setImage(img)
       .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
   
       if (message.channel.nsfw) return message.channel.send(imageE).catch(console.error);
     }
-    p();
+    u();
   }
 
 if (message.content.startsWith(prefix + "hfuck")) {
