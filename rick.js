@@ -703,7 +703,7 @@ if (message.content.startsWith(prefix + "boobs")) {
   if (message.channel.nsfw) return message.channel.send(imageE).catch(console.error);
 }
 
-if (message.content.startsWith(prefix + "fuck")) {
+if (message.content.startsWith(prefix + "hfuck")) {
 
   if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
   
