@@ -2,6 +2,9 @@ const Discord                                         = require('discord.js');
 const {TOKEN, PREFIX, VERSION, WHITELIST}             = require('./config.js');
 const { get }                                         = require('https');
 const superagent                                      = require("superagent");
+const Pornsearch                                      = require('pornsearch');
+const { search } = require('snekfetch');
+const Searcher                                        = new Pornsearch('tits');
 const client                                          = new Discord.Client({disableMentions: "everyone"});
 
 client.commands = new Discord.Collection()
@@ -617,31 +620,37 @@ if (message.content.startsWith(prefix + "pussy")) {
 });
 }
 
-if (message.content.startsWith(prefix + "suck")) {
+if (message.content.startsWith(prefix + "pornsearch")) {
 
   if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
   
   let erreurAPI = new Discord.MessageEmbed()
   .setColor(couleur)
-  .setTitle("SUCK ERREUR")
+  .setTitle("PORN-SEARCH ERREUR")
   .setDescription("Une erreur est survenue avec l'API !")
   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-  superagent.get('https://nekobot.xyz/api/image').query({type: 'suck'}).end((err, res) => {
-  
-    const { statusCode } = res;
+  let args     = message.content.split(" ").slice(1),
+      searchporn = args.join(" ");
 
-    if (statusCode !== 200) return message.channel.send(erreurAPI).catch(console.error);
-            
-        let image = new Discord.MessageEmbed()
-        .setColor(couleur)
-        .setTitle("SUCK")
-        .setImage(res.body.message)
-        .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+  const Pornsearch = require('pornsearch').search(searchporn);
+    
+    Pornsearch.gifs().then(gifs => {
 
-        if (message.channel.nsfw) return message.channel.send(image).catch(console.error);
-});
-}
+      const { statusCode } = res;
+
+      if (statusCode !== 200) return message.channel.send(erreurAPI).catch(console.error);
+
+      let image = new Discord.MessageEmbed()
+      .setColor(couleur)
+      .setTitle("PORN-SEARCH")
+      .setImage(gifs)
+      .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+      if (message.channel.nsfw) return message.channel.send(image).catch(console.error);
+
+    })
+  }
 
   if (message.content.startsWith(prefix + "nekonude")) {
 
