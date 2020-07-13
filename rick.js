@@ -109,7 +109,7 @@ client.on('message', async message => {
     .addField(`\`${PREFIX}waifu\``, "Permet d'afficher des images de Waifu")
     .addField(`\`${PREFIX}kitsune\``, "Permet d'afficher des images de Kitsune")
     .addField(`\`${PREFIX}neko\``, "Permet d'afficher des images de Nekomimi")
-    .addField(`\`${PREFIX}tap\``, "Permet de vous tapotez ou de tapoter un membre")
+    .addField(`\`${PREFIX}pat\``, "Permet de vous tapotez ou de tapoter un membre")
     .addField(`\`${PREFIX}smug\``, "Permet de vous satisfaire ou de satisfaire un membre")
     .addField(`\`${PREFIX}cry\``, "Permet de vous faire pleurer ou de faire pleurer un membre")
     .addField(`\`${PREFIX}hug\``, "Permet de vous faire un câlin ou de faire un câlin à un membre")
