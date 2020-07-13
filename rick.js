@@ -46,7 +46,6 @@ client.on('message', async message => {
     .addField(`\`${PREFIX}help mod\``, "Vous permet d'accéder à la page d'aide commandes mod")
     .addField(`\`${PREFIX}help fun\``, "Vous permet d'accéder à la page d'aide des commandes fun")
     .addField(`\`${PREFIX}help love\``, "Vous permet d'accéder à la page d'aide des commandes love")
-    .addField(`\`${PREFIX}help nsfw\``, "Vous permet d'accéder à la page d'aide des commandes nsfw🔞")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
     let avancé = new Discord.MessageEmbed()
@@ -58,7 +57,6 @@ client.on('message', async message => {
     .addField(`\`${PREFIX}help mod\``, "Vous permet d'accéder à la page d'aide commandes mod")
     .addField(`\`${PREFIX}help fun\``, "Vous permet d'accéder à la page d'aide des commandes fun")
     .addField(`\`${PREFIX}help love\``, "Vous permet d'accéder à la page d'aide des commandes love")
-    .addField(`\`${PREFIX}help nsfw\``, "Vous permet d'accéder à la page d'aide des commandes nsfw🔞")
     .addField("️", "**COMMANDES WHITELIST**")
     .addField(`\`${PREFIX}exec\``, "Vous permet d'exécuter du code en JavaScript !")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
@@ -124,7 +122,7 @@ client.on('message', async message => {
     message.channel.send(mod);
   } 
 
-  if (message.content === prefix + 'help nsfw' || message.content === prefix + 'h nsfw') {
+  if (message.content === prefix + 'dsgf' || message.content === prefix + 'fsgs') {
 
     let mod = new Discord.MessageEmbed()
     .setColor(couleur)
