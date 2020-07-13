@@ -630,7 +630,7 @@ if (message.content.startsWith(prefix + "boobs")) {
   .setDescription("Une erreur est survenue avec l'API !")
   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-  request.get('https://api.oboobs.ru/boobs/$%7Bid%7D').end((err, res) => {
+  request.get('https://api.oboobs.ru/boobs/$%7Bid%7D').end((res) => {
   
     const { statusCode } = res;
 
