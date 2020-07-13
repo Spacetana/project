@@ -545,7 +545,7 @@ if (message.content.startsWith(prefix + "anal")) {
   
   let erreurAPI = new Discord.MessageEmbed()
   .setColor(couleur)
-  .setTitle("4K ERREUR")
+  .setTitle("ANAL ERREUR")
   .setDescription("Une erreur est survenue avec l'API !")
   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
@@ -557,7 +557,7 @@ if (message.content.startsWith(prefix + "anal")) {
             
         let image = new Discord.MessageEmbed()
         .setColor(couleur)
-        .setTitle("4K")
+        .setTitle("ANAL")
         .setImage(res.body.message)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
@@ -571,7 +571,7 @@ if (message.content.startsWith(prefix + "ass")) {
   
   let erreurAPI = new Discord.MessageEmbed()
   .setColor(couleur)
-  .setTitle("4K ERREUR")
+  .setTitle("ASS ERREUR")
   .setDescription("Une erreur est survenue avec l'API !")
   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
@@ -583,7 +583,7 @@ if (message.content.startsWith(prefix + "ass")) {
             
         let image = new Discord.MessageEmbed()
         .setColor(couleur)
-        .setTitle("4K")
+        .setTitle("ASS")
         .setImage(res.body.message)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
@@ -597,7 +597,7 @@ if (message.content.startsWith(prefix + "pussy")) {
   
   let erreurAPI = new Discord.MessageEmbed()
   .setColor(couleur)
-  .setTitle("4K ERREUR")
+  .setTitle("PUSSY ERREUR")
   .setDescription("Une erreur est survenue avec l'API !")
   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
@@ -609,7 +609,33 @@ if (message.content.startsWith(prefix + "pussy")) {
             
         let image = new Discord.MessageEmbed()
         .setColor(couleur)
-        .setTitle("4K")
+        .setTitle("PUSSY")
+        .setImage(res.body.message)
+        .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+        if (message.channel.nsfw) return message.channel.send(image).catch(console.error);
+});
+}
+
+if (message.content.startsWith(prefix + "fuck")) {
+
+  if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
+  
+  let erreurAPI = new Discord.MessageEmbed()
+  .setColor(couleur)
+  .setTitle("FUCK ERREUR")
+  .setDescription("Une erreur est survenue avec l'API !")
+  .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+  superagent.get('https://nekobot.xyz/api/image').query({type: 'fuck'}).end((err, res) => {
+  
+    const { statusCode } = res;
+
+    if (statusCode !== 200) return message.channel.send(erreurAPI).catch(console.error);
+            
+        let image = new Discord.MessageEmbed()
+        .setColor(couleur)
+        .setTitle("FUCK")
         .setImage(res.body.message)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
