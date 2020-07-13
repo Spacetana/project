@@ -1203,6 +1203,77 @@ if (message.content.startsWith(prefix + "pat")) {
   });
 }
 
+if (message.content.startsWith(prefix + "smug")) {
+
+  let erreurAPI = new Discord.MessageEmbed()
+  .setColor(couleur)
+  .setTitle("SMUG ERREUR")
+  .setDescription("Une erreur est survenue avec l'API !")
+  .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+  let user = message.mentions.users.first();
+
+  get("https://neko-love.xyz/api/v1/smug", (res) => {
+
+    const { statusCode } = res;
+
+    if (statusCode !== 200) return message.channel.send(erreurAPI).catch(console.error);
+  
+    res.setEncoding("utf8");
+    let rawData = "";
+
+    res.on("data", chunk => {
+      rawData += chunk;
+    });
+
+    res.on("end", () => {
+      try {
+        const parsedData = JSON.parse(rawData);
+
+        let user = message.mentions.users.first();
+    
+        if (user) {
+      
+          let member = message.guild.member(user);
+      
+          if (member) {    
+        
+            let image2 = new Discord.MessageEmbed()
+            .setColor(couleur)
+            .setTitle("SMUG")
+            .setDescription(message.author.toString()+" ? "+user.toString()+" !")
+            .setImage(parsedData.url)
+            .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+            if (user && user.id - message.author.id) return message.channel.send(image2);
+          }
+        }
+
+        let image = new Discord.MessageEmbed()
+        .setColor(couleur)
+        .setTitle("SMUG")
+        .setImage(parsedData.url)
+        .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+        let image3 = new Discord.MessageEmbed()
+        .setColor(couleur)
+        .setTitle("SMUG")
+        .setDescription(message.author.toString()+" se fait ? !")
+        .setImage(parsedData.url)
+        .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+        if (!user) return message.channel.send(image);
+        if (user && user.id == message.author.id) return message.channel.send(image3);
+
+      } catch (error) {
+        console.error(error.message);
+      }
+    });
+  }).on("error", (error) => {
+    console.error(error.message);
+  });
+}
+
 });
 
 client.login(token);
