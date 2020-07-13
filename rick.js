@@ -520,7 +520,7 @@ client.on('message', async message => {
     .setDescription("Une erreur est survenue avec l'API !")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-    get("https://nekobot.xyz/api/image/4k", (res) => {
+    get("https://nekobot.xyz/api/4k", (res) => {
       
       const { statusCode } = res;
 
