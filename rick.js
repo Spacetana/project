@@ -110,11 +110,12 @@ client.on('message', async message => {
     .setColor(couleur)
     .setTitle("Page 5/"+totalpage+" - Commandes LOVE :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
-    .addField(`\`${PREFIX}neko \``, "Vous permet d'afficher une image de Nekomimi")
-    .addField(`\`${PREFIX}cry \``, "Vous permet de vous faire pleurer ou de faire pleurer un membre")
-    .addField(`\`${PREFIX}hug \``, "Vous permet de vous faire un câlin ou de faire un câlin à un membre")
-    .addField(`\`${PREFIX}kiss \``, "Vous permet de vous faire bisous ou de faire un bisous à un membre")
-    .addField(`\`${PREFIX}punch \``, "Vous permet de vous mettre un coup de poing ou de le mettre à un membre")
+    .addField(`\`${PREFIX}neko\``, "Permet d'afficher une image de Nekomimi")
+    .addField(`\`${PREFIX}cry\``, "Permet de vous faire pleurer ou de faire pleurer un membre")
+    .addField(`\`${PREFIX}hug\``, "Permet de vous faire un câlin ou de faire un câlin à un membre")
+    .addField(`\`${PREFIX}kiss\``, "Permet de vous faire bisous ou de faire un bisous à un membre")
+    .addField(`\`${PREFIX}slap\``, "Permet de vous mettre une gifle ou de mettre une gifle à un membre")
+    .addField(`\`${PREFIX}punch\``, "Permet de vous mettre un coup de poing ou de mettre un coup de poing à un membre")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     message.channel.send(mod);
   } 
@@ -916,6 +917,77 @@ if (message.content.startsWith(prefix + "cry")) {
         .setColor(couleur)
         .setTitle("CRY")
         .setDescription(message.author.toString()+" pleur(e) seul(e) !")
+        .setImage(parsedData.url)
+        .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+        if (!user) return message.channel.send(image);
+        if (user && user.id == message.author.id) return message.channel.send(image3);
+
+      } catch (error) {
+        console.error(error.message);
+      }
+    });
+  }).on("error", (error) => {
+    console.error(error.message);
+  });
+}
+
+if (message.content.startsWith(prefix + "slap")) {
+
+  let erreurAPI = new Discord.MessageEmbed()
+  .setColor(couleur)
+  .setTitle("SLAP ERREUR")
+  .setDescription("Une erreur est survenue avec l'API !")
+  .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+  let user = message.mentions.users.first();
+
+  get("https://neko-love.xyz/api/v1/slap", (res) => {
+
+    const { statusCode } = res;
+
+    if (statusCode !== 200) return message.channel.send(erreurAPI).catch(console.error);
+  
+    res.setEncoding("utf8");
+    let rawData = "";
+
+    res.on("data", chunk => {
+      rawData += chunk;
+    });
+
+    res.on("end", () => {
+      try {
+        const parsedData = JSON.parse(rawData);
+
+        let user = message.mentions.users.first();
+    
+        if (user) {
+      
+          let member = message.guild.member(user);
+      
+          if (member) {    
+        
+            let image2 = new Discord.MessageEmbed()
+            .setColor(couleur)
+            .setTitle("SLAP")
+            .setDescription(message.author.toString()+" met une gifle à "+user.toString()+" !")
+            .setImage(parsedData.url)
+            .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+            if (user && user.id - message.author.id) return message.channel.send(image2);
+          }
+        }
+
+        let image = new Discord.MessageEmbed()
+        .setColor(couleur)
+        .setTitle("SLAP")
+        .setImage(parsedData.url)
+        .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+        let image3 = new Discord.MessageEmbed()
+        .setColor(couleur)
+        .setTitle("SLAP")
+        .setDescription(message.author.toString()+" se met une gifle !")
         .setImage(parsedData.url)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
