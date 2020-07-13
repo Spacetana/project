@@ -112,6 +112,7 @@ client.on('message', async message => {
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
     .addField(`\`${PREFIX}neko \``, "Vous permet d'afficher une image de Nekomimi")
     .addField(`\`${PREFIX}hug \``, "Vous permet de vous faire ou faire un câlin à un membre")
+    .addField(`\`${PREFIX}punch \``, "Vous permet de donner un coup de poing à quelqu'un (ou juste afficher une image)")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     message.channel.send(mod);
   } 
@@ -706,6 +707,70 @@ if (message.content.startsWith(prefix + "hug")) {
     console.error(error.message);
   });
 }
+
+if (message.content.startsWith(prefix + "punch")) {
+
+  let erreurAPI = new Discord.MessageEmbed()
+  .setColor(couleur)
+  .setTitle("PUNCH ERREUR")
+  .setDescription("Une erreur est survenue avec l'API !")
+  .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+  let user = message.mentions.users.first();
+
+  get("https://neko-love.xyz/api/v1/punch", (res) => {
+
+    const { statusCode } = res;
+
+    if (statusCode !== 200) return message.channel.send(erreurAPI).catch(console.error);
+  
+    res.setEncoding("utf8");
+    let rawData = "";
+
+    res.on("data", chunk => {
+      rawData += chunk;
+    });
+
+    res.on("end", () => {
+      try {
+        const parsedData = JSON.parse(rawData);
+
+        let user = message.mentions.users.first();
+    
+        if (user) {
+      
+          let member = message.guild.member(user);
+      
+          if (member) {    
+        
+            let image2 = new Discord.MessageEmbed()
+            .setColor(couleur)
+            .setTitle("PUNCH")
+            .setDescription(message.author.toString()+" donne un coup de poing à "+user.toString()+" !")
+            .setImage(parsedData.url)
+            .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+            if (user) return message.channel.send(image2);
+          }
+        }
+
+        let image = new Discord.MessageEmbed()
+        .setColor(couleur)
+        .setTitle("PUNCH")
+        .setImage(parsedData.url)
+        .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+        if (!user) return message.channel.send(image);
+
+      } catch (error) {
+        console.error(error.message);
+      }
+    });
+  }).on("error", (error) => {
+    console.error(error.message);
+  });
+}
+
 });
 
 client.login(token);
