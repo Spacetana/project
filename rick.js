@@ -1,11 +1,7 @@
 const Discord                                         = require('discord.js');
 const {TOKEN, PREFIX, VERSION, WHITELIST}             = require('./config.js');
-const Pornhub                                         = require('pornhub.js'); 
-const pornhub                                          = new Pornhub();
 const { get }                                         = require('https');
-const { timeLog } = require('console');
-const { title } = require('process');
-const { url } = require('inspector');
+const yts                                             = require( 'yt-search' );
 const client                                          = new Discord.Client({disableMentions: "everyone"});
 
 client.commands = new Discord.Collection()
@@ -515,41 +511,24 @@ client.on('message', async message => {
     message.channel.send("️");
   }
 
-  if (message.content.startsWith(prefix + "pornsearch")) {
+  if (message.content.startsWith(prefix + "ytsearch")) {
 
     if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
 
     let args     = message.content.split(" ").slice(1),
         recherche = args.join(" ");
         
-        pornhub.search('Videos',  recherche).then(res => {
-          res.data.forEach(item => {
-              message.channel.send(item);
-
-              /* let infogif = new Discord.MessageEmbed()
-              .setColor(couleur)
-              .setTitle("INFO-SEARCH")
-              .setDescription("**Voice les infos de votre recherche :**")
-              .addField("Titre :", title)
-              .addField("Lien :", url)
-              .addField("Durée :", duration)
-              .addField("HD", hd)
-              .addField("Premium", premium)
-              .addField("Preview", preview)
-              .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot) 
-              
-
-              message.channel.send(infogif)
-                {
-                  title: 'Japanese Tokyo Hot',
-                  url: 'https://www.pornhub.com/view_video.php?viewkey=***',
-                  duration: '14:24',
-                  hd: true,
-                  premium: false,
-                  preview: 'https://ci.phncdn.com/videos/***.jpg'
-              } */
+        const yts = require('yt-search')
+ 
+        yts('[Exclu] Heuss L\'enfoiré \"Benda\" ft Soolking #PlanèteRap', function (err, r) {
+          if (err) throw err
+         
+          const videos = r.videos
+          videos.forEach(function (v) {
+            const views = String(v.views).padStart(10, ' ')
+            console.log( `${views} | ${v.title} (${v.timestamp}) | ${v.author.name}` )
           })
-      })
+        })
     } 
 
   if (message.content.startsWith(prefix + "nekonude")) {
