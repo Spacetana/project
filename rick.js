@@ -610,8 +610,6 @@ client.on('message', async message => {
     .setDescription("Une erreur est survenue avec l'API !")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-    if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
-
     get("https://neko-love.xyz/api/v1/neko", (res) => {
 
       const { statusCode } = res;
@@ -652,8 +650,6 @@ if (message.content.startsWith(prefix + "hug")) {
   .setTitle("HUG ERREUR")
   .setDescription("Une erreur est survenue avec l'API !")
   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
-
-  if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
 
   get("https://neko-love.xyz/api/v1/hug", (res) => {
 
