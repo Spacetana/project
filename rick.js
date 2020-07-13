@@ -670,22 +670,33 @@ if (message.content.startsWith(prefix + "hug")) {
     res.on("end", () => {
       try {
         const parsedData = JSON.parse(rawData);
-            
+
+        let user = message.mentions.users.first();
+    
+        if (user) {
+      
+          let member = message.guild.member(user);
+      
+          if (member) {    
+        
+            let image2 = new Discord.MessageEmbed()
+            .setColor(couleur)
+            .setTitle("HUG")
+            .setDescription(message.author.toString()+" fait un câlin à "+user.toString()+" !")
+            .setImage(parsedData.url)
+            .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+            if (user) return message.channel.send(image2);
+          }
+        }
+
         let image = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("HUG")
         .setImage(parsedData.url)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-        let image2 = new Discord.MessageEmbed()
-        .setColor(couleur)
-        .setTitle("HUG")
-        .setDescription(message.author.toString()+" fait un câlin à "+user.toString()+" !")
-        .setImage(parsedData.url)
-        .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
-
-        message.channel.send(image);
-        if (user) return message.channel.send(image2);
+        if (!user) return message.channel.send(image);
 
       } catch (error) {
         console.error(error.message);
