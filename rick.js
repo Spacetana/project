@@ -111,9 +111,10 @@ client.on('message', async message => {
     .setTitle("Page 5/"+totalpage+" - Commandes LOVE :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
     .addField(`\`${PREFIX}neko \``, "Vous permet d'afficher une image de Nekomimi")
-    .addField(`\`${PREFIX}hug \``, "Vous permet de vous faire ou de faire un câlin à un membre")
-    .addField(`\`${PREFIX}kiss \``, "Vous permet de faire un bisous à un membre (ou juste afficher une image)")
-    .addField(`\`${PREFIX}punch \``, "Vous permet de donner un coup de poing à un membre (ou juste afficher une image)")
+    .addField(`\`${PREFIX}cry \``, "Vous permet de vous faire pleurer ou de faire pleurer un membre")
+    .addField(`\`${PREFIX}hug \``, "Vous permet de vous faire un câlin ou de faire un câlin à un membre")
+    .addField(`\`${PREFIX}kiss \``, "Vous permet de vous faire bisous ou de faire un bisous à un membre")
+    .addField(`\`${PREFIX}punch \``, "Vous permet de vous mettre un coup de poing ou de le mettre à un membre")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     message.channel.send(mod);
   } 
@@ -914,7 +915,7 @@ if (message.content.startsWith(prefix + "cry")) {
         let image3 = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("CRY")
-        .setDescription(message.author.toString()+" pleure tout seul !")
+        .setDescription(message.author.toString()+" pleure seul(e) !")
         .setImage(parsedData.url)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
