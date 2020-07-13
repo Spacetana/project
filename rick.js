@@ -133,11 +133,12 @@ client.on('message', async message => {
     .setTitle("Page 6/"+totalpage+" - Commandes NSFW :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
     .addField(`\`${PREFIX}4k\``, "Vous permet d'afficher des images pornographique en 4k")
-    .addField(`\`${PREFIX}ass\``, "Vous permet d'afficher des images pornographique de cul")
-    .addField(`\`${PREFIX}anal\``, "Vous permet d'afficher des actes sexuel pornographique anal")
-    .addField(`\`${PREFIX}boobs\``, "Vous permet d'afficher des images pornographique de seins")
-    .addField(`\`${PREFIX}pussy\``, "Vous permet d'afficher des images pornographique de vagins")
-    .addField(`\`${PREFIX}nekonude\``, "Permet d'afficher des images de Nekomimi version hentai")
+    .addField(`\`${PREFIX}ass\``, "Vous permet d'afficher des images de gros cul")
+    .addField(`\`${PREFIX}anal\``, "Vous permet d'afficher des images d'acte anal")
+    .addField(`\`${PREFIX}boobs\``, "Vous permet d'afficher des images de gros seins")
+    .addField(`\`${PREFIX}pussy\``, "Vous permet d'afficher des images de vagins")
+    .addField(`\`${PREFIX}hentai\``, "Vous permet d'afficher des images de hentai")
+    .addField(`\`${PREFIX}nekonude\``, "Vous permet d'afficher des images de Nekomimi version hentai")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     message.channel.send(mod);
   } 
