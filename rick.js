@@ -724,7 +724,6 @@ if (message.content.startsWith(prefix + "porngifs")) {
   
     async function h(){
       let img = await p.porngif();
-      console.log(img.url)
 
       let imageE = new Discord.MessageEmbed()
       .setColor(couleur)
@@ -743,7 +742,6 @@ if (message.content.startsWith(prefix + "hfuck")) {
   
     async function h(){
       let img = await p.hfuck();
-      console.log(img.url)
 
       let imageE = new Discord.MessageEmbed()
       .setColor(couleur)
@@ -762,7 +760,7 @@ if (message.content.startsWith(prefix + "hfuck")) {
     
     async function h(){
       let img = await p.hanal();
-        console.log(img.url)
+
   
       let imageE = new Discord.MessageEmbed()
       .setColor(couleur)
@@ -781,7 +779,7 @@ if (message.content.startsWith(prefix + "hfuck")) {
     
     async function h(){
       let img = await p.hgif();
-        console.log(img.url)
+
   
       let imageE = new Discord.MessageEmbed()
       .setColor(couleur)
@@ -800,7 +798,7 @@ if (message.content.startsWith(prefix + "hfuck")) {
     
     async function h(){
       let img = await p.hcum();
-        console.log(img.url)
+
   
       let imageE = new Discord.MessageEmbed()
       .setColor(couleur)
@@ -819,7 +817,7 @@ if (message.content.startsWith(prefix + "hfuck")) {
     
     async function h(){
       let img = await p.hlewd();
-        console.log(img.url)
+
   
       let imageE = new Discord.MessageEmbed()
       .setColor(couleur)
