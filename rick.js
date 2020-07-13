@@ -680,15 +680,15 @@ if (message.content.startsWith(prefix + "hug")) {
           let member = message.guild.member(user);
       
           if (member) {    
-        
-            let image2 = new Discord.MessageEmbed()
+    
+            let image = new Discord.MessageEmbed()
             .setColor(couleur)
             .setTitle("HUG")
-            .setDescription(message.author.toString()+" fait un câlin à "+user.toString()+" !")
+            .setDescription(message.author.toString()+" fait un câlin à "+user.toString()+"!")
             .setImage(parsedData.url)
             .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
-
-            if (user) return message.channel.send(image2);
+    
+            if (user && user.id - message.author.id) return message.channel.send(image3);
           }
         }
 
@@ -698,7 +698,15 @@ if (message.content.startsWith(prefix + "hug")) {
         .setImage(parsedData.url)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
+        let image3 = new Discord.MessageEmbed()
+        .setColor(couleur)
+        .setTitle("HUG")
+        .setDescription(message.author.toString()+" se fait un câlin à lui même !")
+        .setImage(parsedData.url)
+        .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
         if (!user) return message.channel.send(image);
+        if (user && user.id == message.author.id) return message.channel.send(image3);
 
       } catch (error) {
         console.error(error.message);
@@ -751,7 +759,6 @@ if (message.content.startsWith(prefix + "punch")) {
             .setImage(parsedData.url)
             .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-            if (user) return message.channel.send(image2);
             if (user && user.id - message.author.id) return message.channel.send(image2);
           }
         }
@@ -823,7 +830,6 @@ if (message.content.startsWith(prefix + "kiss")) {
             .setImage(parsedData.url)
             .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-            if (user) return message.channel.send(image2);
             if (user && user.id - message.author.id) return message.channel.send(image2);
           }
         }
