@@ -620,17 +620,17 @@ if (message.content.startsWith(prefix + "pussy")) {
 });
 }
 
-if (message.content.startsWith(prefix + "boobs")) {
+if (message.content.startsWith(prefix + "SUCK")) {
 
   if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
   
   let erreurAPI = new Discord.MessageEmbed()
   .setColor(couleur)
-  .setTitle("BOOBS ERREUR")
+  .setTitle("SUCK ERREUR")
   .setDescription("Une erreur est survenue avec l'API !")
   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-  superagent.get('https://nekobot.xyz/api/image').query({type: 'boobs'}).end((err, res) => {
+  superagent.get('https://nekobot.xyz/api/image').query({type: 'suck'}).end((err, res) => {
   
     const { statusCode } = res;
 
@@ -638,7 +638,7 @@ if (message.content.startsWith(prefix + "boobs")) {
             
         let image = new Discord.MessageEmbed()
         .setColor(couleur)
-        .setTitle("BOOBS")
+        .setTitle("SUCK")
         .setImage(res.body.message)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
