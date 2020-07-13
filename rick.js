@@ -653,7 +653,7 @@ client.on('message', async message => {
     });
   }
 
-  if (message.content === "neko") {
+  if (message.content === prefix + "neko") {
 
     let erreurAPI = new Discord.MessageEmbed()
     .setColor(couleur)
