@@ -703,7 +703,7 @@ if (message.content.startsWith(prefix + "boobs")) {
   if (message.channel.nsfw) return message.channel.send(imageE).catch(console.error);
 }
 
-if (message.content.startsWith(prefix + "boobs")) {
+if (message.content.startsWith(prefix + "fuck")) {
 
   if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
   
@@ -713,7 +713,7 @@ if (message.content.startsWith(prefix + "boobs")) {
 
       let imageE = new Discord.MessageEmbed()
       .setColor(couleur)
-      .setTitle("BOOBS")
+      .setTitle("FUCK")
       .setImage(img.url)
       .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
   
