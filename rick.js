@@ -604,38 +604,37 @@ client.on('message', async message => {
     if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
 
     get("https://neko-love.xyz/api/v1/neko", (res) => {
-        const { statusCode } = res;
-        if (statusCode !== 200) {
-            return message.channel.send(erreurAPI)
-        }
 
-        res.setEncoding("utf8");
-        let rawData = "";
+      const { statusCode } = res;
 
-        res.on("data", chunk => { 
-          rawData += chunk;
-        });
+      if (statusCode !== 200) return message.channel.send(erreurAPI).catch(console.error);
+    
+      res.setEncoding("utf8");
+      let rawData = "";
 
-        res.on("end", () => {
-          try {
-            const parsedData = JSON.parse(rawData);
-              
-            let image = new Discord.MessageEmbed()
-            .setColor(couleur)
-            .setTitle("NEKO")
-            .setImage(parsedData.url)
-            .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
-
-            message.channel.send(image);
-          } catch (error) {
-            console.error(error.message);
-          }
+      res.on("data", chunk => {
+        rawData += chunk;
       });
-  }).on("error", (error) => {
-    console.error(error.message);
-  });
-};
 
+      res.on("end", () => {
+        try {
+          const parsedData = JSON.parse(rawData);
+              
+          let image = new Discord.MessageEmbed()
+          .setColor(couleur)
+          .setTitle("NEKO")
+          .setImage(parsedData.url)
+          .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+          message.channel.send(image);
+        } catch (error) {
+          console.error(error.message);
+        }
+      });
+    }).on("error", (error) => {
+      console.error(error.message);
+    });
+  }
 });
 
 client.login(token);
