@@ -558,7 +558,7 @@ client.on('message', async message => {
    if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
   }
 
-  if (message.content.startsWith(prefix + "biffle")) {
+  if (message.content.startsWith(prefix + "bifle")) {
 
     let biflettelink = ["https://cdn.discordapp.com/attachments/731551525691850792/731966336665649302/19485641.gif", "https://cdn.discordapp.com/attachments/731551525691850792/731966329313034260/361_1000.gif", "https://cdn.discordapp.com/attachments/731551525691850792/731965988379033700/29.gif", "https://cdn.discordapp.com/attachments/731551525691850792/731962477197393970/552611507860699.gif", "https://cdn.discordapp.com/attachments/731551525691850792/731962185667838032/biflette_grosse_bite_jeune_rousse.gif", "https://cdn.discordapp.com/attachments/731551525691850792/731962118030491755/48.gif", "http://www.la-biffle.com/la-biffle.com/image/la_biffle.gif",  "https://cdn.discordapp.com/attachments/731551525691850792/731961158612811847/bifle_biflette_hard_porno_violente_visage_brune.gif", "https://cdn.discordapp.com/attachments/731551525691850792/731932546153185350/biflette_pov_jeune_pornstar_bite_sur_le_visage.gif"];
 
