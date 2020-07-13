@@ -111,7 +111,7 @@ client.on('message', async message => {
     .setTitle("Page 5/"+totalpage+" - Commandes NEKO :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
     .addField(`\`${PREFIX}neko \``, "Vous permet d'afficher une image de Nekomimi")
-    .addField(`\`${PREFIX}hug \``, "Vous permet de vous faire ou faire un câlin à un membre")
+    .addField(`\`${PREFIX}hug \``, "Vous permet de vous faire ou de faire un câlin à un membre")
     .addField(`\`${PREFIX}punch \``, "Vous permet de donner un coup de poing à quelqu'un (ou juste afficher une image)")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     message.channel.send(mod);
