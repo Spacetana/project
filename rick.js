@@ -3,7 +3,7 @@ const {TOKEN, PREFIX, VERSION, WHITELIST}             = require('./config.js');
 const { get }                                         = require('https');
 const superagent                                      = require("superagent");
 const Pornsearch                                      = require('pornsearch');
-const { search } = require('snekfetch');
+const request                                         = require('snekfetch');
 const Searcher                                        = new Pornsearch('tits');
 const client                                          = new Discord.Client({disableMentions: "everyone"});
 
@@ -620,17 +620,17 @@ if (message.content.startsWith(prefix + "pussy")) {
 });
 }
 
-if (message.content.startsWith(prefix + "SUCK")) {
+if (message.content.startsWith(prefix + "boobs")) {
 
   if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
   
   let erreurAPI = new Discord.MessageEmbed()
   .setColor(couleur)
-  .setTitle("SUCK ERREUR")
+  .setTitle("BOOBS ERREUR")
   .setDescription("Une erreur est survenue avec l'API !")
   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-  superagent.get('https://nekobot.xyz/api/image').query({type: 'suck'}).end((err, res) => {
+  request.get('https://api.oboobs.ru/boobs/$%7Bid%7D').end((err, res) => {
   
     const { statusCode } = res;
 
@@ -638,7 +638,7 @@ if (message.content.startsWith(prefix + "SUCK")) {
             
         let image = new Discord.MessageEmbed()
         .setColor(couleur)
-        .setTitle("SUCK")
+        .setTitle("BOOBS")
         .setImage(res.body.message)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
