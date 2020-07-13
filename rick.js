@@ -34,7 +34,7 @@ client.on('message', async message => {
       couleur   = "BLUE",
       guild     = message.guild,
       author    = message.author;
-      totalpage = "6";
+      totalpage = "7";
 
   if (message.content === prefix + 'help' || message.content === prefix + 'h') {
 
@@ -129,15 +129,30 @@ client.on('message', async message => {
 
     let mod = new Discord.MessageEmbed()
     .setColor(couleur)
-    .setTitle("Page 6/"+totalpage+" - Commandes NSFW :")
+    .setTitle("Page 6/"+totalpage+" - Commandes NSFW NORMAL :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
-    .addField(`\`${PREFIX}4k\``,       "Vous permet d'afficher des images pornographique en 4k")
-    .addField(`\`${PREFIX}ass\``,      "Vous permet d'afficher des images pornographique de gros cul")
-    .addField(`\`${PREFIX}anal\``,     "Vous permet d'afficher des images pornographique d'acte anal")
-    .addField(`\`${PREFIX}boobs\``,    "Vous permet d'afficher des images pornographique de gros seins")
-    .addField(`\`${PREFIX}pussy\``,    "Vous permet d'afficher des images pornographique de large vagins")
-    .addField(`\`${PREFIX}hentai\``,   "Vous permet d'afficher des images pornographique d'hentai(porno-manga)")
-    .addField(`\`${PREFIX}nekonude\``, "Vous permet d'afficher des images de Nekomimi version hentai(porno-manga)")
+    .addField(`\`${PREFIX}4k\``,       "Vous permet d'afficher une image/gif pornographique en 4k")
+    .addField(`\`${PREFIX}ass\``,      "Vous permet d'afficher une image/gif pornographique de gros cul")
+    .addField(`\`${PREFIX}anal\``,     "Vous permet d'afficher une image/gif pornographique d'acte anal")
+    .addField(`\`${PREFIX}boobs\``,    "Vous permet d'afficher une image/gif pornographique de gros seins")
+    .addField(`\`${PREFIX}pussy\``,    "Vous permet d'afficher une image/gif pornographique de large vagins")
+    .addField(`\`${PREFIX}porngifs\``, "Vous permet d'afficher une image/gif pornographique random")
+    .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+    message.channel.send(mod);
+  } 
+
+  if (message.content === prefix + 'help nsfw hentai' || message.content === prefix + 'h nsfw hentai') {
+
+    let mod = new Discord.MessageEmbed()
+    .setColor(couleur)
+    .setTitle("Page 7/"+totalpage+" - Commandes NSFW HENTAI :")
+    .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
+    .addField(`\`${PREFIX}hcum\``,    "Vous permet d'afficher un image/gif d'éjaculation")
+    .addField(`\`${PREFIX}hgifs\``,    "Vous permet d'afficher un gif pornographique random")
+    .addField(`\`${PREFIX}hentai\``,   "Vous permet d'afficher une image/gif pornographique random")
+    .addField(`\`${PREFIX}nekonude\``, "Vous permet d'afficher une image/gif pornographique de Nekomimi")
+    .addField(`\`${PREFIX}hfuck\``,    "Vous permet d'afficher une image/gif pornographique d'acte sexuel")
+    .addField(`\`${PREFIX}hanal\``,    "Vous permet d'afficher une image/gif pornographique d'acte sexuel anal")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     message.channel.send(mod);
   } 
@@ -703,6 +718,25 @@ if (message.content.startsWith(prefix + "boobs")) {
   if (message.channel.nsfw) return message.channel.send(imageE).catch(console.error);
 }
 
+if (message.content.startsWith(prefix + "porngifs")) {
+
+  if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
+  
+    async function h(){
+      let img = await p.porngif();
+      console.log(img.url)
+
+      let imageE = new Discord.MessageEmbed()
+      .setColor(couleur)
+      .setTitle("PORN-GIFS")
+      .setImage(img.url)
+      .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+  
+      if (message.channel.nsfw) return message.channel.send(imageE).catch(console.error);
+    }
+    h();
+  }
+
 if (message.content.startsWith(prefix + "hfuck")) {
 
   if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
@@ -713,7 +747,7 @@ if (message.content.startsWith(prefix + "hfuck")) {
 
       let imageE = new Discord.MessageEmbed()
       .setColor(couleur)
-      .setTitle("FUCK")
+      .setTitle("HFUCK")
       .setImage(img.url)
       .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
   
@@ -721,6 +755,82 @@ if (message.content.startsWith(prefix + "hfuck")) {
     }
     h();
   }
+
+  if (message.content.startsWith(prefix + "hanal")) {
+
+    if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
+    
+    async function h(){
+      let img = await p.hanal();
+        console.log(img.url)
+  
+      let imageE = new Discord.MessageEmbed()
+      .setColor(couleur)
+      .setTitle("HANAL")
+      .setImage(img.url)
+      .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+    
+      if (message.channel.nsfw) return message.channel.send(imageE).catch(console.error)
+    }
+    h();
+  }
+
+  if (message.content.startsWith(prefix + "hgif")) {
+
+    if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
+    
+    async function h(){
+      let img = await p.hgif();
+        console.log(img.url)
+  
+      let imageE = new Discord.MessageEmbed()
+      .setColor(couleur)
+      .setTitle("HGIF")
+      .setImage(img.url)
+      .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+    
+      if (message.channel.nsfw) return message.channel.send(imageE).catch(console.error)
+    }
+    h();
+  }
+
+  if (message.content.startsWith(prefix + "hcum")) {
+
+    if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
+    
+    async function h(){
+      let img = await p.hcum();
+        console.log(img.url)
+  
+      let imageE = new Discord.MessageEmbed()
+      .setColor(couleur)
+      .setTitle("HCUM")
+      .setImage(img.url)
+      .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+    
+      if (message.channel.nsfw) return message.channel.send(imageE).catch(console.error)
+    }
+    h();
+  } 
+  
+  if (message.content.startsWith(prefix + "hlewd")) {
+
+    if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
+    
+    async function h(){
+      let img = await p.hlewd();
+        console.log(img.url)
+  
+      let imageE = new Discord.MessageEmbed()
+      .setColor(couleur)
+      .setTitle("HLEWD")
+      .setImage(img.url)
+      .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+    
+      if (message.channel.nsfw) return message.channel.send(imageE).catch(console.error)
+    }
+    h();
+  }  
 
   if (message.content.startsWith(prefix + "nekonude")) {
 
