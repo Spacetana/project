@@ -761,6 +761,13 @@ if (message.content.startsWith(prefix + "punch")) {
         .setImage(parsedData.url)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
+        let image3 = new Discord.MessageEmbed()
+        .setColor(couleur)
+        .setTitle("PUNCH")
+        .setDescription(message.author.toString()+" se donne un coup de poing à lui même !")
+        .setImage(parsedData.url)
+        .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
         if (!user) return message.channel.send(image);
         if (user && user.id == message.author.id) return message.channel.send(image3);
 
