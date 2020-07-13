@@ -111,6 +111,7 @@ client.on('message', async message => {
     .setTitle("Page 5/"+totalpage+" - Commandes LOVE :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
     .addField(`\`${PREFIX}neko\``, "Permet d'afficher une image de Nekomimi")
+    .addField(`\`${PREFIX}kitsune\``, "Permet d'afficher une image de Kitsune")
     .addField(`\`${PREFIX}tap\``, "Permet de vous tapotez ou de tapoter un membre")
     .addField(`\`${PREFIX}cry\``, "Permet de vous faire pleurer ou de faire pleurer un membre")
     .addField(`\`${PREFIX}hug\``, "Permet de vous faire un câlin ou de faire un câlin à un membre")
@@ -617,7 +618,7 @@ client.on('message', async message => {
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
     get("https://neko-love.xyz/api/v1/neko", (res) => {
-
+      
       const { statusCode } = res;
 
       if (statusCode !== 200) return message.channel.send(erreurAPI).catch(console.error);
@@ -636,6 +637,47 @@ client.on('message', async message => {
           let image = new Discord.MessageEmbed()
           .setColor(couleur)
           .setTitle("NEKO")
+          .setImage(parsedData.url)
+          .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+          message.channel.send(image);
+        } catch (error) {
+          console.error(error.message);
+        }
+      });
+    }).on("error", (error) => {
+      console.error(error.message);
+    });
+  }
+
+  if (message.content.startsWith(prefix + "kitsune")) {
+
+    let erreurAPI = new Discord.MessageEmbed()
+    .setColor(couleur)
+    .setTitle("KITSUNE ERREUR")
+    .setDescription("Une erreur est survenue avec l'API !")
+    .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+    get("https://neko-love.xyz/api/v1/kitsune", (res) => {
+      
+      const { statusCode } = res;
+
+      if (statusCode !== 200) return message.channel.send(erreurAPI).catch(console.error);
+    
+      res.setEncoding("utf8");
+      let rawData = "";
+
+      res.on("data", chunk => {
+        rawData += chunk;
+      });
+
+      res.on("end", () => {
+        try {
+          const parsedData = JSON.parse(rawData);
+              
+          let image = new Discord.MessageEmbed()
+          .setColor(couleur)
+          .setTitle("KITSUNE")
           .setImage(parsedData.url)
           .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
