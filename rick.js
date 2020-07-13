@@ -644,6 +644,49 @@ client.on('message', async message => {
       console.error(error.message);
     });
   }
+
+if (message.content.startsWith(prefix + "hug")) {
+
+  let erreurAPI = new Discord.MessageEmbed()
+  .setColor(couleur)
+  .setTitle("HUG ERREUR")
+  .setDescription("Une erreur est survenue avec l'API !")
+  .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+  if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
+
+  get("https://neko-love.xyz/api/v1/hug", (res) => {
+
+    const { statusCode } = res;
+
+    if (statusCode !== 200) return message.channel.send(erreurAPI).catch(console.error);
+  
+    res.setEncoding("utf8");
+    let rawData = "";
+
+    res.on("data", chunk => {
+      rawData += chunk;
+    });
+
+    res.on("end", () => {
+      try {
+        const parsedData = JSON.parse(rawData);
+            
+        let image = new Discord.MessageEmbed()
+        .setColor(couleur)
+        .setTitle("HUG")
+        .setImage(parsedData.url)
+        .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+        message.channel.send(image);
+      } catch (error) {
+        console.error(error.message);
+      }
+    });
+  }).on("error", (error) => {
+    console.error(error.message);
+  });
+}
 });
 
 client.login(token);
