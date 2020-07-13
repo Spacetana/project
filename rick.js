@@ -1,6 +1,7 @@
 const Discord                                         = require('discord.js');
 const {TOKEN, PREFIX, VERSION, WHITELIST}             = require('./config.js');
 const { get }                                         = require('https');
+const superagent                                      = require("superagent");
 const client                                          = new Discord.Client({disableMentions: "everyone"});
 
 client.commands = new Discord.Collection()
@@ -44,6 +45,7 @@ client.on('message', async message => {
     .addField(`\`${PREFIX}help mod\``, "Vous permet d'accéder à la page d'aide commandes mod")
     .addField(`\`${PREFIX}help fun\``, "Vous permet d'accéder à la page d'aide des commandes fun")
     .addField(`\`${PREFIX}help love\``, "Vous permet d'accéder à la page d'aide des commandes love")
+    .addField(`\`${PREFIX}help nsfw\``, "Vous permet d'accéder à la page d'aide des commandes nsfw🔞")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
     let avancé = new Discord.MessageEmbed()
@@ -55,6 +57,7 @@ client.on('message', async message => {
     .addField(`\`${PREFIX}help mod\``, "Vous permet d'accéder à la page d'aide commandes mod")
     .addField(`\`${PREFIX}help fun\``, "Vous permet d'accéder à la page d'aide des commandes fun")
     .addField(`\`${PREFIX}help love\``, "Vous permet d'accéder à la page d'aide des commandes love")
+    .addField(`\`${PREFIX}help nsfw\``, "Vous permet d'accéder à la page d'aide des commandes nsfw🔞")
     .addField("️", "**COMMANDES WHITELIST**")
     .addField(`\`${PREFIX}exec\``, "Vous permet d'exécuter du code en JavaScript !")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
@@ -120,16 +123,13 @@ client.on('message', async message => {
     message.channel.send(mod);
   } 
 
-  if (message.content === prefix + 'dsgf' || message.content === prefix + 'fsgs') {
+  if (message.content === prefix + 'help nsfw' || message.content === prefix + 'h nsfw') {
 
     let mod = new Discord.MessageEmbed()
     .setColor(couleur)
     .setTitle("Page 6/"+totalpage+" - Commandes NSFW :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
-    .addField(`\`${PREFIX}pussy\``, "Vous permet d'afficher des vagins")
-    .addField(`\`${PREFIX}ass\``, "Vous permet d'afficher des culs de femme")
-    .addField(`\`${PREFIX}anal\``, "Vous permet d'afficher des actes sexuels anal")
-    .addField(`\`${PREFIX}fuck\``, "Vous permet d'afficher des actes sexuels hard")
+    .addField(`\`${PREFIX}4k\``, "Vous permet d'afficher des images pornographique en 4k")
     .addField(`\`${PREFIX}nekonude\``, "Permet d'afficher des images de Nekomimi version hentai")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     message.channel.send(mod);
@@ -509,6 +509,30 @@ client.on('message', async message => {
   .setTitle("NSFW ERREUR")
   .setDescription(message.channel.toString()+" n'est pas un channel **NSFW** !")
   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+  if (message.content.startsWith(prefix + "4k")) {
+    
+    let erreurAPI = new Discord.MessageEmbed()
+    .setColor(couleur)
+    .setTitle("4K ERREUR")
+    .setDescription("Une erreur est survenue avec l'API !")
+    .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+    superagent.get('https://nekobot.xyz/api/image').query({type: '4k'}).end((err, res) => {
+    
+      const { statusCode } = res;
+
+      if (statusCode !== 200) return message.channel.send(erreurAPI).catch(console.error);
+              
+          let image = new Discord.MessageEmbed()
+          .setColor(couleur)
+          .setTitle("4K")
+          .setImage(res.body.message)
+          .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+          if (message.channel.nsfw) return message.channel.send(image).catch(console.error);
+  });
+}
 
   if (message.content.startsWith(prefix + "nekonude")) {
 
