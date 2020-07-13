@@ -45,7 +45,8 @@ client.on('message', async message => {
     .addField(`\`${PREFIX}help info\``, "Vous permet d'accéder à la page d'aide commandes info")
     .addField(`\`${PREFIX}help mod\``, "Vous permet d'accéder à la page d'aide commandes mod")
     .addField(`\`${PREFIX}help fun\``, "Vous permet d'accéder à la page d'aide des commandes fun")
-    .addField(`\`${PREFIX}help nsfw\``, "Vous permet d'accéder à la page d'aide des commandes nsfw**🔞**")
+    .addField(`\`${PREFIX}help neko\``, "Vous permet d'accéder à la page d'aide des commandes neko")
+    .addField(`\`${PREFIX}help nsfw\``, "Vous permet d'accéder à la page d'aide des commandes nsfw🔞")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
     let avancé = new Discord.MessageEmbed()
@@ -56,7 +57,8 @@ client.on('message', async message => {
     .addField(`\`${PREFIX}help info\``, "Vous permet d'accéder à la page d'aide commandes info")
     .addField(`\`${PREFIX}help mod\``, "Vous permet d'accéder à la page d'aide commandes mod")
     .addField(`\`${PREFIX}help fun\``, "Vous permet d'accéder à la page d'aide des commandes fun")
-    .addField(`\`${PREFIX}help nsfw\``, "Vous permet d'accéder à la page d'aide des commandes nsfw**🔞**")
+    .addField(`\`${PREFIX}help neko\``, "Vous permet d'accéder à la page d'aide des commandes neko")
+    .addField(`\`${PREFIX}help nsfw\``, "Vous permet d'accéder à la page d'aide des commandes nsfw🔞")
     .addField("️", "**COMMANDES WHITELIST**")
     .addField(`\`${PREFIX}exec\``, "Vous permet d'exécuter du code en JavaScript !")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
@@ -100,19 +102,29 @@ client.on('message', async message => {
     .addField(`\`${PREFIX}invisible\``, "Vous permet de faire envoyer un message totalement invisible par le bot")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     message.channel.send(mod);
+  }
+
+  if (message.content === prefix + 'help neko' || message.content === prefix + 'h neko') {
+
+    let mod = new Discord.MessageEmbed()
+    .setColor(couleur)
+    .setTitle("Page 5/"+totalpage+" - Commandes NEKO :")
+    .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
+    .addField(`\`${PREFIX}neko \``, "Vous permet d'afficher une image de Nekomimi")
+    .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+    message.channel.send(mod);
   } 
 
   if (message.content === prefix + 'help nsfw' || message.content === prefix + 'h nsfw') {
 
     let mod = new Discord.MessageEmbed()
     .setColor(couleur)
-    .setTitle("Page 5/"+totalpage+" - Commandes NSFW :")
+    .setTitle("Page 6/"+totalpage+" - Commandes NSFW :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
     .addField(`\`${PREFIX}pussy\``, "Vous permet d'afficher des vagins")
     .addField(`\`${PREFIX}ass\``, "Vous permet d'afficher des culs de femme")
     .addField(`\`${PREFIX}anal\``, "Vous permet d'afficher des actes sexuels anal")
     .addField(`\`${PREFIX}fuck\``, "Vous permet d'afficher des actes sexuels hard")
-    .addField(`\`${PREFIX}neko\``, "Vous permet d'afficher des images de Nekomimi")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     message.channel.send(mod);
   } 
