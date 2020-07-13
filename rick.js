@@ -143,9 +143,9 @@ client.on('message', async message => {
       .setDescription(`**Voici votre photo de profil !** [(LIEN)](${message.author.displayAvatarURL({dynamic: true})})`)
       .setImage(message.author.displayAvatarURL({format: 'png', dynamic: true, size: 1024}))
       .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)      
-    
-    if (user, user.id = message.author.id) return message.channel.send(pasdemention);
+   
     if (!user) return message.channel.send(pasdemention);
+    if (user, user.id = message.author.id) return message.channel.send(pasdemention);
   }
 
   if (message.content.startsWith(prefix + 'whitelist')) {
