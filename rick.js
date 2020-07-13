@@ -510,49 +510,6 @@ client.on('message', async message => {
   .setDescription(message.channel.toString()+" n'est pas un channel **NSFW** !")
   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-  if (message.content.startsWith(prefix + "4k")) {
-
-    if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
-
-    let erreurAPI = new Discord.MessageEmbed()
-    .setColor(couleur)
-    .setTitle("4K ERREUR")
-    .setDescription("Une erreur est survenue avec l'API !")
-    .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
-
-    get("https://nekobot.xyz/api/4k", (res) => {
-      
-      const { statusCode } = res;
-
-      if (statusCode !== 200) return message.channel.send(erreurAPI).catch(console.error);
-    
-      res.setEncoding("utf8");
-      let rawData = "";
-
-      res.on("data", chunk => {
-        rawData += chunk;
-      });
-
-      res.on("end", () => {
-        try {
-          const parsedData = JSON.parse(rawData);
-              
-          let image = new Discord.MessageEmbed()
-          .setColor(couleur)
-          .setTitle("4K")
-          .setImage(parsedData.url)
-          .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
-
-          if (message.channel.nsfw) return message.channel.send(image).catch(console.error);
-        } catch (error) {
-          console.error(error.message);
-        }
-      });
-    }).on("error", (error) => {
-      console.error(error.message);
-    });
-  }
-
   if (message.content.startsWith(prefix + "nekonude")) {
 
     if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
@@ -757,7 +714,7 @@ if (message.content.startsWith(prefix + "hug")) {
             let image = new Discord.MessageEmbed()
             .setColor(couleur)
             .setTitle("HUG")
-            .setDescription(message.author.toString()+" fait un câlin à "+user.toString()+"!")
+            .setDescription(message.author.toString()+" fait un câlin à "+user.toString()+" !")
             .setImage(parsedData.url)
             .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     
