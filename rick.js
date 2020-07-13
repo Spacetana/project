@@ -522,11 +522,11 @@ client.on('message', async message => {
     let args     = message.content.split(" ").slice(1),
         recherche = args.join(" ");
         
-        pornhub.search('Gif',  recherche).then(res => {
+        pornhub.search('Videos',  recherche).then(res => {
           res.data.forEach(item => {
               message.channel.send(item);
 
-              let infogif = new Discord.MessageEmbed()
+              /* let infogif = new Discord.MessageEmbed()
               .setColor(couleur)
               .setTitle("INFO-SEARCH")
               .setDescription("**Voice les infos de votre recherche :**")
@@ -536,10 +536,11 @@ client.on('message', async message => {
               .addField("HD", hd)
               .addField("Premium", premium)
               .addField("Preview", preview)
-              .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+              .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot) 
+              
 
               message.channel.send(infogif)
-              /* {
+                {
                   title: 'Japanese Tokyo Hot',
                   url: 'https://www.pornhub.com/view_video.php?viewkey=***',
                   duration: '14:24',
