@@ -729,7 +729,7 @@ if (message.content.startsWith(prefix + "porngif")) {
       let imageE = new Discord.MessageEmbed()
       .setColor(couleur)
       .setTitle("PORN-GIFS")
-      .setImage(img)
+      .setImage(img.url)
       .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
   
       if (message.channel.nsfw) return message.channel.send(imageE).catch(console.error);
