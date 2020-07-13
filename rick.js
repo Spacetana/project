@@ -132,6 +132,7 @@ client.on('message', async message => {
     .addField(`\`${PREFIX}4k\``, "Vous permet d'afficher des images pornographique en 4k")
     .addField(`\`${PREFIX}ass\``, "Vous permet d'afficher des images pornographique de cul")
     .addField(`\`${PREFIX}anal\``, "Vous permet d'afficher des actes sexuel pornographique anal")
+    .addField(`\`${PREFIX}pussy\``, "Vous permet d'afficher des images pornographique de vagins")
     .addField(`\`${PREFIX}nekonude\``, "Permet d'afficher des images de Nekomimi version hentai")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     message.channel.send(mod);
@@ -575,6 +576,32 @@ if (message.content.startsWith(prefix + "ass")) {
   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
   superagent.get('https://nekobot.xyz/api/image').query({type: 'ass'}).end((err, res) => {
+  
+    const { statusCode } = res;
+
+    if (statusCode !== 200) return message.channel.send(erreurAPI).catch(console.error);
+            
+        let image = new Discord.MessageEmbed()
+        .setColor(couleur)
+        .setTitle("4K")
+        .setImage(res.body.message)
+        .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+        if (message.channel.nsfw) return message.channel.send(image).catch(console.error);
+});
+}
+
+if (message.content.startsWith(prefix + "pussy")) {
+
+  if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
+  
+  let erreurAPI = new Discord.MessageEmbed()
+  .setColor(couleur)
+  .setTitle("4K ERREUR")
+  .setDescription("Une erreur est survenue avec l'API !")
+  .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+  superagent.get('https://nekobot.xyz/api/image').query({type: 'pussy'}).end((err, res) => {
   
     const { statusCode } = res;
 
