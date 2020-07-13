@@ -135,6 +135,7 @@ client.on('message', async message => {
     .addField(`\`${PREFIX}4k\``, "Vous permet d'afficher des images pornographique en 4k")
     .addField(`\`${PREFIX}ass\``, "Vous permet d'afficher des images pornographique de cul")
     .addField(`\`${PREFIX}anal\``, "Vous permet d'afficher des actes sexuel pornographique anal")
+    .addField(`\`${PREFIX}boobs\``, "Vous permet d'afficher des images pornographique de seins")
     .addField(`\`${PREFIX}pussy\``, "Vous permet d'afficher des images pornographique de vagins")
     .addField(`\`${PREFIX}nekonude\``, "Permet d'afficher des images de Nekomimi version hentai")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
@@ -650,26 +651,28 @@ if (message.content.startsWith(prefix + "boobs")) {
 
   if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
   
-  let erreurAPI = new Discord.MessageEmbed()
-  .setColor(couleur)
-  .setTitle("BOOBS ERREUR")
-  .setDescription("Une erreur est survenue avec l'API !")
-  .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+    let erreurAPI = new Discord.MessageEmbed()
+    .setColor(couleur)
+    .setTitle("BOOBS ERREUR")
+    .setDescription("Une erreur est survenue avec l'API !")
+    .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-  request.get('https://api.oboobs.ru/boobs/$%7Bid%7D').end((res) => {
+  const id = [Math.floor(Math.random() * 10930)];
+  const res = await snekfetch.get(`http://api.oboobs.ru/boobs/${id}`);
+  const preview = res.body[0]["PREVIEW".toLowerCase()];
+  const image = `http://media.oboobs.ru/${preview}`;
   
-    const { statusCode } = res;
+  const { statusCode } = res;
 
-    if (statusCode !== 200) return message.channel.send(erreurAPI).catch(console.error);
+  if (statusCode !== 200) return message.channel.send(erreurAPI).catch(console.error);
             
-        let image = new Discord.MessageEmbed()
-        .setColor(couleur)
-        .setTitle("BOOBS")
-        .setImage(res.body.message)
-        .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+    let imageE = new Discord.MessageEmbed()
+    .setColor(couleur)
+    .setTitle("BOOBS")
+    .setImage(image)
+    .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-        if (message.channel.nsfw) return message.channel.send(image).catch(console.error);
-});
+  if (message.channel.nsfw) return message.channel.send(imageE).catch(console.error);
 }
 
   if (message.content.startsWith(prefix + "nekonude")) {
