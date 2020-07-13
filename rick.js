@@ -110,8 +110,8 @@ client.on('message', async message => {
     .setColor(couleur)
     .setTitle("Page 5/"+totalpage+" - Commandes LOVE :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
-    .addField(`\`${PREFIX}neko\``, "Permet d'afficher une image de Nekomimi")
-    .addField(`\`${PREFIX}kitsune\``, "Permet d'afficher une image de Kitsune")
+    .addField(`\`${PREFIX}neko\``, "Permet d'afficher des images de Nekomimi")
+    .addField(`\`${PREFIX}kitsune\``, "Permet d'afficher des images de Kitsune")
     .addField(`\`${PREFIX}tap\``, "Permet de vous tapotez ou de tapoter un membre")
     .addField(`\`${PREFIX}cry\``, "Permet de vous faire pleurer ou de faire pleurer un membre")
     .addField(`\`${PREFIX}hug\``, "Permet de vous faire un câlin ou de faire un câlin à un membre")
@@ -132,6 +132,7 @@ client.on('message', async message => {
     .addField(`\`${PREFIX}ass\``, "Vous permet d'afficher des culs de femme")
     .addField(`\`${PREFIX}anal\``, "Vous permet d'afficher des actes sexuels anal")
     .addField(`\`${PREFIX}fuck\``, "Vous permet d'afficher des actes sexuels hard")
+    .addField(`\`${PREFIX}nekonude\``, "Permet d'afficher des images de Nekomimi version hentai")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     message.channel.send(mod);
   } 
@@ -609,11 +610,13 @@ client.on('message', async message => {
     message.channel.send("️");
   }
 
-  if (message.content.startsWith(prefix + "hentai")) {
+  if (message.content.startsWith(prefix + "nekonude")) {
+
+    if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
 
     let erreurAPI = new Discord.MessageEmbed()
     .setColor(couleur)
-    .setTitle("HENTAI ERREUR")
+    .setTitle("NEKO-NUDE ERREUR")
     .setDescription("Une erreur est survenue avec l'API !")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
@@ -636,11 +639,11 @@ client.on('message', async message => {
               
           let image = new Discord.MessageEmbed()
           .setColor(couleur)
-          .setTitle("HENTAI")
+          .setTitle("NEKO-NUDE")
           .setImage(parsedData.url)
           .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-          message.channel.send(image);
+          if (message.channel.nsfw) return message.channel.send(image).catch(console.error);
         } catch (error) {
           console.error(error.message);
         }
