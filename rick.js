@@ -511,6 +511,8 @@ client.on('message', async message => {
   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
   if (message.content.startsWith(prefix + "4k")) {
+
+    if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
     
     let erreurAPI = new Discord.MessageEmbed()
     .setColor(couleur)
