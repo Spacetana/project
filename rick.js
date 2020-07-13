@@ -623,12 +623,6 @@ if (message.content.startsWith(prefix + "pussy")) {
 if (message.content.startsWith(prefix + "pornsearch")) {
 
   if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
-  
-  let erreurAPI = new Discord.MessageEmbed()
-  .setColor(couleur)
-  .setTitle("PORN-SEARCH ERREUR")
-  .setDescription("Une erreur est survenue avec l'API !")
-  .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
   let args     = message.content.split(" ").slice(1),
       searchporn = args.join(" ");
@@ -636,10 +630,6 @@ if (message.content.startsWith(prefix + "pornsearch")) {
   const Pornsearch = require('pornsearch').search(searchporn);
     
     Pornsearch.gifs().then(gifs => {
-
-      const { statusCode } = res;
-
-      if (statusCode !== 200) return message.channel.send(erreurAPI).catch(console.error);
 
       let image = new Discord.MessageEmbed()
       .setColor(couleur)
