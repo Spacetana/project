@@ -111,6 +111,7 @@ client.on('message', async message => {
     .setTitle("Page 5/"+totalpage+" - Commandes LOVE :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
     .addField(`\`${PREFIX}neko\``, "Permet d'afficher une image de Nekomimi")
+    .addField(`\`${PREFIX}tap\``, "Permet de vous tapotez ou de tapoter un membre")
     .addField(`\`${PREFIX}cry\``, "Permet de vous faire pleurer ou de faire pleurer un membre")
     .addField(`\`${PREFIX}hug\``, "Permet de vous faire un câlin ou de faire un câlin à un membre")
     .addField(`\`${PREFIX}kiss\``, "Permet de vous faire bisous ou de faire un bisous à un membre")
@@ -988,6 +989,77 @@ if (message.content.startsWith(prefix + "slap")) {
         .setColor(couleur)
         .setTitle("SLAP")
         .setDescription(message.author.toString()+" se met une gifle !")
+        .setImage(parsedData.url)
+        .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+        if (!user) return message.channel.send(image);
+        if (user && user.id == message.author.id) return message.channel.send(image3);
+
+      } catch (error) {
+        console.error(error.message);
+      }
+    });
+  }).on("error", (error) => {
+    console.error(error.message);
+  });
+}
+
+if (message.content.startsWith(prefix + "PAT")) {
+
+  let erreurAPI = new Discord.MessageEmbed()
+  .setColor(couleur)
+  .setTitle("PAT ERREUR")
+  .setDescription("Une erreur est survenue avec l'API !")
+  .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+  let user = message.mentions.users.first();
+
+  get("https://neko-love.xyz/api/v1/pat", (res) => {
+
+    const { statusCode } = res;
+
+    if (statusCode !== 200) return message.channel.send(erreurAPI).catch(console.error);
+  
+    res.setEncoding("utf8");
+    let rawData = "";
+
+    res.on("data", chunk => {
+      rawData += chunk;
+    });
+
+    res.on("end", () => {
+      try {
+        const parsedData = JSON.parse(rawData);
+
+        let user = message.mentions.users.first();
+    
+        if (user) {
+      
+          let member = message.guild.member(user);
+      
+          if (member) {    
+        
+            let image2 = new Discord.MessageEmbed()
+            .setColor(couleur)
+            .setTitle("PAT")
+            .setDescription(message.author.toString()+" tapote "+user.toString()+" !")
+            .setImage(parsedData.url)
+            .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+            if (user && user.id - message.author.id) return message.channel.send(image2);
+          }
+        }
+
+        let image = new Discord.MessageEmbed()
+        .setColor(couleur)
+        .setTitle("PAT")
+        .setImage(parsedData.url)
+        .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+        let image3 = new Discord.MessageEmbed()
+        .setColor(couleur)
+        .setTitle("PAT")
+        .setDescription(message.author.toString()+" se tapote !")
         .setImage(parsedData.url)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
