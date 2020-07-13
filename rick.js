@@ -104,11 +104,11 @@ client.on('message', async message => {
     message.channel.send(mod);
   }
 
-  if (message.content === prefix + 'help neko' || message.content === prefix + 'h neko') {
+  if (message.content === prefix + 'help love' || message.content === prefix + 'h love') {
 
     let mod = new Discord.MessageEmbed()
     .setColor(couleur)
-    .setTitle("Page 5/"+totalpage+" - Commandes NEKO :")
+    .setTitle("Page 5/"+totalpage+" - Commandes LOVE :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
     .addField(`\`${PREFIX}neko \``, "Vous permet d'afficher une image de Nekomimi")
     .addField(`\`${PREFIX}hug \``, "Vous permet de vous faire ou de faire un câlin à un membre")
