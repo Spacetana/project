@@ -3,6 +3,9 @@ const {TOKEN, PREFIX, VERSION, WHITELIST}             = require('./config.js');
 const Pornhub                                         = require('pornhub.js'); 
 const pornhub                                          = new Pornhub();
 const { get }                                         = require('https');
+const { timeLog } = require('console');
+const { title } = require('process');
+const { url } = require('inspector');
 const client                                          = new Discord.Client({disableMentions: "everyone"});
 
 client.commands = new Discord.Collection()
@@ -519,9 +522,23 @@ client.on('message', async message => {
     let args     = message.content.split(" ").slice(1),
         recherche = args.join(" ");
         
-        pornhub.search('Video', 'tokyo hot').then(res => {
+        pornhub.search('Gif',  recherche).then(res => {
           res.data.forEach(item => {
-              console.log(item)
+              message.channel.send(item);
+
+              let infogif = new Discord.MessageEmbed()
+              .setColor(couleur)
+              .setTitle("INFO-SEARCH")
+              .setDescription("**Voice les infos de votre recherche :**")
+              .addField("Titre :", title)
+              .addField("Lien :", url)
+              .addField("Durée :", duration)
+              .addField("HD", hd)
+              .addField("Premium", premium)
+              .addField("Preview", preview)
+              .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+              message.channel.send(infogif)
               /* {
                   title: 'Japanese Tokyo Hot',
                   url: 'https://www.pornhub.com/view_video.php?viewkey=***',
