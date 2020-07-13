@@ -33,7 +33,7 @@ client.on('message', async message => {
       couleur   = "BLUE",
       guild     = message.guild,
       author    = message.author;
-      totalpage = "5";
+      totalpage = "6";
 
   if (message.content === prefix + 'help' || message.content === prefix + 'h') {
 
