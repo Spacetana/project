@@ -133,9 +133,8 @@ client.on('message', async message => {
     .setColor(couleur)
     .setTitle("Page 6/"+totalpage+" - Commandes NSFW NORMAL :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
-    .addField(`\`${PREFIX}porngif\``,  "Vous permet d'afficher un gif pornographique random")
-    .addField(`\`${PREFIX}4k\``,       "Vous permet d'afficher une image/gif pornographique en 4k")
-    .addField(`\`${PREFIX}ass\``,      "Vous permet d'afficher une image/gif pornographique de gros cul")
+    .addField(`\`${PREFIX}4k\``,       "Vous permet d'afficher une image pornographique en 4k")
+    .addField(`\`${PREFIX}ass\``,      "Vous permet d'afficher une image pornographique d'un gros cul")
     .addField(`\`${PREFIX}anal\``,     "Vous permet d'afficher une image/gif pornographique d'acte anal")
     .addField(`\`${PREFIX}boobs\``,    "Vous permet d'afficher une image/gif pornographique de gros seins")
     .addField(`\`${PREFIX}pussy\``,    "Vous permet d'afficher une image/gif pornographique de large vagins")
@@ -150,7 +149,7 @@ client.on('message', async message => {
     .setTitle("Page 7/"+totalpage+" - Commandes NSFW HENTAI :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
     .addField(`\`${PREFIX}hcum\``,     "Vous permet d'afficher un image/gif d'éjaculation")
-    .addField(`\`${PREFIX}hgif\``,    "Vous permet d'afficher un gif pornographique random")
+    .addField(`\`${PREFIX}hgif\``,     "Vous permet d'afficher un gif pornographique random")
     .addField(`\`${PREFIX}hlewd\``,    "Vous permet d'afficher un image nude de personnage féminin")
     .addField(`\`${PREFIX}hentai\``,   "Vous permet d'afficher une image/gif pornographique random")
     .addField(`\`${PREFIX}nekonude\``, "Vous permet d'afficher une image/gif pornographique de Nekomimi")
@@ -718,24 +717,6 @@ if (message.content.startsWith(prefix + "boobs")) {
 
   if (message.channel.nsfw) return message.channel.send(imageE).catch(console.error);
 }
-
-if (message.content.startsWith(prefix + "porngif")) {
-
-  if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
-  
-    async function u(){
-      let img = await p.porngif();
-
-      let imageE = new Discord.MessageEmbed()
-      .setColor(couleur)
-      .setTitle("PORN-GIFS")
-      .setImage(img.url)
-      .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
-  
-      if (message.channel.nsfw) return message.channel.send(imageE).catch(console.error);
-    }
-    u();
-  }
 
 if (message.content.startsWith(prefix + "hfuck")) {
 
