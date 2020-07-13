@@ -1241,7 +1241,7 @@ if (message.content.startsWith(prefix + "smug")) {
             let image2 = new Discord.MessageEmbed()
             .setColor(couleur)
             .setTitle("SMUG")
-            .setDescription(message.author.toString()+" ? "+user.toString()+" !")
+            .setDescription(message.author.toString()+" satisfait "+user.toString()+" !")
             .setImage(parsedData.url)
             .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
@@ -1258,7 +1258,7 @@ if (message.content.startsWith(prefix + "smug")) {
         let image3 = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("SMUG")
-        .setDescription(message.author.toString()+" se fait ? !")
+        .setDescription(message.author.toString()+" est statisfait !")
         .setImage(parsedData.url)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
