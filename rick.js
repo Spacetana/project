@@ -1,7 +1,7 @@
 const Discord                                         = require('discord.js');
 const {TOKEN, PREFIX, VERSION, WHITELIST}             = require('./config.js');
-const Pornhub                                         = require('pornhub-api'); 
-const Videos                                          = new Pornhub.Videos();
+const Pornhub                                         = require('pornhub.js'); 
+const pornhub                                          = new Pornhub();
 const { get }                                         = require('https');
 const client                                          = new Discord.Client({disableMentions: "everyone"});
 
@@ -519,12 +519,20 @@ client.on('message', async message => {
     let args     = message.content.split(" ").slice(1),
         recherche = args.join(" ");
         
-        Videos.search({
-          search: recherche
-        }).then(Videos => {
-          message.channel.send(Videos);
-        })
-      }  
+        pornhub.search('Video', 'tokyo hot').then(res => {
+          res.data.forEach(item => {
+              console.log(item)
+              /* {
+                  title: 'Japanese Tokyo Hot',
+                  url: 'https://www.pornhub.com/view_video.php?viewkey=***',
+                  duration: '14:24',
+                  hd: true,
+                  premium: false,
+                  preview: 'https://ci.phncdn.com/videos/***.jpg'
+              } */
+          })
+      })
+    } 
 
   if (message.content.startsWith(prefix + "nekonude")) {
 

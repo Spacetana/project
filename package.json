@@ -10,6 +10,7 @@
     "discord.js": "12.2.0",
     "neko-love": "^2.0.2",
     "pornhub-api": "0.0.1",
+    "pornhub.js": "^0.2.2",
     "request": "2.88.2"
   }
 }
