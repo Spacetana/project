@@ -723,7 +723,7 @@ if (message.content.startsWith(prefix + "porngif")) {
 
   if (!message.channel.nsfw) return message.channel.send(nonsfw).catch(console.error);
   
-    async function h(){
+    async function p(){
       let img = await p.porngif();
 
       let imageE = new Discord.MessageEmbed()
@@ -734,7 +734,7 @@ if (message.content.startsWith(prefix + "porngif")) {
   
       if (message.channel.nsfw) return message.channel.send(imageE).catch(console.error);
     }
-    h();
+    p();
   }
 
 if (message.content.startsWith(prefix + "hfuck")) {
