@@ -136,8 +136,9 @@ client.on('message', async message => {
     .addField(`\`${PREFIX}4k\``,       "Vous permet d'afficher une image pornographique en 4k")
     .addField(`\`${PREFIX}ass\``,      "Vous permet d'afficher une image pornographique d'un gros cul")
     .addField(`\`${PREFIX}anal\``,     "Vous permet d'afficher une image/gif pornographique d'acte anal")
+    .addField(`\`${PREFIX}pussy\``,    "Vous permet d'afficher une image pornographique de large vagins")
     .addField(`\`${PREFIX}boobs\``,    "Vous permet d'afficher une image/gif pornographique de gros seins")
-    .addField(`\`${PREFIX}pussy\``,    "Vous permet d'afficher une image/gif pornographique de large vagins")
+
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     message.channel.send(mod);
   } 
