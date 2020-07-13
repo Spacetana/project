@@ -111,6 +111,7 @@ client.on('message', async message => {
     .setTitle("Page 5/"+totalpage+" - Commandes LOVE :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
     .addField(`\`${PREFIX}neko\``, "Permet d'afficher des images de Nekomimi")
+    .addField(`\`${PREFIX}waifu\``, "Permet d'afficher des images de Waifu")
     .addField(`\`${PREFIX}kitsune\``, "Permet d'afficher des images de Kitsune")
     .addField(`\`${PREFIX}tap\``, "Permet de vous tapotez ou de tapoter un membre")
     .addField(`\`${PREFIX}cry\``, "Permet de vous faire pleurer ou de faire pleurer un membre")
