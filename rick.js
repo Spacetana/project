@@ -626,10 +626,8 @@ if (message.content.startsWith(prefix + "pornsearch")) {
 
   let args     = message.content.split(" ").slice(1),
       searchporn = args.join(" ");
-
-  const Pornsearch = require('pornsearch').search(searchporn);
     
-    Pornsearch.gifs().then(gifs => {
+    Pornsearch.search(searchporn).gifs(gifs => {
 
       let image = new Discord.MessageEmbed()
       .setColor(couleur)
