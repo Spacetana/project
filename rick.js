@@ -915,7 +915,7 @@ if (message.content.startsWith(prefix + "cry")) {
         let image3 = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("CRY")
-        .setDescription(message.author.toString()+" pleure seul(e) !")
+        .setDescription(message.author.toString()+" pleur(e) seul(e) !")
         .setImage(parsedData.url)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
