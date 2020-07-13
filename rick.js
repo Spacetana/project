@@ -752,6 +752,7 @@ if (message.content.startsWith(prefix + "punch")) {
             .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
             if (user) return message.channel.send(image2);
+            if (user && user.id - message.author.id) return message.channel.send(image2);
           }
         }
 
