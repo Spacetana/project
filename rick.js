@@ -701,7 +701,7 @@ if (message.content.startsWith(prefix + "hug")) {
         let image3 = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("HUG")
-        .setDescription(message.author.toString()+" se fait un câlin à lui même !")
+        .setDescription(message.author.toString()+" se fait un câlin !")
         .setImage(parsedData.url)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
@@ -772,7 +772,7 @@ if (message.content.startsWith(prefix + "punch")) {
         let image3 = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("PUNCH")
-        .setDescription(message.author.toString()+" se donne un coup de poing à lui même !")
+        .setDescription(message.author.toString()+" se donne un coup de poing !")
         .setImage(parsedData.url)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
@@ -843,7 +843,7 @@ if (message.content.startsWith(prefix + "kiss")) {
         let image3 = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("KISS")
-        .setDescription(message.author.toString()+" se fait un bisous à lui même !")
+        .setDescription(message.author.toString()+" se fait un bisous !")
         .setImage(parsedData.url)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
