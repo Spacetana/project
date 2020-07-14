@@ -28,7 +28,7 @@ client.on('ready', () => {
         }, 15000);
     });
 
-client.on('msg', async msg => {
+client.on('message', async message => {
 
   let avatarbot = client.user.avatarURL({dynamic: true}),
       couleur   = "BLUE",
