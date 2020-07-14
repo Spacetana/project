@@ -297,27 +297,28 @@ client.on('message', async message => {
     }
 
   if (msg.content === prefix + 'ping') {
+    
     let calculedeping = new Discord.MessageEmbed()
                 .setColor(couleur)
                 .setTitle("PING")
                 .setDescription("Calcule du ping en cours.")
                 .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-    var msg = await msg.channel.send(calculedeping);
+    var msgPing = await msg.channel.send(calculedeping);
   
     let calculedeping1 = new Discord.MessageEmbed()
                 .setColor(couleur)
                 .setTitle("PING")
                 .setDescription("Calcule du ping en cours..")
                 .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
-        msg.edit(calculedeping1);
+        msgPing.edit(calculedeping1);
     
     let calculedeping2 = new Discord.MessageEmbed()
                 .setColor(couleur)
                 .setTitle("PING")
                 .setDescription("Calcule du ping en cours...")
                 .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
-        msg.edit(calculedeping2);
+        msgPing.edit(calculedeping2);
   
     let calculedepingfinit = new Discord.MessageEmbed()
                 .setColor(couleur)
@@ -325,7 +326,7 @@ client.on('message', async message => {
                 .setDescription("Ping du bot : " + `**${Math.round(client.ws.ping)}**` + " ms")
                 .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-        msg.edit(calculedepingfinit);
+        msgPing.edit(calculedepingfinit);
       }
 
   if (!msg.guild) return;
