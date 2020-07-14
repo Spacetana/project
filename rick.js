@@ -1458,19 +1458,19 @@ if (message.content.startsWith(prefix + 'spam')) {
   let args2 = message.content.split(" ").slice(2);
 
   let erreur2 = new Discord.MessageEmbed()
-  .setColor("YELLOW")
+  .setColor(couleur)
   .setTitle("SPAM ERREUR")
   .setDescription(`❌ Veuillez indiquer un message à spam !`)
   .setFooter('Saitama ©️ Copyright : Atsuki \\/ Needles', message.author.displayAvatarURL({dynamic: true}))
 
   let erreur3 = new Discord.MessageEmbed()
-  .setColor("YELLOW")
+  .setColor(couleur)
   .setTitle("SPAM ERREUR")
   .setDescription(`❌ Veuillez indiquer un nombre et un message à spam !\n\nComme ceci \`s!spam [nombre] [message]\``)
   .setFooter('Saitama ©️ Copyright : Atsuki \\/ Needles', message.author.displayAvatarURL({dynamic: true}))
 
   let erreur = new Discord.MessageEmbed()
-  .setColor("YELLOW")
+  .setColor(couleur)
   .setTitle("SPAM ERREUR")
   .setDescription(`❌ Veuillez indiquer un nombre de message à spam !`)
   .setFooter('Saitama ©️ Copyright : Atsuki \\/ Needles', message.author.displayAvatarURL({dynamic: true}))
