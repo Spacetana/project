@@ -40,7 +40,7 @@ client.on('msg', async msg => {
 
   if (msg.content === prefix + 'help' || msg.content === prefix + 'h') {
 
-    let standard = new Discord.msgEmbed()
+    let standard = new Discord.MessageEmbed()
     .setColor(couleur)
     .setTitle("Page 1/"+totalpage+" - Toutes les commandes :")
     .setDescription("**Pour tout problème avec le bot, voici le support** : **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
@@ -53,7 +53,7 @@ client.on('msg', async msg => {
     .addField(`\`${PREFIX}help hentai\``, "Vous permet d'accéder à la page d'aide des commandes hentai🔞")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-    let avancé = new Discord.msgEmbed()
+    let avancé = new Discord.MessageEmbed()
     .setColor(couleur)
     .setTitle("Page 1/"+totalpage+" - Toutes les commandes :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
@@ -74,7 +74,7 @@ client.on('msg', async msg => {
 
   if (msg.content === prefix + 'help mod' || msg.content === prefix + 'h mod') {
 
-    let mod = new Discord.msgEmbed()
+    let mod = new Discord.MessageEmbed()
     .setColor(couleur)
     .setTitle("Page 2/"+totalpage+" - Commandes MOD :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
@@ -86,7 +86,7 @@ client.on('msg', async msg => {
 
   if (msg.content === prefix + 'help info' || msg.content === prefix + 'h info') {
 
-    let mod = new Discord.msgEmbed()
+    let mod = new Discord.MessageEmbed()
     .setColor(couleur)
     .setTitle("Page 3/"+totalpage+" - Commandes INFO :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
@@ -99,7 +99,7 @@ client.on('msg', async msg => {
 
   if (msg.content === prefix + 'help fun' || msg.content === prefix + 'h fun') {
 
-    let mod = new Discord.msgEmbed()
+    let mod = new Discord.MessageEmbed()
     .setColor(couleur)
     .setTitle("Page 4/"+totalpage+" - Commandes FUN :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
@@ -111,7 +111,7 @@ client.on('msg', async msg => {
 
   if (msg.content === prefix + 'help love' || msg.content === prefix + 'h love') {
 
-    let mod = new Discord.msgEmbed()
+    let mod = new Discord.MessageEmbed()
     .setColor(couleur)
     .setTitle("Page 5/"+totalpage+" - Commandes LOVE :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
@@ -131,7 +131,7 @@ client.on('msg', async msg => {
 
   if (msg.content === prefix + 'help nsfw' || msg.content === prefix + 'h nsfw') {
 
-    let mod = new Discord.msgEmbed()
+    let mod = new Discord.MessageEmbed()
     .setColor(couleur)
     .setTitle("Page 6/"+totalpage+" - Commandes NSFW - Normal :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
@@ -147,7 +147,7 @@ client.on('msg', async msg => {
 
   if (msg.content === prefix + 'help hentai' || msg.content === prefix + 'h hentai') {
 
-    let mod = new Discord.msgEmbed()
+    let mod = new Discord.MessageEmbed()
     .setColor(couleur)
     .setTitle("Page 7/"+totalpage+" - Commandes NSFW - Hentai :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
@@ -172,7 +172,7 @@ client.on('msg', async msg => {
     
         if (member) {
             
-          let embed = new Discord.msgEmbed()
+          let embed = new Discord.MessageEmbed()
                 .setColor(couleur)
                 .setTitle("AVATAR")
                 .setDescription(`**Voici la photo de profil de ${user} !** [(LIEN)](${user.displayAvatarURL({dynamic: true})})`)
@@ -182,7 +182,7 @@ client.on('msg', async msg => {
         }
       }
 
-      let pasdemention = new Discord.msgEmbed()
+      let pasdemention = new Discord.MessageEmbed()
       .setColor(couleur)
       .setTitle("AVATAR")
       .setDescription(`**Voici votre photo de profil !** [(LIEN)](${author.displayAvatarURL({dynamic: true})})`)
@@ -203,14 +203,14 @@ client.on('msg', async msg => {
     
       if (member) {
 
-        let standardliste1 = new Discord.msgEmbed()
+        let standardliste1 = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("NON WHITELIST")
         .setDescription("❌ **ID** à "+user.toString()+" non figurante dans la liste des administrateurs de **Rick\🛸**")
         .addField("Liste des `ID` whitelist :", whitelist)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-        let avancéliste1 = new Discord.msgEmbed()
+        let avancéliste1 = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("WHITELIST")
         .setDescription("✅ "+user.toString()+" est certifié **whitelist** \🛸 !")
@@ -223,14 +223,14 @@ client.on('msg', async msg => {
       } 
     }     
 
-    let standardliste = new Discord.msgEmbed()
+    let standardliste = new Discord.MessageEmbed()
     .setColor(couleur)
     .setTitle("NON WHITELIST")
     .setDescription("❌ Votre **ID** ne figure pas dans la liste des administrateurs de **Rick\🛸**")
     .addField("Liste des `ID` whitelist :", whitelist)
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-    let avancéliste = new Discord.msgEmbed()
+    let avancéliste = new Discord.MessageEmbed()
     .setColor(couleur)
     .setTitle("WHITELIST")
     .setDescription("✅ Vous êtes certifié **whitelist** \🛸 !")
@@ -245,7 +245,7 @@ client.on('msg', async msg => {
 
   }
 
-  let nonWhitelist = new Discord.msgEmbed()
+  let nonWhitelist = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("NON WHITELIST")
   .setDescription("❌ Votre **ID** ne figure pas dans la liste des administrateurs de **Rick\🛸**")
@@ -263,7 +263,7 @@ client.on('msg', async msg => {
       try {
         const code = args.join(' ');
   
-        let erreur = new Discord.msgEmbed()
+        let erreur = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("ERREUR")
         .setDescription("```SyntaxError: Aucun script n'est détecté veuillez réessayer```\n ❌ **Une erreur a été identifié** ⬆️")
@@ -273,7 +273,7 @@ client.on('msg', async msg => {
   
         evaled = await eval(code);
   
-        let embed = new Discord.msgEmbed()
+        let embed = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("Évalutation de votre script :")
         .setDescription("```" + args.join(' ') + "```\n ✅ **Votre script fonctionne et n'a pas d'erreur identifié**")
@@ -286,7 +286,7 @@ client.on('msg', async msg => {
       } 
       catch (error) {
   
-        let embed = new Discord.msgEmbed()
+        let embed = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("ERREUR")
         .setDescription("```" + error + "```\n ❌ **Une erreur a était identifié** ⬆️")
@@ -297,7 +297,7 @@ client.on('msg', async msg => {
     }
 
   if (msg.content === prefix + 'ping') {
-    let calculedeping = new Discord.msgEmbed()
+    let calculedeping = new Discord.MessageEmbed()
                 .setColor(couleur)
                 .setTitle("PING")
                 .setDescription("Calcule du ping en cours.")
@@ -305,21 +305,21 @@ client.on('msg', async msg => {
 
     var msg = await msg.channel.send(calculedeping);
   
-    let calculedeping1 = new Discord.msgEmbed()
+    let calculedeping1 = new Discord.MessageEmbed()
                 .setColor(couleur)
                 .setTitle("PING")
                 .setDescription("Calcule du ping en cours..")
                 .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
         msg.edit(calculedeping1);
     
-    let calculedeping2 = new Discord.msgEmbed()
+    let calculedeping2 = new Discord.MessageEmbed()
                 .setColor(couleur)
                 .setTitle("PING")
                 .setDescription("Calcule du ping en cours...")
                 .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
         msg.edit(calculedeping2);
   
-    let calculedepingfinit = new Discord.msgEmbed()
+    let calculedepingfinit = new Discord.MessageEmbed()
                 .setColor(couleur)
                 .setTitle("PING")
                 .setDescription("Ping du bot : " + `**${Math.round(client.ws.ping)}**` + " ms")
@@ -335,20 +335,20 @@ client.on('msg', async msg => {
     const args     = msg.content.split(" ").slice(2),
           reason   = args.join(" ");
 
-    let NoPerm = new Discord.msgEmbed()
+    let NoPerm = new Discord.MessageEmbed()
             .setColor(couleur)
             .setTitle("KICK ERREUR")
             .setDescription("❌ Vous n'avez pas la permission `Expulser des membres` !")
             .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-    let NoPermBot = new Discord.msgEmbed()
+    let NoPermBot = new Discord.MessageEmbed()
               .setColor(couleur)
               .setTitle("KICK ERREUR")
               .setDescription("❌ Je n'ai pas la permission `Expulser des membres` !")
               .setImage("https://cdn.discordapp.com/attachments/730197147441430590/730303919267512370/gif_perm_kick.gif") 
               .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)      
     
-    let NoUser = new Discord.msgEmbed()
+    let NoUser = new Discord.MessageEmbed()
               .setColor(couleur)
               .setTitle("KICK ERREUR")
               .setDescription("❌ Vous n'avez pas mentionné l'utilisateur à **kick** !")    
@@ -363,13 +363,13 @@ client.on('msg', async msg => {
       
       if (member) {
     
-        let NoPermPosition = new Discord.msgEmbed()
+        let NoPermPosition = new Discord.MessageEmbed()
                         .setColor(couleur)
                         .setTitle("KICK ERREUR")
                         .setDescription("❌ `"+user.tag+"`"+" n'a pas était kick !\n\n **Raison : "+user.toString()+" possède un rôle au dessus du votre !**")
                         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-        let SameRolePosition = new Discord.msgEmbed()
+        let SameRolePosition = new Discord.MessageEmbed()
                         .setColor(couleur)
                         .setTitle("KICK ERREUR")
                         .setDescription("❌ `"+user.tag+"`"+" n'a pas était kick !\n\n **Raison : "+user.toString()+" possède un rôle au même niveau que le votre !**")
@@ -381,7 +381,7 @@ client.on('msg', async msg => {
           .kick(reason)
           .then(() => {
 
-            let check = new Discord.msgEmbed()
+            let check = new Discord.MessageEmbed()
                   .setColor(couleur)
                   .setTitle("KICK")
                   .setDescription("✅ "+user.toString()+" a bien été **KICK** de "+"`"+guild.name+"`"+" !") 
@@ -390,7 +390,7 @@ client.on('msg', async msg => {
                   .addField("Raison :", "**"+reason+"**")
                   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot) 
 
-            let checksansraison = new Discord.msgEmbed()
+            let checksansraison = new Discord.MessageEmbed()
                             .setColor(couleur)
                             .setTitle("KICK")
                             .setDescription("✅ "+user.toString()+" a bien été **KICK** de "+"`"+guild.name+"`"+" !") 
@@ -411,25 +411,25 @@ client.on('msg', async msg => {
     const args     = msg.content.split(" ").slice(2),
           reason   = args.join(" ");
 
-    let NoPerm = new Discord.msgEmbed()
+    let NoPerm = new Discord.MessageEmbed()
             .setColor(couleur)
             .setTitle("BAN ERREUR")
             .setDescription("❌ Vous n'avez pas la permission `Bannir des membres` !")
             .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-    let NoPermBot = new Discord.msgEmbed()
+    let NoPermBot = new Discord.MessageEmbed()
             .setColor(couleur)
             .setTitle("BAN ERREUR")
             .setDescription("❌ Je n'ai pas la permission `Bannir des membres` !")
             .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)      
 
-    let NoUser = new Discord.msgEmbed()
+    let NoUser = new Discord.MessageEmbed()
             .setColor(couleur)
             .setTitle("BAN ERREUR")
             .setDescription("❌ Vous n'avez pas mentionné l'utilisateur à **ban** !")    
             .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
                 
-    let NoPermPosition = new Discord.msgEmbed()
+    let NoPermPosition = new Discord.MessageEmbed()
             .setColor(couleur)
             .setTitle("BAN ERREUR")
             .setDescription("❌ `"+user.tag+"`"+" n'a pas était ban !\n\n **Raison : "+user.toString()+" possède un rôle au dessus du votre !**")
@@ -449,7 +449,7 @@ client.on('msg', async msg => {
           .ban(reason)
           .then(() => {
 
-              let check = new Discord.msgEmbed()
+              let check = new Discord.MessageEmbed()
                     .setColor(couleur)
                     .setTitle("BAN")
                     .setDescription("✅ "+user.toString()+" a bien été **BAN** de "+"`"+guild.name+"`"+" !") 
@@ -458,7 +458,7 @@ client.on('msg', async msg => {
                     .addField("Raison :", "**"+reason+"**")
                     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot) 
 
-              let checksansraison = new Discord.msgEmbed()
+              let checksansraison = new Discord.MessageEmbed()
                     .setColor(couleur)
                     .setTitle("BAN")
                     .setDescription("✅ "+user.toString()+" a bien été **BAN** de "+"`"+guild.name+"`"+" !") 
@@ -479,25 +479,25 @@ client.on('msg', async msg => {
     const args     = msg.content.split(" ").slice(2),
           reason   = args.join(" ");
 
-    let NoPerm = new Discord.msgEmbed()
+    let NoPerm = new Discord.MessageEmbed()
             .setColor(couleur)
             .setTitle("MUTE ERREUR")
             .setDescription("❌ Vous n'avez pas la permission `Gérer les rôles` !")
             .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-    let NoPermBot = new Discord.msgEmbed()
+    let NoPermBot = new Discord.MessageEmbed()
             .setColor(couleur)
             .setTitle("MUTE ERREUR")
             .setDescription("❌ Je n'ai pas la permission `Gérer les rôles` !")
             .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)      
 
-    let NoUser = new Discord.msgEmbed()
+    let NoUser = new Discord.MessageEmbed()
             .setColor(couleur)
             .setTitle("MUTE ERREUR")
             .setDescription("❌ Vous n'avez pas mentionné l'utilisateur à **mute** !")    
             .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-    let NoPermPosition = new Discord.msgEmbed()
+    let NoPermPosition = new Discord.MessageEmbed()
             .setColor(couleur)
             .setTitle("MUTE ERREUR")
             .setDescription("❌ `"+user.tag+"`"+" n'a pas était mute !\n\n **Raison : "+user.toString()+" possède un rôle au dessus du votre !**")
@@ -525,7 +525,7 @@ client.on('msg', async msg => {
     
         if (member) {
             
-          let embed = new Discord.msgEmbed()
+          let embed = new Discord.MessageEmbed()
                 .setColor(couleur)
                 .setTitle("AVATAR")
                 .setDescription(`**Voici la photo de profil de ${user} !** [(LIEN)](${user.displayAvatarURL({dynamic: true})})`)
@@ -535,7 +535,7 @@ client.on('msg', async msg => {
         }
       }
     
-    let pasdemention = new Discord.msgEmbed()
+    let pasdemention = new Discord.MessageEmbed()
                 .setColor(couleur)
                 .setTitle("AVATAR")
                 .setDescription(`**Voici votre photo de profil !** [(LIEN)](${author.displayAvatarURL({dynamic: true})})`)
@@ -551,7 +551,7 @@ client.on('msg', async msg => {
     let args     = msg.content.split(" ").slice(1),
         question = args.join(" ");
 
-    let NoQuestion = new Discord.msgEmbed()
+    let NoQuestion = new Discord.MessageEmbed()
               .setColor(couleur)
               .setTitle("8BALL ERREUR")
               .setDescription("❌ Veuillez poser une question !")
@@ -565,7 +565,7 @@ client.on('msg', async msg => {
     msg.channel.send("️");
   }
 
-  let nonsfw = new Discord.msgEmbed()
+  let nonsfw = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("NSFW ERREUR")
   .setDescription(msg.channel.toString()+" n'est pas un channel **NSFW** !")
@@ -575,7 +575,7 @@ client.on('msg', async msg => {
 
     if (!msg.channel.nsfw) return msg.channel.send(nonsfw).catch(console.error);
     
-    let erreurAPI = new Discord.msgEmbed()
+    let erreurAPI = new Discord.MessageEmbed()
     .setColor(couleur)
     .setTitle("4K ERREUR")
     .setDescription("Une erreur est survenue avec l'API !")
@@ -587,7 +587,7 @@ client.on('msg', async msg => {
 
       if (statusCode !== 200) return msg.channel.send(erreurAPI).catch(console.error);
               
-          let image = new Discord.msgEmbed()
+          let image = new Discord.MessageEmbed()
           .setColor(couleur)
           .setTitle("4K")
           .setImage(res.body.msg)
@@ -601,7 +601,7 @@ if (msg.content.startsWith(prefix + "anal")) {
 
   if (!msg.channel.nsfw) return msg.channel.send(nonsfw).catch(console.error);
   
-  let erreurAPI = new Discord.msgEmbed()
+  let erreurAPI = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("ANAL ERREUR")
   .setDescription("Une erreur est survenue avec l'API !")
@@ -613,7 +613,7 @@ if (msg.content.startsWith(prefix + "anal")) {
 
     if (statusCode !== 200) return msg.channel.send(erreurAPI).catch(console.error);
             
-        let image = new Discord.msgEmbed()
+        let image = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("ANAL")
         .setImage(res.body.msg)
@@ -627,7 +627,7 @@ if (msg.content.startsWith(prefix + "ass")) {
 
   if (!msg.channel.nsfw) return msg.channel.send(nonsfw).catch(console.error);
   
-  let erreurAPI = new Discord.msgEmbed()
+  let erreurAPI = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("ASS ERREUR")
   .setDescription("Une erreur est survenue avec l'API !")
@@ -639,7 +639,7 @@ if (msg.content.startsWith(prefix + "ass")) {
 
     if (statusCode !== 200) return msg.channel.send(erreurAPI).catch(console.error);
             
-        let image = new Discord.msgEmbed()
+        let image = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("ASS")
         .setImage(res.body.msg)
@@ -653,7 +653,7 @@ if (msg.content.startsWith(prefix + "pussy")) {
 
   if (!msg.channel.nsfw) return msg.channel.send(nonsfw).catch(console.error);
   
-  let erreurAPI = new Discord.msgEmbed()
+  let erreurAPI = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("PUSSY ERREUR")
   .setDescription("Une erreur est survenue avec l'API !")
@@ -665,7 +665,7 @@ if (msg.content.startsWith(prefix + "pussy")) {
 
     if (statusCode !== 200) return msg.channel.send(erreurAPI).catch(console.error);
             
-        let image = new Discord.msgEmbed()
+        let image = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("PUSSY")
         .setImage(res.body.msg)
@@ -679,7 +679,7 @@ if (msg.content.startsWith(prefix + "himg")) {
 
   if (!msg.channel.nsfw) return msg.channel.send(nonsfw).catch(console.error);
   
-  let erreurAPI = new Discord.msgEmbed()
+  let erreurAPI = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("HENTAI ERREUR")
   .setDescription("Une erreur est survenue avec l'API !")
@@ -691,7 +691,7 @@ if (msg.content.startsWith(prefix + "himg")) {
 
     if (statusCode !== 200) return msg.channel.send(erreurAPI).catch(console.error);
             
-        let image = new Discord.msgEmbed()
+        let image = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("HENTAI")
         .setImage(res.body.msg)
@@ -705,7 +705,7 @@ if (msg.content.startsWith(prefix + "boobs")) {
 
   if (!msg.channel.nsfw) return msg.channel.send(nonsfw).catch(console.error);
   
-    let erreurAPI = new Discord.msgEmbed()
+    let erreurAPI = new Discord.MessageEmbed()
     .setColor(couleur)
     .setTitle("BOOBS ERREUR")
     .setDescription("Une erreur est survenue avec l'API !")
@@ -720,7 +720,7 @@ if (msg.content.startsWith(prefix + "boobs")) {
 
   if (statusCode !== 200) return msg.channel.send(erreurAPI).catch(console.error);
             
-    let imageE = new Discord.msgEmbed()
+    let imageE = new Discord.MessageEmbed()
     .setColor(couleur)
     .setTitle("BOOBS")
     .setImage(image)
@@ -736,7 +736,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
     async function h(){
       let img = await p.hfuck();
 
-      let imageE = new Discord.msgEmbed()
+      let imageE = new Discord.MessageEmbed()
       .setColor(couleur)
       .setTitle("HFUCK")
       .setImage(img.url)
@@ -755,7 +755,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
       let img = await p.hanal();
 
   
-      let imageE = new Discord.msgEmbed()
+      let imageE = new Discord.MessageEmbed()
       .setColor(couleur)
       .setTitle("HANAL")
       .setImage(img.url)
@@ -774,7 +774,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
       let img = await p.hgif();
 
   
-      let imageE = new Discord.msgEmbed()
+      let imageE = new Discord.MessageEmbed()
       .setColor(couleur)
       .setTitle("HGIF")
       .setImage(img.url)
@@ -793,7 +793,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
       let img = await p.hcum();
 
   
-      let imageE = new Discord.msgEmbed()
+      let imageE = new Discord.MessageEmbed()
       .setColor(couleur)
       .setTitle("HCUM")
       .setImage(img.url)
@@ -812,7 +812,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
       let img = await p.hlewd();
 
   
-      let imageE = new Discord.msgEmbed()
+      let imageE = new Discord.MessageEmbed()
       .setColor(couleur)
       .setTitle("HLEWD")
       .setImage(img.url)
@@ -827,7 +827,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
 
     if (!msg.channel.nsfw) return msg.channel.send(nonsfw).catch(console.error);
 
-    let erreurAPI = new Discord.msgEmbed()
+    let erreurAPI = new Discord.MessageEmbed()
     .setColor(couleur)
     .setTitle("NEKO-NUDE ERREUR")
     .setDescription("Une erreur est survenue avec l'API !")
@@ -850,7 +850,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
         try {
           const parsedData = JSON.parse(rawData);
               
-          let image = new Discord.msgEmbed()
+          let image = new Discord.MessageEmbed()
           .setColor(couleur)
           .setTitle("NEKO-NUDE")
           .setImage(parsedData.url)
@@ -868,7 +868,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
 
   if (msg.content === prefix + "neko") {
 
-    let erreurAPI = new Discord.msgEmbed()
+    let erreurAPI = new Discord.MessageEmbed()
     .setColor(couleur)
     .setTitle("NEKO ERREUR")
     .setDescription("Une erreur est survenue avec l'API !")
@@ -891,7 +891,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
         try {
           const parsedData = JSON.parse(rawData);
               
-          let image = new Discord.msgEmbed()
+          let image = new Discord.MessageEmbed()
           .setColor(couleur)
           .setTitle("NEKO")
           .setImage(parsedData.url)
@@ -909,7 +909,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
 
   if (msg.content.startsWith(prefix + "kitsune")) {
 
-    let erreurAPI = new Discord.msgEmbed()
+    let erreurAPI = new Discord.MessageEmbed()
     .setColor(couleur)
     .setTitle("KITSUNE ERREUR")
     .setDescription("Une erreur est survenue avec l'API !")
@@ -932,7 +932,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
         try {
           const parsedData = JSON.parse(rawData);
               
-          let image = new Discord.msgEmbed()
+          let image = new Discord.MessageEmbed()
           .setColor(couleur)
           .setTitle("KITSUNE")
           .setImage(parsedData.url)
@@ -950,7 +950,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
 
   if (msg.content.startsWith(prefix + "waifu")) {
 
-    let erreurAPI = new Discord.msgEmbed()
+    let erreurAPI = new Discord.MessageEmbed()
     .setColor(couleur)
     .setTitle("WAIFU ERREUR")
     .setDescription("Une erreur est survenue avec l'API !")
@@ -973,7 +973,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
         try {
           const parsedData = JSON.parse(rawData);
               
-          let image = new Discord.msgEmbed()
+          let image = new Discord.MessageEmbed()
           .setColor(couleur)
           .setTitle("WAIFU")
           .setImage(parsedData.url)
@@ -991,7 +991,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
 
 if (msg.content.startsWith(prefix + "hug")) {
 
-  let erreurAPI = new Discord.msgEmbed()
+  let erreurAPI = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("HUG ERREUR")
   .setDescription("Une erreur est survenue avec l'API !")
@@ -1024,7 +1024,7 @@ if (msg.content.startsWith(prefix + "hug")) {
       
           if (member) {    
     
-            let image = new Discord.msgEmbed()
+            let image = new Discord.MessageEmbed()
             .setColor(couleur)
             .setTitle("HUG")
             .setDescription(author.toString()+" fait un câlin à "+user.toString()+" !")
@@ -1035,13 +1035,13 @@ if (msg.content.startsWith(prefix + "hug")) {
           }
         }
 
-        let image = new Discord.msgEmbed()
+        let image = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("HUG")
         .setImage(parsedData.url)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-        let image3 = new Discord.msgEmbed()
+        let image3 = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("HUG")
         .setDescription(author.toString()+" se fait un câlin !")
@@ -1062,7 +1062,7 @@ if (msg.content.startsWith(prefix + "hug")) {
 
 if (msg.content.startsWith(prefix + "punch")) {
 
-  let erreurAPI = new Discord.msgEmbed()
+  let erreurAPI = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("PUNCH ERREUR")
   .setDescription("Une erreur est survenue avec l'API !")
@@ -1095,7 +1095,7 @@ if (msg.content.startsWith(prefix + "punch")) {
       
           if (member) {    
         
-            let image2 = new Discord.msgEmbed()
+            let image2 = new Discord.MessageEmbed()
             .setColor(couleur)
             .setTitle("PUNCH")
             .setDescription(author.toString()+" donne un coup de poing à "+user.toString()+" !")
@@ -1106,13 +1106,13 @@ if (msg.content.startsWith(prefix + "punch")) {
           }
         }
 
-        let image = new Discord.msgEmbed()
+        let image = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("PUNCH")
         .setImage(parsedData.url)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-        let image3 = new Discord.msgEmbed()
+        let image3 = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("PUNCH")
         .setDescription(author.toString()+" se donne un coup de poing !")
@@ -1133,7 +1133,7 @@ if (msg.content.startsWith(prefix + "punch")) {
 
 if (msg.content.startsWith(prefix + "kiss")) {
 
-  let erreurAPI = new Discord.msgEmbed()
+  let erreurAPI = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("KISS ERREUR")
   .setDescription("Une erreur est survenue avec l'API !")
@@ -1166,7 +1166,7 @@ if (msg.content.startsWith(prefix + "kiss")) {
       
           if (member) {    
         
-            let image2 = new Discord.msgEmbed()
+            let image2 = new Discord.MessageEmbed()
             .setColor(couleur)
             .setTitle("KISS")
             .setDescription(author.toString()+" fait un bisous à "+user.toString()+" !")
@@ -1177,13 +1177,13 @@ if (msg.content.startsWith(prefix + "kiss")) {
           }
         }
 
-        let image = new Discord.msgEmbed()
+        let image = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("KISS")
         .setImage(parsedData.url)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-        let image3 = new Discord.msgEmbed()
+        let image3 = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("KISS")
         .setDescription(author.toString()+" se fait un bisous !")
@@ -1204,7 +1204,7 @@ if (msg.content.startsWith(prefix + "kiss")) {
 
 if (msg.content.startsWith(prefix + "cry")) {
 
-  let erreurAPI = new Discord.msgEmbed()
+  let erreurAPI = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("CRY ERREUR")
   .setDescription("Une erreur est survenue avec l'API !")
@@ -1237,7 +1237,7 @@ if (msg.content.startsWith(prefix + "cry")) {
       
           if (member) {    
         
-            let image2 = new Discord.msgEmbed()
+            let image2 = new Discord.MessageEmbed()
             .setColor(couleur)
             .setTitle("CRY")
             .setDescription(author.toString()+" fait pleurer "+user.toString()+" !")
@@ -1248,13 +1248,13 @@ if (msg.content.startsWith(prefix + "cry")) {
           }
         }
 
-        let image = new Discord.msgEmbed()
+        let image = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("CRY")
         .setImage(parsedData.url)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-        let image3 = new Discord.msgEmbed()
+        let image3 = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("CRY")
         .setDescription(author.toString()+" pleur(e) seul(e) !")
@@ -1275,7 +1275,7 @@ if (msg.content.startsWith(prefix + "cry")) {
 
 if (msg.content.startsWith(prefix + "slap")) {
 
-  let erreurAPI = new Discord.msgEmbed()
+  let erreurAPI = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("SLAP ERREUR")
   .setDescription("Une erreur est survenue avec l'API !")
@@ -1308,7 +1308,7 @@ if (msg.content.startsWith(prefix + "slap")) {
       
           if (member) {    
         
-            let image2 = new Discord.msgEmbed()
+            let image2 = new Discord.MessageEmbed()
             .setColor(couleur)
             .setTitle("SLAP")
             .setDescription(author.toString()+" met une gifle à "+user.toString()+" !")
@@ -1319,13 +1319,13 @@ if (msg.content.startsWith(prefix + "slap")) {
           }
         }
 
-        let image = new Discord.msgEmbed()
+        let image = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("SLAP")
         .setImage(parsedData.url)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-        let image3 = new Discord.msgEmbed()
+        let image3 = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("SLAP")
         .setDescription(author.toString()+" se met une gifle !")
@@ -1346,7 +1346,7 @@ if (msg.content.startsWith(prefix + "slap")) {
 
 if (msg.content.startsWith(prefix + "pat")) {
 
-  let erreurAPI = new Discord.msgEmbed()
+  let erreurAPI = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("PAT ERREUR")
   .setDescription("Une erreur est survenue avec l'API !")
@@ -1379,7 +1379,7 @@ if (msg.content.startsWith(prefix + "pat")) {
       
           if (member) {    
         
-            let image2 = new Discord.msgEmbed()
+            let image2 = new Discord.MessageEmbed()
             .setColor(couleur)
             .setTitle("PAT")
             .setDescription(author.toString()+" tapote "+user.toString()+" !")
@@ -1390,13 +1390,13 @@ if (msg.content.startsWith(prefix + "pat")) {
           }
         }
 
-        let image = new Discord.msgEmbed()
+        let image = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("PAT")
         .setImage(parsedData.url)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-        let image3 = new Discord.msgEmbed()
+        let image3 = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("PAT")
         .setDescription(author.toString()+" se tapote !")
@@ -1417,7 +1417,7 @@ if (msg.content.startsWith(prefix + "pat")) {
 
 if (msg.content.startsWith(prefix + "smug")) {
 
-  let erreurAPI = new Discord.msgEmbed()
+  let erreurAPI = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("SMUG ERREUR")
   .setDescription("Une erreur est survenue avec l'API !")
@@ -1450,7 +1450,7 @@ if (msg.content.startsWith(prefix + "smug")) {
       
           if (member) {    
         
-            let image2 = new Discord.msgEmbed()
+            let image2 = new Discord.MessageEmbed()
             .setColor(couleur)
             .setTitle("SMUG")
             .setDescription(author.toString()+" satisfait "+user.toString()+" !")
@@ -1461,13 +1461,13 @@ if (msg.content.startsWith(prefix + "smug")) {
           }
         }
 
-        let image = new Discord.msgEmbed()
+        let image = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("SMUG")
         .setImage(parsedData.url)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
-        let image3 = new Discord.msgEmbed()
+        let image3 = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("SMUG")
         .setDescription(author.toString()+" est statisfait !")
@@ -1493,19 +1493,19 @@ if (msg.content.startsWith(prefix + 'spam')) {
   let args = msg.content.split(" ").slice(1);
   let args2 = msg.content.split(" ").slice(2);
 
-  let erreur2 = new Discord.msgEmbed()
+  let erreur2 = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("SPAM ERREUR")
   .setDescription(`❌ Veuillez indiquer un msg à spam !`)
   .setFooter('Saitama ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
 
-  let erreur3 = new Discord.msgEmbed()
+  let erreur3 = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("SPAM ERREUR")
   .setDescription(`❌ Veuillez indiquer un nombre et un msg à spam !\n\nComme ceci \`s!spam [nombre] [msg]\``)
   .setFooter('Saitama ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
 
-  let erreur = new Discord.msgEmbed()
+  let erreur = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("SPAM ERREUR")
   .setDescription(`❌ Veuillez indiquer un nombre de msg à spam !`)
