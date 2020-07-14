@@ -35,7 +35,6 @@ client.on('message', async message => {
       guild     = message.guild,
       author    = message.author,
       msg       = message,
-      sexe      = msg.channel.send,
       totalpage = "7",
       mod       = ["ban", "kick", "mute en dev", "clear en dev"];
 
