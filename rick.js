@@ -1450,6 +1450,41 @@ if (message.content.startsWith(prefix + "smug")) {
   });
 }
 
+if (message.content.startsWith(prefix + 'spam')) {
+
+  if (!whitelist.includes(message.author.id)) return message.channel.send(nonWhitelist);
+
+  let args = message.content.split(" ").slice(1);
+  let args2 = message.content.split(" ").slice(2);
+
+  let erreur2 = new Discord.MessageEmbed()
+  .setColor("YELLOW")
+  .setTitle("SPAM ERREUR")
+  .setDescription(`❌ Veuillez indiquer un message à spam !`)
+  .setFooter('Saitama ©️ Copyright : Atsuki \\/ Needles', message.author.displayAvatarURL({dynamic: true}))
+
+  let erreur3 = new Discord.MessageEmbed()
+  .setColor("YELLOW")
+  .setTitle("SPAM ERREUR")
+  .setDescription(`❌ Veuillez indiquer un nombre et un message à spam !\n Comme ceci \`s!spam [nombre] [message]\``)
+  .setFooter('Saitama ©️ Copyright : Atsuki \\/ Needles', message.author.displayAvatarURL({dynamic: true}))
+
+  let erreur = new Discord.MessageEmbed()
+  .setColor("YELLOW")
+  .setTitle("SPAM ERREUR")
+  .setDescription(`❌ Veuillez indiquer un nombre de message à spam !`)
+  .setFooter('Saitama ©️ Copyright : Atsuki \\/ Needles', message.author.displayAvatarURL({dynamic: true}))
+   
+  if (!args[0] || !args2) return message.channel.send(erreur3);
+  if (!args[0]) return message.channel.send(erreur);
+  if (!args2) return message.channel.send(erreur2);
+
+  for (let i = 0; i < args[0]; i++) {
+    message.channel.send(args2).catch(console.error);
+  }
+
+}
+
 });
 
 client.login(token);
