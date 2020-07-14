@@ -34,6 +34,7 @@ client.on('message', async message => {
       couleur   = "BLUE",
       guild     = message.guild,
       author    = message.author,
+      msg       = message,
       totalpage = "7",
       mod       = ["ban", "kick", "mute en dev", "clear en dev"];
 
