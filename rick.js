@@ -32,9 +32,9 @@ client.on('msg', async msg => {
 
   let avatarbot = client.user.avatarURL({dynamic: true}),
       couleur   = "BLUE",
+      msg       = message,
       guild     = msg.guild,
       author    = msg.author,
-      msg       = message,
       totalpage = "7",
       mod       = ["ban", "kick", "mute en dev", "clear en dev"];
 
