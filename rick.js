@@ -346,7 +346,14 @@ client.on('message', async message => {
               .setDescription("❌ Je n'ai pas la permission `Expulser des membres` !")
               .setImage("https://cdn.discordapp.com/attachments/730197147441430590/730303919267512370/gif_perm_kick.gif") 
               .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)      
-
+    
+    let NoUser = new Discord.MessageEmbed()
+              .setColor(couleur)
+              .setTitle("KICK ERREUR")
+              .setDescription("❌ Vous n'avez pas mentionné l'utilisateur à **kick** !")    
+              .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+                  
+    if (!user) return message.channel.send(NoUser).catch(console.error);     
     if (!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send(NoPerm).catch(console.error); 
     if (!guild.me.hasPermission("KICK_MEMBERS")) return message.channel.send(NoPermBot).catch(console.error);
 
@@ -395,15 +402,7 @@ client.on('message', async message => {
             }).catch(err => {console.log(err)});
           }
         } 
-
-      let NoUser = new Discord.MessageEmbed()
-              .setColor(couleur)
-              .setTitle("KICK ERREUR")
-              .setDescription("❌ Vous n'avez pas mentionné l'utilisateur à **kick** !")    
-              .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
-                
-      if (!user) return message.channel.send(NoUser).catch(console.error);     
-    }
+      }
 
   if (message.content.startsWith(prefix + 'ban')) {
     
@@ -423,6 +422,13 @@ client.on('message', async message => {
             .setDescription("❌ Je n'ai pas la permission `Bannir des membres` !")
             .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)      
 
+    let NoUser = new Discord.MessageEmbed()
+            .setColor(couleur)
+            .setTitle("BAN ERREUR")
+            .setDescription("❌ Vous n'avez pas mentionné l'utilisateur à **ban** !")    
+            .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+                
+    if (!user) return message.channel.send(NoUser).catch(console.error);     
     if (!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send(NoPerm).catch(console.error); 
     if (!guild.me.hasPermission("BAN_MEMBERS")) return message.channel.send(NoPermBot).catch(console.error);
 
@@ -470,15 +476,7 @@ client.on('message', async message => {
             }).catch(err => {console.log(err)});
           }
         } 
-
-    let NoUser = new Discord.MessageEmbed()
-            .setColor(couleur)
-            .setTitle("BAN ERREUR")
-            .setDescription("❌ Vous n'avez pas mentionné l'utilisateur à **ban** !")    
-            .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
-                
-    if (!user) return message.channel.send(NoUser).catch(console.error);     
-  }
+      }
 
   if (message.content.startsWith(prefix + 'mute')) {
 
@@ -498,6 +496,13 @@ client.on('message', async message => {
             .setDescription("❌ Je n'ai pas la permission `Gérer les rôles` !")
             .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)      
 
+    let NoUser = new Discord.MessageEmbed()
+            .setColor(couleur)
+            .setTitle("MUTE ERREUR")
+            .setDescription("❌ Vous n'avez pas mentionné l'utilisateur à **mute** !")    
+            .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+                
+    if (!user) return message.channel.send(NoUser).catch(console.error);
     if (!message.member.hasPermission("MANAGE_ROLES")) return message.channel.send(NoPerm).catch(console.error); 
     if (!guild.me.hasPermission("MANAGE_ROLES")) return message.channel.send(NoPermBot).catch(console.error);  
 
@@ -519,15 +524,7 @@ client.on('message', async message => {
 
         if (member.roles.highest.position > message.member.roles.highest.position) return message.channel.send(NoPermPosition).catch(console.error);
       }
-    }
-
-    let NoUser = new Discord.MessageEmbed()
-            .setColor(couleur)
-            .setTitle("MUTE ERREUR")
-            .setDescription("❌ Vous n'avez pas mentionné l'utilisateur à **mute** !")    
-            .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
-                
-    if (!user) return message.channel.send(NoUser).catch(console.error);         
+    }      
   }  
     
   if (message.content.startsWith(prefix + 'pp') || message.content.startsWith(prefix + 'avatar')) {
