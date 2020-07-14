@@ -589,7 +589,7 @@ client.on('message', async message => {
           let image = new Discord.MessageEmbed()
           .setColor(couleur)
           .setTitle("4K")
-          .setImage(res.body.msg)
+          .setImage(res.body.message)
           .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
           if (msg.channel.nsfw) return msg.channel.send(image).catch(console.error);
@@ -615,7 +615,7 @@ if (msg.content.startsWith(prefix + "anal")) {
         let image = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("ANAL")
-        .setImage(res.body.msg)
+        .setImage(res.body.message)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
         if (msg.channel.nsfw) return msg.channel.send(image).catch(console.error);
@@ -641,7 +641,7 @@ if (msg.content.startsWith(prefix + "ass")) {
         let image = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("ASS")
-        .setImage(res.body.msg)
+        .setImage(res.body.message)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
         if (msg.channel.nsfw) return msg.channel.send(image).catch(console.error);
@@ -667,7 +667,7 @@ if (msg.content.startsWith(prefix + "pussy")) {
         let image = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("PUSSY")
-        .setImage(res.body.msg)
+        .setImage(res.body.message)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
         if (msg.channel.nsfw) return msg.channel.send(image).catch(console.error);
@@ -693,7 +693,7 @@ if (msg.content.startsWith(prefix + "himg")) {
         let image = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("HENTAI")
-        .setImage(res.body.msg)
+        .setImage(res.body.message)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
         if (msg.channel.nsfw) return msg.channel.send(image).catch(console.error);
