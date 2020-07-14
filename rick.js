@@ -524,7 +524,6 @@ client.on('msg', async msg => {
         let member = msg.guild.member(user);
     
         if (member) {
-            
           let embed = new Discord.MessageEmbed()
                 .setColor(couleur)
                 .setTitle("AVATAR")
@@ -534,7 +533,6 @@ client.on('msg', async msg => {
           if (user, user.id - author.id) return msg.channel.send(embed); 
         }
       }
-    
     let pasdemention = new Discord.MessageEmbed()
                 .setColor(couleur)
                 .setTitle("AVATAR")
