@@ -1466,7 +1466,7 @@ if (message.content.startsWith(prefix + 'spam')) {
   let erreur3 = new Discord.MessageEmbed()
   .setColor("YELLOW")
   .setTitle("SPAM ERREUR")
-  .setDescription(`❌ Veuillez indiquer un nombre et un message à spam !\n Comme ceci \`s!spam [nombre] [message]\``)
+  .setDescription(`❌ Veuillez indiquer un nombre et un message à spam !\n\nComme ceci \`s!spam [nombre] [message]\``)
   .setFooter('Saitama ©️ Copyright : Atsuki \\/ Needles', message.author.displayAvatarURL({dynamic: true}))
 
   let erreur = new Discord.MessageEmbed()
