@@ -502,27 +502,22 @@ client.on('message', async message => {
             .setTitle("MUTE ERREUR")
             .setDescription("❌ Vous n'avez pas mentionné l'utilisateur à **mute** !")    
             .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
+
+    let NoPermPosition = new Discord.MessageEmbed()
+            .setColor(couleur)
+            .setTitle("MUTE ERREUR")
+            .setDescription("❌ `"+user.tag+"`"+" n'a pas était mute !\n\n **Raison : "+user.toString()+" possède un rôle au dessus du votre !**")
+            .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)          
                 
     if (!user) return message.channel.send(NoUser).catch(console.error);
-    if (!message.member.hasPermission("MANAGE_ROLES")) return message.channel.send(NoPerm).catch(console.error); 
-    if (!guild.me.hasPermission("MANAGE_ROLES")) return message.channel.send(NoPermBot).catch(console.error);  
 
     if (user) {
       const member = message.guild.member(user);
-      if (member) {
-
-        let NoPermPosition = new Discord.MessageEmbed()
-                        .setColor(couleur)
-                        .setTitle("MUTE ERREUR")
-                        .setDescription("❌ `"+user.tag+"`"+" n'a pas était mute !\n\n **Raison : "+user.toString()+" possède un rôle au dessus du votre !**")
-                        .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
-
-        let SameRolePosition = new Discord.MessageEmbed()
-                        .setColor(couleur)
-                        .setTitle("MUTE ERREUR")
-                        .setDescription("❌ `"+user.tag+"`"+" n'a pas était mute !\n\n **Raison : "+user.toString()+" possède un rôle au même niveau que le votre !**")
-                        .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)       
-
+      if (member) {     
+        
+        if (!member.hasPermission("MANAGE_ROLES")) return message.channel.send(NoPerm).catch(console.error); 
+        if (!guild.me.hasPermission("MANAGE_ROLES")) return message.channel.send(NoPermBot).catch(console.error);  
         if (member.roles.highest.position > message.member.roles.highest.position) return message.channel.send(NoPermPosition).catch(console.error);
       }
     }      
