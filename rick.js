@@ -471,7 +471,7 @@ client.on('message', async message => {
 
   if (msg.content.startsWith(prefix + 'mute')) {
 
-    const user     = msg.mentions.users.first();
+    const user     = msg.mentions.users.first() || msg.content.substring(msg.content.indexOf(' ') + 1);
     const args     = msg.content.split(" ").slice(2),
           reason   = args.join(" ");
 
@@ -486,12 +486,6 @@ client.on('message', async message => {
             .setTitle("MUTE ERREUR")
             .setDescription("❌ Je n'ai pas la permission `Gérer les rôles` !")
             .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)      
-
-    let NoPermPosition = new Discord.MessageEmbed()
-            .setColor(couleur)
-            .setTitle("MUTE ERREUR")
-            .setDescription("❌ "+user+" n'a pas était **mute** !\n\n **Raison : "+user+" possède un rôle au dessus du votre !**")
-            .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)  
 
     let NoUser = new Discord.MessageEmbed()
             .setColor(couleur)
@@ -516,35 +510,31 @@ client.on('message', async message => {
     if (!msg.guild.me.hasPermission("MANAGE_ROLES")) return msg.channel.send(NoPermBot).catch(console.error);  
 
     if (user) {
+      
       const member = msg.guild.member(user);
-      const muteRole = msg.guild.roles.cache.find(role => role.position < msg.guild.me.roles.highest.position && role.name === 'Muted')
+      const muteRole = msg.guild.roles.cache.find(role => role.position < msg.guild.me.roles.highest.position && role.name === 'Muted').catch(console.error);
  
-      if (!muteRole) muteRole = msg.guild.roles.create({data: {name: "🔻┊MutedByRick🛸", color: "000001"}, reason: "Role muted introuvable, un rôle pour le remplacer a été crée"}).catch(console.error);
-      if (member.roles.cache.has(muteRole.id)) return msg.channel.send(erreurDejaMute).catch(console.error);
-      if (member.roles.highest.position > member.roles.highest.position) return msg.channel.send(NoPermPosition).catch(console.error);
-      if (member.user.bot) return msg.channel.send(erreurBot).catch(console.error);
+      let NoPermPosition = new Discord.MessageEmbed()
+      .setColor(couleur)
+      .setTitle("MUTE ERREUR")
+      .setDescription("❌ "+member.toString()+" n'a pas était **mute** !\n\n **Raison : "+member.toString()+" possède un rôle au dessus du votre !**")
+      .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)  
 
-      message.guild.channels.cache.forEach(channel => {
-        channel.updateOverwrite(muteRole, {
-          SEND_MESSAGES: false,
-          ADD_REACTIONS: false,
-          CONNECT: false,
-          SPEAK: false
-        }).catch(console.error);
-      });
+      if (!muteRole) muteRole = msg.guild.roles.create({data: {name: "🔻┊MutedByRick🛸", color: "000001"}, reason: "Role muted introuvable, un rôle pour le remplacer a été crée"}).catch(console.error);
+      if (msg.member.roles.cache.has(muteRole.id)) return msg.channel.send(erreurDejaMute).catch(console.error);
+      if (msg.member.roles.highest.position > msg.member.roles.highest.position) return msg.channel.send(NoPermPosition).catch(console.error);
+      if (msg.member.user.bot) return msg.channel.send(erreurBot).catch(console.error);
 
       if (member) {
-
         member
           .roles.add(muteRole, reason)
           .then(() => {
-
               let check = new Discord.MessageEmbed()
                     .setColor(couleur)
                     .setTitle("MUTE")
                     .setDescription("✅ "+user.toString()+" a bien été **MUTE** dans "+"`"+guild.name+"`"+" !") 
-                    .addField("Membre :", "`"+user.tag+"`")
-                    .addField("Auteur :", "`"+author.tag+"`")
+                    .addField("Membre :", member.toString()+"(`"+member.user.tag+"`)")
+                    .addField("Auteur :", author.toString()+"(`"+author.tag+"`)")
                     .addField("Raison :", "**"+reason+"**")
                     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot) 
 
@@ -552,8 +542,8 @@ client.on('message', async message => {
                     .setColor(couleur)
                     .setTitle("MUTE")
                     .setDescription("✅ "+user.toString()+" a bien été **MUTE** dans "+"`"+guild.name+"`"+" !") 
-                    .addField("Membre :", "`"+user.tag+"`")
-                    .addField("Auteur :", "`"+author.tag+"`")
+                    .addField("Membre :", member.toString()+"(`"+member.user.tag+"`)")
+                    .addField("Auteur :", author.toString()+"(`"+author.tag+"`)")
                     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)                         
 
               if (!reason) return msg.channel.send(checksansraison);        
