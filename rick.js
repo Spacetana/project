@@ -510,8 +510,11 @@ client.on('message', async message => {
 
     if (user) {
       const member = msg.guild.member(user);
-      if (member) {     
-        if (member.roles.highest.position > msg.member.roles.highest.position) return msg.channel.send(NoPermPosition).catch(console.error);
+      if (member) { 
+        if (member.roles.highest.position > member.roles.highest.position) return msg.channel.send(NoPermPosition).catch(console.error);
+
+
+
       }
     }      
   }  
