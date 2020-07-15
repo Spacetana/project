@@ -1587,7 +1587,7 @@ if (msg.content.startsWith(prefix + 'spam')) {
 
 if (msg.content.startsWith(prefix + 'genmdp')) {
 
-        msgToArray = message.content.split(' ').slice(1);
+        msgToArray = message.content.split(' ');
   const nlenght = Number(msgToArray.pop()),
         N       = message.content.includes("N");
 
@@ -1598,8 +1598,6 @@ if (msg.content.startsWith(prefix + 'genmdp')) {
         .setDescription("❌ Veuillez indiquer un nombre de charactère que le **mot-de-passe** doit contenir !\n\nComme ceci : `r!genmdp 10`")
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
   */
- 
-  if (!N) nlenght = msg.content.split(' ').slice(1);  
 
   let ifN = 'jsp';
 
