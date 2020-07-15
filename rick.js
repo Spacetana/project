@@ -78,8 +78,8 @@ client.on('message', async message => {
     .setColor(couleur)
     .setTitle("Page 2/"+totalpage+" - Commandes MOD :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
-    .addField(`\`${PREFIX}ban [@user/id] (raison)\``, "Vous permet de ban un membre mentionné")
-    .addField(`\`${PREFIX}kick [@user/id] (raison)\``, "Vous permet de kick un membre mentionné")
+    .addField(`\`${PREFIX}ban [@user - id] (raison)\``, "Vous permet de ban un membre mentionné")
+    .addField(`\`${PREFIX}kick [@user - id] (raison)\``, "Vous permet de kick un membre mentionné")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     msg.channel.send(mod);
   }
