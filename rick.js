@@ -510,22 +510,33 @@ client.on('message', async message => {
     if (!msg.guild.me.hasPermission("MANAGE_ROLES")) return msg.channel.send(NoPermBot).catch(console.error);  
 
     if (user) {
-      
-      const member = msg.guild.member(user);
-      const muteRole = msg.guild.roles.cache.find(role => role.position < msg.guild.me.roles.highest.position && role.name === 'Muted').catch(console.error);
- 
-      let NoPermPosition = new Discord.MessageEmbed()
-      .setColor(couleur)
-      .setTitle("MUTE ERREUR")
-      .setDescription("❌ "+member.toString()+" n'a pas était **mute** !\n\n **Raison : "+member.toString()+" possède un rôle au dessus du votre !**")
-      .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)  
 
-      if (!muteRole) muteRole = msg.guild.roles.create({data: {name: "🔻┊MutedByRick🛸", color: "000001"}, reason: "Role muted introuvable, un rôle pour le remplacer a été crée"}).catch(console.error);
-      if (msg.member.roles.cache.has(muteRole.id)) return msg.channel.send(erreurDejaMute).catch(console.error);
-      if (msg.member.roles.highest.position > msg.member.roles.highest.position) return msg.channel.send(NoPermPosition).catch(console.error);
-      if (msg.member.user.bot) return msg.channel.send(erreurBot).catch(console.error);
+      const member = msg.guild.member(user); 
 
       if (member) {
+
+        let NoPermPosition = new Discord.MessageEmbed()
+        .setColor(couleur)
+        .setTitle("MUTE ERREUR")
+        .setDescription("❌ "+member.toString()+" n'a pas était **mute** !\n\n **Raison : "+member.toString()+" possède un rôle au dessus du votre !**")
+        .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot) 
+
+        let muteRole = msg.guild.roles.cache.find(role => role.position < msg.guild.me.roles.highest.position && role.name === 'Muted');
+
+        if (!muteRole) muteRole = msg.guild.roles.create({data: {name: "🔻┊MutedByRick🛸", color: "000001"}, reason: "Role muted introuvable, un rôle pour le remplacer a été crée"}).catch(console.error);
+        if (member.roles.cache.has(muteRole.id)) return message.channel.send(erreurDejaMute).catch(console.error);
+		    if (member.roles.highest.position > message.member.roles.highest.position) return message.channel.send(NoPermPosition).catch(console.error);
+        if (member.user.bot) return message.channel.send(erreurBot).catch(console.error);
+
+        message.guild.channels.cache.forEach(channels => {
+          channels.updateOverwrite(muteRole, {
+            SEND_MESSAGES: false,
+            ADD_REACTIONS: false,
+            CONNECT: false,
+            SPEAK: false
+          }).catch(console.error);
+        });
+
         member
           .roles.add(muteRole, reason)
           .then(() => {
