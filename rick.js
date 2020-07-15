@@ -382,7 +382,7 @@ client.on('message', async message => {
                   .setColor(couleur)
                   .setTitle("KICK")
                   .setDescription("✅ "+member.toString()+" a bien été **KICK** de "+"`"+guild.name+"`"+" !") 
-                  .addField("Membre :", member.toString()+"(`"+member.tag+"`)")
+                  .addField("Membre :", member.toString()+"(`"+member.user.tag+"`)")
                   .addField("Auteur :", author.toString()+"(`"+author.tag+"`)")
                   .addField("Raison :", "**"+reason+"**")
                   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot) 
@@ -391,7 +391,7 @@ client.on('message', async message => {
                   .setColor(couleur)
                   .setTitle("KICK")
                   .setDescription("✅ "+member.toString()+" a bien été **KICK** de "+"`"+guild.name+"`"+" !") 
-                  .addField("Membre :", member.toString()+"(`"+member.tag+"`)")
+                  .addField("Membre :", member.toString()+"(`"+member.user.tag+"`)")
                   .addField("Auteur :", author.toString()+"(`"+author.tag+"`)")
                   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)                         
 
@@ -403,8 +403,7 @@ client.on('message', async message => {
     }
 
   if (msg.content.startsWith(prefix + 'ban')) {
-  
-    const user     = msg.mentions.users.first() || msg.guild.members.cache.get(userID);
+    const user     = msg.mentions.users.first() || msg.content.substring(msg.content.indexOf(' ') + 1);
     const args     = msg.content.split(" ").slice(2),
           reason   = args.join(" ");
 
@@ -450,8 +449,8 @@ client.on('message', async message => {
                     .setColor(couleur)
                     .setTitle("BAN")
                     .setDescription("✅ "+member.toString()+" a bien été **BAN** de "+"`"+guild.name+"`"+" !") 
-                    .addField("Membre :", "`"+member.tag+"`")
-                    .addField("Auteur :", "`"+author.tag+"`")
+                    .addField("Membre :", member.toString()+"(`"+member.user.tag+"`)")
+                    .addField("Auteur :", author.toString()+"(`"+author.tag+"`)")
                     .addField("Raison :", "**"+reason+"**")
                     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot) 
 
@@ -459,8 +458,8 @@ client.on('message', async message => {
                     .setColor(couleur)
                     .setTitle("BAN")
                     .setDescription("✅ "+member.toString()+" a bien été **BAN** de "+"`"+guild.name+"`"+" !") 
-                    .addField("Membre :", "`"+member.tag+"`")
-                    .addField("Auteur :", "`"+author.tag+"`")
+                    .addField("Membre :", member.toString()+"(`"+member.user.tag+"`)")
+                    .addField("Auteur :", author.toString()+"(`"+author.tag+"`)")
                     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)                         
 
               if (!reason) return msg.channel.send(checksansraison);        
