@@ -1560,19 +1560,19 @@ if (msg.content.startsWith(prefix + 'spam')) {
   let erreur2 = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("SPAM ERREUR")
-  .setDescription(`❌ Veuillez indiquer un msg à spam !`)
+  .setDescription("❌ Veuillez indiquer un msg à spam !")
   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
 
   let erreur3 = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("SPAM ERREUR")
-  .setDescription(`❌ Veuillez indiquer un nombre et un msg à spam !\n\nComme ceci : \`r!spam [nombre] [msg]\``)
+  .setDescription("❌ Veuillez indiquer un nombre et un msg à spam !\n\nComme ceci : \`r!spam [nombre] [msg]\`")
   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
 
   let erreur = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("SPAM ERREUR")
-  .setDescription(`❌ Veuillez indiquer un nombre de msg à spam !`)
+  .setDescription("❌ Veuillez indiquer un nombre de msg à spam !")
   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
    
   if (!args[0] || !args2) return msg.channel.send(erreur3);
@@ -1590,29 +1590,32 @@ if (msg.content.startsWith(prefix + 'genmdp')) {
   const args     = msg.content.split(" ").slice(1),
         nlenght  = args.join(" ");
 
+  let nolenght = new Discord.MessageEmbed()
+        .setColor(couleur)
+        .setTitle("GEN-MDP ERREUR")
+        .setDescription("❌ Veuillez indiquer un nombre charactère que le **mdp** doit contenir !\n\nComme ceci : `r!genmdp 10`")
+        .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
 
-  numbers = msg.content.includes("number").slice(2) = true;
+  if (nlenght) return msg.channel.send(nolenght)
 
-  var password = generator.generate({length: nlenght, numbers: numbers});
+  let contientN = 'jsp';
 
-  let passwordEm = new Discord.MessageEmbed()
-  .setColor(couleur)
-  .setTitle("GEN-MDP")
-  .setDescription("Mot de passe généré : "+"**"+password+"**"+" !")
-  .addField("Nombre de charactère :", "**"+nlenght+"**")
-  .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
+      msg.content.includes("number", "N", "n") ? contientN = 'oui' : contientN = 'non';
+
+      if (msg.content.includes("number", "N", "n")) nombre = true;
+      if (!msg.content.includes("number", "N", "n")) nombre = false;
+
+  var password = generator.generate({length: nlenght, numbers: nombre});
 
   let passwordEmN = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("GEN-MDP")
   .setDescription("Mot de passe généré : "+"**"+password+"**"+" !")
   .addField("Nombre de charactère :", "**"+nlenght+"**")
-  .addField("Contient des chiffres :", "**oui**")
+  .addField("Contient des chiffres :", "**"+contientN+"**")
   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
 
-  if (message.content.includes("number", "N").slice(2)) return msg.channel.send(passwordEmN);
-  
-  if (!message.content.includes("number", "N").slice(2)) return msg.channel.send(passwordEm);
+  msg.channel.send(passwordEmN);
 
 }
 

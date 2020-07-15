@@ -1337,8 +1337,6 @@ client.on('message', async message => {
             join = moment(member.joinedAt).format('**DD/MM/YYYY** à **hh:mm:ss**'),
             pp = user.displayAvatarURL({dynamic: true})
             status = user.presence.status;
-        
-        user.bot ? isUserBot = 'oui' : isUserBot = 'non';
   
         if (status === 'online') status = "🟢 En ligne";
         if (status === 'idle') status = "🟡 Inactif";
