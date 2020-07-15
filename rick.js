@@ -78,8 +78,8 @@ client.on('message', async message => {
     .setColor(couleur)
     .setTitle("Page 2/"+totalpage+" - Commandes MOD :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
-    .addField(`\`${PREFIX}ban [@user] (raison)\``, "Vous permet de ban un membre mentionné")
-    .addField(`\`${PREFIX}kick [@user] (raison)\``, "Vous permet de kick un membre mentionné")
+    .addField(`\`${PREFIX}ban [@user/id] (raison)\``, "Vous permet de ban un membre mentionné")
+    .addField(`\`${PREFIX}kick [@user/id] (raison)\``, "Vous permet de kick un membre mentionné")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     msg.channel.send(mod);
   }
@@ -410,7 +410,8 @@ client.on('message', async message => {
 
   if (msg.content.startsWith(prefix + 'ban')) {
     
-    const user     = msg.mentions.users.first();
+    const userID   = msg.content.substring(msg.content.indexOf(' ') + 1);
+    const user     = msg.mentions.users.first() || msg.guild.members.cache.get(userID);
     const args     = msg.content.split(" ").slice(2),
           reason   = args.join(" ");
 
@@ -435,7 +436,7 @@ client.on('message', async message => {
     let NoPermPosition = new Discord.MessageEmbed()
             .setColor(couleur)
             .setTitle("BAN ERREUR")
-            .setDescription("❌ `"+user.tag+"`"+" n'a pas était ban !\n\n **Raison : "+user.toString()+" possède un rôle au dessus du votre !**")
+            .setDescription("❌ "+user.toString()+" n'a pas était ban !\n\n **Raison : "+user.toString()+" possède un rôle au dessus du votre !**")
             .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
             
     if (!user) return msg.channel.send(NoUser).catch(console.error); 
@@ -456,7 +457,7 @@ client.on('message', async message => {
                     .setColor(couleur)
                     .setTitle("BAN")
                     .setDescription("✅ "+user.toString()+" a bien été **BAN** de "+"`"+guild.name+"`"+" !") 
-                    .addField("Membre :", "`"+user.tag+"`")
+                    .addField("Membre :", "`"+member.tag+"`")
                     .addField("Auteur :", "`"+author.tag+"`")
                     .addField("Raison :", "**"+reason+"**")
                     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot) 
@@ -465,7 +466,7 @@ client.on('message', async message => {
                     .setColor(couleur)
                     .setTitle("BAN")
                     .setDescription("✅ "+user.toString()+" a bien été **BAN** de "+"`"+guild.name+"`"+" !") 
-                    .addField("Membre :", "`"+user.tag+"`")
+                    .addField("Membre :", "`"+member.tag+"`")
                     .addField("Auteur :", "`"+author.tag+"`")
                     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)                         
 
