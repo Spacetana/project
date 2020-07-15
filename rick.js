@@ -1566,13 +1566,13 @@ if (msg.content.startsWith(prefix + 'spam')) {
   let erreur3 = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("SPAM ERREUR")
-  .setDescription("❌ Veuillez indiquer un nombre et un msg à spam !\n\nComme ceci : \`r!spam [nombre] [msg]\`")
+  .setDescription("❌ Veuillez indiquer un nombre et un message à spam !\n\nComme ceci : \`r!spam [nombre] [msg]\`")
   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
 
   let erreur = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("SPAM ERREUR")
-  .setDescription("❌ Veuillez indiquer un nombre de msg à spam !")
+  .setDescription("❌ Veuillez indiquer un nombre de message à spam !")
   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
    
   if (!args[0] || !args2) return msg.channel.send(erreur3);
@@ -1588,14 +1588,15 @@ if (msg.content.startsWith(prefix + 'spam')) {
 if (msg.content.startsWith(prefix + 'genmdp')) {
 
   const args     = msg.content.split(" ").slice(1),
-        nlenght  = args.join(" ");      
+        nlenght  = args.join(" "),
+        N        = msg.content.includes("number", "N", "n").slice(2);
         
   let ifN = 'jsp';
 
-     (msg.content.includes("number", "N", "n")) ? ifN = "oui" : ifN = "non";
+     (N) ? ifN = "oui" : ifN = "non";
 
-  if (msg.content.includes("number", "N", "n")) nombre = true;
-  if (!msg.content.includes("number", "N", "n")) nombre = false;
+  if (N) nombre = true;
+  if (N) nombre = false;
 
   var password = generator.generate({length: nlenght, numbers: nombre});
   /*
