@@ -1585,6 +1585,28 @@ if (msg.content.startsWith(prefix + 'spam')) {
 
 }
 
+if (msg.content.startsWith(prefix + 'genmdpN')) {
+
+  const args     = msg.content.split(" ").slice(2),
+        nlenght  = args.join(" ");
+
+  var password = generator.generate({
+    length: nlenght,
+    numbers: true
+  });
+
+
+  let passwordEm = new Discord.MessageEmbed()
+  .setColor(couleur)
+  .setTitle("GEN-MDP")
+  .setDescription("Mot de passe généré : "+"**"+password+"**"+" !")
+  .addField("Nombre de charactère :", "**"+length+"**")
+  .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
+
+  msg.channel.send(passwordEm);
+
+}
+
 });
 
 client.login(token);
