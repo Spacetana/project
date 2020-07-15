@@ -1589,7 +1589,7 @@ if (msg.content.startsWith(prefix + 'genmdp')) {
 
         msgToArray = message.content.split(' ').slice(2);
   const nlenght = Number(msgToArray.pop()),
-        N       = message.content.split(' ').slice(1);
+        N       = message.content.includes("N");
 
   /*
   let nolenght = new Discord.MessageEmbed()
