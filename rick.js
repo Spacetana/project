@@ -4,6 +4,7 @@ const { get }                                         = require('https');
 const superagent                                      = require("superagent");
 const snekfetch                                       = require('snekfetch');
 const p                                               = require('pixula-v2');
+const generator                                       = require('generate-password');
 const client                                          = new Discord.Client({disableMentions: "everyone"});
 
 client.commands = new Discord.Collection()
