@@ -335,7 +335,7 @@ client.on('message', async message => {
 
   if (msg.content.startsWith(prefix + 'kick')) {
     const userID   = msg.content.substring(msg.content.indexOf(' ') + 1);
-    const user     = msg.mentions.users.first() || msg.guild.members.cache.get(userID);
+    const user     = msg.mentions.users.first() || msg.guild.users.cache.get(userID);
     const args     = msg.content.split(" ").slice(2),
           reason   = args.join(" ");
 
