@@ -1560,7 +1560,7 @@ if (msg.content.startsWith(prefix + 'spam')) {
   let erreur2 = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("SPAM ERREUR")
-  .setDescription("❌ Veuillez indiquer un msg à spam !")
+  .setDescription("❌ Veuillez indiquer un message à spam !")
   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
 
   let erreur3 = new Discord.MessageEmbed()
