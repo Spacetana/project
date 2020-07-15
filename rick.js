@@ -382,7 +382,7 @@ client.on('message', async message => {
                   .setColor(couleur)
                   .setTitle("KICK")
                   .setDescription("✅ "+member.toString()+" a bien été **KICK** de "+"`"+guild.name+"`"+" !") 
-                  .addField("Membre :", "`"+user.tag+"`")
+                  .addField("Membre :", "`"+member.tag+"`")
                   .addField("Auteur :", "`"+author.tag+"`")
                   .addField("Raison :", "**"+reason+"**")
                   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot) 
@@ -391,7 +391,7 @@ client.on('message', async message => {
                   .setColor(couleur)
                   .setTitle("KICK")
                   .setDescription("✅ "+member.toString()+" a bien été **KICK** de "+"`"+guild.name+"`"+" !") 
-                  .addField("Membre :", "`"+user.tag+"`")
+                  .addField("Membre :", "`"+member.tag+"`")
                   .addField("Auteur :", "`"+author.tag+"`")
                   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)                         
 
