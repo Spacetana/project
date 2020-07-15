@@ -1589,6 +1589,10 @@ if (msg.content.startsWith(prefix + 'genmdp')) {
 
   const args     = msg.content.split(" ").slice(1),
         nlenght  = args.join(" ");      
+        
+  let ifN = 'jsp';
+
+     (msg.content.includes("number", "N", "n")) ? ifN = "oui" : ifN = "non";
 
   if (msg.content.includes("number", "N", "n")) nombre = true;
   if (!msg.content.includes("number", "N", "n")) nombre = false;
@@ -1608,7 +1612,7 @@ if (msg.content.startsWith(prefix + 'genmdp')) {
   .setTitle("GEN-MDP")
   .setDescription("Mot de passe généré : "+"`"+password+"`"+" !")
   .addField("Nombre de charactère :", "**"+nlenght+"**")
-  .addField("Contient des chiffres :", "**"+nombre+"**")
+  .addField("Contient des chiffres :", "**"+ifN+"**")
   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
 
   msg.channel.send(passwordEmN);
