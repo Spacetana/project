@@ -1587,27 +1587,28 @@ if (msg.content.startsWith(prefix + 'spam')) {
 
 if (msg.content.startsWith(prefix + 'genmdp')) {
 
-  const args     = msg.content.split(" ").slice(1),
-        nlenght  = args.join(" "),
-        N        = msg.content.includes("number", "N", "n").slice(2);
-        
-  let ifN = 'jsp';
+        msgToArray = message.content.split(' ');
+  const nlenght = Number(msgToArray.pop()),
+        N       = message.content.split(' ').slice(1);
 
-     (N) ? ifN = "oui" : ifN = "non";
-
-  if (N) nombre = true;
-  if (N) nombre = false;
-
-  var password = generator.generate({length: nlenght, numbers: nombre});
   /*
   let nolenght = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("GEN-MDP ERREUR")
-        .setDescription("❌ Veuillez indiquer un nombre charactère que le **mdp** doit contenir !\n\nComme ceci : `r!genmdp 10`")
+        .setDescription("❌ Veuillez indiquer un nombre de charactère que le **mot-de-passe** doit contenir !\n\nComme ceci : `r!genmdp 10`")
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
-
-  if (nlenght) return msg.channel.send(nolenght)
   */
+  
+  let ifN = 'jsp';
+
+    N ? ifN = "oui" : ifN = "non";
+  
+  if (N) nombre = true;
+  if (!N) nombre = false;
+  if (!N) nlenght = msg.content.split(' ').slice(1);  
+
+  var password = generator.generate({length: nlenght, numbers: nombre});
+
   let passwordEmN = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("GEN-MDP")
