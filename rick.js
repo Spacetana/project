@@ -350,12 +350,6 @@ client.on('message', async message => {
               .setDescription("❌ Je n'ai pas la permission `Expulser des membres` !")
               .setImage("https://cdn.discordapp.com/attachments/730197147441430590/730303919267512370/gif_perm_kick.gif") 
               .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)      
-    
-    let NoPermPosition = new Discord.MessageEmbed()
-              .setColor(couleur)
-              .setTitle("KICK ERREUR")
-              .setDescription("❌ `"+user.tag+"`"+" n'a pas était kick !\n\n **Raison : "+user.toString()+" possède un rôle au dessus du votre !**")
-              .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)     
 
     let NoUser = new Discord.MessageEmbed()
               .setColor(couleur)
@@ -372,6 +366,12 @@ client.on('message', async message => {
       
       if (member) {
               
+        let NoPermPosition = new Discord.MessageEmbed()
+        .setColor(couleur)
+        .setTitle("KICK ERREUR")
+        .setDescription("❌ `"+member.tag+"`"+" n'a pas était kick !\n\n **Raison : "+user.toString()+" possède un rôle au dessus du votre !**")
+        .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)     
+
         if (member.roles.highest.position > msg.member.roles.highest.position) return msg.channel.send(NoPermPosition).catch(console.error);  
 
         member
@@ -381,8 +381,8 @@ client.on('message', async message => {
             let check = new Discord.MessageEmbed()
                   .setColor(couleur)
                   .setTitle("KICK")
-                  .setDescription("✅ "+user.toString()+" a bien été **KICK** de "+"`"+guild.name+"`"+" !") 
-                  .addField("Membre :", "`"+member.substring()+"`")
+                  .setDescription("✅ "+member.toString()+" a bien été **KICK** de "+"`"+guild.name+"`"+" !") 
+                  .addField("Membre :", "`"+user.tag+"`")
                   .addField("Auteur :", "`"+author.tag+"`")
                   .addField("Raison :", "**"+reason+"**")
                   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot) 
@@ -390,7 +390,7 @@ client.on('message', async message => {
             let checksansraison = new Discord.MessageEmbed()
                   .setColor(couleur)
                   .setTitle("KICK")
-                  .setDescription("✅ "+user.toString()+" a bien été **KICK** de "+"`"+guild.name+"`"+" !") 
+                  .setDescription("✅ "+member.toString()+" a bien été **KICK** de "+"`"+guild.name+"`"+" !") 
                   .addField("Membre :", "`"+user.tag+"`")
                   .addField("Auteur :", "`"+author.tag+"`")
                   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)                         
