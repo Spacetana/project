@@ -1587,7 +1587,7 @@ if (msg.content.startsWith(prefix + 'spam')) {
 
 if (msg.content.startsWith(prefix + 'genmdp')) {
 
-        msgToArray = message.content.split(' ').slice(2);
+        msgToArray = message.content.split(' ').slice(1);
   const nlenght = Number(msgToArray.pop()),
         N       = message.content.includes("N");
 
