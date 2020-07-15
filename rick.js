@@ -334,7 +334,8 @@ client.on('message', async message => {
   if (!msg.guild) return;
 
   if (msg.content.startsWith(prefix + 'kick')) {
-    const user     = msg.mentions.users.first();
+    const userID   = msg.content.substring(msg.content.indexOf(' ') + 1);
+    const user     = msg.mentions.users.first() || msg.guild.members.cache.get(userID);
     const args     = msg.content.split(" ").slice(2),
           reason   = args.join(" ");
 
@@ -351,6 +352,12 @@ client.on('message', async message => {
               .setImage("https://cdn.discordapp.com/attachments/730197147441430590/730303919267512370/gif_perm_kick.gif") 
               .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)      
     
+    let NoPermPosition = new Discord.MessageEmbed()
+              .setColor(couleur)
+              .setTitle("KICK ERREUR")
+              .setDescription("❌ `"+user.tag+"`"+" n'a pas était kick !\n\n **Raison : "+user.toString()+" possède un rôle au dessus du votre !**")
+              .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)     
+
     let NoUser = new Discord.MessageEmbed()
               .setColor(couleur)
               .setTitle("KICK ERREUR")
@@ -365,19 +372,7 @@ client.on('message', async message => {
       const member = msg.guild.member(user);
       
       if (member) {
-    
-        let NoPermPosition = new Discord.MessageEmbed()
-                        .setColor(couleur)
-                        .setTitle("KICK ERREUR")
-                        .setDescription("❌ `"+user.tag+"`"+" n'a pas était kick !\n\n **Raison : "+user.toString()+" possède un rôle au dessus du votre !**")
-                        .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
-
-        let SameRolePosition = new Discord.MessageEmbed()
-                        .setColor(couleur)
-                        .setTitle("KICK ERREUR")
-                        .setDescription("❌ `"+user.tag+"`"+" n'a pas était kick !\n\n **Raison : "+user.toString()+" possède un rôle au même niveau que le votre !**")
-                        .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)                                         
-  
+              
         if (member.roles.highest.position > msg.member.roles.highest.position) return msg.channel.send(NoPermPosition).catch(console.error);  
 
         member
@@ -394,19 +389,19 @@ client.on('message', async message => {
                   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot) 
 
             let checksansraison = new Discord.MessageEmbed()
-                            .setColor(couleur)
-                            .setTitle("KICK")
-                            .setDescription("✅ "+user.toString()+" a bien été **KICK** de "+"`"+guild.name+"`"+" !") 
-                            .addField("Membre :", "`"+user.tag+"`")
-                            .addField("Auteur :", "`"+author.tag+"`")
-                            .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)                         
+                  .setColor(couleur)
+                  .setTitle("KICK")
+                  .setDescription("✅ "+user.toString()+" a bien été **KICK** de "+"`"+guild.name+"`"+" !") 
+                  .addField("Membre :", "`"+user.tag+"`")
+                  .addField("Auteur :", "`"+author.tag+"`")
+                  .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)                         
 
-              if (!reason) return msg.channel.send(checksansraison);        
-              if (reason) return msg.channel.send(check);
-            }).catch(err => {console.log(err)});
-          }
-        } 
-      }
+            if (!reason) return msg.channel.send(checksansraison);        
+            if (reason) return msg.channel.send(check);
+          }).catch(err => {console.log(err)});
+        }
+      } 
+    }
 
   if (msg.content.startsWith(prefix + 'ban')) {
     
