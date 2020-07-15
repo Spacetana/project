@@ -506,13 +506,13 @@ client.on('message', async message => {
             
     let erreurBot = new Discord.MessageEmbed()
             .setColor("YELLOW")
-            .setTitle("ERREUR")
+            .setTitle("MUTE ERREUR")
             .setDescription(`❌ Je ne peux pas **mute** un bot !`)
             .setFooter('Saitama ©️ Copyright : Atsuki \\/ Needles', message.author.displayAvatarURL({dynamic: true}))
         
     let erreurDejaMute = new Discord.MessageEmbed()
             .setColor("YELLOW")
-            .setTitle("ERREUR")
+            .setTitle("MUTE ERREUR")
             .setDescription(`❌ L'utilisateur est déjà **mute** !`)
             .setFooter('Saitama ©️ Copyright : Atsuki \\/ Needles', message.author.displayAvatarURL({dynamic: true}))            
                 
