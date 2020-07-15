@@ -749,7 +749,7 @@ if (msg.content.startsWith(prefix + "himg")) {
             
         let image = new Discord.MessageEmbed()
         .setColor(couleur)
-        .setTitle("HENTAI")
+        .setTitle("HENTAI ALL")
         .setImage(res.body.message)
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
@@ -794,7 +794,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
 
       let imageE = new Discord.MessageEmbed()
       .setColor(couleur)
-      .setTitle("HFUCK")
+      .setTitle("FUCK")
       .setImage(img.url)
       .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
   
@@ -813,7 +813,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
   
       let imageE = new Discord.MessageEmbed()
       .setColor(couleur)
-      .setTitle("HANAL")
+      .setTitle("ANAL")
       .setImage(img.url)
       .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     
@@ -832,7 +832,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
   
       let imageE = new Discord.MessageEmbed()
       .setColor(couleur)
-      .setTitle("HGIF")
+      .setTitle("HENTAI GIF")
       .setImage(img.url)
       .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     
@@ -851,7 +851,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
   
       let imageE = new Discord.MessageEmbed()
       .setColor(couleur)
-      .setTitle("HCUM")
+      .setTitle("CUM")
       .setImage(img.url)
       .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     
@@ -870,7 +870,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
   
       let imageE = new Discord.MessageEmbed()
       .setColor(couleur)
-      .setTitle("HLEWD")
+      .setTitle("LEWD")
       .setImage(img.url)
       .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     
