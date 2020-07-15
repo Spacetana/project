@@ -369,7 +369,7 @@ client.on('message', async message => {
         let NoPermPosition = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("KICK ERREUR")
-        .setDescription("❌ `"+member.tag+"`"+" n'a pas était kick !\n\n **Raison : "+user.toString()+" possède un rôle au dessus du votre !**")
+        .setDescription("❌ "+member.toString()+" n'a pas était kick !\n\n **Raison : "+user.toString()+" possède un rôle au dessus du votre !**")
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)     
 
         if (member.roles.highest.position > msg.member.roles.highest.position) return msg.channel.send(NoPermPosition).catch(console.error);  
@@ -426,12 +426,6 @@ client.on('message', async message => {
             .setTitle("BAN ERREUR")
             .setDescription("❌ Vous n'avez pas mentionné l'utilisateur à **ban** !")    
             .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
-                
-    let NoPermPosition = new Discord.MessageEmbed()
-            .setColor(couleur)
-            .setTitle("BAN ERREUR")
-            .setDescription("❌ "+user.toString()+" n'a pas était ban !\n\n **Raison : "+user.toString()+" possède un rôle au dessus du votre !**")
-            .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
             
     if (!user) return msg.channel.send(NoUser).catch(console.error); 
     if (!msg.member.hasPermission("BAN_MEMBERS")) return msg.channel.send(NoPerm).catch(console.error); 
@@ -441,6 +435,12 @@ client.on('message', async message => {
       const member = guild.member(user);
       if (member) {
  
+        let NoPermPosition = new Discord.MessageEmbed()
+        .setColor(couleur)
+        .setTitle("BAN ERREUR")
+        .setDescription("❌ "+member.toString()+" n'a pas était ban !\n\n **Raison : "+user.toString()+" possède un rôle au dessus du votre !**")
+        .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
+
         if (member.roles.highest.position > msg.member.roles.highest.position) return msg.channel.send(NoPermPosition).catch(console.error);   
 
         member
@@ -450,7 +450,7 @@ client.on('message', async message => {
               let check = new Discord.MessageEmbed()
                     .setColor(couleur)
                     .setTitle("BAN")
-                    .setDescription("✅ "+user.toString()+" a bien été **BAN** de "+"`"+guild.name+"`"+" !") 
+                    .setDescription("✅ "+member.toString()+" a bien été **BAN** de "+"`"+guild.name+"`"+" !") 
                     .addField("Membre :", "`"+member.tag+"`")
                     .addField("Auteur :", "`"+author.tag+"`")
                     .addField("Raison :", "**"+reason+"**")
@@ -459,7 +459,7 @@ client.on('message', async message => {
               let checksansraison = new Discord.MessageEmbed()
                     .setColor(couleur)
                     .setTitle("BAN")
-                    .setDescription("✅ "+user.toString()+" a bien été **BAN** de "+"`"+guild.name+"`"+" !") 
+                    .setDescription("✅ "+member.toString()+" a bien été **BAN** de "+"`"+guild.name+"`"+" !") 
                     .addField("Membre :", "`"+member.tag+"`")
                     .addField("Auteur :", "`"+author.tag+"`")
                     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)                         
