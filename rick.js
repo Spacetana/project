@@ -501,23 +501,63 @@ client.on('message', async message => {
     let NoPermPosition = new Discord.MessageEmbed()
             .setColor(couleur)
             .setTitle("MUTE ERREUR")
-            .setDescription("❌ `"+user.tag+"`"+" n'a pas était mute !\n\n **Raison : "+user.toString()+" possède un rôle au dessus du votre !**")
-            .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)          
+            .setDescription("❌ `"+user.tag+"`"+" n'a pas était **mute** !\n\n **Raison : "+user.toString()+" possède un rôle au dessus du votre !**")
+            .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)  
+            
+    let erreurBot = new Discord.MessageEmbed()
+            .setColor("YELLOW")
+            .setTitle("ERREUR")
+            .setDescription(`❌ Je ne peux pas **mute** un bot !`)
+            .setFooter('Saitama ©️ Copyright : Atsuki \\/ Needles', message.author.displayAvatarURL({dynamic: true}))
+        
+    let erreurDejaMute = new Discord.MessageEmbed()
+            .setColor("YELLOW")
+            .setTitle("ERREUR")
+            .setDescription(`❌ L'utilisateur est déjà **mute** !`)
+            .setFooter('Saitama ©️ Copyright : Atsuki \\/ Needles', message.author.displayAvatarURL({dynamic: true}))            
                 
     if (!user) return msg.channel.send(NoUser).catch(console.error);
     if (!msg.member.hasPermission("MANAGE_ROLES")) return msg.channel.send(NoPerm).catch(console.error); 
-    if (!guild.me.hasPermission("MANAGE_ROLES")) return msg.channel.send(NoPermBot).catch(console.error);  
+    if (!msg.guild.me.hasPermission("MANAGE_ROLES")) return msg.channel.send(NoPermBot).catch(console.error);  
 
     if (user) {
       const member = msg.guild.member(user);
-      if (member) { 
-        if (member.roles.highest.position > member.roles.highest.position) return msg.channel.send(NoPermPosition).catch(console.error);
+      const muteRole = msg.guild.roles.cache.find(role => role.position < msg.guild.me.roles.highest.position && role.name === 'Muted')
+ 
+      if (!muteRole) muteRole = msg.guild.roles.create({data: {name: "🔻┊MutedBySaitama", color: "000001"}, reason: "Role muted introuvable, un rôle pour le remplacer a été crée"}).catch(console.error);
+      if (member.roles.cache.has(muteRole.id)) return msg.channel.send(erreurDejaMute).catch(console.error);
+      if (member.roles.highest.position > member.roles.highest.position) return msg.channel.send(NoPermPosition).catch(console.error);
+      if (member.user.bot) return msg.channel.send(erreurBot).catch(console.error);
 
+      if (member) {
 
+        member
+          .roles.add(muteRole, reason)
+          .then(() => {
 
-      }
-    }      
-  }  
+              let check = new Discord.MessageEmbed()
+                    .setColor(couleur)
+                    .setTitle("MUTE")
+                    .setDescription("✅ "+user.toString()+" a bien été **MUTE** dans "+"`"+guild.name+"`"+" !") 
+                    .addField("Membre :", "`"+user.tag+"`")
+                    .addField("Auteur :", "`"+author.tag+"`")
+                    .addField("Raison :", "**"+reason+"**")
+                    .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot) 
+
+              let checksansraison = new Discord.MessageEmbed()
+                    .setColor(couleur)
+                    .setTitle("MUTE")
+                    .setDescription("✅ "+user.toString()+" a bien été **MUTE** dans "+"`"+guild.name+"`"+" !") 
+                    .addField("Membre :", "`"+user.tag+"`")
+                    .addField("Auteur :", "`"+author.tag+"`")
+                    .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)                         
+
+              if (!reason) return msg.channel.send(checksansraison);        
+              if (reason) return msg.channel.send(check);
+            }).catch(err => {console.log(err)});       
+          }
+        }      
+      }  
     
   if (msg.content.startsWith(prefix + 'pp') || msg.content.startsWith(prefix + 'avatar')) {
     
