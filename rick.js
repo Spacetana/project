@@ -382,8 +382,8 @@ client.on('message', async message => {
                   .setColor(couleur)
                   .setTitle("KICK")
                   .setDescription("✅ "+member.toString()+" a bien été **KICK** de "+"`"+guild.name+"`"+" !") 
-                  .addField("Membre :", member.toString())
-                  .addField("Auteur :", author.toString())
+                  .addField("Membre :", member.toString()+"("+member.tag+")")
+                  .addField("Auteur :", author.toString()+"("+author.tag+")")
                   .addField("Raison :", "**"+reason+"**")
                   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot) 
 
@@ -391,8 +391,8 @@ client.on('message', async message => {
                   .setColor(couleur)
                   .setTitle("KICK")
                   .setDescription("✅ "+member.toString()+" a bien été **KICK** de "+"`"+guild.name+"`"+" !") 
-                  .addField("Membre :", member.toString())
-                  .addField("Auteur :", author.toString())
+                  .addField("Membre :", member.toString()+"("+member.tag+")")
+                  .addField("Auteur :", author.toString()+"("+author.tag+")")
                   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)                         
 
             if (!reason) return msg.channel.send(checksansraison);        
