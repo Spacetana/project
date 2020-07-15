@@ -529,7 +529,6 @@ client.on('message', async message => {
 		    if (member.roles.highest.position > message.member.roles.highest.position) return message.channel.send(NoPermPosition).catch(console.error);
         if (member.user.bot) return message.channel.send(erreurBot).catch(console.error);
 
-
         if (!muteRole) {
           try {
             muteRole = msg.guild.roles.create({
@@ -538,8 +537,8 @@ client.on('message', async message => {
                 color: couleur}, 
                 reason: "Role muted introuvable, un rôle pour le remplacer a été crée"
               }).catch(console.error);
-              message.guild.channels.cache.forEach(async (channel, id) => {
-                await channel.updateOverwrite(muteRole, {
+              message.guild.channels.cache.forEach(channel => {
+                channel.updateOverwrite(muteRole, {
                   SEND_MESSAGES: false,
                   ADD_REACTIONS: false,
                   CONNECT: false
