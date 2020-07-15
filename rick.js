@@ -1599,7 +1599,7 @@ if (msg.content.startsWith(prefix + 'genmdpN')) {
   .setColor(couleur)
   .setTitle("GEN-MDP")
   .setDescription("Mot de passe généré : "+"**"+password+"**"+" !")
-  .addField("Nombre de charactère :", "**"+length+"**")
+  .addField("Nombre de charactère :", "**"+nlenght+"**")
   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
 
   msg.channel.send(passwordEm);
