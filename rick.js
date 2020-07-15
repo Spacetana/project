@@ -1585,7 +1585,7 @@ if (msg.content.startsWith(prefix + 'spam')) {
 
 }
 
-if (msg.content.startsWith(prefix + 'genmdpN')) {
+if (msg.content.startsWith(prefix + 'genmdp')) {
 
   const args     = msg.content.split(" ").slice(1),
         nlenght  = args.join(" ");
