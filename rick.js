@@ -383,7 +383,7 @@ client.on('message', async message => {
                   .setColor(couleur)
                   .setTitle("KICK")
                   .setDescription("✅ "+user.toString()+" a bien été **KICK** de "+"`"+guild.name+"`"+" !") 
-                  .addField("Membre :", "`"+user.tag+"`")
+                  .addField("Membre :", "`"+member.substring()+"`")
                   .addField("Auteur :", "`"+author.tag+"`")
                   .addField("Raison :", "**"+reason+"**")
                   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot) 
