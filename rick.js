@@ -49,7 +49,7 @@ client.on('message', async message => {
     .addField(`\`${PREFIX}help mod\``,    "Vous permet d'accéder à la page d'aide commandes mod")
     .addField(`\`${PREFIX}help fun\``,    "Vous permet d'accéder à la page d'aide des commandes fun")
     .addField(`\`${PREFIX}help love\``,   "Vous permet d'accéder à la page d'aide des commandes love")
-    .addField(`\`${PREFIX}help nsfw\``,   "Vous permet d'accéder à la page d'aide des commandes nsfw🔞")
+  //.addField(`\`${PREFIX}help nsfw\``,   "Vous permet d'accéder à la page d'aide des commandes nsfw🔞")
     .addField(`\`${PREFIX}help hentai\``, "Vous permet d'accéder à la page d'aide des commandes hentai🔞")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
@@ -62,7 +62,7 @@ client.on('message', async message => {
     .addField(`\`${PREFIX}help mod\``, "Vous permet d'accéder à la page d'aide commandes mod")
     .addField(`\`${PREFIX}help fun\``, "Vous permet d'accéder à la page d'aide des commandes fun")
     .addField(`\`${PREFIX}help love\``, "Vous permet d'accéder à la page d'aide des commandes love")
-    .addField(`\`${PREFIX}help nsfw\``, "Vous permet d'accéder à la page d'aide des commandes nsfw🔞")
+  //.addField(`\`${PREFIX}help nsfw\``, "Vous permet d'accéder à la page d'aide des commandes nsfw🔞")
     .addField(`\`${PREFIX}help hentai\``, "Vous permet d'accéder à la page d'aide des commandes hentai🔞")
     .addField("️", "**COMMANDES WHITELIST**")
     .addField(`\`${PREFIX}exec\``, "Vous permet d'exécuter du code en JavaScript !")
@@ -129,6 +129,7 @@ client.on('message', async message => {
     msg.channel.send(mod);
   } 
 
+  /*
   if (msg.content === prefix + 'help nsfw' || msg.content === prefix + 'h nsfw') {
 
     let mod = new Discord.MessageEmbed()
@@ -144,12 +145,13 @@ client.on('message', async message => {
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     msg.channel.send(mod);
   } 
+  */
 
   if (msg.content === prefix + 'help hentai' || msg.content === prefix + 'h hentai') {
 
     let mod = new Discord.MessageEmbed()
     .setColor(couleur)
-    .setTitle("Page 7/"+totalpage+" - Commandes NSFW - Hentai :")
+    .setTitle("Page 6/"+totalpage+" - Commandes NSFW - Hentai :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
     .addField(`\`${PREFIX}hcum\``,     "Vous permet d'afficher un image/gif d'éjaculation")
     .addField(`\`${PREFIX}hgif\``,     "Vous permet d'afficher un gif pornographique random")
@@ -267,7 +269,7 @@ client.on('message', async message => {
         .setColor(couleur)
         .setTitle("ERREUR")
         .setDescription("```SyntaxError: Aucun script n'est détecté veuillez réessayer```\n ❌ **Une erreur a été identifié** ⬆️")
-        .setFooter('Saitama ©️ Copyright : Atsuki \\/ Needles', author.displayAvatarURL({dynamic: true}))
+        .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', author.displayAvatarURL({dynamic: true}))
     
         if (!code) return msg.channel.send(erreur)
   
@@ -277,7 +279,7 @@ client.on('message', async message => {
         .setColor(couleur)
         .setTitle("Évalutation de votre script :")
         .setDescription("```" + args.join(' ') + "```\n ✅ **Votre script fonctionne et n'a pas d'erreur identifié**")
-        .setFooter('Saitama ©️ Copyright : Atsuki \\/ Needles', author.displayAvatarURL({dynamic: true}))
+        .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', author.displayAvatarURL({dynamic: true}))
         msg.channel.send(embed);
   
         //console.log(inspect(evaled));
@@ -290,7 +292,7 @@ client.on('message', async message => {
         .setColor(couleur)
         .setTitle("ERREUR")
         .setDescription("```" + error + "```\n ❌ **Une erreur a était identifié** ⬆️")
-        .setFooter('Saitama ©️ Copyright : Atsuki \\/ Needles', author.displayAvatarURL({dynamic: true}))
+        .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', author.displayAvatarURL({dynamic: true}))
         msg.channel.send(embed);
   
       }
@@ -492,31 +494,31 @@ client.on('message', async message => {
             .setDescription("❌ Je n'ai pas la permission `Gérer les rôles` !")
             .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)      
 
+    let NoPermPosition = new Discord.MessageEmbed()
+            .setColor(couleur)
+            .setTitle("MUTE ERREUR")
+            .setDescription("❌ "+user+" n'a pas était **mute** !\n\n **Raison : "+user+" possède un rôle au dessus du votre !**")
+            .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)  
+
     let NoUser = new Discord.MessageEmbed()
             .setColor(couleur)
             .setTitle("MUTE ERREUR")
             .setDescription("❌ Vous n'avez pas mentionné l'utilisateur à **mute** !")    
             .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
-
-    let NoPermPosition = new Discord.MessageEmbed()
-            .setColor(couleur)
-            .setTitle("MUTE ERREUR")
-            .setDescription("❌ `"+user.tag+"`"+" n'a pas était **mute** !\n\n **Raison : "+user.toString()+" possède un rôle au dessus du votre !**")
-            .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)  
             
     let erreurBot = new Discord.MessageEmbed()
-            .setColor("YELLOW")
+            .setColor(couleur)
             .setTitle("MUTE ERREUR")
             .setDescription(`❌ Je ne peux pas **mute** un bot !`)
-            .setFooter('Saitama ©️ Copyright : Atsuki \\/ Needles', message.author.displayAvatarURL({dynamic: true}))
+            .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', message.author.displayAvatarURL({dynamic: true}))
         
     let erreurDejaMute = new Discord.MessageEmbed()
-            .setColor("YELLOW")
+            .setColor(couleur)
             .setTitle("MUTE ERREUR")
             .setDescription(`❌ L'utilisateur est déjà **mute** !`)
-            .setFooter('Saitama ©️ Copyright : Atsuki \\/ Needles', message.author.displayAvatarURL({dynamic: true}))            
-                
-    if (!user) return msg.channel.send(NoUser).catch(console.error);
+            .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', message.author.displayAvatarURL({dynamic: true}))            
+    
+    if (!user) return msg.channel.send(NoUser).catch(console.error);        
     if (!msg.member.hasPermission("MANAGE_ROLES")) return msg.channel.send(NoPerm).catch(console.error); 
     if (!msg.guild.me.hasPermission("MANAGE_ROLES")) return msg.channel.send(NoPermBot).catch(console.error);  
 
@@ -524,10 +526,19 @@ client.on('message', async message => {
       const member = msg.guild.member(user);
       const muteRole = msg.guild.roles.cache.find(role => role.position < msg.guild.me.roles.highest.position && role.name === 'Muted')
  
-      if (!muteRole) muteRole = msg.guild.roles.create({data: {name: "🔻┊MutedBySaitama", color: "000001"}, reason: "Role muted introuvable, un rôle pour le remplacer a été crée"}).catch(console.error);
+      if (!muteRole) muteRole = msg.guild.roles.create({data: {name: "🔻┊MutedByRick🛸", color: "000001"}, reason: "Role muted introuvable, un rôle pour le remplacer a été crée"}).catch(console.error);
       if (member.roles.cache.has(muteRole.id)) return msg.channel.send(erreurDejaMute).catch(console.error);
       if (member.roles.highest.position > member.roles.highest.position) return msg.channel.send(NoPermPosition).catch(console.error);
       if (member.user.bot) return msg.channel.send(erreurBot).catch(console.error);
+
+      message.guild.channels.cache.forEach(channel => {
+        channel.updateOverwrite(muteRole, {
+          SEND_MESSAGES: false,
+          ADD_REACTIONS: false,
+          CONNECT: false,
+          SPEAK: false
+        }).catch(console.error);
+      });
 
       if (member) {
 
@@ -606,6 +617,8 @@ client.on('message', async message => {
   if (msg.content.startsWith(prefix + "invisible")) {
     msg.channel.send("️");
   }
+ 
+  /*
 
   let nonsfw = new Discord.MessageEmbed()
   .setColor(couleur)
@@ -716,6 +729,7 @@ if (msg.content.startsWith(prefix + "pussy")) {
         if (msg.channel.nsfw) return msg.channel.send(image).catch(console.error);
 });
 }
+*/
 
 if (msg.content.startsWith(prefix + "himg")) {
 
@@ -1539,19 +1553,19 @@ if (msg.content.startsWith(prefix + 'spam')) {
   .setColor(couleur)
   .setTitle("SPAM ERREUR")
   .setDescription(`❌ Veuillez indiquer un msg à spam !`)
-  .setFooter('Saitama ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
+  .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
 
   let erreur3 = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("SPAM ERREUR")
   .setDescription(`❌ Veuillez indiquer un nombre et un msg à spam !\n\nComme ceci \`s!spam [nombre] [msg]\``)
-  .setFooter('Saitama ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
+  .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
 
   let erreur = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("SPAM ERREUR")
   .setDescription(`❌ Veuillez indiquer un nombre de msg à spam !`)
-  .setFooter('Saitama ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
+  .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
    
   if (!args[0] || !args2) return msg.channel.send(erreur3);
   if (!args[0]) return msg.channel.send(erreur);
