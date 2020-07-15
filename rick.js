@@ -1588,8 +1588,7 @@ if (msg.content.startsWith(prefix + 'spam')) {
 if (msg.content.startsWith(prefix + 'genmdp')) {
 
   const args     = msg.content.split(" ").slice(1),
-        nlenght  = args.join(" ");
-
+        nlenght  = args.join(" ");      
 
   if (msg.content.includes("number", "N", "n")) nombre = true;
   if (!msg.content.includes("number", "N", "n")) nombre = false;
@@ -1607,7 +1606,7 @@ if (msg.content.startsWith(prefix + 'genmdp')) {
   let passwordEmN = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("GEN-MDP")
-  .setDescription("Mot de passe généré : "+"**"+password+"**"+" !")
+  .setDescription("Mot de passe généré : "+"`"+password+"`"+" !")
   .addField("Nombre de charactère :", "**"+nlenght+"**")
   .addField("Contient des chiffres :", "**"+nombre+"**")
   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
