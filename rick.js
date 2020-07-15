@@ -334,7 +334,8 @@ client.on('message', async message => {
   if (!msg.guild) return;
 
   if (msg.content.startsWith(prefix + 'kick')) {
-    const user     = msg.mentions.users.first() || msg.content.substring(msg.content.indexOf(' ') + 1);
+    const userID   = msg.content.substring(msg.content.indexOf(' ') + 1); 
+    const user     = msg.mentions.users.first() || message.guild.members.cache.get(userID);
     const args     = msg.content.split(" ").slice(2),
           reason   = args.join(" ");
 
@@ -403,7 +404,8 @@ client.on('message', async message => {
     }
 
   if (msg.content.startsWith(prefix + 'ban')) {
-    const user     = msg.mentions.users.first() || msg.content.substring(msg.content.indexOf(' ') + 1);
+    const userID   = msg.content.substring(msg.content.indexOf(' ') + 1); 
+    const user     = msg.mentions.users.first() || message.guild.members.cache.get(userID);
     const args     = msg.content.split(" ").slice(2),
           reason   = args.join(" ");
 
@@ -425,7 +427,7 @@ client.on('message', async message => {
             .setDescription("❌ Vous n'avez pas mentionné l'utilisateur à **ban** !")    
             .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
             
-    if (!user) return msg.channel.send(NoUser).catch(console.error); 
+    if (!user && userID) return msg.channel.send(NoUser).catch(console.error); 
     if (!msg.member.hasPermission("BAN_MEMBERS")) return msg.channel.send(NoPerm).catch(console.error); 
     if (!guild.me.hasPermission("BAN_MEMBERS")) return msg.channel.send(NoPermBot).catch(console.error);
 
@@ -470,8 +472,8 @@ client.on('message', async message => {
       }
 
   if (msg.content.startsWith(prefix + 'mute')) {
-
-    const user     = msg.mentions.users.first() || msg.content.substring(msg.content.indexOf(' ') + 1);
+    const userID   = msg.content.substring(msg.content.indexOf(' ') + 1); 
+    const user     = msg.mentions.users.first() || message.guild.members.cache.get(userID);
     const args     = msg.content.split(" ").slice(2),
           reason   = args.join(" ");
 
