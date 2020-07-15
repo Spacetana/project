@@ -1598,14 +1598,15 @@ if (msg.content.startsWith(prefix + 'genmdp')) {
         .setDescription("❌ Veuillez indiquer un nombre de charactère que le **mot-de-passe** doit contenir !\n\nComme ceci : `r!genmdp 10`")
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
   */
-  
+ 
+  if (!N) nlenght = msg.content.split(' ').slice(1);  
+
   let ifN = 'jsp';
 
     N ? ifN = "oui" : ifN = "non";
   
   if (N) nombre = true;
-  if (!N) nombre = false;
-  if (!N) nlenght = msg.content.split(' ').slice(1);  
+  if (!N) nombre = false; 
 
   var password = generator.generate({length: nlenght, numbers: nombre});
 
