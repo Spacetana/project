@@ -1587,14 +1587,13 @@ if (msg.content.startsWith(prefix + 'spam')) {
 
 if (msg.content.startsWith(prefix + 'genmdpN')) {
 
-  const args     = msg.content.split(" ").slice(2),
+  const args     = msg.content.split(" ").slice(1),
         nlenght  = args.join(" ");
 
   var password = generator.generate({
     length: nlenght,
     numbers: true
   });
-
 
   let passwordEm = new Discord.MessageEmbed()
   .setColor(couleur)
