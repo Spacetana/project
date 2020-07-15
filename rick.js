@@ -426,7 +426,7 @@ client.on('message', async message => {
             .setTitle("BAN ERREUR")
             .setDescription("❌ Vous n'avez pas mentionné l'utilisateur à **ban** !")    
             .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
-            
+
     if (!msg.member.hasPermission("BAN_MEMBERS")) return msg.channel.send(NoPerm).catch(console.error); 
     if (!guild.me.hasPermission("BAN_MEMBERS")) return msg.channel.send(NoPermBot).catch(console.error);           
     if (!user) return msg.channel.send(NoUser).catch(console.error); 
@@ -517,32 +517,44 @@ client.on('message', async message => {
 
       if (member) {
 
+        let muteRole = message.guild.roles.cache.find(role => role.position < message.guild.me.roles.highest.position && role.name === "Muted")
+
         let NoPermPosition = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("MUTE ERREUR")
         .setDescription("❌ "+member.toString()+" n'a pas était **mute** !\n\n **Raison : "+member.toString()+" possède un rôle au dessus du votre !**")
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot) 
 
-        let muteRole = msg.guild.roles.cache.find(role => role.position < msg.guild.me.roles.highest.position && role.name === 'Muted');
-
-        if (!muteRole) muteRole = msg.guild.roles.create({data: {name: "🔻┊MutedByRick🛸", color: "000001"}, reason: "Role muted introuvable, un rôle pour le remplacer a été crée"}).catch(console.error);
-        if (member.roles.cache.has(muteRole.id)) return message.channel.send(erreurDejaMute).catch(console.error);
+        if (member.roles.cache.has(muteRole)) return message.channel.send(erreurDejaMute).catch(console.error);
 		    if (member.roles.highest.position > message.member.roles.highest.position) return message.channel.send(NoPermPosition).catch(console.error);
         if (member.user.bot) return message.channel.send(erreurBot).catch(console.error);
 
-        message.guild.channels.cache.forEach(channels => {
-          channels.updateOverwrite(muteRole, {
-            SEND_MESSAGES: false,
-            ADD_REACTIONS: false,
-            CONNECT: false,
-            SPEAK: false
-          }).catch(console.error);
-        });
 
-        member
+        if (!muteRole) {
+          try {
+            muteRole = msg.guild.roles.create({
+              data: {
+                name: "🔻┊MutedByRick🛸", 
+                color: couleur}, 
+                reason: "Role muted introuvable, un rôle pour le remplacer a été crée"
+              }).catch(console.error);
+              message.guild.channels.cache.forEach(async (channel, id) => {
+                await channel.updateOverwrite(muteRole, {
+                  SEND_MESSAGES: false,
+                  ADD_REACTIONS: false,
+                  CONNECT: false
+                })
+              })
+            } catch(e) {
+              console.log(e.stack);
+            }
+          }
+
+     member
           .roles.add(muteRole, reason)
           .then(() => {
-              let check = new Discord.MessageEmbed()
+
+            let check = new Discord.MessageEmbed()
                     .setColor(couleur)
                     .setTitle("MUTE")
                     .setDescription("✅ "+user.toString()+" a bien été **MUTE** dans "+"`"+guild.name+"`"+" !") 
@@ -551,7 +563,7 @@ client.on('message', async message => {
                     .addField("Raison :", "**"+reason+"**")
                     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot) 
 
-              let checksansraison = new Discord.MessageEmbed()
+            let checksansraison = new Discord.MessageEmbed()
                     .setColor(couleur)
                     .setTitle("MUTE")
                     .setDescription("✅ "+user.toString()+" a bien été **MUTE** dans "+"`"+guild.name+"`"+" !") 
@@ -559,12 +571,12 @@ client.on('message', async message => {
                     .addField("Auteur :", author.toString()+"(`"+author.tag+"`)")
                     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)                         
 
-              if (!reason) return msg.channel.send(checksansraison);        
-              if (reason) return msg.channel.send(check);
-            }).catch(err => {console.log(err)});       
-          }
-        }      
-      }  
+            if (!reason) return msg.channel.send(checksansraison);        
+            if (reason) return msg.channel.send(check);
+          }).catch(err => {console.log(err)});       
+        }
+      }      
+    }  
     
   if (msg.content.startsWith(prefix + 'pp') || msg.content.startsWith(prefix + 'avatar')) {
     
