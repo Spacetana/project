@@ -1651,7 +1651,8 @@ if (client.voice) connection = client.voice.connections.find(connection2 => conn
 
 if (msg.content.startsWith(prefix + 'play')) {
 
-  let link = message.content.subword(1);
+  let args = message.content.split(' ').slice(1),
+      link = args.join(" ");
 
   let connection = await message.member.voice.channel.join().catch(console.error);
   
