@@ -1602,10 +1602,10 @@ if (msg.content.startsWith(prefix + 'genmdp')) {
   let ordre = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("GEN-MDP ERREUR")
-        .setDescription("❌ Vous avez pas mis le bon ordre pour ajouter des nombres !\n\nOrdre : `r!genmdp N 10` ou `r!genmdp S 10` ou `r!genmdp N S 10")
+        .setDescription("❌ Vous n'avez pas mis le bon ordre pour ajouter des nombres ou des symboles !\n\nOrdre : `r!genmdp N 10` ou `r!genmdp S 10` ou `r!genmdp N S 10")
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
 
-  if (message.content.includes(nlenght+N) && message.content.includes(nlenght+S) && message.content.includes(nlenght+N+S)) return msg.channel.send(ordre).catch(console.error);
+  if (nlenght+N, nlenght+S, nlenght+N+S) return msg.channel.send(ordre).catch(console.error);
   if (!nlenght) return msg.channel.send(nolenght).catch(console.error);
 
   let ifN = 'jsp';
