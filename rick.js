@@ -1646,6 +1646,9 @@ if (msg.content.startsWith(prefix + 'genmdp')) {
   msg.channel.send(passwordEmN);
 }
 
+let connection;
+if (client.voice) connection = client.voice.connections.find(connection2 => connection2.channel.guild.id === message.guild.id);
+
 if (msg.content.startsWith(prefix + 'play')) {
 
   let link = msg.content.split(" ").slice(1);
