@@ -1653,7 +1653,7 @@ if (msg.content.startsWith(prefix + 'play')) {
 
   let arg = msg.content.split(" ").slice(1);
 
-  message.member.voice.channel.join().catch(console.error);
+  let connection = await message.member.voice.channel.join().catch(console.error);
   
   let dispatcher = connection.play(ytdl("https://www.youtube.com/watch?v=XEJLuJyxLDE", {filter: 'audioonly'}));
   message.delete().catch(console.error);
