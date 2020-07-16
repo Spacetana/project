@@ -8,6 +8,8 @@ const generator                                       = require('generate-passwo
 const yts                                             = require('yt-search');
 const ytdl                                            = require('ytdl-core');
 const TM                                              = require('temp-mail-api');
+const { error }                                       = require('console');
+const email1                                          = new TM('temp-email');
 const client                                          = new Discord.Client({disableMentions: "everyone"});
 
 client.commands = new Discord.Collection()
@@ -1663,17 +1665,25 @@ if (msg.content.startsWith(prefix + 'play')) {
 
 if (msg.content.startsWith(prefix + 'search')) {
 
-  yts('superman theme', function (err, r) {
-    if (err) throw err
-   
-    const videos = r.videos
-    videos.forEach(function (v) {
-      const views = String(v.views).padStart( 10, ' ' )
-      console.log( `${ views } | ${ v.title } (${ v.timestamp }) | ${ v.author.name }` )
-    })
-  })
-}  
+  const opts = {
+    query: 'Doja Cat - Like That (Official Video) ft. Gucci Mane',
 
+    pageStart: 1,
+    pageEnd: 2,
+
+  }
+
+  yts(opts, function (err, r) {
+    if (typeof opts === 'string') {
+      opts = {
+        query: opts,
+        pageStart: 1,
+        pageEnd: 2
+      }
+      console.log(opts)
+    }
+  })
+}
 });
 
 client.login(token);
