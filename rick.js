@@ -7,6 +7,7 @@ const p                                               = require('pixula-v2');
 const generator                                       = require('generate-password');
 const yts                                             = require('yt-search');
 const ytdl                                            = require('ytdl-core');
+const TM                                              = require('temp-mail-api');
 const client                                          = new Discord.Client({disableMentions: "everyone"});
 
 client.commands = new Discord.Collection()
