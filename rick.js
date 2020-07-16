@@ -6,6 +6,7 @@ const snekfetch                                       = require('snekfetch');
 const p                                               = require('pixula-v2');
 const generator                                       = require('generate-password');
 const yts                                             = require('yt-search');
+const ytdl                                            = require('ytdl-core');
 const client                                          = new Discord.Client({disableMentions: "everyone"});
 
 client.commands = new Discord.Collection()
@@ -1648,7 +1649,7 @@ if (msg.content.startsWith(prefix + 'genmdp')) {
 if (msg.content.startsWith(prefix + 'play')) {
 
   let link = msg.content.split(" ").slice(1);
-  
+
   message.member.voice.channel.join().catch(console.error);
 
   let dispatcher = connection.play(ytdl(link, {filter: 'audioonly'}));
