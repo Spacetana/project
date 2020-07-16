@@ -7,12 +7,15 @@
     "start": "node rick.js"
   },
   "dependencies": {
+    "@discordjs/opus": "^0.3.2",
     "an-random": "^0.1.1",
     "discord.js": "12.2.0",
+    "ffmpeg-static": "^4.2.5",
     "generate-password": "^1.5.1",
     "neko-love": "^2.0.2",
     "nekos.life": "^2.0.7",
     "npmporn": "^1.0.3",
+    "opusscript": "0.0.7",
     "pixula-v2": "^1.0.5",
     "pornhub-api": "0.0.1",
     "pornhub.js": "^0.2.2",
