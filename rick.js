@@ -104,7 +104,7 @@ client.on('message', async message => {
     .setColor(couleur)
     .setTitle("Page 4/"+totalpage+" - Commandes FUN :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
-    .addField(`\`${PREFIX}8ball [question]\``, "Permet de poser une question lambda au bot")
+    .addField(`\`${PREFIX}8ball [question]\``, "Permet de poser une question random au bot")
     .addField(`\`${PREFIX}invisible\``, "Permet de faire envoyer un msg totalement invisible par le bot")
     .addField(`\`${PREFIX}genmdp (N) (S)\``, "Permet de générer un MDP**(N = ajout de nombre | S = ajout de symbole)**")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
