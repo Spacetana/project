@@ -1597,7 +1597,7 @@ if (msg.content.startsWith(prefix + 'genmdp')) {
   let nolenght = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("GEN-MDP ERREUR")
-        .setDescription("❌ Veuillez indiquer un nombre de charactère que le **mot-de-passe** doit contenir !\n\nComme ceci : `r!genmdp 10`")
+        .setDescription("❌ Veuillez indiquer un nombre de charactère que le **mot-de-passe** doit contenir !\n\n(option indiqué dans l'exemple)\n\nComme ceci : `r!genmdp (N) (S) 10`")
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
 
   let ordre = new Discord.MessageEmbed()
@@ -1605,8 +1605,9 @@ if (msg.content.startsWith(prefix + 'genmdp')) {
         .setTitle("GEN-MDP ERREUR")
         .setDescription("❌ Vous n'avez pas mis le bon ordre pour ajouter des nombres ou des symboles !\n\nOrdre : `r!genmdp N 10` ou `r!genmdp S 10` ou `r!genmdp N S 10")
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
-
-  if (nlenght+N, nlenght+S, nlenght+N+S) return msg.channel.send(ordre).catch(console.error);
+  
+  if (num > 100) return message.channel.send(erreur2).then(message => {message.delete({timeout: 4000}).catch(console.error);});
+  if (nlenght < 1) return message.channel.send(erreur4).then(message => {message.delete({timeout: 4000}).catch(console.error);});
   if (!nlenght) return msg.channel.send(nolenght).catch(console.error);
 
   let ifN = 'jsp';
