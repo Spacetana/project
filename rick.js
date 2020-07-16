@@ -1612,8 +1612,8 @@ if (msg.content.startsWith(prefix + 'genmdp')) {
         .setDescription("❌ Vous avez indiqué un nombre de charactère trop petit !\n\n Limit : Le nombre de charactère maximum est compris entre `1` et `100`")
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))        
   
-  if (nlenght > 100) return message.channel.send(limit).then(message => {message.delete({timeout: 4000}).catch(console.error);});
-  if (nlenght < 1) return message.channel.send(petit).then(message => {message.delete({timeout: 4000}).catch(console.error);});
+  if (nlenght > 100) return message.channel.send(limit).catch(console.error);
+  if (nlenght < 1) return message.channel.send(petit).catch(console.error);
   if (!nlenght) return msg.channel.send(nolenght).catch(console.error);
 
   let ifN = 'jsp';
