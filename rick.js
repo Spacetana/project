@@ -111,7 +111,7 @@ client.on('message', async message => {
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
     .addField(`\`${PREFIX}8ball [question]\``, "Permet de poser une question random au bot")
     .addField(`\`${PREFIX}invisible\``, "Permet de faire envoyer un msg totalement invisible par le bot")
-    .addField(`\`${PREFIX}genmdp (N) (S)\``, "Permet de générer un MDP**(N = ajout de nombre | S = ajout de symbole)**")
+    .addField(`\`${PREFIX}mdp (N) (S) [nombre de charactère]\``, "Permet de générer un MDP**(N = ajout de nombre | S = ajout de symbole)**")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     msg.channel.send(mod);
   }
@@ -1591,7 +1591,7 @@ if (msg.content.startsWith(prefix + 'spam')) {
 
 }
 
-if (msg.content.startsWith(prefix + 'genmdp')) {
+if (msg.content.startsWith(prefix + 'mdp')) {
 
         msgToArray = message.content.split(' ');
   const nlenght = Number(msgToArray.pop()),
@@ -1608,13 +1608,13 @@ if (msg.content.startsWith(prefix + 'genmdp')) {
   let limit = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("GEN-MDP ERREUR")
-        .setDescription("❌ Vous avez indiqué un nombre de charactère trop élevé !\n\n Limit : Le nombre de charactère maximum est compris entre `1` et `100`")
+        .setDescription("❌ Vous avez indiqué un nombre de charactère trop élevé !\n\n Limit : Le nombre de charactère maximum est compris entre `8` et `100`")
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
 
   let petit = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("GEN-MDP ERREUR")
-        .setDescription("❌ Vous avez indiqué un nombre de charactère trop petit !\n\n Limit : Le nombre de charactère maximum est compris entre `1` et `100`")
+        .setDescription("❌ Vous avez indiqué un nombre de charactère trop petit !\n\n Limit : Le nombre de charactère minimum est compris entre `8` et `100`")
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))        
   
   if (nlenght > 100) return message.channel.send(limit).catch(console.error);
@@ -1639,14 +1639,22 @@ if (msg.content.startsWith(prefix + 'genmdp')) {
 
   let passwordEmN = new Discord.MessageEmbed()
   .setColor(couleur)
-  .setTitle("GEN-MDP")
-  .setDescription("Mot de passe généré : "+"`"+password+"`"+" !")
-  .addField("Nombre de charactère :", "**"+nlenght+"**")
-  .addField("Contient des chiffres :", "**"+ifN+"**")
-  .addField("Contient des symboles :", "**"+ifS+"**")
+  .setTitle("MDP")
+  .setDescription("Mot de passe généré :"+"```"+password+"```"+"")
+  .addField("Nombre de charactère :", nlenght)
+  .addField("Contient des chiffres :", ifN)
+  .addField("Contient des symboles :", ifS)
   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
 
-  msg.channel.send(passwordEmN);
+  let check = new Discord.MessageEmbed()
+  .setColor(couleur)
+  .setTitle("MDP")
+  .setDescription("✅ Le mot de passe vous a bien été envoyé par mp !")
+  .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
+
+  msg.author.send(passwordEmN);
+  msg.channel.send(check);
+
 }
 
 let connection;
