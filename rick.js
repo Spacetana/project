@@ -1606,7 +1606,7 @@ if (msg.content.startsWith(prefix + 'genmdp')) {
         .setDescription("❌ Vous avez indiqué un nombre de charactère trop élevé !\n\n Limit : Le nombre de charactère maximum est compris entre `1` et `100`")
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
 
-  let limit = new Discord.MessageEmbed()
+  let petit = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("GEN-MDP ERREUR")
         .setDescription("❌ Vous avez indiqué un nombre de charactère trop petit !\n\n Limit : Le nombre de charactère maximum est compris entre `1` et `100`")
