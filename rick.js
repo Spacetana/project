@@ -1680,8 +1680,13 @@ if (msg.content.startsWith(prefix + 'search')) {
         pageStart: 1,
         pageEnd: 2
       }
-      console.log(opts)
     }
+
+    const videos = r.videos
+    videos.forEach(function (v) {
+      const views = String(v.views).padStart(10, ' ')
+      console.log(`${ views } | ${ v.title } (${ v.timestamp }) | ${ v.author.name }`)
+    })
   })
 }
 });
