@@ -1651,11 +1651,11 @@ if (client.voice) connection = client.voice.connections.find(connection2 => conn
 
 if (msg.content.startsWith(prefix + 'play')) {
 
-  let arg = msg.content.split(" ").slice(1);
+  let arg = msg.content.split(" ");
 
   let connection = await message.member.voice.channel.join().catch(console.error);
   
-  let dispatcher = connection.play(ytdl("https://www.youtube.com/watch?v=XEJLuJyxLDE", {filter: 'audioonly'}));
+  let dispatcher = connection.play(ytdl(arg, {filter: 'audioonly'}));
   message.delete().catch(console.error);
 }  
 
