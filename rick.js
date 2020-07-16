@@ -1658,6 +1658,20 @@ if (msg.content.startsWith(prefix + 'play')) {
   let dispatcher = connection.play(ytdl("https://www.youtube.com/watch?v=XEJLuJyxLDE", {filter: 'audioonly'}));
   message.delete().catch(console.error);
 }  
+
+if (msg.content.startsWith(prefix + 'play')) {
+
+  yts('superman theme', function (err, r) {
+    if (err) throw err
+   
+    const videos = r.videos
+    videos.forEach( function ( v ) {
+      const views = String( v.views ).padStart( 10, ' ' )
+      console.log( `${ views } | ${ v.title } (${ v.timestamp }) | ${ v.author.name }` )
+    })
+  })
+}  
+
 });
 
 client.login(token);
