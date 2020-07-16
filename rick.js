@@ -1589,7 +1589,8 @@ if (msg.content.startsWith(prefix + 'genmdp')) {
 
         msgToArray = message.content.split(' ');
   const nlenght = Number(msgToArray.pop()),
-        N       = message.content.includes("N");
+        N       = message.content.includes("N"),
+        S       = message.content.includes("S");
 
 
   let nolenght = new Discord.MessageEmbed()
@@ -1604,17 +1605,24 @@ if (msg.content.startsWith(prefix + 'genmdp')) {
         .setDescription("❌ Vous avez pas mis le bon ordre pour ajouter des nombres !\n\nOrdre : `r!genmdp N 10`")
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
 
-  if (message.content.includes("10 N")) return msg.channel.send(ordre).catch(console.error);
+  if (message.content.includes(nlenght+"N") && message.content.includes(nlenght+"S")) return msg.channel.send(ordre).catch(console.error);
   if (!nlenght) return msg.channel.send(nolenght).catch(console.error);
 
   let ifN = 'jsp';
 
     N ? ifN = "oui" : ifN = "non";
+
+  let ifS = 'jsp';
+
+    S ? ifS = "oui" : ifS = "non";    
   
+  if (S) symboles = true;
+  if (!S) symboles  = false; 
+
   if (N) nombre = true;
   if (!N) nombre = false; 
 
-  var password = generator.generate({length: nlenght, numbers: nombre});
+  var password = generator.generate({length: nlenght, numbers: nombre, symbols: symboles});
 
   let passwordEmN = new Discord.MessageEmbed()
   .setColor(couleur)
@@ -1622,6 +1630,7 @@ if (msg.content.startsWith(prefix + 'genmdp')) {
   .setDescription("Mot de passe généré : "+"`"+password+"`"+" !")
   .addField("Nombre de charactère :", "**"+nlenght+"**")
   .addField("Contient des chiffres :", "**"+ifN+"**")
+  .addField("Contient des symboles :", "**"+ifS+"**")
   .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
 
   msg.channel.send(passwordEmN);
