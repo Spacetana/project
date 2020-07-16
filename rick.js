@@ -1613,7 +1613,7 @@ if (msg.content.startsWith(prefix + 'genmdp')) {
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))        
   
   if (nlenght > 100) return message.channel.send(limit).catch(console.error);
-  if (nlenght < 1) return message.channel.send(petit).catch(console.error);
+  if (nlenght < 8) return message.channel.send(petit).catch(console.error);
   if (!nlenght) return msg.channel.send(nolenght).catch(console.error);
 
   let ifN = 'jsp';
