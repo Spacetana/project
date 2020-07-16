@@ -1659,14 +1659,14 @@ if (msg.content.startsWith(prefix + 'play')) {
   message.delete().catch(console.error);
 }  
 
-if (msg.content.startsWith(prefix + 'play')) {
+if (msg.content.startsWith(prefix + 'search')) {
 
   yts('superman theme', function (err, r) {
     if (err) throw err
    
     const videos = r.videos
-    videos.forEach( function ( v ) {
-      const views = String( v.views ).padStart( 10, ' ' )
+    videos.forEach(function (v) {
+      const views = String(v.views).padStart( 10, ' ' )
       console.log( `${ views } | ${ v.title } (${ v.timestamp }) | ${ v.author.name }` )
     })
   })
