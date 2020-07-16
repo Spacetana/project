@@ -1591,13 +1591,14 @@ if (msg.content.startsWith(prefix + 'genmdp')) {
   const nlenght = Number(msgToArray.pop()),
         N       = message.content.includes("N");
 
-  /*
+
   let nolenght = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("GEN-MDP ERREUR")
         .setDescription("❌ Veuillez indiquer un nombre de charactère que le **mot-de-passe** doit contenir !\n\nComme ceci : `r!genmdp 10`")
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
-  */
+
+  if (nlenght) return msg.channel.send(nolenght).catch(console.error);
 
   let ifN = 'jsp';
 
