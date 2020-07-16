@@ -1605,7 +1605,7 @@ if (msg.content.startsWith(prefix + 'genmdp')) {
         .setDescription("❌ Vous avez pas mis le bon ordre pour ajouter des nombres !\n\nOrdre : `r!genmdp N 10` ou `r!genmdp S 10` ou `r!genmdp N S 10")
         .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', msg.author.displayAvatarURL({dynamic: true}))
 
-  if (message.content.includes(nlenght+"N") && message.content.includes(nlenght+"S") && message.content.includes(nlenght+" N S")) return msg.channel.send(ordre).catch(console.error);
+  if (message.content.includes(nlenght+N) && message.content.includes(nlenght+S) && message.content.includes(nlenght+N+S)) return msg.channel.send(ordre).catch(console.error);
   if (!nlenght) return msg.channel.send(nolenght).catch(console.error);
 
   let ifN = 'jsp';
