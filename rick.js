@@ -51,11 +51,11 @@ client.on('message', async message => {
     .setTitle("Page 1/"+totalpage+" - Toutes les commandes :")
     .setDescription("**Pour tout problème avec le bot, voici le support** : **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
     .addField(`\`${PREFIX}help\``, "Vous y êtes actuellement")
-    .addField(`\`${PREFIX}help info\``,   "Vous permet d'accéder à la page d'aide commandes info")
-    .addField(`\`${PREFIX}help mod\``,    "Vous permet d'accéder à la page d'aide commandes mod")
+    .addField(`\`${PREFIX}help mod\``,    "Vous permet d'accéder à la page d'aide des commandes mod")
     .addField(`\`${PREFIX}help fun\``,    "Vous permet d'accéder à la page d'aide des commandes fun")
+	.addField(`\`${PREFIX}help info\``,   "Vous permet d'accéder à la page d'aide des commandes info")
     .addField(`\`${PREFIX}help love\``,   "Vous permet d'accéder à la page d'aide des commandes love")
-  //.addField(`\`${PREFIX}help nsfw\``,   "Vous permet d'accéder à la page d'aide des commandes nsfw🔞")
+    .addField(`\`${PREFIX}help nsfw\``,   "Vous permet d'accéder à la page d'aide des commandes nsfw🔞")
     .addField(`\`${PREFIX}help hentai\``, "Vous permet d'accéder à la page d'aide des commandes hentai🔞")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
@@ -64,11 +64,11 @@ client.on('message', async message => {
     .setTitle("Page 1/"+totalpage+" - Toutes les commandes :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
     .addField(`\`${PREFIX}help\``, "Vous y êtes actuellement")
-    .addField(`\`${PREFIX}help info\``, "Vous permet d'accéder à la page d'aide commandes info")
-    .addField(`\`${PREFIX}help mod\``, "Vous permet d'accéder à la page d'aide commandes mod")
-    .addField(`\`${PREFIX}help fun\``, "Vous permet d'accéder à la page d'aide des commandes fun")
+    .addField(`\`${PREFIX}help mod\``,    "Vous permet d'accéder à la page d'aide des commandes mod")
+    .addField(`\`${PREFIX}help fun\``,    "Vous permet d'accéder à la page d'aide des commandes fun")
+	.addField(`\`${PREFIX}help info\``,   "Vous permet d'accéder à la page d'aide des commandes info")
     .addField(`\`${PREFIX}help love\``, "Vous permet d'accéder à la page d'aide des commandes love")
-  //.addField(`\`${PREFIX}help nsfw\``, "Vous permet d'accéder à la page d'aide des commandes nsfw🔞")
+    .addField(`\`${PREFIX}help nsfw\``, "Vous permet d'accéder à la page d'aide des commandes nsfw🔞")
     .addField(`\`${PREFIX}help hentai\``, "Vous permet d'accéder à la page d'aide des commandes hentai🔞")
     .addField("️", "**COMMANDES WHITELIST**")
     .addField(`\`${PREFIX}exec\``, "Vous permet d'exécuter du code en JavaScript !")
@@ -96,8 +96,8 @@ client.on('message', async message => {
     .setColor(couleur)
     .setTitle("Page 3/"+totalpage+" - Commandes INFO :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
-    .addField(`\`${PREFIX}ping\``, "Vous permet d'afficher le temps de latence du bot(MS)")
-    .addField(`\`${PREFIX}pp (@user)\``, "Affiche votre pp ou celle d'un membre mentionné")
+    .addField(`\`${PREFIX}ping\``,       "Vous permet d'afficher le temps de latence du bot(MS)")
+    .addField(`\`${PREFIX}pp (@user)\``, "Affiche votre avatar ou l'avatar d'un membre mentionné")
     .addField(`\`${PREFIX}whitelist (@user)\``, "Vous permet de savoir si un membre ou si vous êtes whitelist dans le bot !")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     msg.channel.send(mod);
@@ -109,8 +109,8 @@ client.on('message', async message => {
     .setColor(couleur)
     .setTitle("Page 4/"+totalpage+" - Commandes FUN :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
-    .addField(`\`${PREFIX}8ball [question]\``, "Permet de poser une question random au bot")
-    .addField(`\`${PREFIX}invisible\``, "Permet de faire envoyer un msg totalement invisible par le bot")
+    .addField(`\`${PREFIX}invisible\``,                          "Permet de faire envoyer un message invisible par le bot")
+    .addField(`\`${PREFIX}8ball [question]\``,                   "Permet de poser n'importe quel question au bot")
     .addField(`\`${PREFIX}mdp (N) (S) [nombre de charactère]\``, "Permet de générer un MDP**(N = ajout de nombre | S = ajout de symbole)**")
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     msg.channel.send(mod);
@@ -136,7 +136,7 @@ client.on('message', async message => {
     msg.channel.send(mod);
   } 
 
-  /*
+  
   if (msg.content === prefix + 'help nsfw' || msg.content === prefix + 'h nsfw') {
 
     let mod = new Discord.MessageEmbed()
@@ -152,13 +152,13 @@ client.on('message', async message => {
     .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
     msg.channel.send(mod);
   } 
-  */
+  
 
   if (msg.content === prefix + 'help hentai' || msg.content === prefix + 'h hentai') {
 
     let mod = new Discord.MessageEmbed()
     .setColor(couleur)
-    .setTitle("Page 6/"+totalpage+" - Commandes NSFW - Hentai :")
+    .setTitle("Page 7/"+totalpage+" - Commandes NSFW - Hentai :")
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/4fZhCWr)**")
     .addField(`\`${PREFIX}hcum\``,     "Vous permet d'afficher un image/gif d'éjaculation")
     .addField(`\`${PREFIX}hgif\``,     "Vous permet d'afficher un gif pornographique random")
@@ -614,7 +614,9 @@ client.on('message', async message => {
 
   if (msg.content.startsWith(prefix + "8ball")) {
 
-    let replies  = ['Oui !', 'Absolument !',"Non !",'Vraiment pas !',"Je pense !", "Arrête de me poser des questions !", "Je suis totalement d'accord", "Hum je vais réfléchir à la question !", "AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH !"];
+    let replies  = ['AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH !', 'Oui !', 'Absolument !', 'Je pense que c\'est possible !', 'Je suis totalement d\'accord !', "Je ne sais pas !", "Vraiment pas !", "Non !", "Impossible que ce soit possible !"];
+    let çava     = ["Je vais bien merci !", "ça va et toi ?", "je vais bien merci et toi ?", "trql et toi ?", "Je vais très bien merci !", "ça va nickel et toi ?"];
+    let tfq      = ["Je subit des améliorations par <@!509115921156014081> !", "Je joue à **Calsh Royale** et toi ?", "je fais rien de spéciale et toi ?"];
     let args     = msg.content.split(" ").slice(1),
         question = args.join(" ");
 
@@ -624,17 +626,17 @@ client.on('message', async message => {
               .setDescription("❌ Veuillez poser une question !")
               .setFooter('Rick🛸 ©️ Copyright : Atsuki \\/ Needles', avatarbot)
 
+    if (message.content.includes("ça va", "ça va ?", "çava?", "çava", "comment tu vas", "comment tu vas ?")) return msg.channel.send(çava[Math.floor(Math.random() * (çava.length))]);
+    if (message.content.includes("tu fais quoi ?", "tfq ?", "tu fais quoi", "tfq", "que fais tu?", "que fais tu", "tu fais quoi de beau ?", "tu fais quoi de beau", "sfq ?", "sfq")) return msg.channel.send(tfq[Math.floor(Math.random() * (tfq.length))]);
     if (!question) return msg.channel.send(NoQuestion);
-    if (question) return msg.channel.send(replies[Math.floor(Math.random() * (replies.length) -1)])
+    if (question) return msg.channel.send(replies[Math.floor(Math.random() * (replies.length))])
   }
 
   if (msg.content.startsWith(prefix + "invisible")) {
     msg.channel.send("️");
   }
- 
-  /*
 
-  let nonsfw = new Discord.MessageEmbed()
+  let nonNsfw = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("NSFW ERREUR")
   .setDescription(msg.channel.toString()+" n'est pas un channel **NSFW** !")
@@ -642,7 +644,7 @@ client.on('message', async message => {
 
   if (msg.content.startsWith(prefix + "4k")) {
 
-    if (!msg.channel.nsfw) return msg.channel.send(nonsfw).catch(console.error);
+    if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
     
     let erreurAPI = new Discord.MessageEmbed()
     .setColor(couleur)
@@ -666,9 +668,10 @@ client.on('message', async message => {
   });
 }
 
+
 if (msg.content.startsWith(prefix + "anal")) {
 
-  if (!msg.channel.nsfw) return msg.channel.send(nonsfw).catch(console.error);
+  if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
   
   let erreurAPI = new Discord.MessageEmbed()
   .setColor(couleur)
@@ -692,9 +695,10 @@ if (msg.content.startsWith(prefix + "anal")) {
 });
 }
 
+
 if (msg.content.startsWith(prefix + "ass")) {
 
-  if (!msg.channel.nsfw) return msg.channel.send(nonsfw).catch(console.error);
+  if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
   
   let erreurAPI = new Discord.MessageEmbed()
   .setColor(couleur)
@@ -720,7 +724,7 @@ if (msg.content.startsWith(prefix + "ass")) {
 
 if (msg.content.startsWith(prefix + "pussy")) {
 
-  if (!msg.channel.nsfw) return msg.channel.send(nonsfw).catch(console.error);
+  if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
   
   let erreurAPI = new Discord.MessageEmbed()
   .setColor(couleur)
@@ -743,11 +747,10 @@ if (msg.content.startsWith(prefix + "pussy")) {
         if (msg.channel.nsfw) return msg.channel.send(image).catch(console.error);
 });
 }
-*/
 
 if (msg.content.startsWith(prefix + "himg")) {
 
-  if (!msg.channel.nsfw) return msg.channel.send(nonsfw).catch(console.error);
+  if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
   
   let erreurAPI = new Discord.MessageEmbed()
   .setColor(couleur)
@@ -773,7 +776,7 @@ if (msg.content.startsWith(prefix + "himg")) {
 
 if (msg.content.startsWith(prefix + "boobs")) {
 
-  if (!msg.channel.nsfw) return msg.channel.send(nonsfw).catch(console.error);
+  if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
   
     let erreurAPI = new Discord.MessageEmbed()
     .setColor(couleur)
@@ -801,7 +804,7 @@ if (msg.content.startsWith(prefix + "boobs")) {
 
 if (msg.content.startsWith(prefix + "hfuck")) {
 
-  if (!msg.channel.nsfw) return msg.channel.send(nonsfw).catch(console.error);
+  if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
   
     async function h(){
       let img = await p.hfuck();
@@ -819,7 +822,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
 
   if (msg.content.startsWith(prefix + "hanal")) {
 
-    if (!msg.channel.nsfw) return msg.channel.send(nonsfw).catch(console.error);
+    if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
     
     async function h(){
       let img = await p.hanal();
@@ -838,7 +841,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
 
   if (msg.content.startsWith(prefix + "hgif")) {
 
-    if (!msg.channel.nsfw) return msg.channel.send(nonsfw).catch(console.error);
+    if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
     
     async function h(){
       let img = await p.hgif();
@@ -857,7 +860,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
 
   if (msg.content.startsWith(prefix + "hcum")) {
 
-    if (!msg.channel.nsfw) return msg.channel.send(nonsfw).catch(console.error);
+    if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
     
     async function h(){
       let img = await p.hcum();
@@ -876,7 +879,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
   
   if (msg.content.startsWith(prefix + "hlewd")) {
 
-    if (!msg.channel.nsfw) return msg.channel.send(nonsfw).catch(console.error);
+    if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
     
     async function h(){
       let img = await p.hlewd();
@@ -895,7 +898,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
 
   if (msg.content.startsWith(prefix + "nekonude")) {
 
-    if (!msg.channel.nsfw) return msg.channel.send(nonsfw).catch(console.error);
+    if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
 
     let erreurAPI = new Discord.MessageEmbed()
     .setColor(couleur)
