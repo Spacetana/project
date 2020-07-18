@@ -721,12 +721,6 @@ if (msg.content.startsWith(prefix + "anal")) {
 if (msg.content.startsWith(prefix + "bdsm")) {
 
   if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
-  
-  let erreurAPI = new Discord.MessageEmbed()
-  .setColor(couleur)
-  .setTitle("BDSM ERREUR")
-  .setDescription("Une erreur est survenue avec l'API !")
-  .setFooter(Copyright, avatarbot)
 
   var subreddits = [
     'bdsm',
@@ -734,8 +728,6 @@ if (msg.content.startsWith(prefix + "bdsm")) {
   ]
 
   var sub = subreddits[Math.round(Math.random() * (subreddits.length - 1))];
-  
-  const { statusCode } = res;
 
   if (statusCode !== 200) return msg.channel.send(erreurAPI).catch(console.error);
 
