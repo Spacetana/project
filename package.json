@@ -6,7 +6,6 @@
     "node": "13.13.0"
   },
   "dependencies": {
-    "@discordjs/opus": "^0.3.2",
     "an-random": "^0.1.1",
     "discord.js": "12.2.0",
     "generate-password": "^1.5.1",
