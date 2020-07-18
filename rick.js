@@ -1754,7 +1754,9 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   .setFooter(Copyright, avatarbot)
 
   if (msg.content.includes("Paris")) return msg.channel.send(ParisEu).catch(console.error);
+  if (msg.content.includes("paris")) return msg.channel.send(ParisEu).catch(console.error);
   if (msg.content.includes("London")) return msg.channel.send(LondonEu).catch(console.error);
+  if (msg.content.includes("london")) return msg.channel.send(LondonEu).catch(console.error);
 
   //Afrique
   var alger = moment.tz("Africa/Algiers").format("**DD/MM/YYYY** - **hh:mm:ss**");
@@ -1774,9 +1776,9 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
 
   if (msg.content.includes("Alger")) return msg.channel.send(AlgerAf).catch(console.error);
   if (msg.content.includes("Casablanca")) return msg.channel.send(CasablancaAf).catch(console.error);
-
+  if (msg.content.includes("alger")) return msg.channel.send(AlgerAf).catch(console.error);
+  if (msg.content.includes("casablanca")) return msg.channel.send(CasablancaAf).catch(console.error);
 }
-
 });
 
 client.login(token);
