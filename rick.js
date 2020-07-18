@@ -15,6 +15,7 @@ const moment                                          = require('moment');
 const tz                                              = require('moment-timezone');
 const { url }                                         = require('inspector');
 const fs                                              = require('fs');
+const { S_IFLNK } = require('constants');
 const client                                          = new Discord.Client({disableMentions: "everyone"});
 
 client.commands = new Discord.Collection()
@@ -1673,47 +1674,6 @@ if (msg.content.startsWith(prefix + 'mdp')) {
   msg.author.send(passwordEmN);
   msg.channel.send(check);
 
-}
-
-let connection;
-if (client.voice) connection = client.voice.connections.find(connection2 => connection2.channel.guild.id === msg.guild.id);
-
-if (msg.content.startsWith(prefix + 'play')) {
-
-  let args = msg.content.split(' ').slice(1),
-      link = args.join(" ");
-
-  let connection = await msg.member.voice.channel.join().catch(console.error);
-  
-  let dispatcher = connection.play(ytdl(link, { filter: format => format.container === 'mp4' }));
-  msg.delete().catch(console.error);
-}  
-
-if (msg.content.startsWith(prefix + 'search')) {
-
-  const opts = {
-    query: 'Doja Cat - Like That (Official Video) ft. Gucci Mane',
-
-    pageStart: 1,
-    pageEnd: 2,
-
-  }
-
-  yts(opts, function (err, r) {
-    if (typeof opts === 'string') {
-      opts = {
-        query: opts,
-        pageStart: 1,
-        pageEnd: 2
-      }
-    }
-
-    const videos = r.videos
-    videos.forEach(function (v) {
-      const views = String(v.views).padStart(10, ' ')
-      console.log(`${ views } | ${ v.title } (${ v.timestamp }) | ${ v.author.name }`)
-    })
-  })
 }
 
 if (msg.content.startsWith(prefix + 'userinfo') || msg.content.startsWith(prefix + 'ui') || msg.content.startsWith(prefix + 'userInfo')) {
