@@ -1,10 +1,10 @@
 {
+
   "name": "rick",
-  "description": "Meilleur bot de tout les temps",
-  "version": "0.6.9",
-  "main": "rick.js",
-  "scripts": {
-    "start": "node rick.js"
+  "description": "meilleur bot de tout le discord ever",
+  "version": "0.7.2",
+  "engines": {
+    "node": "13.13.0"
   },
   "dependencies": {
     "@discordjs/opus": "^0.3.2",
