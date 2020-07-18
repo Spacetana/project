@@ -668,28 +668,30 @@ client.on('message',  async message => {
   if (msg.content.startsWith(prefix + "4k")) {
 
     if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
-    
-    let erreurAPI = new Discord.MessageEmbed()
-    .setColor(couleur)
-    .setTitle("4K ERREUR")
-    .setDescription("Une erreur est survenue avec l'API !")
-    .setFooter(Copyright, avatarbot)
 
-    superagent.get('https://nekobot.xyz/api/image').query({type: '4k'}).end((err, res) => {
-    
-      const { statusCode } = res;
+    var subreddits = [
+      'NSFW_Wallpapers',
+      'SexyWallpapers',
+      'HighResNSFW',
+      'nsfw_hd',
+      'UHDnsfw'
+    ]
 
-      if (statusCode !== 200) return msg.channel.send(erreurAPI).catch(console.error);
-              
-          let image = new Discord.MessageEmbed()
+    var sub = subreddits[Math.round(Math.random() * (subreddits.length - 1))];    
+
+    randomPuppy(sub)
+    .then(url => {
+
+      let image = new Discord.MessageEmbed()
           .setColor(couleur)
           .setTitle("4K")
-          .setImage(res.body.msg)
+          .setImage(url)
           .setFooter(Copyright, avatarbot)
 
-          if (msg.channel.nsfw) return msg.channel.send(image).catch(console.error);
-  });
-}
+      if (msg.channel.nsfw) return msg.channel.send(image).catch(console.error);
+
+    });
+  }
 
 
 if (msg.content.startsWith(prefix + "anal")) {
@@ -728,8 +730,6 @@ if (msg.content.startsWith(prefix + "bdsm")) {
   ]
 
   var sub = subreddits[Math.round(Math.random() * (subreddits.length - 1))];
-
-  if (statusCode !== 200) return msg.channel.send(erreurAPI).catch(console.error);
 
   randomPuppy(sub)
   .then(url => {
