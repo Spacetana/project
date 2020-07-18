@@ -13,7 +13,7 @@ const { error }                                       = require('console');
 const email1                                          = new TM('temp-email');
 const moment                                          = require('moment');
 const tz                                              = require('moment-timezone');
-const { url } = require('inspector');
+const { url }                                         = require('inspector');
 const client                                          = new Discord.Client({disableMentions: "everyone"});
 
 client.commands = new Discord.Collection()
@@ -669,28 +669,24 @@ client.on('message',  async message => {
 
     if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
 
-    var subreddits = [
-      'NSFW_Wallpapers',
-      'SexyWallpapers',
-      'HighResNSFW',
-      'nsfw_hd',
-      'UHDnsfw'
-    ]
+    let erreurAPI = new Discord.MessageEmbed()
+    .setColor(couleur)
+    .setTitle("ANAL ERREUR")
+    .setDescription("Une erreur est survenue avec l'API !")
+    .setFooter(Copyright, avatarbot)
 
-    var sub = subreddits[Math.round(Math.random() * (subreddits.length - 1))];    
+    const { body } = await snekfetch.get("https://nekobot.xyz/api/image?type=4k");
 
-    randomPuppy(sub)
-    .then(url => {
+    const { statusCode } = body;
 
-      let image = new Discord.MessageEmbed()
-          .setColor(couleur)
-          .setTitle("4K")
-          .setImage(url)
-          .setFooter(Copyright, avatarbot)
+    if (statusCode !== 200) return msg.channel.send(erreurAPI).catch(console.error);
 
-      if (msg.channel.nsfw) return msg.channel.send(image).catch(console.error);
-
-    });
+    let image = new Discord.MessageEmbed()
+        .setColor(couleur)
+        .setTitle("4K")
+        .setImage(body.message)
+        .setFooter(Copyright, avatarbot)
+    if (msg.channel.nsfw) return msg.channel.send(image).catch(console.error);
   }
 
 
