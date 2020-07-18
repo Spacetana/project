@@ -716,29 +716,6 @@ if (msg.content.startsWith(prefix + "anal")) {
 });
 }
 
-if (msg.content.startsWith(prefix + "bdsm")) {
-
-  if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
-
-  var subreddits = [
-    'bdsm',
-    'bondage'
-  ]
-
-  var sub = subreddits[Math.round(Math.random() * (subreddits.length - 1))];
-
-  randomPuppy(sub)
-  .then(url => {
-    let assEm = new Discord.MessageEmbed()
-      .setColor(couleur)
-      .setTitle("BDSM")
-      .setImage(url)
-      .setFooter(Copyright, avatarbot)
-
-    if (msg.channel.nsfw) return msg.channel.send(assEm).catch(console.error);
-  })
-}
-
 if (msg.content.startsWith(prefix + "ass")) {
 
   if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
@@ -771,27 +748,19 @@ if (msg.content.startsWith(prefix + "pussy")) {
 
   if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
   
-  let erreurAPI = new Discord.MessageEmbed()
-  .setColor(couleur)
-  .setTitle("PUSSY ERREUR")
-  .setDescription("Une erreur est survenue avec l'API !")
-  .setFooter(Copyright, avatarbot)
-
-  superagent.get('https://nekobot.xyz/api/image').query({type: 'pussy'}).end((err, res) => {
-  
-    const { statusCode } = res;
-
-    if (statusCode !== 200) return msg.channel.send(erreurAPI).catch(console.error);
+  const id = [Math.floor(Math.random() * 4923)];
+  const res = await snekfetch.get(`http://api.opussys.ru/pussys/${id}`);
+  const preview = res.body[0]["PREVIEW".toLowerCase()];
+  const image = `http://media.opussys.ru/${preview}`;
             
-        let image = new Discord.MessageEmbed()
+    let image = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("PUSSY")
-        .setImage(res.body.msg)
+        .setImage(image)
         .setFooter(Copyright, avatarbot)
 
-        if (msg.channel.nsfw) return msg.channel.send(image).catch(console.error);
-});
-}
+    if (msg.channel.nsfw) return msg.channel.send(image).catch(console.error);
+  }
 
 if (msg.content.startsWith(prefix + "himg")) {
 
