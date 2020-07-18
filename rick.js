@@ -47,7 +47,7 @@ client.on('message',  async message => {
       msg         = message,
       guild       = msg.guild,
       author      = msg.author,
-      totalpage   = "8",
+      totalpage   = "7",
       Copyright   = "Rick🛸 ©️ Copyright : Atsuki \\/ Needles",
       villetz     = "Paris/London/Alger/Casablanca",
       mod         = ["ban", "kick", "mute en dev", "clear en dev"];
@@ -63,7 +63,7 @@ client.on('message',  async message => {
     .addField(`\`${PREFIX}help fun\``,      "Vous permet d'accéder à la page d'aide des commandes fun")
 	  .addField(`\`${PREFIX}help info\``,     "Vous permet d'accéder à la page d'aide des commandes info")
     .addField(`\`${PREFIX}help love\``,     "Vous permet d'accéder à la page d'aide des commandes love")
-    .addField(`\`${PREFIX}help nsfw\``,     "Vous permet d'accéder à la page d'aide des commandes nsfw🔞")
+    // .addField(`\`${PREFIX}help nsfw\``,     "Vous permet d'accéder à la page d'aide des commandes nsfw🔞")
     .addField(`\`${PREFIX}help hentai\``,   "Vous permet d'accéder à la page d'aide des commandes hentai🔞")
     .addField(`\`${PREFIX}help timezone\`**(béta)**`, "Vous permet d'accéder à la page d'aide de la commande `r!timezone`")
     .setFooter(Copyright, avatarbot)
@@ -77,7 +77,7 @@ client.on('message',  async message => {
     .addField(`\`${PREFIX}help fun\``,    "Vous permet d'accéder à la page d'aide des commandes fun")
 	  .addField(`\`${PREFIX}help info\``,   "Vous permet d'accéder à la page d'aide des commandes info")
     .addField(`\`${PREFIX}help love\``, "Vous permet d'accéder à la page d'aide des commandes love")
-    .addField(`\`${PREFIX}help nsfw\``, "Vous permet d'accéder à la page d'aide des commandes nsfw🔞")
+    //.addField(`\`${PREFIX}help nsfw\``, "Vous permet d'accéder à la page d'aide des commandes nsfw🔞")
     .addField(`\`${PREFIX}help hentai\``, "Vous permet d'accéder à la page d'aide des commandes hentai🔞")
     .addField(`\`${PREFIX}help timezone\`**(béta)**`, "Vous permet d'accéder à la page d'aide de la commande `r!timezone`")
     .addField("️", "**COMMANDES WHITELIST**")
@@ -160,7 +160,7 @@ client.on('message',  async message => {
   } 
 
   
-  if (msg.content === prefix + 'help nsfw' || msg.content === prefix + 'h nsfw') {
+  /*if (msg.content === prefix + 'help nsfw' || msg.content === prefix + 'h nsfw') {
 
     let nsfw = new Discord.MessageEmbed()
     .setColor(couleur)
@@ -173,7 +173,7 @@ client.on('message',  async message => {
     .addField(`\`${PREFIX}boobs\``,    "Vous permet d'afficher une image pornographique de grosse poitrine")
     .setFooter(Copyright, avatarbot)
     msg.channel.send(nsfw);
-  } 
+  } */
 
   if (msg.content === prefix + 'help hentai' || msg.content === prefix + 'h hentai') {
 
