@@ -14,6 +14,7 @@ const email1                                          = new TM('temp-email');
 const moment                                          = require('moment');
 const tz                                              = require('moment-timezone');
 const { url }                                         = require('inspector');
+const fs                                              = require('fs');
 const client                                          = new Discord.Client({disableMentions: "everyone"});
 
 client.commands = new Discord.Collection()
@@ -1684,7 +1685,7 @@ if (msg.content.startsWith(prefix + 'play')) {
 
   let connection = await msg.member.voice.channel.join().catch(console.error);
   
-  let dispatcher = connection.play(ytdl(link, {filter: 'audioonly'}));
+  let dispatcher = connection.play(ytdl(link, { filter: format => format.container === 'mp4' }));
   msg.delete().catch(console.error);
 }  
 

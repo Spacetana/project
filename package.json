@@ -8,6 +8,7 @@
   "dependencies": {
     "an-random": "^0.1.1",
     "discord.js": "12.2.0",
+    "fs": "0.0.1-security",
     "generate-password": "^1.5.1",
     "moment": "^2.27.0",
     "moment-timezone": "^0.5.31",
