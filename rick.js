@@ -181,7 +181,7 @@ client.on('message',  async message => {
     .setDescription("**Pour tout problème avec le bot, voici le support :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**")
     .addField(`\`${PREFIX}hcum\``,     "Vous permet d'afficher un image/gif d'éjaculation")
     .addField(`\`${PREFIX}hgif\``,     "Vous permet d'afficher un gif pornographique random")
-    .addField(`\`${PREFIX}himg\``,     "Vous permet d'afficher une image/gif pornographique random")
+  //.addField(`\`${PREFIX}himg\``,     "Vous permet d'afficher une image/gif pornographique random")
     .addField(`\`${PREFIX}hlewd\``,    "Vous permet d'afficher un image de personnage féminin dénudée")
     .addField(`\`${PREFIX}nekonude\``, "Vous permet d'afficher une image/gif pornographique de Nekomimi")
     .addField(`\`${PREFIX}hfuck\``,    "Vous permet d'afficher une image/gif pornographique d'acte sexuel")
