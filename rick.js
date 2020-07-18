@@ -4,6 +4,7 @@ const { get }                                         = require('https');
 const superagent                                      = require('superagent');
 const snekfetch                                       = require('snekfetch');
 const p                                               = require('pixula-v2');
+const randomPuppy                                     = require('random-puppy');
 const generator                                       = require('generate-password');
 const yts                                             = require('yt-search');
 const ytdl                                            = require('ytdl-core');
@@ -12,6 +13,7 @@ const { error }                                       = require('console');
 const email1                                          = new TM('temp-email');
 const moment                                          = require('moment');
 const tz                                              = require('moment-timezone');
+const { url } = require('inspector');
 const client                                          = new Discord.Client({disableMentions: "everyone"});
 
 client.commands = new Discord.Collection()
@@ -716,6 +718,38 @@ if (msg.content.startsWith(prefix + "anal")) {
 });
 }
 
+if (msg.content.startsWith(prefix + "bdsm")) {
+
+  if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
+  
+  let erreurAPI = new Discord.MessageEmbed()
+  .setColor(couleur)
+  .setTitle("BDSM ERREUR")
+  .setDescription("Une erreur est survenue avec l'API !")
+  .setFooter(Copyright, avatarbot)
+
+  var subreddits = [
+    'bdsm',
+    'bondage'
+  ]
+
+  var sub = subreddits[Math.round(Math.random() * (subreddits.length - 1))];
+  
+  const { statusCode } = res;
+
+  if (statusCode !== 200) return msg.channel.send(erreurAPI).catch(console.error);
+
+  randomPuppy(sub)
+  .then(url => {
+    let assEm = new Discord.MessageEmbed()
+      .setColor(couleur)
+      .setTitle("BDSM")
+      .setImage(url)
+      .setFooter(Copyright, avatarbot)
+
+    if (msg.channel.nsfw) return msg.channel.send(assEm).catch(console.error);
+  })
+}
 
 if (msg.content.startsWith(prefix + "ass")) {
 
