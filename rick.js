@@ -727,20 +727,22 @@ if (msg.content.startsWith(prefix + "ass")) {
   .setDescription("Une erreur est survenue avec l'API !")
   .setFooter(Copyright, avatarbot)
 
-  superagent.get('https://nekobot.xyz/api/image').query({type: 'ass'}).end((err, res) => {
+  const id = [Math.floor(Math.random() * 4923)];
+  const res = await snekfetch.get(`http://api.obutts.ru/butts/${id}`);
+  const preview = res.body[0]["PREVIEW".toLowerCase()];
+  const image = `http://media.obutts.ru/${preview}`;
   
-    const { statusCode } = res;
+  const { statusCode } = res;
 
-    if (statusCode !== 200) return msg.channel.send(erreurAPI).catch(console.error);
+  if (statusCode !== 200) return msg.channel.send(erreurAPI).catch(console.error);
             
-        let image = new Discord.MessageEmbed()
-        .setColor(couleur)
-        .setTitle("ASS")
-        .setImage(res.body.msg)
-        .setFooter(Copyright, avatarbot)
+    let assEm = new Discord.MessageEmbed()
+      .setColor(couleur)
+      .setTitle("ASS")
+      .setImage(image)
+      .setFooter(Copyright, avatarbot)
 
-        if (msg.channel.nsfw) return msg.channel.send(image).catch(console.error);
-});
+  if (msg.channel.nsfw) return msg.channel.send(assEm).catch(console.error);
 }
 
 if (msg.content.startsWith(prefix + "pussy")) {
