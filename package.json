@@ -10,7 +10,6 @@
     "@discordjs/opus": "^0.3.2",
     "an-random": "^0.1.1",
     "discord.js": "12.2.0",
-    "ffmpeg-static": "^4.2.5",
     "generate-password": "^1.5.1",
     "moment": "^2.27.0",
     "moment-timezone": "^0.5.31",
