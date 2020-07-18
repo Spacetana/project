@@ -753,13 +753,13 @@ if (msg.content.startsWith(prefix + "pussy")) {
   const preview = res.body[0]["PREVIEW".toLowerCase()];
   const image = `http://media.opussys.ru/${preview}`;
             
-    let image = new Discord.MessageEmbed()
+    let pussyEm = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("PUSSY")
         .setImage(image)
         .setFooter(Copyright, avatarbot)
 
-    if (msg.channel.nsfw) return msg.channel.send(image).catch(console.error);
+    if (msg.channel.nsfw) return msg.channel.send(pussyEm).catch(console.error);
   }
 
 if (msg.content.startsWith(prefix + "himg")) {
