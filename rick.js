@@ -1753,7 +1753,7 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   .setDescription("Date et heure actuel à **London**(Europe/Angleterre) : "+london)      
   .setFooter(Copyright, avatarbot)
 
-  if (msg.content.toLowerCase.includes("Paris")) return msg.channel.send(ParisEu).catch(console.error);
+  if (msg.content.toLowerCase().includes("Paris")) return msg.channel.send(ParisEu).catch(console.error);
   if (msg.content.includes("London")) return msg.channel.send(LondonEu).catch(console.error);
 
   //Afrique
