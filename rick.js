@@ -671,7 +671,7 @@ client.on('message',  async message => {
 
     let erreurAPI = new Discord.MessageEmbed()
     .setColor(couleur)
-    .setTitle("ANAL ERREUR")
+    .setTitle("4k ERREUR")
     .setDescription("Une erreur est survenue avec l'API !")
     .setFooter(Copyright, avatarbot)
 
@@ -749,9 +749,9 @@ if (msg.content.startsWith(prefix + "pussy")) {
   if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
   
   const id = [Math.floor(Math.random() * 4923)];
-  const res = await snekfetch.get(`http://api.opussys.ru/pussys/${id}`);
+  const res = await snekfetch.get(`http://api.opussy.ru/pussy/${id}`);
   const preview = res.body[0]["PREVIEW".toLowerCase()];
-  const image = `http://media.opussys.ru/${preview}`;
+  const image = `http://media.opussy.ru/${preview}`;
             
     let pussyEm = new Discord.MessageEmbed()
         .setColor(couleur)
