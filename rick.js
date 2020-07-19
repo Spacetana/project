@@ -1621,19 +1621,19 @@ if (msg.content.startsWith(prefix + 'mdp')) {
   let nolenght = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("GEN-MDP ERREUR")
-        .setDescription("❌ Veuillez indiquer un nombre de charactère que le **mot-de-passe** doit contenir !\n\n(option indiqué dans l'exemple)\n\nCorrection : `r!genmdp (N) (S) 10`")
+        .setDescription("❌ Veuillez indiquer un nombre de charactère que le **mot-de-passe** doit contenir !\n\n(option indiqué dans l'exemple)\n\nCorrection : `r!mdp (N) (S) 10`")
         .setFooter(Copyright, avatarbot)
 
   let limit = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("GEN-MDP ERREUR")
-        .setDescription("❌ Vous avez indiqué un nombre de charactère trop élevé !\n\n Limite : Le nombre de charactère maximum est compris entre `8` et `100`")
+        .setDescription("❌ Vous avez indiqué un nombre de charactère trop élevé !\n\nLimite : Le nombre de charactère maximum est compris entre `8` et `100`")
         .setFooter(Copyright, avatarbot)
 
   let petit = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("GEN-MDP ERREUR")
-        .setDescription("❌ Vous avez indiqué un nombre de charactère trop petit !\n\n Limite : Le nombre de charactère minimum est compris entre `8` et `100`")
+        .setDescription("❌ Vous avez indiqué un nombre de charactère trop petit !\n\nLimite : Le nombre de charactère minimum est compris entre `8` et `100`")
         .setFooter(Copyright, avatarbot)        
   
   if (nlenght > 100) return msg.channel.send(limit).catch(console.error);
