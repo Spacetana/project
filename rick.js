@@ -727,7 +727,6 @@ client.on('message',  async message => {
     let erreurAPI = new Discord.MessageEmbed()
     .setColor(couleur)
     .setTitle("ASS ERREUR")
-    .setDescription(`[LIEN DE L'IMAGE](${image})`)
     .setDescription("Une erreur est survenue avec l'API !")
     .setFooter(Copyright, avatarbot)
 
@@ -743,6 +742,7 @@ client.on('message',  async message => {
       let assEm = new Discord.MessageEmbed()
       .setColor(couleur)
       .setTitle("ASS")
+      .setDescription(`[LIEN DE L'IMAGE](${image})`)
       .setImage(image)
       .setFooter(Copyright, avatarbot)
 
