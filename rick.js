@@ -667,101 +667,59 @@ client.on('message',  async message => {
   .setDescription(msg.channel.toString()+" n'est pas un channel **NSFW** !")
   .setFooter(Copyright, avatarbot)
 
-  if (msg.content.startsWith(prefix + "4k")) {
-
+  if (msg.content.startsWith(prefix + "boobs")) {
     if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
+    
+    let erreurAPI = new Discord.MessageEmbed()
+      .setColor(couleur)
+      .setTitle("BOOBS ERREUR")
+      .setDescription("Une erreur est survenue avec l'API !")
+      .setFooter(Copyright, avatarbot)
+  
+    const id = [Math.floor(Math.random() * 10930)];
+    const res = await snekfetch.get(`http://api.oboobs.ru/boobs/${id}`);
+    const preview = res.body[0]["PREVIEW".toLowerCase()];
+    const image = `http://media.oboobs.ru/${preview}`;
+  
+    const { statusCode } = res;
+  
+    if (statusCode !== 200) return msg.channel.send(erreurAPI).catch(console.error);
+              
+      let imageE = new Discord.MessageEmbed()
+      .setColor(couleur)
+      .setTitle("BOOBS")
+      .setImage(image)
+      .setFooter(Copyright, avatarbot)
+  
+    if (msg.channel.nsfw) return msg.channel.send(imageE).catch(console.error);
+  }
 
+  if (msg.content.startsWith(prefix + "ass")) {
+  
+    if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
+  
     let erreurAPI = new Discord.MessageEmbed()
     .setColor(couleur)
-    .setTitle("4k ERREUR")
+    .setTitle("ASS ERREUR")
     .setDescription("Une erreur est survenue avec l'API !")
     .setFooter(Copyright, avatarbot)
 
-    const { body } = await snekfetch.get("https://nekobot.xyz/api/image?type=4k");
-
-    const { statusCode } = body;
-
-    if (statusCode !== 200) return msg.channel.send(erreurAPI).catch(console.error);
-
-    let image = new Discord.MessageEmbed()
-        .setColor(couleur)
-        .setTitle("4K")
-        .setImage(body.message)
-        .setFooter(Copyright, avatarbot)
-    if (msg.channel.nsfw) return msg.channel.send(image).catch(console.error);
-  }
-
-
-if (msg.content.startsWith(prefix + "anal")) {
-
-  if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
-  
-  let erreurAPI = new Discord.MessageEmbed()
-  .setColor(couleur)
-  .setTitle("ANAL ERREUR")
-  .setDescription("Une erreur est survenue avec l'API !")
-  .setFooter(Copyright, avatarbot)
-
-  superagent.get('https://nekobot.xyz/api/image').query({type: 'anal'}).end((err, res) => {
+    const id = [Math.floor(Math.random() * 4923)];
+    const res = await snekfetch.get(`http://api.obutts.ru/butts/${id}`);
+    const preview = res.body[0]["PREVIEW".toLowerCase()];
+    const image = `http://media.obutts.ru/${preview}`;
   
     const { statusCode } = res;
 
     if (statusCode !== 200) return msg.channel.send(erreurAPI).catch(console.error);
             
-        let image = new Discord.MessageEmbed()
-        .setColor(couleur)
-        .setTitle("ANAL")
-        .setImage(res.body.msg)
-        .setFooter(Copyright, avatarbot)
-
-        if (msg.channel.nsfw) return msg.channel.send(image).catch(console.error);
-});
-}
-
-if (msg.content.startsWith(prefix + "ass")) {
-
-  if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
-  
-  let erreurAPI = new Discord.MessageEmbed()
-  .setColor(couleur)
-  .setTitle("ASS ERREUR")
-  .setDescription("Une erreur est survenue avec l'API !")
-  .setFooter(Copyright, avatarbot)
-
-  const id = [Math.floor(Math.random() * 4923)];
-  const res = await snekfetch.get(`http://api.obutts.ru/butts/${id}`);
-  const preview = res.body[0]["PREVIEW".toLowerCase()];
-  const image = `http://media.obutts.ru/${preview}`;
-  
-  const { statusCode } = res;
-
-  if (statusCode !== 200) return msg.channel.send(erreurAPI).catch(console.error);
-            
-    let assEm = new Discord.MessageEmbed()
+      let assEm = new Discord.MessageEmbed()
       .setColor(couleur)
       .setTitle("ASS")
       .setImage(image)
       .setFooter(Copyright, avatarbot)
 
-  if (msg.channel.nsfw) return msg.channel.send(assEm).catch(console.error);
-}
-
-if (msg.content.startsWith(prefix + "pussy")) {
-
-  if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
-  
-  const id = [Math.floor(Math.random() * 4923)];
-  const res = await snekfetch.get(`http://api.opussy.ru/pussy/${id}`);
-  const preview = res.body[0]["PREVIEW".toLowerCase()];
-  const image = `http://media.opussy.ru/${preview}`;
-            
-    let pussyEm = new Discord.MessageEmbed()
-        .setColor(couleur)
-        .setTitle("PUSSY")
-        .setImage(image)
-        .setFooter(Copyright, avatarbot)
-
-    if (msg.channel.nsfw) return msg.channel.send(pussyEm).catch(console.error);
+    if (msg.channel.nsfw) return msg.channel.send(assEm).catch(console.error);
   }
 
 if (msg.content.startsWith(prefix + "himg")) {
@@ -788,34 +746,6 @@ if (msg.content.startsWith(prefix + "himg")) {
 
         if (msg.channel.nsfw) return msg.channel.send(image).catch(console.error);
 });
-}
-
-if (msg.content.startsWith(prefix + "boobs")) {
-
-  if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
-  
-    let erreurAPI = new Discord.MessageEmbed()
-    .setColor(couleur)
-    .setTitle("BOOBS ERREUR")
-    .setDescription("Une erreur est survenue avec l'API !")
-    .setFooter(Copyright, avatarbot)
-
-  const id = [Math.floor(Math.random() * 10930)];
-  const res = await snekfetch.get(`http://api.oboobs.ru/boobs/${id}`);
-  const preview = res.body[0]["PREVIEW".toLowerCase()];
-  const image = `http://media.oboobs.ru/${preview}`;
-
-  const { statusCode } = res;
-
-  if (statusCode !== 200) return msg.channel.send(erreurAPI).catch(console.error);
-            
-    let imageE = new Discord.MessageEmbed()
-    .setColor(couleur)
-    .setTitle("BOOBS")
-    .setImage(image)
-    .setFooter(Copyright, avatarbot)
-
-  if (msg.channel.nsfw) return msg.channel.send(imageE).catch(console.error);
 }
 
 if (msg.content.startsWith(prefix + "hfuck")) {
