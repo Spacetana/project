@@ -713,7 +713,7 @@ client.on('message',  async message => {
       let imageE = new Discord.MessageEmbed()
       .setColor(couleur)
       .setTitle("BOOBS")
-      .setDescription(`[LIEN DE L'IMAGE](${image})`)
+      .setDescription(`**[LIEN DE L'IMAGE](${image})**`)
       .setImage(image)
       .setFooter(Copyright, avatarbot)
   
@@ -742,7 +742,7 @@ client.on('message',  async message => {
       let assEm = new Discord.MessageEmbed()
       .setColor(couleur)
       .setTitle("ASS")
-      .setDescription(`[LIEN DE L'IMAGE](${image})`)
+      .setDescription(`**[LIEN DE L'IMAGE](${image})**`)
       .setImage(image)
       .setFooter(Copyright, avatarbot)
 
