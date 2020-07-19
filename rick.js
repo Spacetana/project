@@ -59,7 +59,7 @@ client.on('message',  async message => {
     let standard = new Discord.MessageEmbed()
     .setColor(couleur)
     .setTitle("Page 1/"+totalpage+" - Toutes les commandes :")
-    .setDescription("**Pour tout problème avec le bot, voici le support** : **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**")
+    .setDescription("**Pour plus d'information dirigez vous vers le support de Rick\🛸 :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**")
     .addField(`\`${PREFIX}help\``, "Vous y êtes actuellement")
     .addField(`\`${PREFIX}help mod\``,      "Vous permet d'accéder à la page d'aide des commandes mod")
     .addField(`\`${PREFIX}help fun\``,      "Vous permet d'accéder à la page d'aide des commandes fun")
