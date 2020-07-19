@@ -667,31 +667,6 @@ client.on('message',  async message => {
   .setDescription(msg.channel.toString()+" n'est pas un channel **NSFW** !")
   .setFooter(Copyright, avatarbot)
 
-  if (msg.content.startsWith(prefix + "4k")) {
-    if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
-  
-    var subreddits = [
-      'NSFW_Wallpapers',
-      'SexyWallpapers',
-      'HighResNSFW',
-      'nsfw_hd',
-      'UHDnsfw'
-    ]
-
-    var sub = subreddits[Math.round(Math.random() * (subreddits.length - 1))];
-
-    randomPuppy(sub)
-        .then(url => {
-          let embed = new Discord.MessageEmbed()
-              .setTitle(`4K`)
-              .setDescription(`[LIEN DE L'IMAGE](${image})`)
-              .setImage(url)
-              .setColor(couleur)
-              .setFooter(Copyright, avatarbot)
-          return message.channel.send({embed});
-        })
-      }
-
   if (msg.content.startsWith(prefix + "boobs")) {
     if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
     
