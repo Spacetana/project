@@ -667,6 +667,33 @@ client.on('message',  async message => {
   .setDescription(msg.channel.toString()+" n'est pas un channel **NSFW** !")
   .setFooter(Copyright, avatarbot)
 
+  if (msg.content.startsWith(prefix + "anal")) {
+    if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
+    
+    let erreurAPI = new Discord.MessageEmbed()
+      .setColor(couleur)
+      .setTitle("ANAL ERREUR")
+      .setDescription("Une erreur est survenue avec l'API !")
+      .setFooter(Copyright, avatarbot)
+  
+    const id = [Math.floor(Math.random() * 10930)];
+    const res = await snekfetch.get(`http://api.oanal.ru/anal/${id}`);
+    const preview = res.body[0]["PREVIEW".toLowerCase()];
+    const image = `http://media.oboobs.ru/${preview}`;
+  
+    const { statusCode } = res;
+  
+    if (statusCode !== 200) return msg.channel.send(erreurAPI).catch(console.error);
+              
+      let imageE = new Discord.MessageEmbed()
+      .setColor(couleur)
+      .setTitle("ANAL")
+      .setImage(image)
+      .setFooter(Copyright, avatarbot)
+  
+    if (msg.channel.nsfw) return msg.channel.send(imageE).catch(console.error);
+  }
+
   if (msg.content.startsWith(prefix + "boobs")) {
     if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
     
