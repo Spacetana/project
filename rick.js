@@ -684,7 +684,7 @@ client.on('message',  async message => {
         .then(url => {
           let embed = new Discord.MessageEmbed()
               .setTitle(`4K`)
-              .setDescription(`[LIEN DE L'IMAGE](${url})`)
+              .setDescription(`[LIEN DE L'IMAGE](${image})`)
               .setImage(url)
               .setColor(couleur)
               .setFooter(Copyright, avatarbot)
@@ -713,6 +713,7 @@ client.on('message',  async message => {
       let imageE = new Discord.MessageEmbed()
       .setColor(couleur)
       .setTitle("BOOBS")
+      .setDescription(`[LIEN DE L'IMAGE](${image})`)
       .setImage(image)
       .setFooter(Copyright, avatarbot)
   
@@ -726,6 +727,7 @@ client.on('message',  async message => {
     let erreurAPI = new Discord.MessageEmbed()
     .setColor(couleur)
     .setTitle("ASS ERREUR")
+    .setDescription(`[LIEN DE L'IMAGE](${image})`)
     .setDescription("Une erreur est survenue avec l'API !")
     .setFooter(Copyright, avatarbot)
 
