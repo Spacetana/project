@@ -1681,39 +1681,75 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   if (!message.content.includes("Paris", "London", "Alger", "Casablanca")) return msg.channel.send(noville).catch(console.error);
   */
  
+/*
+
+    .addField(":flag_eu: Europe :", europeV)
+    .addField("<:afu:734595847404388434> Afrique :", afriqueV)
+    .addField(":flag_au: Australie : ", australieV)
+    .addField(":flag_us: Amérique :", americaV)
+    .addField(":flag_aq: Antarctique :", antarctiqueV)
+    .addField(":flag_gb: Royaume-Uni :", royaumeuniV)
+
+*/
+
   //Europe
   var paris = moment.tz("Europe/Paris").format("**DD/MM/YYYY** - **hh:mm:ss**");
-  var london = moment.tz("Europe/London").format("**DD/MM/YYYY** - **hh:mm:ss**");
+  var parisd = moment.tz("Europe/Paris").format("DD/MM/YYYY")
+  var parish = moment.tz("Europe/Paris").format("hh:mm:ss")
 
   let ParisEu = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("PARIS")
-  .setDescription("Date et heure actuel à **Paris**(Europe/France) : "+paris)      
+  .setDescription("Date et heure actuel à **Paris** : "+paris)  
+  .addField("Date :", parisd)
+  .addField("Heure :", parish)    
+  .addField("Continent :", ":flag_eu: Europe")
   .setFooter(Copyright, avatarbot)
+
+  if (msg.content.includes("Paris") + msg.content.includes("paris")) return msg.channel.send(ParisEu).catch(console.error);
+
+  //RoyaumeUnis
+
+  var london = moment.tz("Europe/London").format("**DD/MM/YYYY** - **hh:mm:ss**");
+  var londond = moment.tz("Europe/London").format("DD/MM/YYYY")
+  var londonh = moment.tz("Europe/London").format("hh:mm:ss")
 
   let LondonEu = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("LONDON")
-  .setDescription("Date et heure actuel à **London**(Europe/Angleterre) : "+london)      
+  .setDescription("Date et heure actuel à **London** : "+london)
+  .addField("Date :", parisd)
+  .addField("Heure :", parish)
+  .addField("Continent :", ":flag_gb: Royaume-Uni")     
   .setFooter(Copyright, avatarbot)
 
-  if (msg.content.includes("Paris") + msg.content.includes("paris")) return msg.channel.send(ParisEu).catch(console.error);
   if (msg.content.includes("London") + msg.content.includes("london")) return msg.channel.send(LondonEu).catch(console.error);
 
   //Afrique
   var alger = moment.tz("Africa/Algiers").format("**DD/MM/YYYY** - **hh:mm:ss**");
+  var algerd = moment.tz("Africa/Algiers").format("DD/MM/YYYY")
+  var algerh = moment.tz("Africa/Algiers").format("hh:mm:ss")
+
   var casablanca = moment.tz("Africa/Casablanca").format("**DD/MM/YYYY** - **hh:mm:ss**");
+  var casablancad = moment.tz("Africa/Casablanca").format("DD/MM/YYYY")
+  var casablancah = moment.tz("Africa/Casablanca").format("hh:mm:ss")
 
   let AlgerAf = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("ALGER")
-  .setDescription("Date et heure actuel à **Alger**(Afrique/Algérie) : "+alger)      
+  .setDescription("Date et heure actuel à **Alger** : "+alger)
+  .addField("Date :", algerd)
+  .addField("Heure :", algerh)
+  .addField("Continent :", "<:afu:734595847404388434> Afrique")       
   .setFooter(Copyright, avatarbot)
 
   let CasablancaAf = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("CASABLANCA")
-  .setDescription("Date et heure actuel à **Casablanca**(Afrique/Maroc) : "+casablanca)      
+  .setDescription("Date et heure actuel à **Casablanca** : "+casablanca)
+  .addField("Date :", casablancad)
+  .addField("Heure :", casablancah)
+  .addField("Continent :", "<:afu:734595847404388434> Afrique")     
   .setFooter(Copyright, avatarbot)
 
   if (msg.content.includes("Alger") + msg.content.includes("alger")) return msg.channel.send(AlgerAf).catch(console.error);
@@ -1721,22 +1757,33 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
 
   //Australie 
   var sydney = moment.tz("Australia/Sydney").format("**DD/MM/YYYY** - **hh:mm:ss**");
+  var sydneyd = moment.tz("Australia/Sydney").format("DD/MM/YYYY")
+  var sydneyh = moment.tz("Australia/Sydney").format("hh:mm:ss")
 
   let Sydney = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("SYDNEY")
-  .setDescription("Date et heure actuel à **Sydney**(Australie/Sydney) : "+sydney)      
+  .setDescription("Date et heure actuel à **Sydney** : "+sydney)
+  .addField("Date :", sydneyd)
+  .addField("Heure :", sydneyh)
+  .addField("Continent :", ":flag_au: Australie") 
   .setFooter(Copyright, avatarbot)
 
   if (msg.content.includes("Sydney") + msg.content.includes("sydney")) return msg.channel.send(Sydney).catch(console.error);
 
   //Antarctique
   var troll = moment.tz("Antarctica/Troll").format("**DD/MM/YYYY** - **hh:mm:ss**");
+  var trolld = moment.tz("Antarctica/Troll").format("DD/MM/YYYY")
+  var trollh = moment.tz("Antarctica/Troll").format("hh:mm:ss")
+
 
   let Troll = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("TROLL")
-  .setDescription("Date et heure actuel à **Troll**(Antarctique/Troll) : "+troll)      
+  .setDescription("Date et heure actuel à **Troll** : "+troll)
+  .addField("Date :", trolld)
+  .addField("Heure :", trollh)
+  .addField("Continent :", ":flag_aq: Antarctique") 
   .setFooter(Copyright, avatarbot)
 
   if (msg.content.includes("Troll") + msg.content.includes("troll")) return msg.channel.send(Troll).catch(console.error);
@@ -1744,32 +1791,33 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   //America
 
   var denver = moment.tz("America/Denver").format("**DD/MM/YYYY** - **hh:mm:ss**")
+  var denverd = moment.tz("America/Denver").format("DD/MM/YYYY")
+  var denverh = moment.tz("America/Denver").format("hh:mm:ss")
+  //
   var puerto_rico = moment.tz("America/Puerto_Rico").format("**DD/MM/YYYY** - **hh:mm:ss**")
-
-  var denverd = moment.tz("America/Denver").format("**DD/MM/YYYY**")
-  var denverh = moment.tz("America/Denver").format("**hh:mm:ss**")
-
   var puerto_ricod = moment.tz("America/Puerto_Rico").format("DD/MM/YYYY")
   var puerto_ricoh = moment.tz("America/Puerto_Rico").format("hh:mm:ss")
 
   let Denver = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("DENVER")
-  .setDescription("Date et heure actuel à **Denver**(Amérique/Denver) : "+denver)    
+  .setDescription("Date et heure actuel à **Denver** : "+denver)    
   .addField("Date :", denverd)
   .addField("Heure :", denverh)
+  .addField("Continent :", ":flag_us: Amérique")
   .setFooter(Copyright, avatarbot)
 
   let Puerto_Rico = new Discord.MessageEmbed()
   .setColor(couleur)
-  .setTitle("PUERTO-RICO")
-  .setDescription("Date et heure actuel à **Puerto_Rico**(Amérique/Puerto_Rico) : "+puerto_rico)    
+  .setTitle("PORTO-RICO")
+  .setDescription("Date et heure actuel à **Porto Rico** : "+puerto_rico)    
   .addField("Date :", puerto_ricod)
   .addField("Heure :", puerto_ricoh)
+  .addField("Continent :", ":flag_us: Amérique du Nord")
   .setFooter(Copyright, avatarbot)
 
 
-  if (msg.content.includes("Puerto_rico") + msg.content.includes("pr") + msg.content.includes("puertorico") + msg.content.includes("Puerorico") + msg.content.includes("puerto_rico")) return msg.channel.send(Puerto_Rico).catch(console.error);
+  if (msg.content.includes("portorico") + msg.content.includes("Puerto_rico") + msg.content.includes("pr") + msg.content.includes("puertorico") + msg.content.includes("Puerorico") + msg.content.includes("puerto_rico")) return msg.channel.send(Puerto_Rico).catch(console.error);
   if (msg.content.includes("Denver") + msg.content.includes("denver")) return msg.channel.send(Denver).catch(console.error);
 
 }
