@@ -431,27 +431,15 @@ client.on('message',  async message => {
     const args     = msg.content.split(" ").slice(2),
           reason   = args.join(" ");
 
-    let NoPerm = new Discord.MessageEmbed()
+    let erreur = new Discord.MessageEmbed()
             .setColor(couleur)
             .setTitle("BAN ERREUR")
             .setDescription("❌ Vous n'avez pas la permission `Bannir des membres` !")
             .setFooter(Copyright, avatarbot)
 
-    let NoPermBot = new Discord.MessageEmbed()
-            .setColor(couleur)
-            .setTitle("BAN ERREUR")
-            .setDescription("❌ Je n'ai pas la permission `Bannir des membres` !")
-            .setFooter(Copyright, avatarbot)      
-
-    let NoUser = new Discord.MessageEmbed()
-            .setColor(couleur)
-            .setTitle("BAN ERREUR")
-            .setDescription("❌ Vous n'avez pas mentionné l'utilisateur à **ban** !")    
-            .setFooter(Copyright, avatarbot)
-
-    if (!msg.member.hasPermission("BAN_MEMBERS")) return msg.channel.send(NoPerm).catch(console.error); 
-    if (!guild.me.hasPermission("BAN_MEMBERS")) return msg.channel.send(NoPermBot).catch(console.error);           
-    if (!user) return msg.channel.send(NoUser).catch(console.error); 
+    if (!msg.member.hasPermission("KICK_MEMBERS")) return msg.channel.send(erreur).catch(console.error); 
+    if (!guild.me.hasPermission("KICK_MEMBERS")) return msg.channel.send(erreur.setDescription("❌ Je n'ai pas la permission `Expulser des membres` !")).catch(console.error); 
+    if (!user) return msg.channel.send(erreur.setDescription("❌ Vous n'avez pas mentionné l'utilisateur à **kick** !")).catch(console.error); 
 
     if (user) {
       const member = guild.member(user);
@@ -469,135 +457,20 @@ client.on('message',  async message => {
           .ban(reason)
           .then(() => {
 
-              let check = new Discord.MessageEmbed()
-                    .setColor(couleur)
-                    .setTitle("BAN")
-                    .setDescription("✅ "+member.toString()+" a bien été **BAN** de "+"`"+guild.name+"`"+" !") 
-                    .addField("Membre :", member.toString()+"(`"+member.user.tag+"`)")
-                    .addField("Auteur :", author.toString()+"(`"+author.tag+"`)")
-                    .addField("Raison :", "**"+reason+"**")
-                    .setFooter(Copyright, avatarbot) 
-
-              let checksansraison = new Discord.MessageEmbed()
-                    .setColor(couleur)
-                    .setTitle("BAN")
-                    .setDescription("✅ "+member.toString()+" a bien été **BAN** de "+"`"+guild.name+"`"+" !") 
-                    .addField("Membre :", member.toString()+"(`"+member.user.tag+"`)")
-                    .addField("Auteur :", author.toString()+"(`"+author.tag+"`)")
-                    .setFooter(Copyright, avatarbot)                         
-
-              if (!reason) return msg.channel.send(checksansraison);        
-              if (reason) return msg.channel.send(check);
-            }).catch(err => {console.log(err)});
-          }
-        } 
-      }
-
-  if (msg.content.startsWith(prefix + 'mute')) {
-    const userID   = msg.content.substring(msg.content.indexOf(' ') + 1); 
-    const user     = msg.mentions.users.first() || msg.guild.members.cache.get(userID);
-    const args     = msg.content.split(" ").slice(2),
-          reason   = args.join(" ");
-
-    let NoPerm = new Discord.MessageEmbed()
-            .setColor(couleur)
-            .setTitle("MUTE ERREUR")
-            .setDescription("❌ Vous n'avez pas la permission `Gérer les rôles` !")
-            .setFooter(Copyright, avatarbot)
-
-    let NoPermBot = new Discord.MessageEmbed()
-            .setColor(couleur)
-            .setTitle("MUTE ERREUR")
-            .setDescription("❌ Je n'ai pas la permission `Gérer les rôles` !")
-            .setFooter(Copyright, avatarbot)      
-
-    let NoUser = new Discord.MessageEmbed()
-            .setColor(couleur)
-            .setTitle("MUTE ERREUR")
-            .setDescription("❌ Vous n'avez pas mentionné l'utilisateur à **mute** !")    
-            .setFooter(Copyright, avatarbot)
-            
-    let erreurBot = new Discord.MessageEmbed()
-            .setColor(couleur)
-            .setTitle("MUTE ERREUR")
-            .setDescription(`❌ Je ne peux pas **mute** un bot !`)
-            .setFooter(Copyright, avatarbot)
-        
-    let erreurDejaMute = new Discord.MessageEmbed()
-            .setColor(couleur)
-            .setTitle("MUTE ERREUR")
-            .setDescription(`❌ L'utilisateur est déjà **mute** !`)
-            .setFooter(Copyright, avatarbot)            
-    
-    if (!msg.member.hasPermission("MANAGE_ROLES")) return msg.channel.send(NoPerm).catch(console.error); 
-    if (!msg.guild.me.hasPermission("MANAGE_ROLES")) return msg.channel.send(NoPermBot).catch(console.error);  
-    if (!user) return msg.channel.send(NoUser).catch(console.error);         
-
-    if (user) {
-
-      const member = msg.guild.member(user); 
-
-      if (member) {
-
-        let muteRole = msg.guild.roles.cache.find(role => role.position < msg.guild.me.roles.highest.position && role.name === "Muted")
-
-        let NoPermPosition = new Discord.MessageEmbed()
-        .setColor(couleur)
-        .setTitle("MUTE ERREUR")
-        .setDescription("❌ "+member.toString()+" n'a pas était **mute** !\n\n **Raison : "+member.toString()+" possède un rôle au dessus du votre !**")
-        .setFooter(Copyright, avatarbot) 
-
-        if (member.roles.cache.has(muteRole)) return msg.channel.send(erreurDejaMute).catch(console.error);
-		    if (member.roles.highest.position > msg.member.roles.highest.position) return msg.channel.send(NoPermPosition).catch(console.error);
-        if (member.user.bot) return msg.channel.send(erreurBot).catch(console.error);
-
-        if (!muteRole) {
-          try {
-            muteRole = msg.guild.roles.create({
-              data: {
-                name: "🔻┊MutedByRick🛸", 
-                color: couleur}, 
-                reason: "Role muted introuvable, un rôle pour le remplacer a été crée"
-              }).catch(console.error);
-              msg.guild.channels.cache.forEach(channel => {
-                channel.updateOverwrite(muteRole, {
-                  SEND_msgS: false,
-                  ADD_REACTIONS: false,
-                  CONNECT: false
-                })
-              })
-            } catch(e) {
-              console.log(e.stack);
-            }
-          }
-
-     member
-          .roles.add(muteRole, reason)
-          .then(() => {
-
             let check = new Discord.MessageEmbed()
-                    .setColor(couleur)
-                    .setTitle("MUTE")
-                    .setDescription("✅ "+user.toString()+" a bien été **MUTE** dans "+"`"+guild.name+"`"+" !") 
-                    .addField("Membre :", member.toString()+"(`"+member.user.tag+"`)")
-                    .addField("Auteur :", author.toString()+"(`"+author.tag+"`)")
-                    .addField("Raison :", "**"+reason+"**")
-                    .setFooter(Copyright, avatarbot) 
+                  .setColor(couleur)
+                  .setTitle("BAN")
+                  .setDescription("✅ "+member.toString()+" a bien été **BAN** de "+"`"+guild.name+"`"+" !") 
+                  .addField("Membre :", member.toString()+"(`"+member.user.tag+"`)")
+                  .addField("Auteur :", author.toString()+"(`"+author.tag+"`)")
+                  .setFooter(Copyright, avatarbot)   
 
-            let checksansraison = new Discord.MessageEmbed()
-                    .setColor(couleur)
-                    .setTitle("MUTE")
-                    .setDescription("✅ "+user.toString()+" a bien été **MUTE** dans "+"`"+guild.name+"`"+" !") 
-                    .addField("Membre :", member.toString()+"(`"+member.user.tag+"`)")
-                    .addField("Auteur :", author.toString()+"(`"+author.tag+"`)")
-                    .setFooter(Copyright, avatarbot)                         
-
-            if (!reason) return msg.channel.send(checksansraison);        
-            if (reason) return msg.channel.send(check);
-          }).catch(err => {console.log(err)});       
+            if (!reason) return msg.channel.send(check);        
+            if (reason) return msg.channel.send(check.addField("Raison :", "**"+reason+"**")).catch(console.error);
+          }).catch(err => {console.log(err)});
         }
-      }      
-    }  
+      } 
+    }
     
   if (msg.content.startsWith(prefix + 'pp') || msg.content.startsWith(prefix + 'avatar')) {
     
