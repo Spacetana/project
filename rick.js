@@ -51,7 +51,7 @@ client.on('message',  async message => {
       author      = msg.author,
       totalpage   = "7",
       Copyright   = "Rick🛸 ©️ Copyright : Atsuki \\/ Needles",
-      villetz     = "Paris/London/Alger/Casablanca/Sydney/Troll",
+      villetz     = "Paris/London/Alger/Casablanca/Sydney/Troll/Denver",
       mod         = ["ban", "kick", "mute en dev", "clear en dev"];
 
   if (msg.content === prefix + 'help' || msg.content === prefix + 'h') {
@@ -1728,6 +1728,18 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   .setFooter(Copyright, avatarbot)
 
   if (msg.content.includes("Troll") + msg.content.includes("troll")) return msg.channel.send(Troll).catch(console.error);
+
+  //America
+
+  var denver = moment.tz("America/Denver").format("**DD/MM/YYYY** - **hh:mm:ss**")
+
+  let Denver = new Discord.MessageEmbed()
+  .setColor(couleur)
+  .setTitle("TROLL")
+  .setDescription("Date et heure actuel à **Troll**(Antarctique/Troll) : "+denver)      
+  .setFooter(Copyright, avatarbot)
+
+  if (msg.content.includes("Denver") + msg.content.includes("denver")) return msg.channel.send(Denver).catch(console.error);
 
 }
 });
