@@ -51,7 +51,7 @@ client.on('message',  async message => {
       author      = msg.author,
       totalpage   = "7",
       Copyright   = "Rick🛸 ©️ Copyright : Atsuki \\/ Needles",
-      villetz     = "Paris/London/Alger/Casablanca/Sydney",
+      villetz     = "Paris/London/Alger/Casablanca/Sydney/Troll",
       mod         = ["ban", "kick", "mute en dev", "clear en dev"];
 
   if (msg.content === prefix + 'help' || msg.content === prefix + 'h') {
@@ -1717,11 +1717,22 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   let Sydney = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("SYDNEY")
-  .setDescription("Date et heure actuel à **Casablanca**(Afrique/Maroc) : "+sydney)      
+  .setDescription("Date et heure actuel à **Sydney**(Australie/Sydney) : "+sydney)      
   .setFooter(Copyright, avatarbot)
 
   if (msg.content.includes("Sydney")) return msg.channel.send(Sydney).catch(console.error);
   if (msg.content.includes("sydney")) return msg.channel.send(Sydney).catch(console.error);
+
+  //Antarctique
+  var troll = moment.tz("Antarctica/Troll").format("**DD/MM/YYYY** - **hh:mm:ss**");
+
+  let Troll = new Discord.MessageEmbed()
+  .setColor(couleur)
+  .setTitle("SYDNEY")
+  .setDescription("Date et heure actuel à **Sydney**(Australie/Sydney) : "+troll)      
+  .setFooter(Copyright, avatarbot)
+
+  if (msg.content.includes("Troll") + msg.content.includes("troll")) return msg.channel.send(Troll).catch(console.error);
 
 }
 });
