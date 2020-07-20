@@ -1067,15 +1067,8 @@ if (msg.content.startsWith(prefix + "kiss")) {
         .setImage(parsedData.url)
         .setFooter(Copyright, avatarbot)
 
-        let image3 = new Discord.MessageEmbed()
-        .setColor(couleur)
-        .setTitle("KISS")
-        .setDescription(author.toString()+" se fait un bisous !")
-        .setImage(parsedData.url)
-        .setFooter(Copyright, avatarbot)
-
-        if (!user) return msg.channel.send(image);
-        if (user && user.id == author.id) return msg.channel.send(image3);
+        if (!user) return msg.channel.send(image).catch(console.error);
+        if (user && user.id == author.id) return msg.channel.send(image.setDescription(author.toString()+" se fait un bisous !")).catch(console.error);
 
       } catch (error) {
         console.error(error.msg);
@@ -1413,27 +1406,15 @@ if (msg.content.startsWith(prefix + 'mdp')) {
         S       = msg.content.includes("S");
 
 
-  let nolenght = new Discord.MessageEmbed()
+  let erreur = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("GEN-MDP ERREUR")
         .setDescription("❌ Veuillez indiquer un nombre de charactère que le **mot-de-passe** doit contenir !\n\n(option indiqué dans l'exemple)\n\nCorrection : `r!mdp (N) (S) 10`")
-        .setFooter(Copyright, avatarbot)
+        .setFooter(Copyright, avatarbot)    
 
-  let limit = new Discord.MessageEmbed()
-        .setColor(couleur)
-        .setTitle("GEN-MDP ERREUR")
-        .setDescription("❌ Vous avez indiqué un nombre de charactère trop élevé !\n\nLimite : Le nombre de charactère maximum est compris entre `8` et `100`")
-        .setFooter(Copyright, avatarbot)
-
-  let petit = new Discord.MessageEmbed()
-        .setColor(couleur)
-        .setTitle("GEN-MDP ERREUR")
-        .setDescription("❌ Vous avez indiqué un nombre de charactère trop petit !\n\nLimite : Le nombre de charactère minimum est compris entre `8` et `100`")
-        .setFooter(Copyright, avatarbot)        
-  
-  if (nlenght > 100) return msg.channel.send(limit).catch(console.error);
-  if (nlenght < 8) return msg.channel.send(petit).catch(console.error);
-  if (!nlenght) return msg.channel.send(nolenght).catch(console.error);
+  if (!nlenght) return msg.channel.send(erreur).catch(console.error);
+  if (nlenght > 100) return msg.channel.send(erreur.setDescription("❌ Vous avez indiqué un nombre de charactère trop élevé !\n\nLimite : Le nombre de charactère maximum est compris entre `8` et `100`")).catch(console.error);
+  if (nlenght < 8) return msg.channel.send(erreur.setDescription("❌ Vous avez indiqué un nombre de charactère trop petit !\n\nLimite : Le nombre de charactère minimum est compris entre `8` et `100`")).catch(console.error);
 
   let ifN = 'jsp';
 
