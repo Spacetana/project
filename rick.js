@@ -925,15 +925,8 @@ if (msg.content.startsWith(prefix + "hug")) {
         .setImage(parsedData.url)
         .setFooter(Copyright, avatarbot)
 
-        let image3 = new Discord.MessageEmbed()
-        .setColor(couleur)
-        .setTitle("HUG")
-        .setDescription(author.toString()+" se fait un câlin !")
-        .setImage(parsedData.url)
-        .setFooter(Copyright, avatarbot)
-
-        if (!user) return msg.channel.send(image);
-        if (user && user.id == author.id) return msg.channel.send(image3);
+        if (!user) return msg.channel.send(image).catch(console.error);
+        if (user && user.id == author.id) return msg.channel.send(image.setDescription(author.toString()+" se fait un câlin !")).catch(console.error);
 
       } catch (error) {
         console.error(error.msg);
@@ -996,15 +989,8 @@ if (msg.content.startsWith(prefix + "punch")) {
         .setImage(parsedData.url)
         .setFooter(Copyright, avatarbot)
 
-        let image3 = new Discord.MessageEmbed()
-        .setColor(couleur)
-        .setTitle("PUNCH")
-        .setDescription(author.toString()+" se donne un coup de poing !")
-        .setImage(parsedData.url)
-        .setFooter(Copyright, avatarbot)
-
         if (!user) return msg.channel.send(image);
-        if (user && user.id == author.id) return msg.channel.send(image3);
+        if (user && user.id == author.id) return msg.channel.send(image.setDescription(author.toString()+" se donne un coup de poing !"));
 
       } catch (error) {
         console.error(error.msg);
@@ -1121,7 +1107,7 @@ if (msg.content.startsWith(prefix + "cry")) {
             .setImage(parsedData.url)
             .setFooter(Copyright, avatarbot)
 
-            if (user && user.id - author.id) return msg.channel.send(image2);
+            if (user && user.id - author.id) return msg.channel.send(image2).catch(console.error);
           }
         }
 
@@ -1131,15 +1117,8 @@ if (msg.content.startsWith(prefix + "cry")) {
         .setImage(parsedData.url)
         .setFooter(Copyright, avatarbot)
 
-        let image3 = new Discord.MessageEmbed()
-        .setColor(couleur)
-        .setTitle("CRY")
-        .setDescription(author.toString()+" pleur(e) seul(e) !")
-        .setImage(parsedData.url)
-        .setFooter(Copyright, avatarbot)
-
-        if (!user) return msg.channel.send(image);
-        if (user && user.id == author.id) return msg.channel.send(image3);
+        if (!user) return msg.channel.send(image).catch(console.error);
+        if (user && user.id == author.id) return msg.channel.send(image.setDescription(author.toString()+" pleur(e) seul(e) !")).catch(console.error);
 
       } catch (error) {
         console.error(error.msg);
@@ -1192,7 +1171,7 @@ if (msg.content.startsWith(prefix + "slap")) {
             .setImage(parsedData.url)
             .setFooter(Copyright, avatarbot)
 
-            if (user && user.id - author.id) return msg.channel.send(image2);
+            if (user && user.id - author.id) return msg.channel.send(image2).catch(console.error);
           }
         }
 
@@ -1202,15 +1181,8 @@ if (msg.content.startsWith(prefix + "slap")) {
         .setImage(parsedData.url)
         .setFooter(Copyright, avatarbot)
 
-        let image3 = new Discord.MessageEmbed()
-        .setColor(couleur)
-        .setTitle("SLAP")
-        .setDescription(author.toString()+" se met une gifle !")
-        .setImage(parsedData.url)
-        .setFooter(Copyright, avatarbot)
-
-        if (!user) return msg.channel.send(image);
-        if (user && user.id == author.id) return msg.channel.send(image3);
+        if (!user) return msg.channel.send(image).catch(console.error);
+        if (user && user.id == author.id) return msg.channel.send(image.setDescription(author.toString()+" se met une gifle !")).catch(console.error);
 
       } catch (error) {
         console.error(error.msg);
@@ -1263,7 +1235,7 @@ if (msg.content.startsWith(prefix + "pat")) {
             .setImage(parsedData.url)
             .setFooter(Copyright, avatarbot)
 
-            if (user && user.id - author.id) return msg.channel.send(image2);
+            if (user && user.id - author.id) return msg.channel.send(image2).catch(console.error);
           }
         }
 
@@ -1273,15 +1245,8 @@ if (msg.content.startsWith(prefix + "pat")) {
         .setImage(parsedData.url)
         .setFooter(Copyright, avatarbot)
 
-        let image3 = new Discord.MessageEmbed()
-        .setColor(couleur)
-        .setTitle("PAT")
-        .setDescription(author.toString()+" se tapote !")
-        .setImage(parsedData.url)
-        .setFooter(Copyright, avatarbot)
-
-        if (!user) return msg.channel.send(image);
-        if (user && user.id == author.id) return msg.channel.send(image3);
+        if (!user) return msg.channel.send(image).catch(console.error);
+        if (user && user.id == author.id) return msg.channel.send(image.setDescription(author.toString()+" se tapote !")).catch(console.error);
 
       } catch (error) {
         console.error(error.msg);
@@ -1334,7 +1299,7 @@ if (msg.content.startsWith(prefix + "smug")) {
             .setImage(parsedData.url)
             .setFooter(Copyright, avatarbot)
 
-            if (user && user.id - author.id) return msg.channel.send(image2);
+            if (user && user.id - author.id) return msg.channel.send(image2).catch(console.error);
           }
         }
 
@@ -1344,15 +1309,8 @@ if (msg.content.startsWith(prefix + "smug")) {
         .setImage(parsedData.url)
         .setFooter(Copyright, avatarbot)
 
-        let image3 = new Discord.MessageEmbed()
-        .setColor(couleur)
-        .setTitle("SMUG")
-        .setDescription(author.toString()+" est statisfait !")
-        .setImage(parsedData.url)
-        .setFooter(Copyright, avatarbot)
-
-        if (!user) return msg.channel.send(image);
-        if (user && user.id == author.id) return msg.channel.send(image3);
+        if (!user) return msg.channel.send(image).catch(console.error);
+        if (user && user.id == author.id) return msg.channel.send(image.setDescription(author.toString()+" est statisfait !")).catch(console.error);
 
       } catch (error) {
         console.error(error.msg);
