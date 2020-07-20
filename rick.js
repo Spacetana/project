@@ -1759,7 +1759,7 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   .setFooter(Copyright, avatarbot)
 
 
-  if (msg.content.includes("Puerto_rico", "pr", "puertorico", "Puertorico")) return msg.channel.send(Denver).catch(console.error);
+  if (msg.content.includes("Puerto_rico", "pr", "puertorico", "Puertorico")) return msg.channel.send(Puerto_Rico).catch(console.error);
   if (msg.content.includes("Denver") + msg.content.includes("denver")) return msg.channel.send(Denver).catch(console.error);
 
 }
