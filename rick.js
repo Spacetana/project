@@ -383,28 +383,15 @@ client.on('message',  async message => {
     const args     = msg.content.split(" ").slice(2),
           reason   = args.join(" ");
 
-    let NoPerm = new Discord.MessageEmbed()
+    let erreur = new Discord.MessageEmbed()
             .setColor(couleur)
             .setTitle("KICK ERREUR")
             .setDescription("❌ Vous n'avez pas la permission `Expulser des membres` !")
             .setFooter(Copyright, avatarbot)
-
-    let NoPermBot = new Discord.MessageEmbed()
-              .setColor(couleur)
-              .setTitle("KICK ERREUR")
-              .setDescription("❌ Je n'ai pas la permission `Expulser des membres` !")
-              .setImage("https://cdn.discordapp.com/attachments/730197147441430590/730303919267512370/gif_perm_kick.gif") 
-              .setFooter(Copyright, avatarbot)      
-
-    let NoUser = new Discord.MessageEmbed()
-              .setColor(couleur)
-              .setTitle("KICK ERREUR")
-              .setDescription("❌ Vous n'avez pas mentionné l'utilisateur à **kick** !")    
-              .setFooter(Copyright, avatarbot)
     
-    if (!msg.member.hasPermission("KICK_MEMBERS")) return msg.channel.send(NoPerm).catch(console.error); 
-    if (!guild.me.hasPermission("KICK_MEMBERS")) return msg.channel.send(NoPermBot).catch(console.error);
-    if (!user) return msg.channel.send(NoUser).catch(console.error);     
+    if (!msg.member.hasPermission("KICK_MEMBERS")) return msg.channel.send(erreur).catch(console.error); 
+    if (!guild.me.hasPermission("KICK_MEMBERS")) return msg.channel.send(erreur).then((m) => m.edit(erreur.setDescription("❌ Je n'ai pas la permission `Expulser des membres` !"))).catch(console.error); 
+    if (!user) return msg.channel.send(erreur).then((m) => m.edit(erreur.setDescription("❌ Vous n'avez pas mentionné l'utilisateur à **kick** !"))).catch(console.error);  
 
     if (user) {
       const member = msg.guild.member(user);
