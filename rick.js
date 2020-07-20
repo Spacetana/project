@@ -1744,6 +1744,7 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   //America
 
   var denver = moment.tz("America/Denver").format("**DD/MM/YYYY** - **hh:mm:ss**")
+  var puerto_rico = moment.tz("America/Puerto_Rico").format("**DD/MM/YYYY** - **hh:mm:ss**")
 
   let Denver = new Discord.MessageEmbed()
   .setColor(couleur)
@@ -1751,6 +1752,14 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   .setDescription("Date et heure actuel à **Troll**(Antarctique/Troll) : "+denver)      
   .setFooter(Copyright, avatarbot)
 
+  let Puerto_Rico = new Discord.MessageEmbed()
+  .setColor(couleur)
+  .setTitle("TROLL")
+  .setDescription("Date et heure actuel à **Troll**(Antarctique/Troll) : "+puerto_rico)      
+  .setFooter(Copyright, avatarbot)
+
+
+  if (msg.content.includes("Puerto_rico", "pr", "puertorico", "Puertorico")) return msg.channel.send(Denver).catch(console.error);
   if (msg.content.includes("Denver") + msg.content.includes("denver")) return msg.channel.send(Denver).catch(console.error);
 
 }
