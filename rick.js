@@ -51,7 +51,7 @@ client.on('message',  async message => {
       author      = msg.author,
       totalpage   = "7",
       Copyright   = "Rick🛸 ©️ Copyright : Atsuki \\/ Needles",
-      villetz     = "Paris/London/Alger/Casablanca",
+      villetz     = "Paris/London/Alger/Casablanca/Sydney",
       mod         = ["ban", "kick", "mute en dev", "clear en dev"];
 
   if (msg.content === prefix + 'help' || msg.content === prefix + 'h') {
@@ -1707,9 +1707,22 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   .setFooter(Copyright, avatarbot)
 
   if (msg.content.includes("Alger")) return msg.channel.send(AlgerAf).catch(console.error);
-  if (msg.content.includes("Casablanca")) return msg.channel.send(CasablancaAf).catch(console.error);
   if (msg.content.includes("alger")) return msg.channel.send(AlgerAf).catch(console.error);
+  if (msg.content.includes("Casablanca")) return msg.channel.send(CasablancaAf).catch(console.error);
   if (msg.content.includes("casablanca")) return msg.channel.send(CasablancaAf).catch(console.error);
+
+  //Australie 
+  var sydney = moment.tz("Australia/Sydney").format("**DD/MM/YYYY** - **hh:mm:ss**");
+
+  let Sydney = new Discord.MessageEmbed()
+  .setColor(couleur)
+  .setTitle("SYDNEY")
+  .setDescription("Date et heure actuel à **Casablanca**(Afrique/Maroc) : "+sydney)      
+  .setFooter(Copyright, avatarbot)
+
+  if (msg.content.includes("Sydney")) return msg.channel.send(Sydney).catch(console.error);
+  if (msg.content.includes("sydney")) return msg.channel.send(Sydney).catch(console.error);
+
 }
 });
 
