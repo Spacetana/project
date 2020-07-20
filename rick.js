@@ -432,7 +432,7 @@ client.on('message',  async message => {
                   .setFooter(Copyright, avatarbot)                     
 
             if (!reason) return msg.channel.send(check);        
-            if (reason) return msg.channel.send(check).then((m) => m.add(check.addField("Raison :", "**"+reason+"**")));
+            if (reason) return msg.channel.send(check).then((m) => m.edit(check.addField("Raison :", "**"+reason+"**")));
           }).catch(err => {console.log(err)});
         }
       } 
