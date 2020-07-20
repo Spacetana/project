@@ -57,7 +57,7 @@ client.on('message',  async message => {
       afriqueV         = "Alger/Casablanca",
       australieV       = "Sydney",
       antarctiqueV     = "Troll",
-      americaV         = "Denver",
+      americaV         = "Denver/Puerto_Rico",
       mod              = ["ban", "kick", "mute en dev", "clear en dev"];
 
   if (msg.content === prefix + 'help' || msg.content === prefix + 'h') {
@@ -1755,7 +1755,7 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   let Puerto_Rico = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("PUERTO-RICO")
-  .setDescription("Date et heure actuel à **Troll**(Antarctique/Troll) : "+puerto_rico)      
+  .setDescription("Date et heure actuel à **Puerto_Rico**(Amérique/Puerto_Rico) : "+puerto_rico)      
   .setFooter(Copyright, avatarbot)
 
 
