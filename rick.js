@@ -1728,8 +1728,8 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
 
   let Troll = new Discord.MessageEmbed()
   .setColor(couleur)
-  .setTitle("SYDNEY")
-  .setDescription("Date et heure actuel à **Sydney**(Australie/Sydney) : "+troll)      
+  .setTitle("TROLL")
+  .setDescription("Date et heure actuel à **Troll**(Antarctique/Troll) : "+troll)      
   .setFooter(Copyright, avatarbot)
 
   if (msg.content.includes("Troll") + msg.content.includes("troll")) return msg.channel.send(Troll).catch(console.error);
