@@ -1685,10 +1685,8 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   .setDescription("Date et heure actuel à **London**(Europe/Angleterre) : "+london)      
   .setFooter(Copyright, avatarbot)
 
-  if (msg.content.includes("Paris")) return msg.channel.send(ParisEu).catch(console.error);
-  if (msg.content.includes("paris")) return msg.channel.send(ParisEu).catch(console.error);
-  if (msg.content.includes("London")) return msg.channel.send(LondonEu).catch(console.error);
-  if (msg.content.includes("london")) return msg.channel.send(LondonEu).catch(console.error);
+  if (msg.content.includes("Paris") + msg.content.includes("paris")) return msg.channel.send(ParisEu).catch(console.error);
+  if (msg.content.includes("London") + msg.content.includes("london")) return msg.channel.send(LondonEu).catch(console.error);
 
   //Afrique
   var alger = moment.tz("Africa/Algiers").format("**DD/MM/YYYY** - **hh:mm:ss**");
@@ -1706,10 +1704,8 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   .setDescription("Date et heure actuel à **Casablanca**(Afrique/Maroc) : "+casablanca)      
   .setFooter(Copyright, avatarbot)
 
-  if (msg.content.includes("Alger")) return msg.channel.send(AlgerAf).catch(console.error);
-  if (msg.content.includes("alger")) return msg.channel.send(AlgerAf).catch(console.error);
-  if (msg.content.includes("Casablanca")) return msg.channel.send(CasablancaAf).catch(console.error);
-  if (msg.content.includes("casablanca")) return msg.channel.send(CasablancaAf).catch(console.error);
+  if (msg.content.includes("Alger") + msg.content.includes("alger")) return msg.channel.send(AlgerAf).catch(console.error);
+  if (msg.content.includes("Casablanca") + msg.content.includes("casablanca")) return msg.channel.send(CasablancaAf).catch(console.error);
 
   //Australie 
   var sydney = moment.tz("Australia/Sydney").format("**DD/MM/YYYY** - **hh:mm:ss**");
@@ -1720,8 +1716,7 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   .setDescription("Date et heure actuel à **Sydney**(Australie/Sydney) : "+sydney)      
   .setFooter(Copyright, avatarbot)
 
-  if (msg.content.includes("Sydney")) return msg.channel.send(Sydney).catch(console.error);
-  if (msg.content.includes("sydney")) return msg.channel.send(Sydney).catch(console.error);
+  if (msg.content.includes("Sydney") + msg.content.includes("sydney")) return msg.channel.send(Sydney).catch(console.error);
 
   //Antarctique
   var troll = moment.tz("Antarctica/Troll").format("**DD/MM/YYYY** - **hh:mm:ss**");
