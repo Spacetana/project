@@ -131,10 +131,10 @@ client.on('message',  async message => {
     .addField(`\`${PREFIX}timezone [ville]\``,  "Affiche la date et l'heure de la ville saisie")
     .addField("Ville éligible à la commande :", villetz)
     .addField(":flag_eu: Europe :", europeV)
-    .addField(":flag_gb: Royaume-Uni", royaumeuniV)
+    .addField(":flag_au: Australie : ", australieV)
     .addField(":flag_us: Amérique :", americaV)
-    .addField(":flag_au: Australie", australieV)
-    .addField(":flag_aq: Antarctique", antarctiqueV)
+    .addField(":flag_aq: Antarctique :", antarctiqueV)
+    .addField(":flag_gb: Royaume-Uni :", royaumeuniV)
     .setFooter(Copyright, avatarbot)
     msg.channel.send(timezone);
   }
