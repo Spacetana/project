@@ -1693,7 +1693,7 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
 */
 
   //Europe
-  var paris = moment.tz("Europe/Paris").format("**DD/MM/YYYY** - **hh:mm:ss**");
+  var paris = moment.tz("Europe/Paris").format("DD/MM/YYYY - hh:mm:ss");
   var parisd = moment.tz("Europe/Paris").format("DD/MM/YYYY")
   var parish = moment.tz("Europe/Paris").format("hh:mm:ss")
 
@@ -1710,7 +1710,7 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
 
   //RoyaumeUnis
 
-  var london = moment.tz("Europe/London").format("**DD/MM/YYYY** - **hh:mm:ss**");
+  var london = moment.tz("Europe/London").format("DD/MM/YYYY - hh:mm:ss");
   var londond = moment.tz("Europe/London").format("DD/MM/YYYY")
   var londonh = moment.tz("Europe/London").format("hh:mm:ss")
 
@@ -1726,11 +1726,11 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   if (msg.content.includes("London") + msg.content.includes("london")) return msg.channel.send(LondonEu).catch(console.error);
 
   //Afrique
-  var alger = moment.tz("Africa/Algiers").format("**DD/MM/YYYY** - **hh:mm:ss**");
+  var alger = moment.tz("Africa/Algiers").format("DD/MM/YYYY - hh:mm:ss");
   var algerd = moment.tz("Africa/Algiers").format("DD/MM/YYYY")
   var algerh = moment.tz("Africa/Algiers").format("hh:mm:ss")
 
-  var casablanca = moment.tz("Africa/Casablanca").format("**DD/MM/YYYY** - **hh:mm:ss**");
+  var casablanca = moment.tz("Africa/Casablanca").format("DD/MM/YYYY** - hh:mm:ss");
   var casablancad = moment.tz("Africa/Casablanca").format("DD/MM/YYYY")
   var casablancah = moment.tz("Africa/Casablanca").format("hh:mm:ss")
 
@@ -1756,7 +1756,7 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   if (msg.content.includes("Casablanca") + msg.content.includes("casablanca")) return msg.channel.send(CasablancaAf).catch(console.error);
 
   //Australie 
-  var sydney = moment.tz("Australia/Sydney").format("**DD/MM/YYYY** - **hh:mm:ss**");
+  var sydney = moment.tz("Australia/Sydney").format("DD/MM/YYYY - hh:mm:ss");
   var sydneyd = moment.tz("Australia/Sydney").format("DD/MM/YYYY")
   var sydneyh = moment.tz("Australia/Sydney").format("hh:mm:ss")
 
@@ -1772,7 +1772,7 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   if (msg.content.includes("Sydney") + msg.content.includes("sydney")) return msg.channel.send(Sydney).catch(console.error);
 
   //Antarctique
-  var troll = moment.tz("Antarctica/Troll").format("**DD/MM/YYYY** - **hh:mm:ss**");
+  var troll = moment.tz("Antarctica/Troll").format("DD/MM/YYYY** - hh:mm:ss");
   var trolld = moment.tz("Antarctica/Troll").format("DD/MM/YYYY")
   var trollh = moment.tz("Antarctica/Troll").format("hh:mm:ss")
 
@@ -1790,11 +1790,11 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
 
   //America
 
-  var denver = moment.tz("America/Denver").format("**DD/MM/YYYY** - **hh:mm:ss**")
+  var denver = moment.tz("America/Denver").format("DD/MM/YYYY - hh:mm:ss")
   var denverd = moment.tz("America/Denver").format("DD/MM/YYYY")
   var denverh = moment.tz("America/Denver").format("hh:mm:ss")
   //
-  var puerto_rico = moment.tz("America/Puerto_Rico").format("**DD/MM/YYYY** - **hh:mm:ss**")
+  var puerto_rico = moment.tz("America/Puerto_Rico").format("DD/MM/YYYY - hh:mm:ss")
   var puerto_ricod = moment.tz("America/Puerto_Rico").format("DD/MM/YYYY")
   var puerto_ricoh = moment.tz("America/Puerto_Rico").format("hh:mm:ss")
 
@@ -1817,7 +1817,7 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   .setFooter(Copyright, avatarbot)
 
 
-  if (msg.content.includes("portorico") + msg.content.includes("Puerto_Rico") + msg.content.includes("Puerto_rico") + msg.content.includes("pr") + msg.content.includes("puertorico") + msg.content.includes("Puerorico") + msg.content.includes("puerto_rico")) return msg.channel.send(Puerto_Rico).catch(console.error);
+  if (msg.content.includes("portorico") + msg.content.includes("Puerto_Rico") + msg.content.includes("Puerto_rico") + msg.content.includes("pr") + msg.content.includes("puertorico") + msg.content.includes("Puertorico") + msg.content.includes("puerto_rico")) return msg.channel.send(Puerto_Rico).catch(console.error);
   if (msg.content.includes("Denver") + msg.content.includes("denver")) return msg.channel.send(Denver).catch(console.error);
 
 }
