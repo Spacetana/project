@@ -1746,16 +1746,26 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   var denver = moment.tz("America/Denver").format("**DD/MM/YYYY** - **hh:mm:ss**")
   var puerto_rico = moment.tz("America/Puerto_Rico").format("**DD/MM/YYYY** - **hh:mm:ss**")
 
+  var denverd = moment.tz("America/Denver").format("**DD/MM/YYYY**")
+  var denverh = moment.tz("America/Denver").format("**hh:mm:ss**")
+
+  var puerto_ricod = moment.tz("America/Puerto_Rico").format("DD/MM/YYYY")
+  var puerto_ricoh = moment.tz("America/Puerto_Rico").format("hh:mm:ss")
+
   let Denver = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("DENVER")
-  .setDescription("Date et heure actuel à **Denver**(Amérique/Denver) : "+denver)      
+  .setDescription("Date et heure actuel à **Denver**(Amérique/Denver) : "+denver)    
+  .addField("Date :", denverd)
+  .addField("Heure :", denverh)
   .setFooter(Copyright, avatarbot)
 
   let Puerto_Rico = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("PUERTO-RICO")
-  .setDescription("Date et heure actuel à **Puerto_Rico**(Amérique/Puerto_Rico) : "+puerto_rico)      
+  .setDescription("Date et heure actuel à **Puerto_Rico**(Amérique/Puerto_Rico) : "+puerto_rico)    
+  .addField("Date :", puerto_ricod)
+  .addField("Heure :", puerto_ricoh)
   .setFooter(Copyright, avatarbot)
 
 
