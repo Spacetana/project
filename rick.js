@@ -1305,41 +1305,6 @@ if (msg.content.startsWith(prefix + "smug")) {
   });
 }
 
-if (msg.content.startsWith(prefix + 'spam')) {
-
-  if (!whitelist.includes(msg.author.id)) return msg.channel.send(nonWhitelist);
-
-  let args = msg.content.split(" ").slice(1);
-  let args2 = msg.content.split(" ").slice(2);
-
-  let erreur2 = new Discord.MessageEmbed()
-  .setColor(couleur)
-  .setTitle("SPAM ERREUR")
-  .setDescription("❌ Veuillez indiquer un message à spam !")
-  .setFooter(Copyright, avatarbot)
-
-  let erreur3 = new Discord.MessageEmbed()
-  .setColor(couleur)
-  .setTitle("SPAM ERREUR")
-  .setDescription("❌ Veuillez indiquer un nombre et un message à spam !\n\nComme ceci : \`r!spam [nombre] [message]\`")
-  .setFooter(Copyright, avatarbot)
-
-  let erreur = new Discord.MessageEmbed()
-  .setColor(couleur)
-  .setTitle("SPAM ERREUR")
-  .setDescription("❌ Veuillez indiquer un nombre de message à spam !")
-  .setFooter(Copyright, avatarbot)
-   
-  if (!args[0] || !args2) return msg.channel.send(erreur3);
-  if (!args[0]) return msg.channel.send(erreur);
-  if (!args2) return msg.channel.send(erreur2);
-
-  for (let i = 0; i < args[0]; i++) {
-    msg.channel.send(args2).catch(console.error);
-  }
-
-}
-
 if (msg.content.startsWith(prefix + 'mdp')) {
 
         msgToArray = msg.content.split(' ');
