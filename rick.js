@@ -1748,13 +1748,13 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
 
   let Denver = new Discord.MessageEmbed()
   .setColor(couleur)
-  .setTitle("TROLL")
-  .setDescription("Date et heure actuel à **Troll**(Antarctique/Troll) : "+denver)      
+  .setTitle("DENVER")
+  .setDescription("Date et heure actuel à **Denver**(Amérique/Denver) : "+denver)      
   .setFooter(Copyright, avatarbot)
 
   let Puerto_Rico = new Discord.MessageEmbed()
   .setColor(couleur)
-  .setTitle("TROLL")
+  .setTitle("PUERTO-RICO")
   .setDescription("Date et heure actuel à **Troll**(Antarctique/Troll) : "+puerto_rico)      
   .setFooter(Copyright, avatarbot)
 
