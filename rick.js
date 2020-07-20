@@ -390,7 +390,7 @@ client.on('message',  async message => {
             .setFooter(Copyright, avatarbot)
     
     if (!msg.member.hasPermission("KICK_MEMBERS")) return msg.channel.send(erreur).catch(console.error); 
-    if (!guild.me.hasPermission("KICK_MEMBERS")) return msg.channel.send(erreur).then((m) => m.edit(erreur.setDescription("❌ Je n'ai pas la permission `Expulser des membres` !"))).catch(console.error); 
+    if (!guild.me.hasPermission("KICK_MEMBERS")) return msg.channel.send(erreur.setDescription("❌ Je n'ai pas la permission `Expulser des membres` !")).catch(console.error); 
     if (!user) return msg.channel.send(erreur.setDescription("❌ Vous n'avez pas mentionné l'utilisateur à **kick** !")).catch(console.error);  
 
     if (user) {
@@ -419,7 +419,7 @@ client.on('message',  async message => {
                   .setFooter(Copyright, avatarbot)                     
 
             if (!reason) return msg.channel.send(check);        
-            if (reason) return msg.channel.send(check).then((m) => m.edit(check.addField("Raison :", "**"+reason+"**"))).catch(console.error);
+            if (reason) return msg.channel.send(check.addField("Raison :", "**"+reason+"**")).catch(console.error);
           }).catch(err => {console.log(err)});
         }
       } 
