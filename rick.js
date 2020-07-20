@@ -76,24 +76,8 @@ client.on('message',  async message => {
     .addField(`\`${PREFIX}help timezone\`**(béta)**`, "Permet d'accéder à la page d'aide de la commande `r!timezone`")
     .setFooter(Copyright, avatarbot)
 
-    let avancé = new Discord.MessageEmbed()
-    .setColor(couleur)
-    .setTitle("Page 1/"+totalpage+" - Toutes les commandes :")
-    .setDescription("**Pour plus d'information dirigez vous vers le support de Rick\🛸 :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**")
-    .addField(`\`${PREFIX}help\``, "Vous y êtes actuellement")
-    .addField(`\`${PREFIX}help mod\``,    "Affiche la page des commandes mod")
-    .addField(`\`${PREFIX}help fun\``,    "Affiche la page des commandes fun")
-	  .addField(`\`${PREFIX}help info\``,   "Affiche la page des commandes info")
-    .addField(`\`${PREFIX}help love\``,   "Affiche la page des commandes love")
-    //.addField(`\`${PREFIX}help nsfw\``, "Affiche la page des commandes nsfw🔞")
-    .addField(`\`${PREFIX}help hentai\``, "Affiche la page des commandes hentai🔞")
-    .addField(`\`${PREFIX}help timezone\`**(béta)**`, "Permet d'accéder à la page d'aide de la commande `r!timezone`")
-    .addField("️", "**COMMANDES WHITELIST**")
-    .addField(`\`${PREFIX}exec\``, "Permet d'exécuter du code en JavaScript !")
-    .setFooter(Copyright, avatarbot)
-
     if (!whitelist.includes(author.id)) return msg.channel.send(standard);
-    if (whitelist.includes(author.id)) return msg.channel.send(avancé);
+    if (whitelist.includes(author.id)) return msg.channel.send(standard.addField("️", "**COMMANDES WHITELIST**"), standard.addField(`\`${PREFIX}exec\``, "Permet d'exécuter du code en JavaScript !"));
   }
 
   if (msg.content === prefix + 'help mod' || msg.content === prefix + 'h mod') {
