@@ -44,15 +44,21 @@ client.on('ready', () => {
 
 client.on('message',  async message => {
 
-  let avatarbot   = client.user.avatarURL({dynamic: true}),
-      couleur     = "BLUE",
-      msg         = message,
-      guild       = msg.guild,
-      author      = msg.author,
-      totalpage   = "7",
-      Copyright   = "Rick🛸 ©️ Copyright : Atsuki \\/ Needles",
-      villetz     = "Paris/London/Alger/Casablanca/Sydney/Troll/Denver",
-      mod         = ["ban", "kick", "mute en dev", "clear en dev"];
+  let avatarbot        = client.user.avatarURL({dynamic: true}),
+      couleur          = "BLUE",
+      msg              = message,
+      guild            = msg.guild,
+      author           = msg.author,
+      totalpage        = "7",
+      Copyright        = "Rick🛸 ©️ Copyright : Atsuki \\/ Needles",
+      villetz          = "Paris/London/Alger/Casablanca/Sydney/Troll/Denver",  
+      europeV          = "Paris",
+      royaumeuniV      = "London",
+      afriqueV         = "Alger/Casablanca",
+      australieV       = "Sydney",
+      antarctiqueV     = "Troll",
+      americaV         = "Denver",
+      mod              = ["ban", "kick", "mute en dev", "clear en dev"];
 
   if (msg.content === prefix + 'help' || msg.content === prefix + 'h') {
 
@@ -124,6 +130,11 @@ client.on('message',  async message => {
     .setDescription("**Pour plus d'information dirigez vous vers le support de Rick\🛸 :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**")
     .addField(`\`${PREFIX}timezone [ville]\``,  "Affiche la date et l'heure de la ville saisie")
     .addField("Ville éligible à la commande :", villetz)
+    .addField(":flag_eu: Europe :", europeV)
+    .addField(":flag_gb: Royaume-Uni", royaumeuniV)
+    .addField(":flag_us: Amérique :", americaV)
+    .addField(":flag_au: Australie", australieV)
+    .addField(":flag_aq: Antarctique", antarctiqueV)
     .setFooter(Copyright, avatarbot)
     msg.channel.send(timezone);
   }
