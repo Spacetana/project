@@ -1718,8 +1718,8 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   .setColor(couleur)
   .setTitle("LONDON")
   .setDescription("Date et heure actuel à **London** : "+london)
-  .addField("Date :", parisd)
-  .addField("Heure :", parish)
+  .addField("Date :", londond)
+  .addField("Heure :", londonh)
   .addField("Continent :", ":flag_gb: Royaume-Uni")     
   .setFooter(Copyright, avatarbot)
 
