@@ -429,19 +429,10 @@ client.on('message',  async message => {
                   .setDescription("✅ "+member.toString()+" a bien été **KICK** de "+"`"+guild.name+"`"+" !") 
                   .addField("Membre :", member.toString()+"(`"+member.user.tag+"`)")
                   .addField("Auteur :", author.toString()+"(`"+author.tag+"`)")
-                  .addField("Raison :", "**"+reason+"**")
-                  .setFooter(Copyright, avatarbot) 
+                  .setFooter(Copyright, avatarbot)                     
 
-            let checksansraison = new Discord.MessageEmbed()
-                  .setColor(couleur)
-                  .setTitle("KICK")
-                  .setDescription("✅ "+member.toString()+" a bien été **KICK** de "+"`"+guild.name+"`"+" !") 
-                  .addField("Membre :", member.toString()+"(`"+member.user.tag+"`)")
-                  .addField("Auteur :", author.toString()+"(`"+author.tag+"`)")
-                  .setFooter(Copyright, avatarbot)                         
-
-            if (!reason) return msg.channel.send(checksansraison);        
-            if (reason) return msg.channel.send(check);
+            if (!reason) return msg.channel.send(check);        
+            if (reason) return msg.channel.send(check).then((m) => m.add(check.addField("Raison :", "**"+reason+"**")));
           }).catch(err => {console.log(err)});
         }
       } 
