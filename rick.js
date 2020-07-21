@@ -177,7 +177,7 @@ client.on('message',  async message => {
 
     let hentai = new Discord.MessageEmbed()
     .setColor(couleur)
-    .setTitle("Page 8/"+totalpage+" - Commandes NSFW - Hentai :")
+    .setTitle("Page 7/"+totalpage+" - Commandes NSFW - Hentai :")
     .setDescription("**Pour plus d'information dirigez vous vers le support de Rick\🛸 :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**")
     .addField(`\`${PREFIX}hcum\``,     "Permet d'afficher un image/gif d'éjaculation")
     .addField(`\`${PREFIX}hgif\``,     "Permet d'afficher un gif pornographique random")
@@ -660,6 +660,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
       let imageE = new Discord.MessageEmbed()
       .setColor(couleur)
       .setTitle("LEWD")
+      .setDescription(`**Lien de l'image : [CLIQUE ICI](${img.url})**`)
       .setImage(img.url)
       .setFooter(Copyright, avatarbot)
     
