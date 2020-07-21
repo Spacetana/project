@@ -489,7 +489,7 @@ client.on('message',  async message => {
     let replies  = ['AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH !', 'Oui !', 'Absolument !', 'Je suis totalement d\'accord !', "Je ne sais pas !", "Vraiment pas !", "Non !", "Impossible que ce soit possible !"];
     let çava     = ["Je vais bien merci !", "ça va et toi ?", "je vais bien merci et toi ?", "trql et toi ?", "Je vais très bien merci !", "ça va nickel et toi ?"];
     let tfq      = ["Je subit des améliorations par <@!509115921156014081> !", "Je joue à **Calsh Royale** et toi ?", "je fais rien de spéciale et toi ?"];
-    let tfqcase  = ["tu fais quoi", "tfq", "tfk", "tu fais quoi", "que fais tu", "sfk", "sfq"];
+    let tfqcase  = ["tu fais quoi", "tfq", "tfk", "que fais tu", "sfk", "sfq"];
     let cvcase   = ["ça va", "cv", "çava", "sv", "comment tu vas", "slt sv", "tu vas bien"];
     let args     = msg.content.split(" ").slice(1),
         question = args.join(" ");
@@ -502,8 +502,8 @@ client.on('message',  async message => {
 
     if (!question) return msg.channel.send(NoQuestion);
     if (question) return msg.channel.send(replies[Math.floor(Math.random() * (replies.length))])             
-    if (msg.content.includes(cvcase).toLowerCase()) return msg.channel.send(çava[Math.floor(Math.random() * (çava.length))]);
-    if (message.content.includes(tfqcase).toLowerCase()) return msg.channel.send(tfq[Math.floor(Math.random() * (tfq.length))]);
+    if (msg.content.includes(cvcase.toLowerCase())) return msg.channel.send(çava[Math.floor(Math.random() * (çava.length))]);
+    if (message.content.includes(tfqcase.toLowerCase())) return msg.channel.send(tfq[Math.floor(Math.random() * (tfq.length))]);
   }
 
   if (msg.content.startsWith(prefix + "invisible")) {
