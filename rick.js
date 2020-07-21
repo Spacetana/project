@@ -77,7 +77,7 @@ client.on('message',  async message => {
     .setFooter(Copyright, avatarbot)
 
     if (!whitelist.includes(author.id)) return msg.channel.send(standard);
-    if (whitelist.includes(author.id)) return msg.channel.send(standard.addField("️", "**COMMANDES WHITELIST**"), standard.addField(`\`${PREFIX}exec\``, "Permet d'exécuter du code en JavaScript !")).catch(console.error);
+    if (whitelist.includes(author.id)) return msg.channel.send(standard.addField("️", "**COMMANDES WHITELIST**")).catch(console.error);
   }
 
   if (msg.content === prefix + 'help mod' || msg.content === prefix + 'h mod') {
