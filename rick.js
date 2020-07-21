@@ -571,32 +571,6 @@ client.on('message',  async message => {
     if (msg.channel.nsfw) return msg.channel.send(assEm).catch(console.error);
   }
 
-if (msg.content.startsWith(prefix + "himg")) {
-
-  if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
-  
-  let erreurAPI = new Discord.MessageEmbed()
-  .setColor(couleur)
-  .setTitle("HENTAI ERREUR")
-  .setDescription("Une erreur est survenue avec l'API !")
-  .setFooter(Copyright, avatarbot)
-
-  superagent.get('https://nekobot.xyz/api/image').query({type: 'hentai'}).end((err, res) => {
-  
-    const { statusCode } = res;
-
-    if (statusCode !== 200) return msg.channel.send(erreurAPI).catch(console.error);
-            
-        let image = new Discord.MessageEmbed()
-        .setColor(couleur)
-        .setTitle("HENTAI ALL")
-        .setImage(res.body.msg)
-        .setFooter(Copyright, avatarbot)
-
-        if (msg.channel.nsfw) return msg.channel.send(image).catch(console.error);
-});
-}
-
 if (msg.content.startsWith(prefix + "hfuck")) {
 
   if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
@@ -607,6 +581,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
       let imageE = new Discord.MessageEmbed()
       .setColor(couleur)
       .setTitle("FUCK")
+      .setDescription(`**Lien de l'image : [CLIQUE ICI](${img.url})`)
       .setImage(img.url)
       .setFooter(Copyright, avatarbot)
   
@@ -626,7 +601,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
       let imageE = new Discord.MessageEmbed()
       .setColor(couleur)
       .setTitle("ANAL")
-      .setDescription(`**Lien de l'image : [CLIQUE ICI](${img.url})`)
+      .setDescription(`**Lien de l'image : [CLIQUE ICI](${img.url})**`)
       .setImage(img.url)
       .setFooter(Copyright, avatarbot)
     
@@ -646,7 +621,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
       let imageE = new Discord.MessageEmbed()
       .setColor(couleur)
       .setTitle("HENTAI GIF")
-      .setDescription(`**Lien de l'image : [CLIQUE ICI](${img.url})`)
+      .setDescription(`**Lien de l'image : [CLIQUE ICI](${img.url})**`)
       .setImage(img.url)
       .setFooter(Copyright, avatarbot)
     
