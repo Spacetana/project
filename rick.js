@@ -498,7 +498,7 @@ client.on('message',  async message => {
               .setDescription("❌ Veuillez poser une question !")
               .setFooter(Copyright, avatarbot)
 
-    if (msg.content.includes("ça va", "ça va ?", "çava?", "çava", "comment tu vas", "comment tu vas ?")) return msg.channel.send(çava[Math.floor(Math.random() * (çava.length))]);
+    if (msg.content.includes("ça va", "ça va ?", "çava?", "çava", "comment tu vas", "comment tu vas ?", "tu vas bien ?", "Tu vas bien ?")) return msg.channel.send(çava[Math.floor(Math.random() * (çava.length))]);
     if (msg.content.includes("tu fais quoi ?", "tfq ?", "tu fais quoi", "tfq", "que fais tu?", "que fais tu", "tu fais quoi de beau ?", "tu fais quoi de beau", "sfq ?", "sfq")) return msg.channel.send(tfq[Math.floor(Math.random() * (tfq.length))]);
     if (!question) return msg.channel.send(NoQuestion);
     if (question) return msg.channel.send(replies[Math.floor(Math.random() * (replies.length))])
