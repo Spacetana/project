@@ -1451,7 +1451,7 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   var algerd = moment.tz("Africa/Algiers").format("DD/MM/YYYY")
   var algerh = moment.tz("Africa/Algiers").format("hh:mm:ss")
 
-  var casablanca = moment.tz("Africa/Casablanca").format("DD/MM/YYYY** - hh:mm:ss");
+  var casablanca = moment.tz("Africa/Casablanca").format("DD/MM/YYYY - hh:mm:ss");
   var casablancad = moment.tz("Africa/Casablanca").format("DD/MM/YYYY")
   var casablancah = moment.tz("Africa/Casablanca").format("hh:mm:ss")
 
@@ -1493,7 +1493,7 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   if (msg.content.includes("Sydney") + msg.content.includes("sydney")) return msg.channel.send(Sydney).catch(console.error);
 
   //Antarctique
-  var troll = moment.tz("Antarctica/Troll").format("DD/MM/YYYY** - hh:mm:ss");
+  var troll = moment.tz("Antarctica/Troll").format("DD/MM/YYYY - hh:mm:ss");
   var trolld = moment.tz("Antarctica/Troll").format("DD/MM/YYYY")
   var trollh = moment.tz("Antarctica/Troll").format("hh:mm:ss")
 
