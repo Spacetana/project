@@ -620,7 +620,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
   
       let imageE = new Discord.MessageEmbed()
       .setColor(couleur)
-      .setTitle("HENTAI GIF")
+      .setTitle("GIF")
       .setDescription(`**Lien de l'image : [CLIQUE ICI](${img.url})**`)
       .setImage(img.url)
       .setFooter(Copyright, avatarbot)
@@ -636,11 +636,11 @@ if (msg.content.startsWith(prefix + "hfuck")) {
     
     async function h(){
       let img = await p.hcum();
-
   
       let imageE = new Discord.MessageEmbed()
       .setColor(couleur)
       .setTitle("CUM")
+      .setDescription(`**Lien de l'image : [CLIQUE ICI](${img.url})**`)
       .setImage(img.url)
       .setFooter(Copyright, avatarbot)
     
@@ -698,6 +698,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
           let image = new Discord.MessageEmbed()
           .setColor(couleur)
           .setTitle("NEKO-NUDE")
+          .setDescription(`**Lien de l'image : [CLIQUE ICI](${parsedData.url})**`)
           .setImage(parsedData.url)
           .setFooter(Copyright, avatarbot)
 
@@ -739,6 +740,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
           let image = new Discord.MessageEmbed()
           .setColor(couleur)
           .setTitle("NEKO")
+          .setDescription(`**Lien de l'image : [CLIQUE ICI](${parsedData.url})**`)
           .setImage(parsedData.url)
           .setFooter(Copyright, avatarbot)
 
@@ -780,6 +782,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
           let image = new Discord.MessageEmbed()
           .setColor(couleur)
           .setTitle("KITSUNE")
+          .setDescription(`**Lien de l'image : [CLIQUE ICI](${parsedData.url})**`)
           .setImage(parsedData.url)
           .setFooter(Copyright, avatarbot)
 
@@ -821,6 +824,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
           let image = new Discord.MessageEmbed()
           .setColor(couleur)
           .setTitle("WAIFU")
+          .setDescription(`**Lien de l'image : [CLIQUE ICI](${parsedData.url})**`)
           .setImage(parsedData.url)
           .setFooter(Copyright, avatarbot)
 
