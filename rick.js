@@ -500,10 +500,10 @@ client.on('message',  async message => {
               .setDescription("❌ Veuillez poser une question !")
               .setFooter(Copyright, avatarbot)
 
+    if (!question) return msg.channel.send(NoQuestion);
+    if (question) return msg.channel.send(replies[Math.floor(Math.random() * (replies.length))])             
     if (msg.content.includes(cvcase).toLowerCase()) return msg.channel.send(çava[Math.floor(Math.random() * (çava.length))]);
     if (message.content.includes(tfqcase).toLowerCase()) return msg.channel.send(tfq[Math.floor(Math.random() * (tfq.length))]);
-    if (!question) return msg.channel.send(NoQuestion);
-    if (question) return msg.channel.send(replies[Math.floor(Math.random() * (replies.length))])
   }
 
   if (msg.content.startsWith(prefix + "invisible")) {
