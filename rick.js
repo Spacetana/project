@@ -132,7 +132,7 @@ client.on('message',  async message => {
     .setDescription("**Pour plus d'information dirigez vous vers le support de Rick\🛸 :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**")
     .addField(`\`${PREFIX}invisible\``,                          "Permet de faire envoyer un msg invisible par le bot")
     .addField(`\`${PREFIX}8ball [question]\``,                   "Permet de poser n'importe quel question au bot")
-    .addField(`\`${PREFIX}mdp (N) (S) [nombre de charactère]\``, "Permet de générer un MDP**(N = ajout de nombre | S = ajout de symbole(sans=que des lettres))**")
+    .addField(`\`${PREFIX}mdp (N) (S) [nombre de charactère]\``, "Permet de générer un MDP**\n(N = ajout de nombre | S = ajout de symbole | Sans = que des lettres)**")
     .setFooter(Copyright, avatarbot)
     msg.channel.send(fun);
   }
