@@ -73,7 +73,7 @@ client.on('message',  async message => {
     .addField(`\`${PREFIX}help love\``,     "Affiche la page des commandes love")
     // .addField(`\`${PREFIX}help nsfw\``,     "Affiche la page des commandes nsfw🔞")
     .addField(`\`${PREFIX}help hentai\``,   "Affiche la page des commandes hentai🔞")
-    .addField(`\`${PREFIX}help timezone\`**(béta)**`, "Permet d'accéder à la page d'aide de la commande `r!timezone`")
+    .addField(`\`${PREFIX}help timezone\`**(bêta)**`, "Permet d'accéder à la page d'aide de la commande `r!timezone`")
     .setFooter(Copyright, avatarbot)
 
     if (!whitelist.includes(author.id)) return msg.channel.send(standard);
