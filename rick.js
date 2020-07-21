@@ -486,7 +486,7 @@ client.on('message',  async message => {
 
   if (msg.content.startsWith(prefix + "8ball")) {
 
-    let replies  = ['AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH !', 'Oui !', 'Absolument !', 'Je pense que c\'est possible !', 'Je suis totalement d\'accord !', "Je ne sais pas !", "Vraiment pas !", "Non !", "Impossible que ce soit possible !"];
+    let replies  = ['AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH !', 'Oui !', 'Absolument !', 'Je suis totalement d\'accord !', "Je ne sais pas !", "Vraiment pas !", "Non !", "Impossible que ce soit possible !"];
     let çava     = ["Je vais bien merci !", "ça va et toi ?", "je vais bien merci et toi ?", "trql et toi ?", "Je vais très bien merci !", "ça va nickel et toi ?"];
     let tfq      = ["Je subit des améliorations par <@!509115921156014081> !", "Je joue à **Calsh Royale** et toi ?", "je fais rien de spéciale et toi ?"];
     let args     = msg.content.split(" ").slice(1),
@@ -499,7 +499,7 @@ client.on('message',  async message => {
               .setFooter(Copyright, avatarbot)
 
     if (msg.content.includes("ça va", "ça va ?", "çava?", "çava", "comment tu vas", "comment tu vas ?", "tu vas bien ?", "Tu vas bien ?", "tu vas bien")) return msg.channel.send(çava[Math.floor(Math.random() * (çava.length))]);
-    if (msg.content.includes("tu fais quoi ?", "tfq ?", "tu fais quoi", "tfq", "que fais tu?", "que fais tu", "tu fais quoi de beau ?", "tu fais quoi de beau", "sfq ?", "sfq")) return msg.channel.send(tfq[Math.floor(Math.random() * (tfq.length))]);
+    if (msg.content.includes("tu fais quoi ?", "tfq ?", "tfk", "tu fais quoi", "tfq", "que fais tu?", "que fais tu", "sfk", "sfq")) return msg.channel.send(tfq[Math.floor(Math.random() * (tfq.length))]);
     if (!question) return msg.channel.send(NoQuestion);
     if (question) return msg.channel.send(replies[Math.floor(Math.random() * (replies.length))])
   }
