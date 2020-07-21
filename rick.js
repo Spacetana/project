@@ -626,6 +626,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
       let imageE = new Discord.MessageEmbed()
       .setColor(couleur)
       .setTitle("ANAL")
+      .setDescription(`**Lien de l'image : [CLIQUE ICI](${img.url})`)
       .setImage(img.url)
       .setFooter(Copyright, avatarbot)
     
@@ -645,6 +646,7 @@ if (msg.content.startsWith(prefix + "hfuck")) {
       let imageE = new Discord.MessageEmbed()
       .setColor(couleur)
       .setTitle("HENTAI GIF")
+      .setDescription(`**Lien de l'image : [CLIQUE ICI](${img.url})`)
       .setImage(img.url)
       .setFooter(Copyright, avatarbot)
     
