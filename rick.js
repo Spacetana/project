@@ -52,8 +52,7 @@ client.on('message',  async message => {
       totalpage        = "7",
       Copyright        = "Rick🛸 ©️ Copyright : Atsuki \\/ Needles",
       villetz          = "Paris/London/Alger/Casablanca/Sydney/Troll/Denver",  
-      europeV          = "Paris",
-      royaumeuniV      = "London",
+      europeV          = "Paris/London",
       afriqueV         = "Alger/Casablanca",
       australieV       = "Sydney",
       antarctiqueV     = "Troll",
@@ -1419,6 +1418,9 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   var paris = moment.tz("Europe/Paris").format("DD/MM/YYYY - hh:mm:ss");
   var parisd = moment.tz("Europe/Paris").format("DD/MM/YYYY")
   var parish = moment.tz("Europe/Paris").format("hh:mm:ss")
+  var london = moment.tz("Europe/London").format("DD/MM/YYYY - hh:mm:ss");
+  var londond = moment.tz("Europe/London").format("DD/MM/YYYY")
+  var londonh = moment.tz("Europe/London").format("hh:mm:ss")
 
   let ParisEu = new Discord.MessageEmbed()
   .setColor(couleur)
@@ -1429,23 +1431,16 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   .addField("Continent :", ":flag_eu: Europe")
   .setFooter(Copyright, avatarbot)
 
-  if (msg.content.includes("Paris") + msg.content.includes("paris")) return msg.channel.send(ParisEu).catch(console.error);
-
-  //RoyaumeUnis
-
-  var london = moment.tz("Europe/London").format("DD/MM/YYYY - hh:mm:ss");
-  var londond = moment.tz("Europe/London").format("DD/MM/YYYY")
-  var londonh = moment.tz("Europe/London").format("hh:mm:ss")
-
   let LondonEu = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("LONDON")
   .setDescription("Date et heure actuel à **London** : "+london)
   .addField("Date :", londond)
   .addField("Heure :", londonh)
-  .addField("Continent :", ":flag_gb: Royaume-Uni")     
+  .addField("Continent :", ":flag_eu: Europe")     
   .setFooter(Copyright, avatarbot)
 
+  if (msg.content.includes("Paris") + msg.content.includes("paris")) return msg.channel.send(ParisEu).catch(console.error);
   if (msg.content.includes("London") + msg.content.includes("london")) return msg.channel.send(LondonEu).catch(console.error);
 
   //Afrique
