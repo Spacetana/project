@@ -118,7 +118,6 @@ client.on('message',  async message => {
     .addField(":flag_au: Australie : ", australieV)
     .addField(":flag_us: Amérique :", americaV)
     .addField(":flag_aq: Antarctique :", antarctiqueV)
-    .addField(":flag_gb: Royaume-Uni :", royaumeuniV)
     .setFooter(Copyright, avatarbot)
     msg.channel.send(timezone);
   }
