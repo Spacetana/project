@@ -4,18 +4,14 @@ const { get }                                         = require('https');
 const superagent                                      = require('superagent');
 const snekfetch                                       = require('snekfetch');
 const p                                               = require('pixula-v2');
-const randomPuppy                                     = require('random-puppy');
 const generator                                       = require('generate-password');
-const yts                                             = require('yt-search');
-const ytdl                                            = require('ytdl-core');
 const TM                                              = require('temp-mail-api');
 const { error }                                       = require('console');
-const email1                                          = new TM('temp-email');
 const moment                                          = require('moment');
 const tz                                              = require('moment-timezone');
 const { url }                                         = require('inspector');
 const fs                                              = require('fs');
-const { S_IFLNK } = require('constants');
+const Pornsearch                                      = require('pornsearch');
 const client                                          = new Discord.Client({disableMentions: "everyone"});
 
 client.commands = new Discord.Collection()
@@ -513,6 +509,15 @@ client.on('message',  async message => {
   .setTitle("NSFW ERREUR")
   .setDescription(msg.channel.toString()+" n'est pas un channel **NSFW** !")
   .setFooter(Copyright, avatarbot)
+
+  if (msg.content.startsWith(prefix + "pornsearch")) {
+    let args      = msg.content.split(" ").slice(1),
+        recherche = args.join(" ");
+    
+    const Pornsearch = require('pornsearch').search('ass');
+
+    Pornsearch.gifs().then(gifs => message.channel.send(gifs));
+  }
 
   if (msg.content.startsWith(prefix + "boobs")) {
     if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
