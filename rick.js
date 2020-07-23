@@ -522,7 +522,8 @@ client.on('message',  async message => {
     let args      = msg.content.split(" ").slice(1),
         recherche = args.join(" ");
 
-    Pornsearch.search(recherche).gifs(page[Math.floor(Math.random() * (page.length))])
+    if (!recherche) return pornsearchEm.setColor(couleur).setTitle("GIF-SEARCH-ERREUR").setDescription("Veuillez saisir une recherche !\n\nCorrection : `r!gifsearch anal`")
+    if (recherche) return Pornsearch.search(recherche).gifs(page[Math.floor(Math.random() * (page.length))])
     .then(
       gifs => 
       message.channel.send(gifs.map(gif =>
@@ -540,7 +541,7 @@ client.on('message',  async message => {
     .then(
       gifs => 
       message.channel.send(gifs.map(gif =>
-        pornsearchEm.setColor(couleur).setTitle("PUSSY-SEARCH").setDescription(`**[LIEN DU GIF](${gif.url})**`).setImage(gif.url)
+        pornsearchEm.setColor(couleur).setTitle("PUSSY").setDescription(`**[LIEN DU GIF](${gif.url})**`).setImage(gif.url)
         ))
         )
       }   
@@ -552,7 +553,7 @@ client.on('message',  async message => {
     .then(
       gifs => 
       message.channel.send(gifs.map(gif =>
-        pornsearchEm.setColor(couleur).setTitle("4K-SEARCH").setDescription(`**[LIEN DU GIF](${gif.url})**`).setImage(gif.url)
+        pornsearchEm.setColor(couleur).setTitle("4K").setDescription(`**[LIEN DU GIF](${gif.url})**`).setImage(gif.url)
         ))
         )
       }        
@@ -564,7 +565,7 @@ client.on('message',  async message => {
     .then(
       gifs => 
       message.channel.send(gifs.map(gif =>
-        pornsearchEm.setColor(couleur).setTitle("SUCK-SEARCH").setDescription(`**[LIEN DU GIF](${gif.url})**`).setImage(gif.url)    
+        pornsearchEm.setColor(couleur).setTitle("SUCK").setDescription(`**[LIEN DU GIF](${gif.url})**`).setImage(gif.url)    
         )) 
         )
       }        
@@ -577,7 +578,7 @@ client.on('message',  async message => {
       gifs => 
       message.channel.send(gifs.map(gif =>
   
-        pornsearchEm.setColor(couleur).setTitle("PORN-SEARCH").setDescription(`**[LIEN DU GIF](${gif.url})**`).setImage(gif.url)
+        pornsearchEm.setColor(couleur).setTitle("ANAL").setDescription(`**[LIEN DU GIF](${gif.url})**`).setImage(gif.url)
   
         ))
         )
