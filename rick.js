@@ -184,6 +184,7 @@ client.on('message',  async message => {
     .addField(`\`${PREFIX}hbdsm\``,    "Permet d'afficher des images de personnage féminin style bdsm")
     .addField(`\`${PREFIX}hfuck\``,    "Permet d'afficher des images/gifs pornographique d'acte sexuel")
     .addField(`\`${PREFIX}hanal\``,    "Permet d'afficher des images/gifs pornographique d'acte sexuel anal")
+    .addField(`\`${PREFIX}hfemdom\``,  "Permet d'afficher des images pornographique où la femme domine l'homme")
     .setFooter(Copyright, avatarbot)
     msg.channel.send(hentai);
   } 
@@ -550,7 +551,7 @@ client.on('message',  async message => {
 
     let url = akaneko.nsfw.femdom();
 
-    msg.channel.send(pornsearchEm.setColor(couleur).setTitle("BDSM").setDescription(`**Lien de l'image : [CLIQUE ICI](${url})**`).setImage(url));
+    msg.channel.send(pornsearchEm.setColor(couleur).setTitle("FEMDOM").setDescription(`**Lien de l'image : [CLIQUE ICI](${url})**`).setImage(url));
   }  
 
   if (msg.content.startsWith(prefix + "pussy")) {
