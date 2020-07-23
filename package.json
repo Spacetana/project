@@ -6,7 +6,9 @@
     "node": "13.13.0"
   },
   "dependencies": {
+    "akaneko": "^3.0.2",
     "an-random": "^0.1.1",
+    "dabi-images": "^2.7.5",
     "discord.js": "12.2.0",
     "fs": "0.0.1-security",
     "generate-password": "^1.5.1",
