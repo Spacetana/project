@@ -177,12 +177,13 @@ client.on('message',  async message => {
     .setColor(couleur)
     .setTitle("Page 8/"+totalpage+" - Commandes NSFW - Hentai :")
     .setDescription("**Pour plus d'information dirigez vous vers le support de Rick\🛸 :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**")
-    .addField(`\`${PREFIX}hcum\``,     "Permet d'afficher une image/gif d'éjaculation")
-    .addField(`\`${PREFIX}hgif\``,     "Permet d'afficher un gif pornographique random")
-    .addField(`\`${PREFIX}hlewd\``,    "Permet d'afficher une image de personnage féminin dénudée")
-    .addField(`\`${PREFIX}nekonude\``, "Permet d'afficher une image/gif pornographique de Nekomimi")
-    .addField(`\`${PREFIX}hfuck\``,    "Permet d'afficher une image/gif pornographique d'acte sexuel")
-    .addField(`\`${PREFIX}hanal\``,    "Permet d'afficher une image/gif pornographique d'acte sexuel anal")
+    .addField(`\`${PREFIX}hcum\``,     "Permet d'afficher des images/gifs d'éjaculation")
+    .addField(`\`${PREFIX}hgif\``,     "Permet d'afficher des gifs pornographique random")
+    .addField(`\`${PREFIX}nekonude\``, "Permet d'afficher des images pornographique de Nekomimi")
+    .addField(`\`${PREFIX}hlewd\``,    "Permet d'afficher des images de personnage féminin dénudée")
+    .addField(`\`${PREFIX}hbdsm\``,    "Permet d'afficher des images de personnage féminin style bdsm")
+    .addField(`\`${PREFIX}hfuck\``,    "Permet d'afficher des images/gifs pornographique d'acte sexuel")
+    .addField(`\`${PREFIX}hanal\``,    "Permet d'afficher des images/gifs pornographique d'acte sexuel anal")
     .setFooter(Copyright, avatarbot)
     msg.channel.send(hentai);
   } 
@@ -537,10 +538,12 @@ client.on('message',  async message => {
     }
   //  console.log("BDSM: " + akaneko.nsfw.bdsm());
 
-  if (msg.content.startsWith(prefix + "bdsm")) {
+  if (msg.content.startsWith(prefix + "hbdsm")) {
     if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error); 
 
-    msg.channel.send(pornsearchEm.setColor(couleur).setTitle("BDSM").setDescription(`**Lien de l'image : [CLIQUE ICI](${akaneko.nsfw.bdsm()})**`).setImage(akaneko.nsfw.bdsm()));
+    let url = akaneko.nsfw.bdsm();
+
+    msg.channel.send(pornsearchEm.setColor(couleur).setTitle("BDSM").setDescription(`**Lien de l'image : [CLIQUE ICI](${url})**`).setImage(url));
   }
 
   if (msg.content.startsWith(prefix + "pussy")) {
