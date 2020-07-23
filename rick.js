@@ -536,7 +536,6 @@ client.on('message',  async message => {
         ))
       )
     }
-  //  console.log("BDSM: " + akaneko.nsfw.bdsm());
 
   if (msg.content.startsWith(prefix + "hbdsm")) {
     if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error); 
@@ -545,6 +544,14 @@ client.on('message',  async message => {
 
     msg.channel.send(pornsearchEm.setColor(couleur).setTitle("BDSM").setDescription(`**Lien de l'image : [CLIQUE ICI](${url})**`).setImage(url));
   }
+
+  if (msg.content.startsWith(prefix + "hfemdom")) {
+    if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error); 
+
+    let url = akaneko.nsfw.femdom();
+
+    msg.channel.send(pornsearchEm.setColor(couleur).setTitle("BDSM").setDescription(`**Lien de l'image : [CLIQUE ICI](${url})**`).setImage(url));
+  }  
 
   if (msg.content.startsWith(prefix + "pussy")) {
     if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
