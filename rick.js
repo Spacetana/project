@@ -514,9 +514,9 @@ client.on('message',  async message => {
   let pornsearchEm = new Discord.MessageEmbed()
   .setFooter(Copyright, avatarbot)
 
-  let page = [1, 2, 3, 4, 5];
+  let page = [1, 2, 3, 4, 5, 6];
 
-  let pagesearch = [1];
+  let pagesearch = [1, 2];
 
   if (msg.content.startsWith(prefix + "gifsearch") || msg.content.startsWith(prefix + "gs")) {
     if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
