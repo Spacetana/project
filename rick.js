@@ -538,7 +538,7 @@ client.on('message',  async message => {
   if (msg.content.startsWith(prefix + "pussy")) {
     if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
     
-    let Pussysearch  = ['fuck', 'pussy', 'hard pussy', 'pussy sexe']
+    let Pussysearch  = ['pussy', 'fuck pussy', 'hard pussy', 'pussy sexe', 'hard fuck pussy']
 
     Pornsearch.search(Pussysearch[Math.floor(Math.random() * (Pussysearch.length))]).gifs(page[Math.floor(Math.random() * (page.length))])
     .then(
@@ -580,7 +580,7 @@ client.on('message',  async message => {
   if (msg.content.startsWith(prefix + "anal")) {
     if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
 
-    let analSearch = ['anal', 'anus', 'hard anal', 'anal sexe', 'anal anus']
+    let analSearch = ['anal', 'anus', 'hard anal', 'anal sexe', 'anal anus', 'hard fuck anal', 'fuck anal']
   
     Pornsearch.search(analSearch[Math.floor(Math.random() * (analSearch.length))]).gifs(page[Math.floor(Math.random() * (page.length))])
     .then(
