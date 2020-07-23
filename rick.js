@@ -161,7 +161,7 @@ client.on('message',  async message => {
     .setDescription("**Pour plus d'information dirigez vous vers le support de Rick\🛸 :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**")
     .addField(`\`${PREFIX}4k\``,       "Permet d'afficher des gifs pornographique en 4k")
     .addField(`\`${PREFIX}ass\``,      "Permet d'afficher des images pornographique de culs")
-    .addField(`\`${PREFIX}anal\``,     "Permet d'afficher des gifs pornographique d'acte anal")
+    .addField(`\`${PREFIX}anal\``,     "Permet d'afficher des gifs pornographique d'acte sexuel anal")
     .addField(`\`${PREFIX}suck\``,     "Permet d'afficher des gifs pornographique d'acte de suçage")
     .addField(`\`${PREFIX}pussy\``,    "Permet d'afficher des images pornographique avec des vagins")
     .addField(`\`${PREFIX}boobs\``,                    "Permet d'afficher des images pornographique de grosse poitrine")
