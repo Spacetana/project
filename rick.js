@@ -517,18 +517,20 @@ client.on('message',  async message => {
 
   let page = [1, 2, 3, 4, 5];
 
+  let pagesearch = [1];
+
   if (msg.content.startsWith(prefix + "gifsearch") || msg.content.startsWith(prefix + "gs")) {
     if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
     let args      = msg.content.split(" ").slice(1),
         recherche = args.join(" ");
 
-    if (!recherche) return pornsearchEm.setColor(couleur).setTitle("GIF-SEARCH-ERREUR").setDescription("Veuillez saisir une recherche !\n\nCorrection : `r!gifsearch anal`")
-    if (recherche) return Pornsearch.search(recherche).gifs(page[Math.floor(Math.random() * (page.length))])
+    if (!recherche) return message.channel.send(pornsearchEm.setColor(couleur).setTitle("GIF-SEARCH-ERREUR").setDescription("❌ Veuillez spécifier une recherche à effectuer !\n\nCorrection : `r!gifsearch hard`"));
+    if (recherche) return Pornsearch.search(recherche).gifs(pagesearch[Math.floor(Math.random() * (pagesearch.length))])
     .then(
       gifs => 
       message.channel.send(gifs.map(gif =>
 
-        pornsearchEm.setColor(couleur).setTitle("GIF-SEARCH").setDescription(`**[LIEN DU GIF](${gif.url})**`).setImage(gif.url)
+        pornsearchEm.setColor(couleur).setTitle("GIF-SEARCH").setDescription(`**Lien du gif : [CLIQUE ICI](${gif.url})**`) .setImage(gif.url)
 
         ))
       )
@@ -541,7 +543,7 @@ client.on('message',  async message => {
     .then(
       gifs => 
       message.channel.send(gifs.map(gif =>
-        pornsearchEm.setColor(couleur).setTitle("PUSSY").setDescription(`**[LIEN DU GIF](${gif.url})**`).setImage(gif.url)
+        pornsearchEm.setColor(couleur).setTitle("PUSSY").setDescription(`**Lien du gif : [CLIQUE ICI](${gif.url})**`).setImage(gif.url)
         ))
         )
       }   
@@ -553,7 +555,7 @@ client.on('message',  async message => {
     .then(
       gifs => 
       message.channel.send(gifs.map(gif =>
-        pornsearchEm.setColor(couleur).setTitle("4K").setDescription(`**[LIEN DU GIF](${gif.url})**`).setImage(gif.url)
+        pornsearchEm.setColor(couleur).setTitle("4K").setDescription(`**Lien du gif : [CLIQUE ICI](${gif.url})**`) .setImage(gif.url)
         ))
         )
       }        
@@ -565,7 +567,7 @@ client.on('message',  async message => {
     .then(
       gifs => 
       message.channel.send(gifs.map(gif =>
-        pornsearchEm.setColor(couleur).setTitle("SUCK").setDescription(`**[LIEN DU GIF](${gif.url})**`).setImage(gif.url)    
+        pornsearchEm.setColor(couleur).setTitle("SUCK").setDescription(`**Lien du gif : [CLIQUE ICI](${gif.url})**`) .setImage(gif.url)    
         )) 
         )
       }        
@@ -578,7 +580,7 @@ client.on('message',  async message => {
       gifs => 
       message.channel.send(gifs.map(gif =>
   
-        pornsearchEm.setColor(couleur).setTitle("ANAL").setDescription(`**[LIEN DU GIF](${gif.url})**`).setImage(gif.url)
+        pornsearchEm.setColor(couleur).setTitle("ANAL").setDescription(`**Lien du gif : [CLIQUE ICI](${gif.url})**`) .setImage(gif.url)
   
         ))
         )
