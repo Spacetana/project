@@ -494,7 +494,7 @@ client.on('message',  async message => {
               .setFooter(Copyright, avatarbot)
 
     if (!question && !message.content.includes("?")) return msg.channel.send(NoQuestion);
-    if (msg.content.includes("cv ?", "çava ?", "cv?", "comment tu vas ?", "tu vas bien ?", "ça va?", "çava?", "ça va ?")) return msg.channel.send(çava[Math.floor(Math.random() * (çava.length))]);
+    if (msg.content.includes("ça va")) return msg.channel.send(çava[Math.floor(Math.random() * (çava.length))]);
     //if (message.content.includes(tfqcase.toLowerCase())) return msg.channel.send(tfq[Math.floor(Math.random() * (tfq.length))]);
     if (question) return msg.channel.send(replies[Math.floor(Math.random() * (replies.length))])    
   }
