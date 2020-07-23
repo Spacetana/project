@@ -177,14 +177,17 @@ client.on('message',  async message => {
     .setColor(couleur)
     .setTitle("Page 8/"+totalpage+" - Commandes NSFW - Hentai :")
     .setDescription("**Pour plus d'information dirigez vous vers le support de Rick\🛸 :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**")
-    .addField(`\`${PREFIX}hcum\``,     "Permet d'afficher des images/gifs d'éjaculation")
     .addField(`\`${PREFIX}hgif\``,     "Permet d'afficher des gifs pornographique random")
+    .addField(`\`${PREFIX}hcum\``,     "Permet d'afficher des images/gifs avec le tag : cum")
     .addField(`\`${PREFIX}nekonude\``, "Permet d'afficher des images pornographique de Nekomimi")
     .addField(`\`${PREFIX}hlewd\``,    "Permet d'afficher des images de personnage féminin dénudée")
-    .addField(`\`${PREFIX}hbdsm\``,    "Permet d'afficher des images de personnage féminin style bdsm")
+    .addField(`\`${PREFIX}hmaid\``,    "Permet d'afficher des images pornographique avec le tag : maid")
+    .addField(`\`${PREFIX}horgy\``,    "Permet d'afficher des images pornographique avec le tag : orgy (groupy or whatever)")
+    .addField(`\`${PREFIX}hbdsm\``,    "Permet d'afficher des images pornographique avec le tag : bdsm")
     .addField(`\`${PREFIX}hfuck\``,    "Permet d'afficher des images/gifs pornographique d'acte sexuel")
     .addField(`\`${PREFIX}hanal\``,    "Permet d'afficher des images/gifs pornographique d'acte sexuel anal")
     .addField(`\`${PREFIX}hfemdom\``,  "Permet d'afficher des images pornographique où la femme domine l'homme")
+    .addField(`\`${PREFIX}hpanties\``, "Permet d'afficher des images pornographique où la femme est en sous vêtement")
     .setFooter(Copyright, avatarbot)
     msg.channel.send(hentai);
   } 
@@ -536,7 +539,7 @@ client.on('message',  async message => {
 
         ))
       )
-    }
+    } 
 
   if (msg.content.startsWith(prefix + "hbdsm")) {
     if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error); 
@@ -553,6 +556,30 @@ client.on('message',  async message => {
 
     msg.channel.send(pornsearchEm.setColor(couleur).setTitle("FEMDOM").setDescription(`**Lien de l'image : [CLIQUE ICI](${url})**`).setImage(url));
   }  
+      
+  if (msg.content.startsWith(prefix + "horgy")) {
+    if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error); 
+
+    let url = akaneko.nsfw.orgy();
+
+    msg.channel.send(pornsearchEm.setColor(couleur).setTitle("ORGY").setDescription(`**Lien de l'image : [CLIQUE ICI](${url})**`).setImage(url));
+  }
+
+  if (msg.content.startsWith(prefix + "hmaid")) {
+    if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error); 
+
+    let url = akaneko.nsfw.maid();
+
+    msg.channel.send(pornsearchEm.setColor(couleur).setTitle("MAID").setDescription(`**Lien de l'image : [CLIQUE ICI](${url})**`).setImage(url));
+  }
+
+  if (msg.content.startsWith(prefix + "hpanties")) {
+    if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error); 
+
+    let url = akaneko.nsfw.panties();
+
+    msg.channel.send(pornsearchEm.setColor(couleur).setTitle("PANTIES").setDescription(`**Lien de l'image : [CLIQUE ICI](${url})**`).setImage(url));
+  }
 
   if (msg.content.startsWith(prefix + "pussy")) {
     if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
