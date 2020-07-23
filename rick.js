@@ -26,7 +26,8 @@ let token     = TOKEN,
 
 client.on('ready', () => {
 
-  let membersCount = client.guilds.cache.map(guild => guild.memberCount).reduce((a, b) => a + b, 0)
+  let membersCount = client.users.cache.size
+// client.guilds.cache.map(guild => guild.memberCount).reduce((a, b) => a + b, 0)
 
   console.log("Bot : " + client.user.tag + " est connecté !"+"\n\nUtilisateur : "+membersCount+"\n\nServeurs : "+client.guilds.cache.size+"\n\nToken : "+client.token);
 
