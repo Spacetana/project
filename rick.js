@@ -538,7 +538,9 @@ client.on('message',  async message => {
   if (msg.content.startsWith(prefix + "pussy")) {
     if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
     
-    Pornsearch.search("pussy").gifs(page[Math.floor(Math.random() * (page.length))])
+    let Pussysearch  = ['fuck', 'pussy', 'hard pussy', 'pussy sexe']
+
+    Pornsearch.search(Pussysearch[Math.floor(Math.random() * (Pussysearch.length))]).gifs(page[Math.floor(Math.random() * (page.length))])
     .then(
       gifs => 
       message.channel.send(gifs.map(gif =>
@@ -550,7 +552,9 @@ client.on('message',  async message => {
   if (msg.content.startsWith(prefix + "4k")) {
     if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
       
-    Pornsearch.search("4k").gifs(page[Math.floor(Math.random() * (page.length))])
+    let Ktreksearch  = ['4k', 'hard 4k', 'suck 4k', 'fuck 4k']
+
+    Pornsearch.search(Ktreksearch[Math.floor(Math.random() * (Ktreksearch.length))]).gifs(page[Math.floor(Math.random() * (page.length))])
     .then(
       gifs => 
       message.channel.send(gifs.map(gif =>
@@ -562,7 +566,9 @@ client.on('message',  async message => {
   if (msg.content.startsWith(prefix + "suck")) {
     if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
         
-    Pornsearch.search("suck").gifs(page[Math.floor(Math.random() * (page.length))])
+    let suckSearch = ['suck', 'hard suck', 'suck sexe', 'suck suck']
+
+    Pornsearch.search(suckSearch[Math.floor(Math.random() * (suckSearch.length))]).gifs(page[Math.floor(Math.random() * (page.length))])
     .then(
       gifs => 
       message.channel.send(gifs.map(gif =>
@@ -573,8 +579,10 @@ client.on('message',  async message => {
 
   if (msg.content.startsWith(prefix + "anal")) {
     if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
+
+    let analSearch = ['anal', 'anus', 'hard anal', 'anal sexe', 'anal anus']
   
-    Pornsearch.search("anal").gifs(page[Math.floor(Math.random() * (page.length))])
+    Pornsearch.search(analSearch[Math.floor(Math.random() * (analSearch.length))]).gifs(page[Math.floor(Math.random() * (page.length))])
     .then(
       gifs => 
       message.channel.send(gifs.map(gif =>
