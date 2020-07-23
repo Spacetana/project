@@ -182,7 +182,7 @@ client.on('message',  async message => {
     .addField(`\`${PREFIX}nekonude\``, "Permet d'afficher des images pornographique de Nekomimi")
     .addField(`\`${PREFIX}hlewd\``,    "Permet d'afficher des images de personnage féminin dénudée")
     .addField(`\`${PREFIX}hmaid\``,    "Permet d'afficher des images pornographique avec le tag : maid")
-    .addField(`\`${PREFIX}horgy\``,    "Permet d'afficher des images pornographique avec le tag : orgy (groupy or whatever)")
+    .addField(`\`${PREFIX}horgy\``,    "Permet d'afficher des images pornographique avec le tag : orgy")
     .addField(`\`${PREFIX}hbdsm\``,    "Permet d'afficher des images pornographique avec le tag : bdsm")
     .addField(`\`${PREFIX}hfuck\``,    "Permet d'afficher des images/gifs pornographique d'acte sexuel")
     .addField(`\`${PREFIX}hanal\``,    "Permet d'afficher des images/gifs pornographique d'acte sexuel anal")
