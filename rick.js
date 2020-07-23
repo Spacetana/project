@@ -12,6 +12,7 @@ const tz                                              = require('moment-timezone
 const fs                                              = require('fs');
 const Pornsearch                                      = require('pornsearch');
 const akaneko                                         = require('akaneko');
+const tnai                                            = require("tnai");
 const { url }                                         = require('inspector');
 const { serialize }                                   = require('v8');
 const client                                          = new Discord.Client({disableMentions: "everyone"});
@@ -741,7 +742,6 @@ if (msg.content.startsWith(prefix + "hfuck")) {
     
     async function h(){
       let img = await p.hgif();
-
   
       let imageE = new Discord.MessageEmbed()
       .setColor(couleur)
