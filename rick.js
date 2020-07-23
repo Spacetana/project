@@ -552,7 +552,7 @@ client.on('message',  async message => {
   if (msg.content.startsWith(prefix + "4k")) {
     if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
       
-    let Ktreksearch  = ['4k', 'hard 4k', 'suck 4k', 'fuck 4k']
+    let Ktreksearch  = ['4k', 'hard 4k']
 
     Pornsearch.search(Ktreksearch[Math.floor(Math.random() * (Ktreksearch.length))]).gifs(page[Math.floor(Math.random() * (page.length))])
     .then(
