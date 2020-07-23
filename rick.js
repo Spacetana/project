@@ -26,9 +26,9 @@ client.on('ready', () => {
 
   let membersCount = client.guilds.cache.map(guild => guild.memberCount).reduce((a, b) => a + b, 0)
 
-  console.log("Bot : " + client.user.tag + " est connecté !"+"\n\nMembers : "+membersCount+"\n\nServeurs : "+client.guilds.cache.size+"\n\nToken : "+client.token);
+  console.log("Bot : " + client.user.tag + " est connecté !"+"\n\nUtilisateur : "+membersCount+"\n\nServeurs : "+client.guilds.cache.size+"\n\nToken : "+client.token);
 
-  let statuses  =  [`${client.guilds.cache.size} serveur${client.guilds.cache.size > 1 ? "s" : "️"}`, PREFIX+'help', `Version: ${version}`],
+  let statuses  =  [`${client.guilds.cache.size} serveur${client.guilds.cache.size > 1 ? "s" : "️"}`, "Utilisateur : "+membersCount, PREFIX+'help', `Version: ${version}`],
       types     = ["LISTENING", "WATCHING", "PLAYING"];
     
       setInterval(function() {
