@@ -9,9 +9,10 @@ const TM                                              = require('temp-mail-api')
 const { error }                                       = require('console');
 const moment                                          = require('moment');
 const tz                                              = require('moment-timezone');
-const { url }                                         = require('inspector');
 const fs                                              = require('fs');
 const Pornsearch                                      = require('pornsearch');
+const { url }                                         = require('inspector');
+const { serialize }                                   = require('v8');
 const client                                          = new Discord.Client({disableMentions: "everyone"});
 
 client.commands = new Discord.Collection()
@@ -45,7 +46,7 @@ client.on('message',  async message => {
       msg              = message,
       guild            = msg.guild,
       author           = msg.author,
-      totalpage        = "7",
+      totalpage        = "8",
       Copyright        = "Rick🛸 ©️ Copyright : Atsuki \\/ Needles",
       villetz          = "Paris/London/Alger/Casablanca/Sydney/Troll/Denver/Puerto_Rico",  
       europeV          = "Paris/London",
@@ -66,7 +67,7 @@ client.on('message',  async message => {
     .addField(`\`${PREFIX}help fun\``,      "Affiche la page des commandes fun")
 	  .addField(`\`${PREFIX}help info\``,     "Affiche la page des commandes info")
     .addField(`\`${PREFIX}help love\``,     "Affiche la page des commandes love")
-    // .addField(`\`${PREFIX}help nsfw\``,     "Affiche la page des commandes nsfw🔞")
+    .addField(`\`${PREFIX}help nsfw\``,     "Affiche la page des commandes nsfw🔞")
     .addField(`\`${PREFIX}help hentai\``,   "Affiche la page des commandes hentai🔞")
     .addField(`\`${PREFIX}help timezone\`**(bêta)**`, "Permet d'accéder à la page d'aide de la commande `r!timezone`")
     .setFooter(Copyright, avatarbot)
@@ -152,30 +153,31 @@ client.on('message',  async message => {
   } 
 
   
-  /*if (msg.content === prefix + 'help nsfw' || msg.content === prefix + 'h nsfw') {
+  if (msg.content === prefix + 'help nsfw' || msg.content === prefix + 'h nsfw') {
 
     let nsfw = new Discord.MessageEmbed()
     .setColor(couleur)
     .setTitle("Page 7/"+totalpage+" - Commandes NSFW - Normal :")
     .setDescription("**Pour plus d'information dirigez vous vers le support de Rick\🛸 :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**")
-    .addField(`\`${PREFIX}4k\``,       "Permet d'afficher une image pornographique en 4k")
+    .addField(`\`${PREFIX}4k\``,       "Permet d'afficher un gif pornographique en 4k")
     .addField(`\`${PREFIX}ass\``,      "Permet d'afficher une image pornographique d'un gros cul")
-    .addField(`\`${PREFIX}anal\``,     "Permet d'afficher une image/gif pornographique d'acte anal")
+    .addField(`\`${PREFIX}anal\``,     "Permet d'afficher un gif pornographique d'acte anal")
+    .addField(`\`${PREFIX}suck\``,     "Permet d'afficher un gif pornographique d'acte suçage")
     .addField(`\`${PREFIX}pussy\``,    "Permet d'afficher une image pornographique de large vagins")
-    .addField(`\`${PREFIX}boobs\``,    "Permet d'afficher une image pornographique de grosse poitrine")
+    .addField(`\`${PREFIX}boobs\``,                    "Permet d'afficher une image pornographique de grosse poitrine")
+    .addField(`\`${PREFIX}gifsearch [recherche]\``,    "Permet de rechercher du contenu pornographique (format gif/driver pornhub)")
     .setFooter(Copyright, avatarbot)
     msg.channel.send(nsfw);
-  } */
+  } 
 
   if (msg.content === prefix + 'help hentai' || msg.content === prefix + 'h hentai') {
 
     let hentai = new Discord.MessageEmbed()
     .setColor(couleur)
-    .setTitle("Page 7/"+totalpage+" - Commandes NSFW - Hentai :")
+    .setTitle("Page 8/"+totalpage+" - Commandes NSFW - Hentai :")
     .setDescription("**Pour plus d'information dirigez vous vers le support de Rick\🛸 :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**")
     .addField(`\`${PREFIX}hcum\``,     "Permet d'afficher une image/gif d'éjaculation")
     .addField(`\`${PREFIX}hgif\``,     "Permet d'afficher un gif pornographique random")
-  //.addField(`\`${PREFIX}himg\``,     "Permet d'afficher une image/gif pornographique random")
     .addField(`\`${PREFIX}hlewd\``,    "Permet d'afficher une image de personnage féminin dénudée")
     .addField(`\`${PREFIX}nekonude\``, "Permet d'afficher une image/gif pornographique de Nekomimi")
     .addField(`\`${PREFIX}hfuck\``,    "Permet d'afficher une image/gif pornographique d'acte sexuel")
@@ -509,15 +511,77 @@ client.on('message',  async message => {
   .setTitle("NSFW ERREUR")
   .setDescription(msg.channel.toString()+" n'est pas un channel **NSFW** !")
   .setFooter(Copyright, avatarbot)
+  
+  let pornsearchEm = new Discord.MessageEmbed()
+  .setFooter(Copyright, avatarbot)
 
-  if (msg.content.startsWith(prefix + "pornsearch")) {
+  let page = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+
+  if (msg.content.startsWith(prefix + "gifsearch") || msg.content.startsWith(prefix + "gs")) {
+    if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
     let args      = msg.content.split(" ").slice(1),
         recherche = args.join(" ");
-    
-    const Pornsearch = require('pornsearch').search('ass');
 
-    Pornsearch.gifs().then(gifs => message.channel.send(gifs));
-  }
+    Pornsearch.search(recherche).gifs(page[Math.floor(Math.random() * (page.length))])
+    .then(
+      gifs => 
+      message.channel.send(gifs.map(gif =>
+
+        pornsearchEm.setColor(couleur).setTitle("GIF-SEARCH").setDescription(`**[LIEN DU GIF](${gif.url})**`).setImage(gif.url)
+
+        ))
+      )
+    }
+
+  if (msg.content.startsWith(prefix + "pussy")) {
+    if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
+    
+    Pornsearch.search("pussy").gifs(page[Math.floor(Math.random() * (page.length))])
+    .then(
+      gifs => 
+      message.channel.send(gifs.map(gif =>
+        pornsearchEm.setColor(couleur).setTitle("PUSSY-SEARCH").setDescription(`**[LIEN DU GIF](${gif.url})**`).setImage(gif.url)
+        ))
+        )
+      }   
+    
+  if (msg.content.startsWith(prefix + "4k")) {
+    if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
+      
+    Pornsearch.search("4k").gifs(page[Math.floor(Math.random() * (page.length))])
+    .then(
+      gifs => 
+      message.channel.send(gifs.map(gif =>
+        pornsearchEm.setColor(couleur).setTitle("4K-SEARCH").setDescription(`**[LIEN DU GIF](${gif.url})**`).setImage(gif.url)
+        ))
+        )
+      }        
+      
+  if (msg.content.startsWith(prefix + "suck")) {
+    if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
+        
+    Pornsearch.search("suck").gifs(page[Math.floor(Math.random() * (page.length))])
+    .then(
+      gifs => 
+      message.channel.send(gifs.map(gif =>
+        pornsearchEm.setColor(couleur).setTitle("SUCK-SEARCH").setDescription(`**[LIEN DU GIF](${gif.url})**`).setImage(gif.url)    
+        )) 
+        )
+      }        
+
+  if (msg.content.startsWith(prefix + "anal")) {
+    if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
+  
+    Pornsearch.search("anal").gifs(page[Math.floor(Math.random() * (page.length))])
+    .then(
+      gifs => 
+      message.channel.send(gifs.map(gif =>
+  
+        pornsearchEm.setColor(couleur).setTitle("PORN-SEARCH").setDescription(`**[LIEN DU GIF](${gif.url})**`).setImage(gif.url)
+  
+        ))
+        )
+      }    
 
   if (msg.content.startsWith(prefix + "boobs")) {
     if (!msg.channel.nsfw) return msg.channel.send(nonNsfw).catch(console.error);
