@@ -479,6 +479,8 @@ client.on('message',  async message => {
     if (!user) return msg.channel.send(pasdemention);
     if (user, user.id = author.id) return msg.channel.send(pasdemention);
   }
+  
+  let content = msg.content;
 
   if (msg.content.startsWith(prefix + "8ball")) {
 
@@ -494,7 +496,7 @@ client.on('message',  async message => {
               .setFooter(Copyright, avatarbot)
 
     if (!question && !message.content.includes("?")) return msg.channel.send(NoQuestion);
-    if (msg.content.includes("ça va")) return msg.channel.send(çava[Math.floor(Math.random() * (çava.length))]);
+    if (content.includes("ça va") && content.includes("cv")) return msg.channel.send(çava[Math.floor(Math.random() * (çava.length))]);
     //if (message.content.includes(tfqcase.toLowerCase())) return msg.channel.send(tfq[Math.floor(Math.random() * (tfq.length))]);
     if (question) return msg.channel.send(replies[Math.floor(Math.random() * (replies.length))])    
   }
