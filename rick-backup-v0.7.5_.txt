@@ -1663,9 +1663,6 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   if (msg.content.includes("Denver") + msg.content.includes("denver")) return msg.channel.send(Denver).catch(console.error);
 
 }
-
-
-
 });
 
 client.login(token);
