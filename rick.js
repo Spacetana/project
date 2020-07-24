@@ -253,45 +253,28 @@ client.on('message',  async message => {
     const user     = msg.mentions.users.first() || msg.guild.members.cache.get(userID);
     const args     = msg.content.split(" ").slice(2),
           reason   = args.join(" ");
-
-    let erreur = new Discord.MessageEmbed()
-            .setColor(couleur)
-            .setTitle("KICK ERREUR")
-            .setDescription("❌ Vous n'avez pas la permission `Expulser des membres` !")
-            .setFooter(Copyright, avatarbot)
     
-    if (!msg.member.hasPermission("KICK_MEMBERS")) return msg.channel.send(erreur).catch(console.error); 
-    if (!guild.me.hasPermission("KICK_MEMBERS")) return msg.channel.send(erreur.setDescription("❌ Je n'ai pas la permission `Expulser des membres` !")).catch(console.error); 
-    if (!user) return msg.channel.send(erreur.setDescription("❌ Vous n'avez pas mentionné l'utilisateur à **kick** !")).catch(console.error);  
+    if (!msg.member.hasPermission("KICK_MEMBERS")) return msg.channel.send(embed.setTitle("KICK ERREUR").setDescription("❌ Vous n'avez pas la permission `Expulser des membres` !")).catch(console.error); 
+    if (!guild.me.hasPermission("KICK_MEMBERS")) return msg.channel.send(embed.setTitle("KICK ERREUR").setDescription("❌ Je n'ai pas la permission `Expulser des membres` !")).catch(console.error); 
+    if (!user) return msg.channel.send(embed.setTitle("KICK ERREUR").setDescription("❌ Vous n'avez pas mentionné l'utilisateur à **kick** !")).catch(console.error);  
 
     if (user) {
 
       const member = msg.guild.member(user);
       
-      if (member) {
-              
-        let NoPermPosition = new Discord.MessageEmbed()
-        .setColor(couleur)
-        .setTitle("KICK ERREUR")
-        .setDescription("❌ "+member.toString()+" n'a pas était kick !\n\n **Raison : "+member.toString()+" possède un rôle au dessus du votre !**")
-        .setFooter(Copyright, avatarbot)     
+      if (member) {  
 
-        if (member.roles.highest.position > msg.member.roles.highest.position) return msg.channel.send(NoPermPosition).catch(console.error);  
+        if (member.roles.highest.position > msg.member.roles.highest.position) return msg.channel.send(embed.setTitle("KICK ERREUR").setDescription("❌ "+member.toString()+" n'a pas était kick !\n\n **Raison : "+member.toString()+" possède un rôle au dessus du votre !**")).catch(console.error);  
 
         member
           .kick(reason)
           .then(() => {
 
-            let check = new Discord.MessageEmbed()
-                  .setColor(couleur)
-                  .setTitle("KICK")
-                  .setDescription("✅ "+member.toString()+" a bien été **KICK** de "+"`"+guild.name+"`"+" !") 
-                  .addField("Membre :", member.toString()+"(`"+member.user.tag+"`)")
-                  .addField("Auteur :", author.toString()+"(`"+author.tag+"`)")
-                  .setFooter(Copyright, avatarbot)                     
+embed.setTitle("KICK").setDescription("✅ "+member.toString()+" a bien été **KICK** de "+"`"+guild.name+"`"+" !") .addField("Membre :", member.toString()+"(`"+member.user.tag+"`)").addField("Auteur :", author.toString()+"(`"+author.tag+"`)")
+            
+            if (!reason) return msg.channel.send(embed.setTitle("KICK").setDescription("✅ "+member.toString()+" a bien été **KICK** de "+"`"+guild.name+"`"+" !") .addField("Membre :", member.toString()+"(`"+member.user.tag+"`)").addField("Auteur :", author.toString()+"(`"+author.tag+"`)")).catch(console.error);        
+            if (reason) return msg.channel.send(embed.setTitle("KICK").setDescription("✅ "+member.toString()+" a bien été **KICK** de "+"`"+guild.name+"`"+" !") .addField("Membre :", member.toString()+"(`"+member.user.tag+"`)").addField("Auteur :", author.toString()+"(`"+author.tag+"`)").addField("Raison :", "**"+reason+"**")).catch(console.error);
 
-            if (!reason) return msg.channel.send(check);        
-            if (reason) return msg.channel.send(check.addField("Raison :", "**"+reason+"**")).catch(console.error);
           }).catch(err => {console.log(err)});
         }
       } 
