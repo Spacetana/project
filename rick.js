@@ -142,18 +142,12 @@ client.on('message',  async message => {
   if (msg.content.startsWith(prefix + 'whitelist')) {
 
     const userID   = msg.content.substring(msg.content.indexOf(' ') + 1); 
-    const user     = msg.mentions.users.first() || client.users.cache.get(userID); 
+    const user     = msg.mentions.users.first() || client.users.cache.get(userID);
 
     if (user) {
-    
-      let member = msg.guild.member(user);
-    
-      if (member) {
 
-        if (user && user.id - author.id && !whitelist.includes(user.id)) return msg.channel.send(embed.setTitle("NON WHITELIST").setDescription("❌ "+user.toString()+" ne figure pas dans la liste des administrateurs de **Rick\🛸**").addField("Liste des `ID` whitelist :", whitelist)).catch(console.error);
-        if (user && user.id - author.id && whitelist.includes(user.id)) return msg.channel.send(embed.setTitle("WHITELIST").setDescription("✅ "+user.toString()+" est certifié **whitelist** \🛸 !").addField("Liste des `ID` whitelist :", whitelist)).catch(console.error);
-
-      } 
+      if (user && user.id - author.id && !whitelist.includes(user.id)) return msg.channel.send(embed.setTitle("NON WHITELIST").setDescription("❌ "+user.toString()+" ne figure pas dans la liste des administrateurs de **Rick\🛸**").addField("Liste des `ID` whitelist :", whitelist)).catch(console.error);
+      if (user && user.id - author.id && whitelist.includes(user.id)) return msg.channel.send(embed.setTitle("WHITELIST").setDescription("✅ "+user.toString()+" est certifié **whitelist** \🛸 !").addField("Liste des `ID` whitelist :", whitelist)).catch(console.error);
     }     
 
     if (!user && !whitelist.includes(author.id)) return msg.channel.send(embed.setTitle("NON WHITELIST").setDescription("❌ Votre **ID** ne figure pas dans la liste des administrateurs de **Rick\🛸**").addField("Liste des `ID` whitelist :", whitelist)).catch(console.error);
