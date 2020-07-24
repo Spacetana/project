@@ -45,7 +45,7 @@ client.on('ready', () => {
 client.on('message',  async message => {
 
   let avatarbot        = client.user.avatarURL({dynamic: true}),
-      description      = description,
+      description      = "**Pour plus d'information dirigez vous vers le support de Rick\🛸 :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**",
       couleur          = "BLUE",
       msg              = message,
       guild            = msg.guild,
