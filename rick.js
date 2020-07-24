@@ -304,7 +304,8 @@ client.on('message',  async message => {
     
   if (msg.content.startsWith(prefix + 'pp') || msg.content.startsWith(prefix + 'avatar')) {
     
-    let user = msg.mentions.users.first();
+    const userID   = msg.content.substring(msg.content.indexOf(' ') + 1); 
+    const user     = msg.mentions.users.first() || msg.guild.members.cache.get(userID);
     
       if (user) {
     
