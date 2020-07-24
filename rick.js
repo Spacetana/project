@@ -295,8 +295,8 @@ client.on('message',  async message => {
         member
           .ban(reason)
           .then(() => {
-            if (!reason) return msg.channel.send(embed.setTitle("BAN").setDescription("✅ "+member.toString()+" a bien été **BAN** de "+"`"+guild.name+"`"+" !") .addField("Membre :", member.toString()+"(`"+member.user.tag+"`)").addField("Auteur :", author.toString()+"(`"+author.tag+"`)"));        
-            if (reason) return msg.channel.send(check.addField("Raison :", "**"+reason+"**")).catch(console.error);
+            if (!reason) return msg.channel.send(embed.setTitle("BAN").setDescription("✅ "+member.toString()+" a bien été **BAN** de "+"`"+guild.name+"`"+" !") .addField("Membre :", member.toString()+"(`"+member.user.tag+"`)").addField("Auteur :", author.toString()+"(`"+author.tag+"`)")).catch(console.error);        
+            if (reason) return msg.channel.send(embed.setTitle("BAN").setDescription("✅ "+member.toString()+" a bien été **BAN** de "+"`"+guild.name+"`"+" !") .addField("Membre :", member.toString()+"(`"+member.user.tag+"`)").addField("Auteur :", author.toString()+"(`"+author.tag+"`)").addField("Raison :", "**"+reason+"**")).catch(console.error);
           }).catch(err => {console.log(err)});
         }
       } 
