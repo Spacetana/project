@@ -132,14 +132,9 @@ client.on('message',  async message => {
     const user     = msg.mentions.users.first() || msg.guild.members.cache.get(userID) || msg.author;
     
     if (user) {
+      if (user && user.id - author.id) return msg.channel.send(embed.setTitle("AVATAR").setDescription(`**Voici la photo de profil de ${user} !** [(LIEN)](${user.displayAvatarURL({dynamic: true})})`).setImage(user.displayAvatarURL({dynamic: true, size: 1024}))).setFooter(Copyright, avatarbot).catch(console.error);
+    }    
     
-      let member = msg.guild.member(user);
-    
-      if (member) {
-        if (user && user.id - author.id) return msg.channel.send(embed.setTitle("AVATAR").setDescription(`**Voici la photo de profil de ${user} !** [(LIEN)](${member.user.displayAvatarURL({dynamic: true})})`).setImage(member.user.displayAvatarURL({dynamic: true, size: 1024}))).setFooter(Copyright, avatarbot).catch(console.error);
-      }
-    }     
-   
     if (!user) return msg.channel.send(embed.setTitle("AVATAR").setDescription(`**Voici votre photo de profil !** [(LIEN)](${author.displayAvatarURL({dynamic: true})})`).setImage(author.displayAvatarURL({dynamic: true, size: 1024}))).catch(console.error);
     if (user && user.id == author.id) return msg.channel.send(embed.setTitle("AVATAR").setDescription(`**Voici votre photo de profil !** [(LIEN)](${author.displayAvatarURL({dynamic: true})})`).setImage(author.displayAvatarURL({format: 'png', dynamic: true, size: 1024}))).catch(console.error);
   }
