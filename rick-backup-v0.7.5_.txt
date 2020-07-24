@@ -45,6 +45,7 @@ client.on('ready', () => {
 client.on('message',  async message => {
 
   let avatarbot        = client.user.avatarURL({dynamic: true}),
+      description      = "**Pour plus d'information dirigez vous vers le support de Rick\🛸 :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**",
       couleur          = "BLUE",
       msg              = message,
       guild            = msg.guild,
@@ -59,12 +60,16 @@ client.on('message',  async message => {
       americaV         = "Denver/Puerto_Rico",
       mod              = ["ban", "kick", "mute en dev", "clear en dev"];
 
+      let embed = new Discord.MessageEmbed()
+      .setColor(couleur)
+      .setFooter(Copyright, avatarbot)
+
   if (msg.content === prefix + 'help' || msg.content === prefix + 'h') {
 
     let standard = new Discord.MessageEmbed()
     .setColor(couleur)
     .setTitle("Page 1/"+totalpage+" - Toutes les commandes :")
-    .setDescription("**Pour plus d'information dirigez vous vers le support de Rick\🛸 :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**")
+    .setDescription(description)
     .addField(`\`${PREFIX}help\``, "Vous y êtes actuellement")
     .addField(`\`${PREFIX}help mod\``,      "Affiche la page des commandes mod")
     .addField(`\`${PREFIX}help fun\``,      "Affiche la page des commandes fun")
@@ -79,119 +84,46 @@ client.on('message',  async message => {
     if (whitelist.includes(author.id)) return msg.channel.send(standard.addField("️", "**COMMANDES WHITELIST**").addField(`\`${PREFIX}exec\``, "Permet d'exécuter du code en JavaScript !")).catch(console.error);
   }
 
-  if (msg.content === prefix + 'help mod' || msg.content === prefix + 'h mod') {
+  /*\ -------------------------- *\*/
 
-    let mod = new Discord.MessageEmbed()
-    .setColor(couleur)
-    .setTitle("Page 2/"+totalpage+" - Commandes MOD :")
-    .setDescription("**Pour plus d'information dirigez vous vers le support de Rick\🛸 :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**")
-    .addField(`\`${PREFIX}ban [@user - id] (raison)\``, "Permet de ban un membre mentionné")
-    .addField(`\`${PREFIX}kick [@user - id] (raison)\``, "Permet de kick un membre mentionné")
-    .setFooter(Copyright, avatarbot)
-    msg.channel.send(mod);
+  if (msg.content === prefix + 'help mod' || msg.content === prefix + 'h mod') {
+    msg.channel.send(embed.setTitle("Page 2/"+totalpage+" - Commandes MOD :").setDescription(description).addField(`\`${PREFIX}ban [@user - id] (raison)\``, "Permet de ban un membre mentionné").addField(`\`${PREFIX}kick [@user - id] (raison)\``, "Permet de kick un membre mentionné")).catch(console.error);
   }
+
+  /*\ -------------------------- *\*/
 
   if (msg.content === prefix + 'help info' || msg.content === prefix + 'h info') {
-
-    let info = new Discord.MessageEmbed()
-    .setColor(couleur)
-    .setTitle("Page 3/"+totalpage+" - Commandes INFO :")
-    .setDescription("**Pour plus d'information dirigez vous vers le support de Rick\🛸 :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**")
-    .addField(`\`${PREFIX}ping\``,                  "Affiche le temps de latence du bot(MS)")
-    .addField(`\`${PREFIX}pp (@user - id)\``,       "Affiche votre avatar ou l'avatar d'un membre mentionné")
-    .addField(`\`${PREFIX}userinfo (@user - id)\``, "Affiche vos infos ou les infos d'un membre mentionné")
-    .addField(`\`${PREFIX}whitelist (@user)\``,     "Permet de savoir si un membre ou si vous êtes whitelist dans le bot !")
-    .setFooter(Copyright, avatarbot)
-    msg.channel.send(info);
+    msg.channel.send(embed.setTitle("Page 3/"+totalpage+" - Commandes INFO :").setDescription(description).addField(`\`${PREFIX}ping\``, "Affiche le temps de latence du bot(MS)").addField(`\`${PREFIX}pp (@user - id)\``, "Affiche votre avatar ou l'avatar d'un membre mentionné").addField(`\`${PREFIX}userinfo (@user - id)\``, "Affiche vos infos ou les infos d'un membre mentionné").addField(`\`${PREFIX}whitelist (@user)\``, "Permet de savoir si un membre ou si vous êtes whitelist dans le bot !")).catch(console.error);
   }
+
+  /*\ -------------------------- *\*/
 
   if (msg.content === prefix + 'help timezone' || msg.content === prefix + 'h tz') {
-
-    let timezone = new Discord.MessageEmbed()
-    .setColor(couleur)
-    .setTitle("Page 4/"+totalpage+" - Commande INFO :")
-    .setDescription("**Pour plus d'information dirigez vous vers le support de Rick\🛸 :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**")
-    .addField(`\`${PREFIX}timezone [ville]\``,  "Affiche la date et l'heure de la ville saisie")
-    .addField("Ville éligible à la commande :", villetz)
-    .addField(":flag_eu: Europe :", europeV)
-    .addField("<:afu:734595847404388434> Afrique :", afriqueV)
-    .addField(":flag_au: Australie : ", australieV)
-    .addField(":flag_us: Amérique :", americaV)
-    .addField(":flag_aq: Antarctique :", antarctiqueV)
-    .setFooter(Copyright, avatarbot)
-    msg.channel.send(timezone);
+    msg.channel.send(embed.setTitle("Page 4/"+totalpage+" - Commande INFO :").setDescription(description).addField(`\`${PREFIX}timezone [ville]\``,  "Affiche la date et l'heure de la ville saisie").addField("Ville éligible à la commande :", villetz).addField(":flag_eu: Europe :", europeV).addField("<:afu:734595847404388434> Afrique :", afriqueV).addField(":flag_au: Australie : ", australieV).addField(":flag_us: Amérique :", americaV).addField(":flag_aq: Antarctique :", antarctiqueV)).catch(console.error);
   }
+
+  /*\ -------------------------- *\*/
 
   if (msg.content === prefix + 'help fun' || msg.content === prefix + 'h fun') {
-
-    let fun = new Discord.MessageEmbed()
-    .setColor(couleur)
-    .setTitle("Page 5/"+totalpage+" - Commandes FUN :")
-    .setDescription("**Pour plus d'information dirigez vous vers le support de Rick\🛸 :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**")
-    .addField(`\`${PREFIX}invisible\``,                          "Permet de faire envoyer un msg invisible par le bot")
-    .addField(`\`${PREFIX}8ball [question]\``,                   "Permet de poser n'importe quel question au bot")
-    .addField(`\`${PREFIX}mdp (N) (S) [nombre de charactère]\``, "Permet de générer un Mot-de-Passe aléatoire\n(**N = ajout de nombre** | **S = ajout de symbole** | **Sans = que des lettres**)")
-    .setFooter(Copyright, avatarbot)
-    msg.channel.send(fun);
+    msg.channel.send(embed.setTitle("Page 5/"+totalpage+" - Commandes FUN :").setDescription(description).addField(`\`${PREFIX}invisible\``, "Permet de faire envoyer un msg invisible par le bot").addField(`\`${PREFIX}8ball [question]\``, "Permet de poser n'importe quel question au bot").addField(`\`${PREFIX}mdp (N) (S) [nombre de charactère]\``, "Permet de générer un Mot-de-Passe aléatoire\n(**N = ajout de nombre** | **S = ajout de symbole** | **Sans = que des lettres**)")).catch(console.error);
   }
 
+  /*\ -------------------------- *\*/
+
   if (msg.content === prefix + 'help love' || msg.content === prefix + 'h love') {
-
-    let love = new Discord.MessageEmbed()
-    .setColor(couleur)
-    .setTitle("Page 6/"+totalpage+" - Commandes LOVE :")
-    .setDescription("**Pour plus d'information dirigez vous vers le support de Rick\🛸 :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**")
-    .addField(`\`${PREFIX}waifu\``, "Permet d'afficher des images de Waifu")
-    .addField(`\`${PREFIX}kitsune\``, "Permet d'afficher des images de Kitsune")
-    .addField(`\`${PREFIX}neko\``, "Permet d'afficher des images de Nekomimi")
-    .addField(`\`${PREFIX}pat\``, "Permet de vous tapotez ou de tapoter un membre")
-    .addField(`\`${PREFIX}smug\``, "Permet de vous satisfaire ou de satisfaire un membre")
-    .addField(`\`${PREFIX}cry\``, "Permet de vous faire pleurer ou de faire pleurer un membre")
-    .addField(`\`${PREFIX}hug\``, "Permet de vous faire un câlin ou de faire un câlin à un membre")
-    .addField(`\`${PREFIX}kiss\``, "Permet de vous faire bisous ou de faire un bisous à un membre")
-    .addField(`\`${PREFIX}slap\``, "Permet de vous mettre une gifle ou de mettre une gifle à un membre")
-    .addField(`\`${PREFIX}punch\``, "Permet de vous mettre un coup de poing ou de le mettre à un membre")
-    .setFooter(Copyright, avatarbot)
-    msg.channel.send(love);
+    msg.channel.send(embed.setTitle("Page 6/"+totalpage+" - Commandes LOVE :").setDescription(description).addField(`\`${PREFIX}waifu\``, "Permet d'afficher des images de Waifu").addField(`\`${PREFIX}kitsune\``, "Permet d'afficher des images de Kitsune").addField(`\`${PREFIX}neko\``, "Permet d'afficher des images de Nekomimi").addField(`\`${PREFIX}pat\``, "Permet de vous tapotez ou de tapoter un membre").addField(`\`${PREFIX}smug\``, "Permet de vous satisfaire ou de satisfaire un membre").addField(`\`${PREFIX}cry\``, "Permet de vous faire pleurer ou de faire pleurer un membre").addField(`\`${PREFIX}hug\``, "Permet de vous faire un câlin ou de faire un câlin à un membre").addField(`\`${PREFIX}kiss\``, "Permet de vous faire bisous ou de faire un bisous à un membre").addField(`\`${PREFIX}slap\``, "Permet de vous mettre une gifle ou de mettre une gifle à un membre").addField(`\`${PREFIX}punch\``, "Permet de vous mettre un coup de poing ou de le mettre à un membre")).catch(console.error);
   } 
 
-  
+  /*\ -------------------------- *\*/
+
   if (msg.content === prefix + 'help nsfw' || msg.content === prefix + 'h nsfw') {
-
-    let nsfw = new Discord.MessageEmbed()
-    .setColor(couleur)
-    .setTitle("Page 7/"+totalpage+" - Commandes NSFW - Normal :")
-    .setDescription("**Pour plus d'information dirigez vous vers le support de Rick\🛸 :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**")
-    .addField(`\`${PREFIX}4k\``,       "Permet d'afficher des gifs pornographique en 4k(pornhub)")
-    .addField(`\`${PREFIX}ass\``,      "Permet d'afficher des images pornographique de culs(random)")
-    .addField(`\`${PREFIX}anal\``,     "Permet d'afficher des gifs pornographique d'acte anal(pornhub)")
-    .addField(`\`${PREFIX}suck\``,     "Permet d'afficher des gifs pornographique d'acte de suçage(pornhub)")
-    .addField(`\`${PREFIX}pussy\``,    "Permet d'afficher des images pornographique avec des vagins(pornhub)")
-    .addField(`\`${PREFIX}boobs\``,                    "Permet d'afficher des images pornographique de grosse poitrine(random)")
-    .addField(`\`${PREFIX}gifsearch [recherche]\``,    "Permet de rechercher du contenu pornographique(Format: gif & Driver: pornhub)")
-    .setFooter(Copyright, avatarbot)
-    msg.channel.send(nsfw);
+    msg.channel.send(embed.setTitle("Page 7/"+totalpage+" - Commandes NSFW - Normal :").setDescription(description).addField(`\`${PREFIX}4k\``, "Permet d'afficher des gifs pornographique en 4k(pornhub)").addField(`\`${PREFIX}ass\``, "Permet d'afficher des images pornographique de culs(random)").addField(`\`${PREFIX}anal\``, "Permet d'afficher des gifs pornographique d'acte anal(pornhub)").addField(`\`${PREFIX}suck\``,     "Permet d'afficher des gifs pornographique d'acte de suçage(pornhub)").addField(`\`${PREFIX}pussy\``, "Permet d'afficher des images pornographique avec des vagins(pornhub)").addField(`\`${PREFIX}boobs\``, "Permet d'afficher des images pornographique de grosse poitrine(random)").addField(`\`${PREFIX}gifsearch [recherche]\``, "Permet de rechercher du contenu pornographique(Format: gif & Driver: pornhub)")).catch(console.error);
   } 
+
+  /*\ -------------------------- *\*/
 
   if (msg.content === prefix + 'help hentai' || msg.content === prefix + 'h hentai') {
-
-    let hentai = new Discord.MessageEmbed()
-    .setColor(couleur)
-    .setTitle("Page 8/"+totalpage+" - Commandes NSFW - Hentai :")
-    .setDescription("**Pour plus d'information dirigez vous vers le support de Rick\🛸 :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**")
-    .addField(`\`${PREFIX}hgif\``,     "Permet d'afficher des gifs pornographique random")
-    .addField(`\`${PREFIX}hcum\``,     "Permet d'afficher des images/gifs avec le tag : cum")
-    .addField(`\`${PREFIX}nekonude\``, "Permet d'afficher des images pornographique de Nekomimi")
-    .addField(`\`${PREFIX}hlewd\``,    "Permet d'afficher des images de personnage féminin dénudée")
-    .addField(`\`${PREFIX}hmaid\``,    "Permet d'afficher des images pornographique avec le tag : maid")
-    .addField(`\`${PREFIX}horgy\``,    "Permet d'afficher des images pornographique avec le tag : orgy")
-    .addField(`\`${PREFIX}hbdsm\``,    "Permet d'afficher des images pornographique avec le tag : bdsm")
-    .addField(`\`${PREFIX}hfuck\``,    "Permet d'afficher des images/gifs pornographique d'acte sexuel")
-    .addField(`\`${PREFIX}hanal\``,    "Permet d'afficher des images/gifs pornographique d'acte sexuel anal")
-    .addField(`\`${PREFIX}hfemdom\``,  "Permet d'afficher des images pornographique où la femme domine l'homme")
-    .addField(`\`${PREFIX}hpanties\``, "Permet d'afficher des images pornographique où la femme est en sous vêtement")
-    .setFooter(Copyright, avatarbot)
-    msg.channel.send(hentai);
+    msg.channel.send(embed.setTitle("Page 8/"+totalpage+" - Commandes NSFW - Hentai :").setDescription(description).addField(`\`${PREFIX}hgif\``, "Permet d'afficher des gifs pornographique random").addField(`\`${PREFIX}hcum\``, "Permet d'afficher des images/gifs avec le tag : cum").addField(`\`${PREFIX}nekonude\``, "Permet d'afficher des images pornographique de Nekomimi").addField(`\`${PREFIX}hlewd\``, "Permet d'afficher des images de personnage féminin dénudée").addField(`\`${PREFIX}hmaid\``, "Permet d'afficher des images pornographique avec le tag : maid").addField(`\`${PREFIX}horgy\``, "Permet d'afficher des images pornographique avec le tag : orgy").addField(`\`${PREFIX}hbdsm\``, "Permet d'afficher des images pornographique avec le tag : bdsm").addField(`\`${PREFIX}hfuck\``, "Permet d'afficher des images/gifs pornographique d'acte sexuel").addField(`\`${PREFIX}hanal\``, "Permet d'afficher des images/gifs pornographique d'acte sexuel anal").addField(`\`${PREFIX}hfemdom\``, "Permet d'afficher des images pornographique où la femme domine l'homme").addField(`\`${PREFIX}hpanties\``, "Permet d'afficher des images pornographique où la femme est en sous vêtement")).catch(console.error);
   } 
 
   if (msg.content.startsWith(prefix + 'pp') || msg.content.startsWith(prefix + 'avatar') ) {
@@ -204,26 +136,12 @@ client.on('message',  async message => {
       let member = msg.guild.member(user);
     
       if (member) {
-            
-        let embed = new Discord.MessageEmbed()
-              .setColor(couleur)
-              .setTitle("AVATAR")
-              .setDescription(`**Voici la photo de profil de ${user} !** [(LIEN)](${user.displayAvatarURL({dynamic: true})})`)
-              .setImage(user.displayAvatarURL({format: 'png', dynamic: true, size: 1024}))
-              .setFooter(Copyright, avatarbot)
-        if (user && user.id - author.id) return msg.channel.send(embed);
+        if (user && user.id - author.id) return msg.channel.send(embed.setTitle("AVATAR").setDescription(`**Voici la photo de profil de ${user} !** [(LIEN)](${pp})`).setImage(pp)).setFooter(Copyright, avatarbot).catch(console.error);
       }
-    }
-
-    let pasdemention = new Discord.MessageEmbed()
-      .setColor(couleur)
-      .setTitle("AVATAR")
-      .setDescription(`**Voici votre photo de profil !** [(LIEN)](${author.displayAvatarURL({dynamic: true})})`)
-      .setImage(author.displayAvatarURL({format: 'png', dynamic: true, size: 1024}))
-      .setFooter(Copyright, avatarbot)      
+    }     
    
-    if (!user) return msg.channel.send(pasdemention);
-    if (user && user.id == author.id) return msg.channel.send(pasdemention);
+    if (!user) return msg.channel.send(embed.setTitle("AVATAR").setDescription(`**Voici votre photo de profil !** [(LIEN)](${author.displayAvatarURL({dynamic: true})})`).setImage(author.displayAvatarURL({format: 'png', dynamic: true, size: 1024}))).catch(console.error);
+    if (user && user.id == author.id) return msg.channel.send(embed.setTitle("AVATAR").setDescription(`**Voici votre photo de profil !** [(LIEN)](${author.displayAvatarURL({dynamic: true})})`).setImage(author.displayAvatarURL({format: 'png', dynamic: true, size: 1024}))).catch(console.error);
   }
 
   if (msg.content.startsWith(prefix + 'whitelist')) {
@@ -237,54 +155,19 @@ client.on('message',  async message => {
     
       if (member) {
 
-        let standardliste1 = new Discord.MessageEmbed()
-        .setColor(couleur)
-        .setTitle("NON WHITELIST")
-        .setDescription("❌ "+user.toString()+" ne figure pas dans la liste des administrateurs de **Rick\🛸**")
-        .addField("Liste des `ID` whitelist :", whitelist)
-        .setFooter(Copyright, avatarbot)
-
-        let avancéliste1 = new Discord.MessageEmbed()
-        .setColor(couleur)
-        .setTitle("WHITELIST")
-        .setDescription("✅ "+user.toString()+" est certifié **whitelist** \🛸 !")
-        .addField("Liste des `ID` whitelist :", whitelist)
-        .setFooter(Copyright, avatarbot)
-
-        if (user && user.id - author.id && !whitelist.includes(user.id)) return msg.channel.send(standardliste1);
-        if (user && user.id - author.id && whitelist.includes(user.id)) return msg.channel.send(avancéliste1);
+        if (user && user.id - author.id && !whitelist.includes(user.id)) return msg.channel.send(embed.setTitle("NON WHITELIST").setDescription("❌ "+user.toString()+" ne figure pas dans la liste des administrateurs de **Rick\🛸**").addField("Liste des `ID` whitelist :", whitelist)).catch(console.error);
+        if (user && user.id - author.id && whitelist.includes(user.id)) return msg.channel.send(embed.setTitle("WHITELIST").setDescription("✅ "+user.toString()+" est certifié **whitelist** \🛸 !").addField("Liste des `ID` whitelist :", whitelist)).catch(console.error);
 
       } 
     }     
 
-    let standardliste = new Discord.MessageEmbed()
-    .setColor(couleur)
-    .setTitle("NON WHITELIST")
-    .setDescription("❌ Votre **ID** ne figure pas dans la liste des administrateurs de **Rick\🛸**")
-    .addField("Liste des `ID` whitelist :", whitelist)
-    .setFooter(Copyright, avatarbot)
+    if (!user && !whitelist.includes(author.id)) return msg.channel.send(embed.setTitle("NON WHITELIST").setDescription("❌ Votre **ID** ne figure pas dans la liste des administrateurs de **Rick\🛸**").addField("Liste des `ID` whitelist :", whitelist)).catch(console.error);
+    if (!user && whitelist.includes(author.id)) return msg.channel.send(embed.setTitle("WHITELIST").setDescription("✅ Vous êtes certifié **whitelist** \🛸 !").addField("Liste des `ID` whitelist :", whitelist)  ).catch(console.error);
 
-    let avancéliste = new Discord.MessageEmbed()
-    .setColor(couleur)
-    .setTitle("WHITELIST")
-    .setDescription("✅ Vous êtes certifié **whitelist** \🛸 !")
-    .addField("Liste des `ID` whitelist :", whitelist)
-    .setFooter(Copyright, avatarbot)   
-
-    if (!user && !whitelist.includes(author.id)) return msg.channel.send(standardliste);
-    if (!user && whitelist.includes(author.id)) return msg.channel.send(avancéliste);
-
-    if (user && user.id == author.id && !whitelist.includes(user.id)) return msg.channel.send(standardliste);
-    if (user && user.id == author.id && whitelist.includes(user.id)) return msg.channel.send(avancéliste);
+    if (user && user.id == author.id && !whitelist.includes(user.id)) return msg.channel.send(embed.setTitle("NON WHITELIST").setDescription("❌ Votre **ID** ne figure pas dans la liste des administrateurs de **Rick\🛸**").addField("Liste des `ID` whitelist :", whitelist)).catch(console.error);
+    if (user && user.id == author.id && whitelist.includes(user.id)) return msg.channel.send(embed.setTitle("WHITELIST").setDescription("✅ Vous êtes certifié **whitelist** \🛸 !").addField("Liste des `ID` whitelist :", whitelist)  ).catch(console.error);
 
   }
-
-  let nonWhitelist = new Discord.MessageEmbed()
-  .setColor(couleur)
-  .setTitle("NON WHITELIST")
-  .setDescription("❌ Votre **ID** ne figure pas dans la liste des administrateurs de **Rick\🛸**")
-  .addField("Liste des `ID` whitelist :", whitelist)
-  .setFooter(Copyright, avatarbot)
     
   if (msg.content.startsWith(prefix + 'exec')) {
   
@@ -370,44 +253,24 @@ client.on('message',  async message => {
     const user     = msg.mentions.users.first() || msg.guild.members.cache.get(userID);
     const args     = msg.content.split(" ").slice(2),
           reason   = args.join(" ");
-
-    let erreur = new Discord.MessageEmbed()
-            .setColor(couleur)
-            .setTitle("KICK ERREUR")
-            .setDescription("❌ Vous n'avez pas la permission `Expulser des membres` !")
-            .setFooter(Copyright, avatarbot)
     
-    if (!msg.member.hasPermission("KICK_MEMBERS")) return msg.channel.send(erreur).catch(console.error); 
-    if (!guild.me.hasPermission("KICK_MEMBERS")) return msg.channel.send(erreur.setDescription("❌ Je n'ai pas la permission `Expulser des membres` !")).catch(console.error); 
-    if (!user) return msg.channel.send(erreur.setDescription("❌ Vous n'avez pas mentionné l'utilisateur à **kick** !")).catch(console.error);  
+    if (!msg.member.hasPermission("KICK_MEMBERS")) return msg.channel.send(embed.setTitle("KICK ERREUR").setDescription("❌ Vous n'avez pas la permission `Expulser des membres` !")).catch(console.error); 
+    if (!guild.me.hasPermission("KICK_MEMBERS")) return msg.channel.send(embed.setTitle("KICK ERREUR").setDescription("❌ Je n'ai pas la permission `Expulser des membres` !")).catch(console.error); 
+    if (!user) return msg.channel.send(embed.setTitle("KICK ERREUR").setDescription("❌ Vous n'avez pas mentionné l'utilisateur à **kick** !")).catch(console.error);  
 
     if (user) {
+
       const member = msg.guild.member(user);
       
-      if (member) {
-              
-        let NoPermPosition = new Discord.MessageEmbed()
-        .setColor(couleur)
-        .setTitle("KICK ERREUR")
-        .setDescription("❌ "+member.toString()+" n'a pas était kick !\n\n **Raison : "+member.toString()+" possède un rôle au dessus du votre !**")
-        .setFooter(Copyright, avatarbot)     
+      if (member) {  
 
-        if (member.roles.highest.position > msg.member.roles.highest.position) return msg.channel.send(NoPermPosition).catch(console.error);  
+        if (member.roles.highest.position > msg.member.roles.highest.position) return msg.channel.send(embed.setTitle("KICK ERREUR").setDescription("❌ "+member.toString()+" n'a pas était kick !\n\n **Raison : "+member.toString()+" possède un rôle au dessus du votre !**")).catch(console.error);  
 
         member
           .kick(reason)
-          .then(() => {
-
-            let check = new Discord.MessageEmbed()
-                  .setColor(couleur)
-                  .setTitle("KICK")
-                  .setDescription("✅ "+member.toString()+" a bien été **KICK** de "+"`"+guild.name+"`"+" !") 
-                  .addField("Membre :", member.toString()+"(`"+member.user.tag+"`)")
-                  .addField("Auteur :", author.toString()+"(`"+author.tag+"`)")
-                  .setFooter(Copyright, avatarbot)                     
-
-            if (!reason) return msg.channel.send(check);        
-            if (reason) return msg.channel.send(check.addField("Raison :", "**"+reason+"**")).catch(console.error);
+          .then(() => {            
+            if (!reason) return msg.channel.send(embed.setTitle("KICK").setDescription("✅ "+member.toString()+" a bien été **KICK** de "+"`"+guild.name+"`"+" !") .addField("Membre :", member.toString()+"(`"+member.user.tag+"`)").addField("Auteur :", author.toString()+"(`"+author.tag+"`)")).catch(console.error);        
+            if (reason) return msg.channel.send(embed.setTitle("KICK").setDescription("✅ "+member.toString()+" a bien été **KICK** de "+"`"+guild.name+"`"+" !") .addField("Membre :", member.toString()+"(`"+member.user.tag+"`)").addField("Auteur :", author.toString()+"(`"+author.tag+"`)").addField("Raison :", "**"+reason+"**")).catch(console.error);
           }).catch(err => {console.log(err)});
         }
       } 
@@ -419,42 +282,21 @@ client.on('message',  async message => {
     const args     = msg.content.split(" ").slice(2),
           reason   = args.join(" ");
 
-    let erreur = new Discord.MessageEmbed()
-            .setColor(couleur)
-            .setTitle("BAN ERREUR")
-            .setDescription("❌ Vous n'avez pas la permission `Bannir des membres` !")
-            .setFooter(Copyright, avatarbot)
-
-    if (!msg.member.hasPermission("KICK_MEMBERS")) return msg.channel.send(erreur).catch(console.error); 
-    if (!guild.me.hasPermission("KICK_MEMBERS")) return msg.channel.send(erreur.setDescription("❌ Je n'ai pas la permission `Bannir des membres` !")).catch(console.error); 
-    if (!user) return msg.channel.send(erreur.setDescription("❌ Vous n'avez pas mentionné l'utilisateur à **ban** !")).catch(console.error); 
+    if (!msg.member.hasPermission("KICK_MEMBERS")) return msg.channel.send(embed.setTitle("BAN ERREUR").setDescription("❌ Vous n'avez pas la permission `Bannir des membres` !")).catch(console.error); 
+    if (!guild.me.hasPermission("KICK_MEMBERS")) return msg.channel.send(embed.setTitle("BAN ERREUR").setDescription("❌ Je n'ai pas la permission `Bannir des membres` !")).catch(console.error); 
+    if (!user) return msg.channel.send(embed.setTitle("BAN ERREUR").setDescription("❌ Vous n'avez pas mentionné l'utilisateur à **ban** !")).catch(console.error); 
 
     if (user) {
       const member = guild.member(user);
       if (member) {
- 
-        let NoPermPosition = new Discord.MessageEmbed()
-        .setColor(couleur)
-        .setTitle("BAN ERREUR")
-        .setDescription("❌ "+member.toString()+" n'a pas était ban !\n\n **Raison : "+member.toString()+" possède un rôle au dessus du votre !**")
-        .setFooter(Copyright, avatarbot)
 
-        if (member.roles.highest.position > msg.member.roles.highest.position) return msg.channel.send(NoPermPosition).catch(console.error);   
+        if (member.roles.highest.position > msg.member.roles.highest.position) return msg.channel.send(embed.setTitle("BAN ERREUR").setDescription("❌ "+member.toString()+" n'a pas était ban !\n\n **Raison : "+member.toString()+" possède un rôle au dessus du votre !**")).catch(console.error);   
 
         member
           .ban(reason)
           .then(() => {
-
-            let check = new Discord.MessageEmbed()
-                  .setColor(couleur)
-                  .setTitle("BAN")
-                  .setDescription("✅ "+member.toString()+" a bien été **BAN** de "+"`"+guild.name+"`"+" !") 
-                  .addField("Membre :", member.toString()+"(`"+member.user.tag+"`)")
-                  .addField("Auteur :", author.toString()+"(`"+author.tag+"`)")
-                  .setFooter(Copyright, avatarbot)   
-
-            if (!reason) return msg.channel.send(check);        
-            if (reason) return msg.channel.send(check.addField("Raison :", "**"+reason+"**")).catch(console.error);
+            if (!reason) return msg.channel.send(embed.setTitle("BAN").setDescription("✅ "+member.toString()+" a bien été **BAN** de "+"`"+guild.name+"`"+" !") .addField("Membre :", member.toString()+"(`"+member.user.tag+"`)").addField("Auteur :", author.toString()+"(`"+author.tag+"`)")).catch(console.error);        
+            if (reason) return msg.channel.send(embed.setTitle("BAN").setDescription("✅ "+member.toString()+" a bien été **BAN** de "+"`"+guild.name+"`"+" !") .addField("Membre :", member.toString()+"(`"+member.user.tag+"`)").addField("Auteur :", author.toString()+"(`"+author.tag+"`)").addField("Raison :", "**"+reason+"**")).catch(console.error);
           }).catch(err => {console.log(err)});
         }
       } 
@@ -462,30 +304,19 @@ client.on('message',  async message => {
     
   if (msg.content.startsWith(prefix + 'pp') || msg.content.startsWith(prefix + 'avatar')) {
     
-    let user = msg.mentions.users.first();
+    const userID   = msg.content.substring(msg.content.indexOf(' ') + 1); 
+    const user     = msg.mentions.users.first() || client.users.cache.get(userID);
     
       if (user) {
     
         let member = msg.guild.member(user);
     
         if (member) {
-          let embed = new Discord.MessageEmbed()
-                .setColor(couleur)
-                .setTitle("AVATAR")
-                .setDescription(`**Voici la photo de profil de ${user} !** [(LIEN)](${user.displayAvatarURL({dynamic: true})})`)
-                .setImage(user.displayAvatarURL({format: 'png', dynamic: true, size: 1024}))
-                .setFooter(Copyright, avatarbot)
-          if (user, user.id - author.id) return msg.channel.send(embed); 
+          if (user, user.id - author.id) return msg.channel.send(embed.setTitle("AVATAR").setDescription(`**Voici la photo de profil de ${user} !** [(LIEN)](${user.displayAvatarURL({dynamic: true})})`).setImage(user.displayAvatarURL({format: 'png', dynamic: true, size: 1024}))).catch(console.error); 
         }
       }
-    let pasdemention = new Discord.MessageEmbed()
-                .setColor(couleur)
-                .setTitle("AVATAR")
-                .setDescription(`**Voici votre photo de profil !** [(LIEN)](${author.displayAvatarURL({dynamic: true})})`)
-                .setImage(author.displayAvatarURL({format: 'png', dynamic: true, size: 1024}))
-                .setFooter(Copyright, avatarbot)
-    if (!user) return msg.channel.send(pasdemention);
-    if (user, user.id = author.id) return msg.channel.send(pasdemention);
+    if (!user) return msg.channel.send(embed.setTitle("AVATAR").setDescription(`**Voici votre photo de profil !** [(LIEN)](${author.displayAvatarURL({dynamic: true})})`).setImage(author.displayAvatarURL({format: 'png', dynamic: true, size: 1024}))).catch(console.error);
+    if (user, user.id = author.id) return msg.channel.send(embed.setTitle("AVATAR").setDescription(`**Voici votre photo de profil !** [(LIEN)](${author.displayAvatarURL({dynamic: true})})`).setImage(author.displayAvatarURL({format: 'png', dynamic: true, size: 1024}))).catch(console.error);
   }
 
   if (msg.content.startsWith(prefix + "8ball")) {
@@ -1632,7 +1463,6 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   if (msg.content.includes("Troll") + msg.content.includes("troll")) return msg.channel.send(Troll).catch(console.error);
 
   //America
-
   var denver = moment.tz("America/Denver").format("DD/MM/YYYY - hh:mm:ss")
   var denverd = moment.tz("America/Denver").format("DD/MM/YYYY")
   var denverh = moment.tz("America/Denver").format("hh:mm:ss")
@@ -1661,8 +1491,32 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
 
   if (msg.content.includes("portorico") + msg.content.includes("Puerto_Rico") + msg.content.includes("Puerto_rico") + msg.content.includes("pr") + msg.content.includes("puertorico") + msg.content.includes("Puertorico") + msg.content.includes("puerto_rico")) return msg.channel.send(Puerto_Rico).catch(console.error);
   if (msg.content.includes("Denver") + msg.content.includes("denver")) return msg.channel.send(Denver).catch(console.error);
-
 }
+
+  if (msg.content.startsWith(prefix + 'addrole')) {
+    const userID   = msg.content.substring(msg.content.indexOf(' ') + 1); 
+    const user     = msg.mentions.users.first() || msg.guild.members.cache.get(userID);
+    const args  = msg.content.split(" ").slice(1),
+          nrole = args.join(" ");
+    
+    if (!nrole) return msg.channel.send(embed.setTitle("ADD-ROLE ERREUR").setDescription("❌ Vous devez saisir le nom d'un rôle ou mentionné un rôle valide !")).catch(console.error);
+
+    if (user) {
+      
+      const member = msg.guild.member(user);
+      
+      if (member) {
+
+        member
+        .roles.add(nrole)
+        .then(() => {
+
+          if (nrole) return msg.channel.send(embed.setTitle("ADD-ROLE").setDescription("Le role **"+nrole+"** a bien été ajouté à "+user.toString()).addField("Membre :", user.toString()+"(`"+member.user.tag+"`)").addField("Auteur :", author.toString()+"(`"+author.tag+"`)")).catch(console.error);
+
+        })
+      }
+    }
+  }
 });
 
 client.login(token);
