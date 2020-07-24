@@ -84,32 +84,46 @@ client.on('message',  async message => {
     if (whitelist.includes(author.id)) return msg.channel.send(standard.addField("️", "**COMMANDES WHITELIST**").addField(`\`${PREFIX}exec\``, "Permet d'exécuter du code en JavaScript !")).catch(console.error);
   }
 
+  /*\ -------------------------- *\*/
+
   if (msg.content === prefix + 'help mod' || msg.content === prefix + 'h mod') {
     msg.channel.send(embed.setTitle("Page 2/"+totalpage+" - Commandes MOD :").setDescription(description).addField(`\`${PREFIX}ban [@user - id] (raison)\``, "Permet de ban un membre mentionné").addField(`\`${PREFIX}kick [@user - id] (raison)\``, "Permet de kick un membre mentionné")).catch(console.error);
   }
+
+  /*\ -------------------------- *\*/
 
   if (msg.content === prefix + 'help info' || msg.content === prefix + 'h info') {
     msg.channel.send(embed.setTitle("Page 3/"+totalpage+" - Commandes INFO :").setDescription(description).addField(`\`${PREFIX}ping\``, "Affiche le temps de latence du bot(MS)").addField(`\`${PREFIX}pp (@user - id)\``, "Affiche votre avatar ou l'avatar d'un membre mentionné").addField(`\`${PREFIX}userinfo (@user - id)\``, "Affiche vos infos ou les infos d'un membre mentionné").addField(`\`${PREFIX}whitelist (@user)\``, "Permet de savoir si un membre ou si vous êtes whitelist dans le bot !")).catch(console.error);
   }
 
+  /*\ -------------------------- *\*/
+
   if (msg.content === prefix + 'help timezone' || msg.content === prefix + 'h tz') {
     msg.channel.send(embed.setTitle("Page 4/"+totalpage+" - Commande INFO :").setDescription(description).addField(`\`${PREFIX}timezone [ville]\``,  "Affiche la date et l'heure de la ville saisie").addField("Ville éligible à la commande :", villetz).addField(":flag_eu: Europe :", europeV).addField("<:afu:734595847404388434> Afrique :", afriqueV).addField(":flag_au: Australie : ", australieV).addField(":flag_us: Amérique :", americaV).addField(":flag_aq: Antarctique :", antarctiqueV)).catch(console.error);
   }
+
+  /*\ -------------------------- *\*/
 
   if (msg.content === prefix + 'help fun' || msg.content === prefix + 'h fun') {
     msg.channel.send(embed.setTitle("Page 5/"+totalpage+" - Commandes FUN :").setDescription(description).addField(`\`${PREFIX}invisible\``, "Permet de faire envoyer un msg invisible par le bot").addField(`\`${PREFIX}8ball [question]\``, "Permet de poser n'importe quel question au bot").addField(`\`${PREFIX}mdp (N) (S) [nombre de charactère]\``, "Permet de générer un Mot-de-Passe aléatoire\n(**N = ajout de nombre** | **S = ajout de symbole** | **Sans = que des lettres**)")).catch(console.error);
   }
 
+  /*\ -------------------------- *\*/
+
   if (msg.content === prefix + 'help love' || msg.content === prefix + 'h love') {
     msg.channel.send(embed.setTitle("Page 6/"+totalpage+" - Commandes LOVE :").setDescription(description).addField(`\`${PREFIX}waifu\``, "Permet d'afficher des images de Waifu").addField(`\`${PREFIX}kitsune\``, "Permet d'afficher des images de Kitsune").addField(`\`${PREFIX}neko\``, "Permet d'afficher des images de Nekomimi").addField(`\`${PREFIX}pat\``, "Permet de vous tapotez ou de tapoter un membre").addField(`\`${PREFIX}smug\``, "Permet de vous satisfaire ou de satisfaire un membre").addField(`\`${PREFIX}cry\``, "Permet de vous faire pleurer ou de faire pleurer un membre").addField(`\`${PREFIX}hug\``, "Permet de vous faire un câlin ou de faire un câlin à un membre").addField(`\`${PREFIX}kiss\``, "Permet de vous faire bisous ou de faire un bisous à un membre").addField(`\`${PREFIX}slap\``, "Permet de vous mettre une gifle ou de mettre une gifle à un membre").addField(`\`${PREFIX}punch\``, "Permet de vous mettre un coup de poing ou de le mettre à un membre")).catch(console.error);
   } 
+
+  /*\ -------------------------- *\*/
 
   if (msg.content === prefix + 'help nsfw' || msg.content === prefix + 'h nsfw') {
     msg.channel.send(embed.setTitle("Page 7/"+totalpage+" - Commandes NSFW - Normal :").setDescription(description).addField(`\`${PREFIX}4k\``, "Permet d'afficher des gifs pornographique en 4k(pornhub)").addField(`\`${PREFIX}ass\``, "Permet d'afficher des images pornographique de culs(random)").addField(`\`${PREFIX}anal\``, "Permet d'afficher des gifs pornographique d'acte anal(pornhub)").addField(`\`${PREFIX}suck\``,     "Permet d'afficher des gifs pornographique d'acte de suçage(pornhub)").addField(`\`${PREFIX}pussy\``, "Permet d'afficher des images pornographique avec des vagins(pornhub)").addField(`\`${PREFIX}boobs\``, "Permet d'afficher des images pornographique de grosse poitrine(random)").addField(`\`${PREFIX}gifsearch [recherche]\``, "Permet de rechercher du contenu pornographique(Format: gif & Driver: pornhub)")).catch(console.error);
   } 
 
+  /*\ -------------------------- *\*/
+
   if (msg.content === prefix + 'help hentai' || msg.content === prefix + 'h hentai') {
-    msg.channel.send(embed.setTitle("Page 8/"+totalpage+" - Commandes NSFW - Hentai :").setDescription(description).addField(`\`${PREFIX}hgif\``, "Permet d'afficher des gifs pornographique random").addField(`\`${PREFIX}hcum\``, "Permet d'afficher des images/gifs avec le tag : cum").addField(`\`${PREFIX}nekonude\``, "Permet d'afficher des images pornographique de Nekomimi").addField(`\`${PREFIX}hlewd\``, "Permet d'afficher des images de personnage féminin dénudée").addField(`\`${PREFIX}hmaid\``, "Permet d'afficher des images pornographique avec le tag : maid").addField(`\`${PREFIX}horgy\``, "Permet d'afficher des images pornographique avec le tag : orgy").addField(`\`${PREFIX}hbdsm\``, "Permet d'afficher des images pornographique avec le tag : bdsm").addField(`\`${PREFIX}hfuck\``, "Permet d'afficher des images/gifs pornographique d'acte sexuel").addField(`\`${PREFIX}hanal\``, "Permet d'afficher des images/gifs pornographique d'acte sexuel anal").addField(`\`${PREFIX}hfemdom\``, "Permet d'afficher des images pornographique où la femme domine l'homme").addField(`\`${PREFIX}hpanties\``, "Permet d'afficher des images pornographique où la femme est en sous vêtement"));
+    msg.channel.send(embed.setTitle("Page 8/"+totalpage+" - Commandes NSFW - Hentai :").setDescription(description).addField(`\`${PREFIX}hgif\``, "Permet d'afficher des gifs pornographique random").addField(`\`${PREFIX}hcum\``, "Permet d'afficher des images/gifs avec le tag : cum").addField(`\`${PREFIX}nekonude\``, "Permet d'afficher des images pornographique de Nekomimi").addField(`\`${PREFIX}hlewd\``, "Permet d'afficher des images de personnage féminin dénudée").addField(`\`${PREFIX}hmaid\``, "Permet d'afficher des images pornographique avec le tag : maid").addField(`\`${PREFIX}horgy\``, "Permet d'afficher des images pornographique avec le tag : orgy").addField(`\`${PREFIX}hbdsm\``, "Permet d'afficher des images pornographique avec le tag : bdsm").addField(`\`${PREFIX}hfuck\``, "Permet d'afficher des images/gifs pornographique d'acte sexuel").addField(`\`${PREFIX}hanal\``, "Permet d'afficher des images/gifs pornographique d'acte sexuel anal").addField(`\`${PREFIX}hfemdom\``, "Permet d'afficher des images pornographique où la femme domine l'homme").addField(`\`${PREFIX}hpanties\``, "Permet d'afficher des images pornographique où la femme est en sous vêtement")).catch(console.error);
   } 
 
   if (msg.content.startsWith(prefix + 'pp') || msg.content.startsWith(prefix + 'avatar') ) {
@@ -122,26 +136,12 @@ client.on('message',  async message => {
       let member = msg.guild.member(user);
     
       if (member) {
-            
-        let embed = new Discord.MessageEmbed()
-              .setColor(couleur)
-              .setTitle("AVATAR")
-              .setDescription(`**Voici la photo de profil de ${user} !** [(LIEN)](${user.displayAvatarURL({dynamic: true})})`)
-              .setImage(user.displayAvatarURL({format: 'png', dynamic: true, size: 1024}))
-              .setFooter(Copyright, avatarbot)
-        if (user && user.id - author.id) return msg.channel.send(embed);
+        if (user && user.id - author.id) return msg.channel.send(embed.setTitle("AVATAR").setDescription(`**Voici la photo de profil de ${user} !** [(LIEN)](${user.displayAvatarURL({dynamic: true})})`).setImage(user.displayAvatarURL({format: 'png', dynamic: true, size: 1024})).setFooter(Copyright, avatarbot)).catch(console.error);
       }
-    }
-
-    let pasdemention = new Discord.MessageEmbed()
-      .setColor(couleur)
-      .setTitle("AVATAR")
-      .setDescription(`**Voici votre photo de profil !** [(LIEN)](${author.displayAvatarURL({dynamic: true})})`)
-      .setImage(author.displayAvatarURL({format: 'png', dynamic: true, size: 1024}))
-      .setFooter(Copyright, avatarbot)      
+    }     
    
-    if (!user) return msg.channel.send(pasdemention);
-    if (user && user.id == author.id) return msg.channel.send(pasdemention);
+    if (!user) return msg.channel.send(embed.setTitle("AVATAR").setDescription(`**Voici votre photo de profil !** [(LIEN)](${author.displayAvatarURL({dynamic: true})})`).setImage(author.displayAvatarURL({format: 'png', dynamic: true, size: 1024}))).catch(console.error);
+    if (user && user.id == author.id) return msg.channel.send(embed.setTitle("AVATAR").setDescription(`**Voici votre photo de profil !** [(LIEN)](${author.displayAvatarURL({dynamic: true})})`).setImage(author.displayAvatarURL({format: 'png', dynamic: true, size: 1024}))).catch(console.error);
   }
 
   if (msg.content.startsWith(prefix + 'whitelist')) {
@@ -155,54 +155,19 @@ client.on('message',  async message => {
     
       if (member) {
 
-        let standardliste1 = new Discord.MessageEmbed()
-        .setColor(couleur)
-        .setTitle("NON WHITELIST")
-        .setDescription("❌ "+user.toString()+" ne figure pas dans la liste des administrateurs de **Rick\🛸**")
-        .addField("Liste des `ID` whitelist :", whitelist)
-        .setFooter(Copyright, avatarbot)
-
-        let avancéliste1 = new Discord.MessageEmbed()
-        .setColor(couleur)
-        .setTitle("WHITELIST")
-        .setDescription("✅ "+user.toString()+" est certifié **whitelist** \🛸 !")
-        .addField("Liste des `ID` whitelist :", whitelist)
-        .setFooter(Copyright, avatarbot)
-
-        if (user && user.id - author.id && !whitelist.includes(user.id)) return msg.channel.send(standardliste1);
-        if (user && user.id - author.id && whitelist.includes(user.id)) return msg.channel.send(avancéliste1);
+        if (user && user.id - author.id && !whitelist.includes(user.id)) return msg.channel.send(embed.setTitle("NON WHITELIST").setDescription("❌ "+user.toString()+" ne figure pas dans la liste des administrateurs de **Rick\🛸**").addField("Liste des `ID` whitelist :", whitelist)).catch(console.error);
+        if (user && user.id - author.id && whitelist.includes(user.id)) return msg.channel.send(embed.setTitle("WHITELIST").setDescription("✅ "+user.toString()+" est certifié **whitelist** \🛸 !").addField("Liste des `ID` whitelist :", whitelist)).catch(console.error);
 
       } 
     }     
 
-    let standardliste = new Discord.MessageEmbed()
-    .setColor(couleur)
-    .setTitle("NON WHITELIST")
-    .setDescription("❌ Votre **ID** ne figure pas dans la liste des administrateurs de **Rick\🛸**")
-    .addField("Liste des `ID` whitelist :", whitelist)
-    .setFooter(Copyright, avatarbot)
+    if (!user && !whitelist.includes(author.id)) return msg.channel.send(embed.setTitle("NON WHITELIST").setDescription("❌ Votre **ID** ne figure pas dans la liste des administrateurs de **Rick\🛸**").addField("Liste des `ID` whitelist :", whitelist)).catch(console.error);
+    if (!user && whitelist.includes(author.id)) return msg.channel.send(embed.setTitle("WHITELIST").setDescription("✅ Vous êtes certifié **whitelist** \🛸 !").addField("Liste des `ID` whitelist :", whitelist)  ).catch(console.error);
 
-    let avancéliste = new Discord.MessageEmbed()
-    .setColor(couleur)
-    .setTitle("WHITELIST")
-    .setDescription("✅ Vous êtes certifié **whitelist** \🛸 !")
-    .addField("Liste des `ID` whitelist :", whitelist)
-    .setFooter(Copyright, avatarbot)   
-
-    if (!user && !whitelist.includes(author.id)) return msg.channel.send(standardliste);
-    if (!user && whitelist.includes(author.id)) return msg.channel.send(avancéliste);
-
-    if (user && user.id == author.id && !whitelist.includes(user.id)) return msg.channel.send(standardliste);
-    if (user && user.id == author.id && whitelist.includes(user.id)) return msg.channel.send(avancéliste);
+    if (user && user.id == author.id && !whitelist.includes(user.id)) return msg.channel.send(embed.setTitle("NON WHITELIST").setDescription("❌ Votre **ID** ne figure pas dans la liste des administrateurs de **Rick\🛸**").addField("Liste des `ID` whitelist :", whitelist)).catch(console.error);
+    if (user && user.id == author.id && whitelist.includes(user.id)) return msg.channel.send(embed.setTitle("WHITELIST").setDescription("✅ Vous êtes certifié **whitelist** \🛸 !").addField("Liste des `ID` whitelist :", whitelist)  ).catch(console.error);
 
   }
-
-  let nonWhitelist = new Discord.MessageEmbed()
-  .setColor(couleur)
-  .setTitle("NON WHITELIST")
-  .setDescription("❌ Votre **ID** ne figure pas dans la liste des administrateurs de **Rick\🛸**")
-  .addField("Liste des `ID` whitelist :", whitelist)
-  .setFooter(Copyright, avatarbot)
     
   if (msg.content.startsWith(prefix + 'exec')) {
   
@@ -1599,7 +1564,7 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
         .roles.add(nrole)
         .then(() => {
 
-          if (nrole) return msg.channel.send(embed.setTitle("ADD-ROLE").setDescription("Le role **"+nrole+"** a bien été ajouté à "+member.toString()).addField("Membre :", member.toString()+"(`"+member.user.tag+"`)").addField("Auteur :", author.toString()+"(`"+author.tag+"`)")).catch(console.error);
+          if (nrole) return msg.channel.send(embed.setTitle("ADD-ROLE").setDescription("Le role **"+nrole+"** a bien été ajouté à "+user.toString()).addField("Membre :", user.toString()+"(`"+member.user.tag+"`)").addField("Auteur :", author.toString()+"(`"+author.tag+"`)")).catch(console.error);
 
         })
       }
