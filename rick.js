@@ -135,14 +135,14 @@ client.on('message',  async message => {
       if (user && user.id - author.id) return msg.channel.send(embed.setTitle("AVATAR").setDescription(`**Voici la photo de profil de ${user} !** [(LIEN)](${user.displayAvatarURL({dynamic: true})})`).setImage(user.displayAvatarURL({dynamic: true, size: 1024}))).setFooter(Copyright, avatarbot).catch(console.error);
     }    
     
-    if (!user) return msg.channel.send(embed.setTitle("AVATAR").setDescription(`**Voici votre photo de profil !** [(LIEN)](${author.displayAvatarURL({dynamic: true})})`).setImage(author.displayAvatarURL({dynamic: true, size: 1024}))).catch(console.error);
-    if (user && user.id == author.id) return msg.channel.send(embed.setTitle("AVATAR").setDescription(`**Voici votre photo de profil !** [(LIEN)](${author.displayAvatarURL({dynamic: true})})`).setImage(author.displayAvatarURL({format: 'png', dynamic: true, size: 1024}))).catch(console.error);
+    if (!user) return msg.channel.send(embed.setTitle("AVATAR").setDescription(`**Voici votre photo de profil !** [(LIEN)](${user.displayAvatarURL({dynamic: true})})`).setImage(user.displayAvatarURL({dynamic: true, size: 1024}))).catch(console.error);
+    if (user && user.id == author.id) return msg.channel.send(embed.setTitle("AVATAR").setDescription(`**Voici votre photo de profil !** [(LIEN)](${user.displayAvatarURL({dynamic: true})})`).setImage(user.displayAvatarURL({format: 'png', dynamic: true, size: 1024}))).catch(console.error);
   }
 
   if (msg.content.startsWith(prefix + 'whitelist')) {
 
     const userID   = msg.content.substring(msg.content.indexOf(' ') + 1); 
-    const user     = msg.mentions.users.first() || msg.guild.members.cache.get(userID); 
+    const user     = msg.mentions.users.first() || client.users.cache.get(userID); 
 
     if (user) {
     
