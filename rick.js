@@ -88,17 +88,7 @@ client.on('message',  async message => {
   }
 
   if (msg.content === prefix + 'help info' || msg.content === prefix + 'h info') {
-
-    let info = new Discord.MessageEmbed()
-    .setColor(couleur)
-    .setTitle("Page 3/"+totalpage+" - Commandes INFO :")
-    .setDescription("**Pour plus d'information dirigez vous vers le support de Rick\🛸 :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**")
-    .addField(`\`${PREFIX}ping\``,                  "Affiche le temps de latence du bot(MS)")
-    .addField(`\`${PREFIX}pp (@user - id)\``,       "Affiche votre avatar ou l'avatar d'un membre mentionné")
-    .addField(`\`${PREFIX}userinfo (@user - id)\``, "Affiche vos infos ou les infos d'un membre mentionné")
-    .addField(`\`${PREFIX}whitelist (@user)\``,     "Permet de savoir si un membre ou si vous êtes whitelist dans le bot !")
-    .setFooter(Copyright, avatarbot)
-    msg.channel.send(info);
+    msg.channel.send(embed.setTitle("Page 3/"+totalpage+" - Commandes INFO :").setDescription("**Pour plus d'information dirigez vous vers le support de Rick\🛸 :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**").addField(`\`${PREFIX}ping\``, "Affiche le temps de latence du bot(MS)").addField(`\`${PREFIX}pp (@user - id)\``, "Affiche votre avatar ou l'avatar d'un membre mentionné").addField(`\`${PREFIX}userinfo (@user - id)\``, "Affiche vos infos ou les infos d'un membre mentionné").addField(`\`${PREFIX}whitelist (@user)\``, "Permet de savoir si un membre ou si vous êtes whitelist dans le bot !"));
   }
 
   if (msg.content === prefix + 'help timezone' || msg.content === prefix + 'h tz') {
