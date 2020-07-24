@@ -45,6 +45,7 @@ client.on('ready', () => {
 client.on('message',  async message => {
 
   let avatarbot        = client.user.avatarURL({dynamic: true}),
+      description      = description,
       couleur          = "BLUE",
       msg              = message,
       guild            = msg.guild,
@@ -68,7 +69,7 @@ client.on('message',  async message => {
     let standard = new Discord.MessageEmbed()
     .setColor(couleur)
     .setTitle("Page 1/"+totalpage+" - Toutes les commandes :")
-    .setDescription("**Pour plus d'information dirigez vous vers le support de Rick\🛸 :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**")
+    .setDescription(description)
     .addField(`\`${PREFIX}help\``, "Vous y êtes actuellement")
     .addField(`\`${PREFIX}help mod\``,      "Affiche la page des commandes mod")
     .addField(`\`${PREFIX}help fun\``,      "Affiche la page des commandes fun")
@@ -84,100 +85,31 @@ client.on('message',  async message => {
   }
 
   if (msg.content === prefix + 'help mod' || msg.content === prefix + 'h mod') {
-    msg.channel.send(embed.setTitle("Page 2/"+totalpage+" - Commandes MOD :").setDescription("**Pour plus d'information dirigez vous vers le support de Rick\🛸 :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**").addField(`\`${PREFIX}ban [@user - id] (raison)\``, "Permet de ban un membre mentionné").addField(`\`${PREFIX}kick [@user - id] (raison)\``, "Permet de kick un membre mentionné"));
+    msg.channel.send(embed.setTitle("Page 2/"+totalpage+" - Commandes MOD :").setDescription(description).addField(`\`${PREFIX}ban [@user - id] (raison)\``, "Permet de ban un membre mentionné").addField(`\`${PREFIX}kick [@user - id] (raison)\``, "Permet de kick un membre mentionné")).catch(console.error);
   }
 
   if (msg.content === prefix + 'help info' || msg.content === prefix + 'h info') {
-    msg.channel.send(embed.setTitle("Page 3/"+totalpage+" - Commandes INFO :").setDescription("**Pour plus d'information dirigez vous vers le support de Rick\🛸 :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**").addField(`\`${PREFIX}ping\``, "Affiche le temps de latence du bot(MS)").addField(`\`${PREFIX}pp (@user - id)\``, "Affiche votre avatar ou l'avatar d'un membre mentionné").addField(`\`${PREFIX}userinfo (@user - id)\``, "Affiche vos infos ou les infos d'un membre mentionné").addField(`\`${PREFIX}whitelist (@user)\``, "Permet de savoir si un membre ou si vous êtes whitelist dans le bot !"));
+    msg.channel.send(embed.setTitle("Page 3/"+totalpage+" - Commandes INFO :").setDescription(description).addField(`\`${PREFIX}ping\``, "Affiche le temps de latence du bot(MS)").addField(`\`${PREFIX}pp (@user - id)\``, "Affiche votre avatar ou l'avatar d'un membre mentionné").addField(`\`${PREFIX}userinfo (@user - id)\``, "Affiche vos infos ou les infos d'un membre mentionné").addField(`\`${PREFIX}whitelist (@user)\``, "Permet de savoir si un membre ou si vous êtes whitelist dans le bot !")).catch(console.error);
   }
 
   if (msg.content === prefix + 'help timezone' || msg.content === prefix + 'h tz') {
-
-    let timezone = new Discord.MessageEmbed()
-    .setColor(couleur)
-    .setTitle("Page 4/"+totalpage+" - Commande INFO :")
-    .setDescription("**Pour plus d'information dirigez vous vers le support de Rick\🛸 :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**")
-    .addField(`\`${PREFIX}timezone [ville]\``,  "Affiche la date et l'heure de la ville saisie")
-    .addField("Ville éligible à la commande :", villetz)
-    .addField(":flag_eu: Europe :", europeV)
-    .addField("<:afu:734595847404388434> Afrique :", afriqueV)
-    .addField(":flag_au: Australie : ", australieV)
-    .addField(":flag_us: Amérique :", americaV)
-    .addField(":flag_aq: Antarctique :", antarctiqueV)
-    .setFooter(Copyright, avatarbot)
-    msg.channel.send(timezone);
+    msg.channel.send(embed.setTitle("Page 4/"+totalpage+" - Commande INFO :").setDescription(description).addField(`\`${PREFIX}timezone [ville]\``,  "Affiche la date et l'heure de la ville saisie").addField("Ville éligible à la commande :", villetz).addField(":flag_eu: Europe :", europeV).addField("<:afu:734595847404388434> Afrique :", afriqueV).addField(":flag_au: Australie : ", australieV).addField(":flag_us: Amérique :", americaV).addField(":flag_aq: Antarctique :", antarctiqueV)).catch(console.error);
   }
 
   if (msg.content === prefix + 'help fun' || msg.content === prefix + 'h fun') {
-
-    let fun = new Discord.MessageEmbed()
-    .setColor(couleur)
-    .setTitle("Page 5/"+totalpage+" - Commandes FUN :")
-    .setDescription("**Pour plus d'information dirigez vous vers le support de Rick\🛸 :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**")
-    .addField(`\`${PREFIX}invisible\``,                          "Permet de faire envoyer un msg invisible par le bot")
-    .addField(`\`${PREFIX}8ball [question]\``,                   "Permet de poser n'importe quel question au bot")
-    .addField(`\`${PREFIX}mdp (N) (S) [nombre de charactère]\``, "Permet de générer un Mot-de-Passe aléatoire\n(**N = ajout de nombre** | **S = ajout de symbole** | **Sans = que des lettres**)")
-    .setFooter(Copyright, avatarbot)
-    msg.channel.send(fun);
+    msg.channel.send(embed.setTitle("Page 5/"+totalpage+" - Commandes FUN :").setDescription(description).addField(`\`${PREFIX}invisible\``, "Permet de faire envoyer un msg invisible par le bot").addField(`\`${PREFIX}8ball [question]\``, "Permet de poser n'importe quel question au bot").addField(`\`${PREFIX}mdp (N) (S) [nombre de charactère]\``, "Permet de générer un Mot-de-Passe aléatoire\n(**N = ajout de nombre** | **S = ajout de symbole** | **Sans = que des lettres**)")).catch(console.error);
   }
 
   if (msg.content === prefix + 'help love' || msg.content === prefix + 'h love') {
-
-    let love = new Discord.MessageEmbed()
-    .setColor(couleur)
-    .setTitle("Page 6/"+totalpage+" - Commandes LOVE :")
-    .setDescription("**Pour plus d'information dirigez vous vers le support de Rick\🛸 :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**")
-    .addField(`\`${PREFIX}waifu\``, "Permet d'afficher des images de Waifu")
-    .addField(`\`${PREFIX}kitsune\``, "Permet d'afficher des images de Kitsune")
-    .addField(`\`${PREFIX}neko\``, "Permet d'afficher des images de Nekomimi")
-    .addField(`\`${PREFIX}pat\``, "Permet de vous tapotez ou de tapoter un membre")
-    .addField(`\`${PREFIX}smug\``, "Permet de vous satisfaire ou de satisfaire un membre")
-    .addField(`\`${PREFIX}cry\``, "Permet de vous faire pleurer ou de faire pleurer un membre")
-    .addField(`\`${PREFIX}hug\``, "Permet de vous faire un câlin ou de faire un câlin à un membre")
-    .addField(`\`${PREFIX}kiss\``, "Permet de vous faire bisous ou de faire un bisous à un membre")
-    .addField(`\`${PREFIX}slap\``, "Permet de vous mettre une gifle ou de mettre une gifle à un membre")
-    .addField(`\`${PREFIX}punch\``, "Permet de vous mettre un coup de poing ou de le mettre à un membre")
-    .setFooter(Copyright, avatarbot)
-    msg.channel.send(love);
+    msg.channel.send(embed.setTitle("Page 6/"+totalpage+" - Commandes LOVE :").setDescription(description).addField(`\`${PREFIX}waifu\``, "Permet d'afficher des images de Waifu").addField(`\`${PREFIX}kitsune\``, "Permet d'afficher des images de Kitsune").addField(`\`${PREFIX}neko\``, "Permet d'afficher des images de Nekomimi").addField(`\`${PREFIX}pat\``, "Permet de vous tapotez ou de tapoter un membre").addField(`\`${PREFIX}smug\``, "Permet de vous satisfaire ou de satisfaire un membre").addField(`\`${PREFIX}cry\``, "Permet de vous faire pleurer ou de faire pleurer un membre").addField(`\`${PREFIX}hug\``, "Permet de vous faire un câlin ou de faire un câlin à un membre").addField(`\`${PREFIX}kiss\``, "Permet de vous faire bisous ou de faire un bisous à un membre").addField(`\`${PREFIX}slap\``, "Permet de vous mettre une gifle ou de mettre une gifle à un membre").addField(`\`${PREFIX}punch\``, "Permet de vous mettre un coup de poing ou de le mettre à un membre")).catch(console.error);
   } 
 
-  
   if (msg.content === prefix + 'help nsfw' || msg.content === prefix + 'h nsfw') {
-
-    let nsfw = new Discord.MessageEmbed()
-    .setColor(couleur)
-    .setTitle("Page 7/"+totalpage+" - Commandes NSFW - Normal :")
-    .setDescription("**Pour plus d'information dirigez vous vers le support de Rick\🛸 :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**")
-    .addField(`\`${PREFIX}4k\``,       "Permet d'afficher des gifs pornographique en 4k(pornhub)")
-    .addField(`\`${PREFIX}ass\``,      "Permet d'afficher des images pornographique de culs(random)")
-    .addField(`\`${PREFIX}anal\``,     "Permet d'afficher des gifs pornographique d'acte anal(pornhub)")
-    .addField(`\`${PREFIX}suck\``,     "Permet d'afficher des gifs pornographique d'acte de suçage(pornhub)")
-    .addField(`\`${PREFIX}pussy\``,    "Permet d'afficher des images pornographique avec des vagins(pornhub)")
-    .addField(`\`${PREFIX}boobs\``,                    "Permet d'afficher des images pornographique de grosse poitrine(random)")
-    .addField(`\`${PREFIX}gifsearch [recherche]\``,    "Permet de rechercher du contenu pornographique(Format: gif & Driver: pornhub)")
-    .setFooter(Copyright, avatarbot)
-    msg.channel.send(nsfw);
+    msg.channel.send(embed.setTitle("Page 7/"+totalpage+" - Commandes NSFW - Normal :").setDescription(description).addField(`\`${PREFIX}4k\``, "Permet d'afficher des gifs pornographique en 4k(pornhub)").addField(`\`${PREFIX}ass\``, "Permet d'afficher des images pornographique de culs(random)").addField(`\`${PREFIX}anal\``, "Permet d'afficher des gifs pornographique d'acte anal(pornhub)").addField(`\`${PREFIX}suck\``,     "Permet d'afficher des gifs pornographique d'acte de suçage(pornhub)").addField(`\`${PREFIX}pussy\``, "Permet d'afficher des images pornographique avec des vagins(pornhub)").addField(`\`${PREFIX}boobs\``, "Permet d'afficher des images pornographique de grosse poitrine(random)").addField(`\`${PREFIX}gifsearch [recherche]\``, "Permet de rechercher du contenu pornographique(Format: gif & Driver: pornhub)")).catch(console.error);
   } 
 
   if (msg.content === prefix + 'help hentai' || msg.content === prefix + 'h hentai') {
-
-    let hentai = new Discord.MessageEmbed()
-    .setColor(couleur)
-    .setTitle("Page 8/"+totalpage+" - Commandes NSFW - Hentai :")
-    .setDescription("**Pour plus d'information dirigez vous vers le support de Rick\🛸 :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**")
-    .addField(`\`${PREFIX}hgif\``,     "Permet d'afficher des gifs pornographique random")
-    .addField(`\`${PREFIX}hcum\``,     "Permet d'afficher des images/gifs avec le tag : cum")
-    .addField(`\`${PREFIX}nekonude\``, "Permet d'afficher des images pornographique de Nekomimi")
-    .addField(`\`${PREFIX}hlewd\``,    "Permet d'afficher des images de personnage féminin dénudée")
-    .addField(`\`${PREFIX}hmaid\``,    "Permet d'afficher des images pornographique avec le tag : maid")
-    .addField(`\`${PREFIX}horgy\``,    "Permet d'afficher des images pornographique avec le tag : orgy")
-    .addField(`\`${PREFIX}hbdsm\``,    "Permet d'afficher des images pornographique avec le tag : bdsm")
-    .addField(`\`${PREFIX}hfuck\``,    "Permet d'afficher des images/gifs pornographique d'acte sexuel")
-    .addField(`\`${PREFIX}hanal\``,    "Permet d'afficher des images/gifs pornographique d'acte sexuel anal")
-    .addField(`\`${PREFIX}hfemdom\``,  "Permet d'afficher des images pornographique où la femme domine l'homme")
-    .addField(`\`${PREFIX}hpanties\``, "Permet d'afficher des images pornographique où la femme est en sous vêtement")
-    .setFooter(Copyright, avatarbot)
-    msg.channel.send(hentai);
+    msg.channel.send(embed.setTitle("Page 8/"+totalpage+" - Commandes NSFW - Hentai :").setDescription(description).addField(`\`${PREFIX}hgif\``, "Permet d'afficher des gifs pornographique random").addField(`\`${PREFIX}hcum\``, "Permet d'afficher des images/gifs avec le tag : cum").addField(`\`${PREFIX}nekonude\``, "Permet d'afficher des images pornographique de Nekomimi").addField(`\`${PREFIX}hlewd\``, "Permet d'afficher des images de personnage féminin dénudée").addField(`\`${PREFIX}hmaid\``, "Permet d'afficher des images pornographique avec le tag : maid").addField(`\`${PREFIX}horgy\``, "Permet d'afficher des images pornographique avec le tag : orgy").addField(`\`${PREFIX}hbdsm\``, "Permet d'afficher des images pornographique avec le tag : bdsm").addField(`\`${PREFIX}hfuck\``, "Permet d'afficher des images/gifs pornographique d'acte sexuel").addField(`\`${PREFIX}hanal\``, "Permet d'afficher des images/gifs pornographique d'acte sexuel anal").addField(`\`${PREFIX}hfemdom\``, "Permet d'afficher des images pornographique où la femme domine l'homme").addField(`\`${PREFIX}hpanties\``, "Permet d'afficher des images pornographique où la femme est en sous vêtement"));
   } 
 
   if (msg.content.startsWith(prefix + 'pp') || msg.content.startsWith(prefix + 'avatar') ) {
