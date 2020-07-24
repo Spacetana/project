@@ -59,6 +59,10 @@ client.on('message',  async message => {
       americaV         = "Denver/Puerto_Rico",
       mod              = ["ban", "kick", "mute en dev", "clear en dev"];
 
+      let embed = new Discord.MessageEmbed()
+      .setColor(couleur)
+      .setFooter(Copyright, avatarbot)
+
   if (msg.content === prefix + 'help' || msg.content === prefix + 'h') {
 
     let standard = new Discord.MessageEmbed()
@@ -80,15 +84,7 @@ client.on('message',  async message => {
   }
 
   if (msg.content === prefix + 'help mod' || msg.content === prefix + 'h mod') {
-
-    let mod = new Discord.MessageEmbed()
-    .setColor(couleur)
-    .setTitle("Page 2/"+totalpage+" - Commandes MOD :")
-    .setDescription("**Pour plus d'information dirigez vous vers le support de Rick\🛸 :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**")
-    .addField(`\`${PREFIX}ban [@user - id] (raison)\``, "Permet de ban un membre mentionné")
-    .addField(`\`${PREFIX}kick [@user - id] (raison)\``, "Permet de kick un membre mentionné")
-    .setFooter(Copyright, avatarbot)
-    msg.channel.send(mod);
+    msg.channel.send(embed.setTitle("Page 2/"+totalpage+" - Commandes MOD :").setDescription("**Pour plus d'information dirigez vous vers le support de Rick\🛸 :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**").addField(`\`${PREFIX}ban [@user - id] (raison)\``, "Permet de ban un membre mentionné").addField(`\`${PREFIX}kick [@user - id] (raison)\``, "Permet de kick un membre mentionné"));
   }
 
   if (msg.content === prefix + 'help info' || msg.content === prefix + 'h info') {
@@ -382,6 +378,7 @@ client.on('message',  async message => {
     if (!user) return msg.channel.send(erreur.setDescription("❌ Vous n'avez pas mentionné l'utilisateur à **kick** !")).catch(console.error);  
 
     if (user) {
+
       const member = msg.guild.member(user);
       
       if (member) {
@@ -1632,7 +1629,6 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   if (msg.content.includes("Troll") + msg.content.includes("troll")) return msg.channel.send(Troll).catch(console.error);
 
   //America
-
   var denver = moment.tz("America/Denver").format("DD/MM/YYYY - hh:mm:ss")
   var denverd = moment.tz("America/Denver").format("DD/MM/YYYY")
   var denverh = moment.tz("America/Denver").format("hh:mm:ss")
@@ -1661,11 +1657,32 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
 
   if (msg.content.includes("portorico") + msg.content.includes("Puerto_Rico") + msg.content.includes("Puerto_rico") + msg.content.includes("pr") + msg.content.includes("puertorico") + msg.content.includes("Puertorico") + msg.content.includes("puerto_rico")) return msg.channel.send(Puerto_Rico).catch(console.error);
   if (msg.content.includes("Denver") + msg.content.includes("denver")) return msg.channel.send(Denver).catch(console.error);
-
 }
 
+  if (msg.content.startsWith(prefix + 'addrole')) {
+    const userID   = msg.content.substring(msg.content.indexOf(' ') + 1); 
+    const user     = msg.mentions.users.first() || msg.guild.members.cache.get(userID);
+    const args  = msg.content.split(" ").slice(1),
+          nrole = args.join(" ");
+    
+    if (!nrole) return msg.channel.send(embed.setTitle("ADD-ROLE ERREUR").setDescription("❌ Vous devez saisir le nom d'un rôle ou mentionné un rôle valide !")).catch(console.error);
 
+    if (user) {
+      
+      const member = msg.guild.member(user);
+      
+      if (member) {
 
+        member
+        .roles.add(nrole)
+        .then(() => {
+
+          if (nrole) return msg.channel.send(embed.setTitle("ADD-ROLE").setDescription("Le role **"+nrole+"** a bien été ajouté à "+member.toString()).addField("Membre :", member.toString()+"(`"+member.user.tag+"`)").addField("Auteur :", author.toString()+"(`"+author.tag+"`)")).catch(console.error);
+
+        })
+      }
+    }
+  }
 });
 
 client.login(token);
