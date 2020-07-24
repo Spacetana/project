@@ -490,7 +490,7 @@ client.on('message',  async message => {
 
   if (msg.content.startsWith(prefix + "8ball")) {
 
-    let replies  = ['AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH !', 'Oui !', 'Absolument !', 'Je suis totalement d\'accord !', "Je ne sais pas !", "Vraiment pas !", "Non !", "Impossible que ce soit possible !"];
+    let replies  = ['Oui !', 'Absolument !', 'Je suis totalement d\'accord !', "Je ne sais pas !", "Je ne sais pas quoi répondre !", "Non !"];
     let çava     = ["Je vais bien merci !", "ça va et toi ?", "je vais bien merci et toi ?", "trql et toi ?", "Je vais très bien merci !", "ça va nickel et toi ?"];
     let args     = msg.content.split(" ").slice(1),
         question = args.join(" ");
