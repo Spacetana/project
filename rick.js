@@ -1473,6 +1473,7 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
     
     if (!msg.member.hasPermission("MANAGE_ROLES")) return msg.channel.send(embed.setTitle("ADD-ROLE ERREUR").setDescription("❌ Vous n'avez pas la permission `Gérer les rôles` !")).catch(console.error); 
     if (!guild.me.hasPermission("MANAGE_ROLES")) return msg.channel.send(embed.setTitle("ADD-ROLE ERREUR").setDescription("❌ Je n'ai pas la permission `Gérer les rôles` !")).catch(console.error); 
+    if (!user && !nrole ) return msg.channel.send(embed.setTitle("ADD-ROLE ERREUR").setDescription("❌ Vous n'avez pas mentionné d'utilisateur ni indiquer un rôle à ajouté !")).catch(console.error);
     if (!user) return msg.channel.send(embed.setTitle("ADD-ROLE ERREUR").setDescription("❌ Vous n'avez pas mentionné l'utilisateur à **add** un rôle !")).catch(console.error);
     if (!nrole) return msg.channel.send(embed.setTitle("ADD-ROLE ERREUR").setDescription("❌ Vous devez saisir le nom d'un rôle ou mentionné un rôle valide !")).catch(console.error);
 
