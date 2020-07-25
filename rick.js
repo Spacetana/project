@@ -1487,7 +1487,7 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
         .roles.add(nrole)
         .then(() => {
 
-          if (nrole) return msg.channel.send(embed.setTitle("ADD-ROLE").setDescription("Le role **"+nrole+"** a bien été ajouté à "+user.toString()).addField("Membre :", user.toString()+"(`"+member.user.tag+"`)").addField("Auteur :", author.toString()+"(`"+author.tag+"`)")).catch(console.error);
+          msg.channel.send(embed.setTitle("ADD-ROLE").setDescription("Le role **"+nrole+"** a bien été ajouté à "+user.toString()).addField("Membre :", user.toString()+"(`"+member.user.tag+"`)").addField("Auteur :", author.toString()+"(`"+author.tag+"`)")).catch(console.error);
 
         })
       }
