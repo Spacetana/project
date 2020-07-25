@@ -1273,7 +1273,7 @@ if (msg.content.startsWith(prefix + 'mdp')) {
 if (msg.content.startsWith(prefix + 'userinfo') || msg.content.startsWith(prefix + 'ui') || msg.content.startsWith(prefix + 'userInfo')) {
 
   const userID   = msg.content.substring(msg.content.indexOf(' ') + 1); 
-  const user     = msg.mentions.users.first() || msg.guild.members.cache.get(userID) || msg.author; 
+  const user     = msg.mentions.users.first() || client.users.cache.get(userID) || msg.author;
 
   if (user) {
 
