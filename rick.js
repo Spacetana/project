@@ -1288,7 +1288,7 @@ if (msg.content.startsWith(prefix + 'userinfo') || msg.content.startsWith(prefix
           creation = moment(user.createdAt).format('DD/MM/YYYY à hh:mm:ss'),
           join = moment(member.joinedAt).format('DD/MM/YYYY à hh:mm:ss'),
           boost = moment(member.premiumSince).format('DD/MM/YYYY à hh:mm:ss'),
-          pp = member.user.displayAvatarURL({dynamic: true})
+          pp = member.user.displayAvatarURL({dynamic: true}),
           status = user.presence.status;
 
           user.bot ? isUserBot = 'oui' : isUserBot = 'non';
