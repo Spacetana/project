@@ -1467,7 +1467,7 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
 
   if (msg.content.startsWith(prefix + 'addrole')) {
     const userID   = msg.content.substring(msg.content.indexOf(' ') + 1); 
-    const user     = msg.mentions.users.first() || msg.guild.members.cache.get(userID);
+    const user     = msg.mentions.users.first() || client.users.cache.get(userID);
     const args  = msg.content.split(" ").slice(1),
           nrole = args.join(" ");
     
