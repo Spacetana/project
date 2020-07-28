@@ -26,12 +26,12 @@ let token     = TOKEN,
 
 client.on('ready', () => {
 
-  let membersCount = client.users.cache.size
-// client.guilds.cache.map(guild => guild.memberCount).reduce((a, b) => a + b, 0)
+  let membersCount = client.users.cache.size;
+  let test = client.guilds.cache.map(guild => guild.memberCount).reduce((a, b) => a + b, 0);
 
-  console.log("Bot : " + client.user.tag + " est connecté !"+"\n\nUtilisateur : "+membersCount+"\n\nServeurs : "+client.guilds.cache.size+"\n\nToken : "+client.token);
+  console.log("Bot : " + client.user.tag + " est connecté !"+"\n\nUtilisateurs : "+membersCount+"\n\nServeurs : "+client.guilds.cache.size+"\n\nToken : "+token+"\n\nUtilisateurs2 : "+test);
 
-  let statuses  =  [`${client.guilds.cache.size} serveur${client.guilds.cache.size > 1 ? "s" : "️"}`, membersCount+" utilisateurs", PREFIX+'help', `Version: ${version}`],
+  let statuses  =  [`${client.guilds.cache.size} serveur${client.guilds.cache.size > 1 ? "s" : "️"}`, test+" utilisateurs", PREFIX+'help', `Version: ${version}`],
       types     = ["LISTENING", "WATCHING", "PLAYING"];
     
       setInterval(function() {
