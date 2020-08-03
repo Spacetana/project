@@ -1,4 +1,4 @@
-exports.TOKEN = "NzMwMTE4NTIxNjIyNjI2Mzk1.Xw0_KQ.5PXNJ4ZRl5eGjoT743m7KGtdWIk";
+exports.TOKEN = "NzMwMTE4NTIxNjIyNjI2Mzk1.XwS13A.RdNj_Dwk-iesvHNDaW_l78pX-r0";
 exports.PREFIX = "r:";
 exports.VERSION = "0.7.6"; 
 exports.WHITELIST = ["509115921156014081"];
