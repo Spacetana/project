@@ -1463,35 +1463,6 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   if (msg.content.includes("portorico") + msg.content.includes("Puerto_Rico") + msg.content.includes("Puerto_rico") + msg.content.includes("pr") + msg.content.includes("puertorico") + msg.content.includes("Puertorico") + msg.content.includes("puerto_rico")) return msg.channel.send(Puerto_Rico).catch(console.error);
   if (msg.content.includes("Denver") + msg.content.includes("denver")) return msg.channel.send(Denver).catch(console.error);
 }
-
-  if (msg.content.startsWith(prefix + 'addrole')) {
-    const userID   = msg.content.substring(msg.content.indexOf(' ') + 1); 
-    const user     = msg.mentions.users.first() || client.users.cache.get(userID);
-    const args  = msg.content.split(" ").slice(2),
-          nrole = args.join(" ");
-    
-    if (!msg.member.hasPermission("MANAGE_ROLES")) return msg.channel.send(embed.setTitle("ADD-ROLE ERREUR").setDescription("❌ Vous n'avez pas la permission `Gérer les rôles` !")).catch(console.error); 
-    if (!guild.me.hasPermission("MANAGE_ROLES")) return msg.channel.send(embed.setTitle("ADD-ROLE ERREUR").setDescription("❌ Je n'ai pas la permission `Gérer les rôles` !")).catch(console.error); 
-    if (!user && !nrole ) return msg.channel.send(embed.setTitle("ADD-ROLE ERREUR").setDescription("❌ Vous n'avez pas mentionné d'utilisateur ni indiquer un rôle à ajouté !")).catch(console.error);
-    if (!user) return msg.channel.send(embed.setTitle("ADD-ROLE ERREUR").setDescription("❌ Vous n'avez pas mentionné l'utilisateur à **add** un rôle !")).catch(console.error);
-    if (!nrole) return msg.channel.send(embed.setTitle("ADD-ROLE ERREUR").setDescription("❌ Vous devez saisir le nom d'un rôle ou mentionné un rôle valide !")).catch(console.error);
-
-    if (user) {
-      
-      const member = msg.guild.member(user);
-      
-      if (member) {
-
-        member
-        .roles.add(nrole)
-        .then(() => {
-
-          msg.channel.send(embed.setTitle("ADD-ROLE").setDescription("Le role **"+nrole+"** a bien été ajouté à "+user.toString()).addField("Membre :", user.toString()+"(`"+member.user.tag+"`)").addField("Auteur :", author.toString()+"(`"+author.tag+"`)")).catch(console.error);
-
-        })
-      }
-    }
-  }
 });
 
 client.login(token);
