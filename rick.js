@@ -17,7 +17,8 @@ const { url }                                         = require('inspector');
 const ytdl                                            = require('ytdl-core');
 const { serialize }                                   = require('v8');
 const { title }                                       = require('process');
-const yts                                             = require( 'yt-search' )
+const yts                                             = require('yt-search');
+const { search } = require('snekfetch');
 const client                                          = new Discord.Client({disableMentions: "everyone"});
 
 client.commands = new Discord.Collection()
@@ -32,9 +33,9 @@ client.on('ready', () => {
   let membersCount = client.users.cache.size;
   let test = client.guilds.cache.map(guild => guild.memberCount).reduce((a, b) => a + b, 0);
 
-  console.log("Bot : " + client.user.tag + " est connecté !"+"\n\nUtilisateurs : "+membersCount+"\n\nServeurs : "+client.guilds.cache.size+"\n\nToken : "+token+"\n\nUtilisateurs2 : "+test);
+  console.log("Bot : " + client.user.tag + " est connecté !"+"\n\nUtilisateurs : "+test+`\n\nServeur${client.guilds.cache.size > 1 ? "s" : "️"} : ${client.guilds.cache.size}`+"\n\nToken : "+token+"\n\nVersion : "+version);
 
-  let statuses  =  [`${client.guilds.cache.size} serveur${client.guilds.cache.size > 1 ? "s" : "️"}`, test+" utilisateurs", PREFIX+'help', `Version: ${version}`],
+  let statuses  =  [PREFIX+'help'],
       types     = ["LISTENING", "WATCHING", "PLAYING"];
     
       setInterval(function() {
@@ -50,13 +51,13 @@ const queue = new Map();
 client.on('message',  async message => {
 
   let avatarbot        = client.user.avatarURL({dynamic: true}),
-      description      = "**Pour plus d'information dirigez vous vers le support de Rick\🛸 :** **[CLIQUE ICI](https://discord.gg/K7bsuZ4)**",
+      description      = "**Pour plus d'information dirigez vous vers le support de Rick\\🛸 :** [CLIQUE ICI](https://discord.gg/5Zbr2Hc)",
+      Copyright        = "Rick🛸 ©️ Copyright : Atsuki \\/ Needles",
       couleur          = "BLUE",
       msg              = message,
       guild            = msg.guild,
       author           = msg.author,
       totalpage        = "8",
-      Copyright        = "Rick🛸 ©️ Copyright : Atsuki \\/ Needles",
       villetz          = "Paris/London/Alger/Casablanca/Sydney/Troll/Denver/Puerto_Rico",  
       europeV          = "Paris/London",
       afriqueV         = "Alger/Casablanca",
@@ -65,27 +66,27 @@ client.on('message',  async message => {
       americaV         = "Denver/Puerto_Rico",
       mod              = ["ban", "kick", "mute en dev", "clear en dev"];
 
-      let embed = new Discord.MessageEmbed()
-      .setColor(couleur)
-      .setFooter(Copyright, avatarbot)
+    let embed = new Discord.MessageEmbed()
+    .setColor(couleur)
+    .setFooter(Copyright, avatarbot)
 
   if (message.author.bot) return;
   if (!message.content.startsWith(prefix)) return;
 
-  if (msg.content === prefix + 'help' || msg.content === prefix + 'h') {
+  if (msg.content === prefix + 'help') {
 
     let standard = new Discord.MessageEmbed()
     .setColor(couleur)
     .setTitle("Page 1/"+totalpage+" - Toutes les commandes :")
     .setDescription(description)
     .addField(`\`${PREFIX}help\``, "Vous y êtes actuellement")
-    .addField(`\`${PREFIX}help mod\``,      "Affiche la page des commandes mod")
     .addField(`\`${PREFIX}help fun\``,      "Affiche la page des commandes fun")
-	  .addField(`\`${PREFIX}help info\``,     "Affiche la page des commandes info")
+    .addField(`\`${PREFIX}help mod\``,      "Affiche la page des commandes de modérations")
+    .addField(`\`${PREFIX}help info\``,     "Affiche la page des commandes d'information")
     .addField(`\`${PREFIX}help love\``,     "Affiche la page des commandes love")
+    .addField(`\`${PREFIX}help utile\``,    "Affiche la page des commandes utiles")
     .addField(`\`${PREFIX}help nsfw\``,     "Affiche la page des commandes nsfw🔞")
-    .addField(`\`${PREFIX}help hentai\``,   "Affiche la page des commandes hentai🔞")
-    .addField(`\`${PREFIX}help timezone\`**(bêta)**`, "Permet d'accéder à la page d'aide de la commande `r!timezone`")
+    .addField(`\`${PREFIX}help musique\``,  "Affiche la page des commandes musicale🎵")
     .setFooter(Copyright, avatarbot)
 
     if (!whitelist.includes(author.id)) return msg.channel.send(standard);
@@ -95,83 +96,90 @@ client.on('message',  async message => {
   /*\ -------------------------- *\*/
 
   if (msg.content === prefix + 'help mod' || msg.content === prefix + 'h mod') {
-    msg.channel.send(embed.setTitle("Page 2/"+totalpage+" - Commandes MOD :").setDescription(description).addField(`\`${PREFIX}ban [@user - id] (raison)\``, "Permet de ban un membre mentionné").addField(`\`${PREFIX}kick [@user - id] (raison)\``, "Permet de kick un membre mentionné")).catch(console.error);
+    msg.channel.send(embed.setTitle("Page 2/"+totalpage+" - Commandes modérations :").setDescription(description)
+    .addField(`\`${PREFIX}ban [@user - id] (raison)\``, "Permet de ban une mention ou l'id d'un membre")
+    .addField(`\`${PREFIX}kick [@user - id] (raison)\``, "Permet de kick une mention ou l'id d'un membre")
+    ).catch(console.error);
   }
 
   /*\ -------------------------- *\*/
 
   if (msg.content === prefix + 'help info' || msg.content === prefix + 'h info') {
-    msg.channel.send(embed.setTitle("Page 3/"+totalpage+" - Commandes INFO :").setDescription(description).addField(`\`${PREFIX}ping\``, "Affiche le temps de latence du bot(MS)").addField(`\`${PREFIX}pp (@user - id)\``, "Affiche votre avatar ou l'avatar d'un membre mentionné").addField(`\`${PREFIX}userinfo (@user - id)\``, "Affiche vos infos ou les infos d'un membre mentionné").addField(`\`${PREFIX}whitelist (@user)\``, "Permet de savoir si un membre ou si vous êtes whitelist dans le bot !")).catch(console.error);
+    msg.channel.send(embed.setTitle("Page 3/"+totalpage+" - Commandes informations :").setDescription(description)
+    .addField(`\`${PREFIX}ping\``, "Affiche le temps de latence du bot(MS)")
+    .addField(`\`${PREFIX}pp (@user/id)\``, "Affiche votre avatar ou l'avatar d'un membre mentionné")
+    .addField(`\`${PREFIX}userinfo (@user/id)\``, "Affiche vos infos ou les infos d'un membre mentionné")
+    .addField(`\`${PREFIX}whitelist (@user/id)\``, "Permet de savoir si un membre ou si vous êtes whitelist dans le bot")).catch(console.error);
+  }
+
+  if (msg.content === prefix + 'help utile' || msg.content === prefix + 'h util') {
+    msg.channel.send(embed.setTitle("Page 4/"+totalpage+" - Commandes utiles :").setDescription(description)
+    .addField(`\`${PREFIX}invisible\``, "Permet de faire envoyer un msg invisible par le bot")
+    .addField(`\`${PREFIX}mdp (N) (S) [nombre de charactère]\``, "Permet de générer un Mot-de-Passe aléatoire\n(**N = ajout de nombre** | **S = ajout de symbole** | **Sans = que des lettres**)")).catch(console.error);
   }
 
   /*\ -------------------------- *\*/
 
-  if (msg.content === prefix + 'help timezone' || msg.content === prefix + 'h tz') {
+  /*if (msg.content === prefix + 'help timezone' || msg.content === prefix + 'h tz') {
     msg.channel.send(embed.setTitle("Page 4/"+totalpage+" - Commande INFO :").setDescription(description).addField(`\`${PREFIX}timezone [ville]\``,  "Affiche la date et l'heure de la ville saisie").addField("Ville éligible à la commande :", villetz).addField(":flag_eu: Europe :", europeV).addField("<:afu:734595847404388434> Afrique :", afriqueV).addField(":flag_au: Australie : ", australieV).addField(":flag_us: Amérique :", americaV).addField(":flag_aq: Antarctique :", antarctiqueV)).catch(console.error);
-  }
+  }*/
 
   /*\ -------------------------- *\*/
 
   if (msg.content === prefix + 'help fun' || msg.content === prefix + 'h fun') {
-    msg.channel.send(embed.setTitle("Page 5/"+totalpage+" - Commandes FUN :").setDescription(description).addField(`\`${PREFIX}invisible\``, "Permet de faire envoyer un msg invisible par le bot").addField(`\`${PREFIX}8ball [question]\``, "Permet de poser n'importe quel question au bot").addField(`\`${PREFIX}mdp (N) (S) [nombre de charactère]\``, "Permet de générer un Mot-de-Passe aléatoire\n(**N = ajout de nombre** | **S = ajout de symbole** | **Sans = que des lettres**)")).catch(console.error);
+    msg.channel.send(embed.setTitle("Page 5/"+totalpage+" - Commandes FUN :").setDescription(description)
+    .addField(`\`${PREFIX}8ball [question]\``, "Permet de poser n'importe quel question au bot**(IA amélioré)**")).catch(console.error);
   }
 
   /*\ -------------------------- *\*/
 
   if (msg.content === prefix + 'help love' || msg.content === prefix + 'h love') {
-    msg.channel.send(embed.setTitle("Page 6/"+totalpage+" - Commandes LOVE :").setDescription(description).addField(`\`${PREFIX}waifu\``, "Permet d'afficher des images de Waifu").addField(`\`${PREFIX}kitsune\``, "Permet d'afficher des images de Kitsune").addField(`\`${PREFIX}neko\``, "Permet d'afficher des images de Nekomimi").addField(`\`${PREFIX}pat\``, "Permet de vous tapotez ou de tapoter un membre").addField(`\`${PREFIX}smug\``, "Permet de vous satisfaire ou de satisfaire un membre").addField(`\`${PREFIX}cry\``, "Permet de vous faire pleurer ou de faire pleurer un membre").addField(`\`${PREFIX}hug\``, "Permet de vous faire un câlin ou de faire un câlin à un membre").addField(`\`${PREFIX}kiss\``, "Permet de vous faire bisous ou de faire un bisous à un membre").addField(`\`${PREFIX}slap\``, "Permet de vous mettre une gifle ou de mettre une gifle à un membre").addField(`\`${PREFIX}punch\``, "Permet de vous mettre un coup de poing ou de le mettre à un membre")).catch(console.error);
+    msg.channel.send(embed.setTitle("Page 6/"+totalpage+" - Commandes love :").setDescription(description).addField(`\`${PREFIX}waifu\``, "Permet d'afficher des images de Waifu").addField(`\`${PREFIX}kitsune\``, "Permet d'afficher des images de Kitsune").addField(`\`${PREFIX}neko\``, "Permet d'afficher des images de Nekomimi").addField(`\`${PREFIX}pat\``, "Permet de vous tapotez ou de tapoter un membre").addField(`\`${PREFIX}smug\``, "Permet de vous satisfaire ou de satisfaire un membre").addField(`\`${PREFIX}cry\``, "Permet de vous faire pleurer ou de faire pleurer un membre").addField(`\`${PREFIX}hug\``, "Permet de vous faire un câlin ou de faire un câlin à un membre").addField(`\`${PREFIX}kiss\``, "Permet de vous faire bisous ou de faire un bisous à un membre").addField(`\`${PREFIX}slap\``, "Permet de vous mettre une gifle ou de mettre une gifle à un membre").addField(`\`${PREFIX}punch\``, "Permet de vous mettre un coup de poing ou de le mettre à un membre")).catch(console.error);
   } 
 
   /*\ -------------------------- *\*/
 
   if (msg.content === prefix + 'help nsfw' || msg.content === prefix + 'h nsfw') {
-    msg.channel.send(embed.setTitle("Page 7/"+totalpage+" - Commandes NSFW - Normal :").setDescription(description).addField(`\`${PREFIX}4k\``, "Permet d'afficher des gifs pornographique en 4k(pornhub)").addField(`\`${PREFIX}ass\``, "Permet d'afficher des images pornographique de culs(random)").addField(`\`${PREFIX}anal\``, "Permet d'afficher des gifs pornographique d'acte anal(pornhub)").addField(`\`${PREFIX}suck\``,     "Permet d'afficher des gifs pornographique d'acte de suçage(pornhub)").addField(`\`${PREFIX}pussy\``, "Permet d'afficher des images pornographique avec des vagins(pornhub)").addField(`\`${PREFIX}boobs\``, "Permet d'afficher des images pornographique de grosse poitrine(random)").addField(`\`${PREFIX}gifsearch [recherche]\``, "Permet de rechercher du contenu pornographique(Format: gif & Driver: pornhub)")).catch(console.error);
+    msg.channel.send(embed.setTitle("Page 7/"+totalpage+" - Commandes NSFW :").setDescription(description)
+    .addField(`\`${PREFIX}4k\``, "Permet d'afficher des gifs pornographique en 4k(pornhub)")
+    .addField(`\`${PREFIX}ass\``, "Permet d'afficher des images pornographique de culs(random)")
+    .addField(`\`${PREFIX}anal\``, "Permet d'afficher des gifs pornographique d'acte anal(pornhub)")
+    .addField(`\`${PREFIX}suck\``,     "Permet d'afficher des gifs pornographique d'acte de suçage(pornhub)")
+    .addField(`\`${PREFIX}pussy\``, "Permet d'afficher des images pornographique avec des vagins(pornhub)")
+    .addField(`\`${PREFIX}boobs\``, "Permet d'afficher des images pornographique de grosse poitrine(random)")
+    .addField(`\`${PREFIX}gifsearch [recherche]\``, "Permet de rechercher du contenu pornographique(pornhub)")
+    .addField("️", "**COMMANDES NSFW - HENTAI**")
+    .addField(`\`${PREFIX}hgif\``, "Permet d'afficher des gifs d'hentai random")
+    .addField(`\`${PREFIX}hcum\``, "Permet d'afficher des images/gifs avec les tags : cum/hentai")
+    .addField(`\`${PREFIX}nekonude\``, "Permet d'afficher des images pornographique de Nekomimi")
+    .addField(`\`${PREFIX}hlewd\``, "Permet d'afficher des images de personnage féminin dénudée")
+    .addField(`\`${PREFIX}hmaid\``, "Permet d'afficher des images pornographique avec le tag : maid/hentai")
+    .addField(`\`${PREFIX}horgy\``, "Permet d'afficher des images pornographique avec le tag : orgy/hentai")
+    .addField(`\`${PREFIX}hbdsm\``, "Permet d'afficher des images pornographique avec le tag : bdsm/hentai")
+    .addField(`\`${PREFIX}hfuck\``, "Permet d'afficher des images/gifs pornographique d'acte sexuel")
+    .addField(`\`${PREFIX}hanal\``, "Permet d'afficher des images/gifs pornographique d'acte sexuel anal")
+    .addField(`\`${PREFIX}hfemdom\``, "Permet d'afficher des images pornographique où la femme domine l'homme")
+    .addField(`\`${PREFIX}hpanties\``, "Permet d'afficher des images pornographique où la femme est en sous vêtement")).catch(console.error);
   } 
 
   /*\ -------------------------- *\*/
 
-  if (msg.content === prefix + 'help hentai' || msg.content === prefix + 'h hentai') {
-    msg.channel.send(embed.setTitle("Page 8/"+totalpage+" - Commandes NSFW - Hentai :").setDescription(description).addField(`\`${PREFIX}hgif\``, "Permet d'afficher des gifs pornographique random").addField(`\`${PREFIX}hcum\``, "Permet d'afficher des images/gifs avec le tag : cum").addField(`\`${PREFIX}nekonude\``, "Permet d'afficher des images pornographique de Nekomimi").addField(`\`${PREFIX}hlewd\``, "Permet d'afficher des images de personnage féminin dénudée").addField(`\`${PREFIX}hmaid\``, "Permet d'afficher des images pornographique avec le tag : maid").addField(`\`${PREFIX}horgy\``, "Permet d'afficher des images pornographique avec le tag : orgy").addField(`\`${PREFIX}hbdsm\``, "Permet d'afficher des images pornographique avec le tag : bdsm").addField(`\`${PREFIX}hfuck\``, "Permet d'afficher des images/gifs pornographique d'acte sexuel").addField(`\`${PREFIX}hanal\``, "Permet d'afficher des images/gifs pornographique d'acte sexuel anal").addField(`\`${PREFIX}hfemdom\``, "Permet d'afficher des images pornographique où la femme domine l'homme").addField(`\`${PREFIX}hpanties\``, "Permet d'afficher des images pornographique où la femme est en sous vêtement")).catch(console.error);
-  } 
+  if (msg.content === prefix + 'help musique' || msg.content === prefix + 'h music') {
+    msg.channel.send(embed.setTitle("Page 8/"+totalpage+" - Commandes musicales :").setDescription(description)
+    .addField(`\`${PREFIX}play [lien]\``, "Permet d'exécuter une musique YouTube")
+    .addField(`\`${PREFIX}stop\``,   "Permet de stopper une musique en cours de lecture")
+    .addField(`\`${PREFIX}skip\``,   "Permet de skipper une musique en cours de lecture")
+    .addField(`\`${PREFIX}pause\``,  "Permet de mettre en pause une musique en cours de lecture")
+    .addField(`\`${PREFIX}resume\``, "Permet de mettre en lecture une musique mise en pause")).catch(console.error);
+  }    
 
-  if (msg.content.startsWith(prefix + 'pp') || msg.content.startsWith(prefix + 'avatar') ) {
-
-    const userID   = msg.content.substring(msg.content.indexOf(' ') + 1); 
-    const user     = msg.mentions.users.first() || client.users.cache.get(userID) || msg.author;
-    
-    if (user) {
-      if (user && user.id - author.id) return msg.channel.send(embed.setTitle("AVATAR").setDescription(`**Voici la photo de profil de ${user} !** [(LIEN)](${user.displayAvatarURL({dynamic: true})})`).setImage(user.displayAvatarURL({dynamic: true, size: 1024}))).setFooter(Copyright, avatarbot).catch(console.error);
-    }    
-    
-    if (!user) return msg.channel.send(embed.setTitle("AVATAR").setDescription(`**Voici votre photo de profil !** [(LIEN)](${user.displayAvatarURL({dynamic: true})})`).setImage(user.displayAvatarURL({dynamic: true, size: 1024}))).catch(console.error);
-    if (user && user.id == author.id) return msg.channel.send(embed.setTitle("AVATAR").setDescription(`**Voici votre photo de profil !** [(LIEN)](${user.displayAvatarURL({dynamic: true})})`).setImage(user.displayAvatarURL({format: 'png', dynamic: true, size: 1024}))).catch(console.error);
-  }
-
-  if (msg.content.startsWith(prefix + 'whitelist')) {
-
-    const userID   = msg.content.substring(msg.content.indexOf(' ') + 1); 
-    const user     = msg.mentions.users.first() || client.users.cache.get(userID);
-
-    if (user) {
-
-      if (user && user.id - author.id && !whitelist.includes(user.id)) return msg.channel.send(embed.setTitle("NON WHITELIST").setDescription("❌ "+user.toString()+" ne figure pas dans la liste des administrateurs de **Rick\🛸**").addField("Liste des `ID` whitelist :", whitelist)).catch(console.error);
-      if (user && user.id - author.id && whitelist.includes(user.id)) return msg.channel.send(embed.setTitle("WHITELIST").setDescription("✅ "+user.toString()+" est certifié **whitelist** \🛸 !").addField("Liste des `ID` whitelist :", whitelist)).catch(console.error);
-    }     
-
-    if (!user && !whitelist.includes(author.id)) return msg.channel.send(embed.setTitle("NON WHITELIST").setDescription("❌ Votre **ID** ne figure pas dans la liste des administrateurs de **Rick\🛸**").addField("Liste des `ID` whitelist :", whitelist)).catch(console.error);
-    if (!user && whitelist.includes(author.id)) return msg.channel.send(embed.setTitle("WHITELIST").setDescription("✅ Vous êtes certifié **whitelist** \🛸 !").addField("Liste des `ID` whitelist :", whitelist)  ).catch(console.error);
-
-    if (user && user.id == author.id && !whitelist.includes(user.id)) return msg.channel.send(embed.setTitle("NON WHITELIST").setDescription("❌ Votre **ID** ne figure pas dans la liste des administrateurs de **Rick\🛸**").addField("Liste des `ID` whitelist :", whitelist)).catch(console.error);
-    if (user && user.id == author.id && whitelist.includes(user.id)) return msg.channel.send(embed.setTitle("WHITELIST").setDescription("✅ Vous êtes certifié **whitelist** \🛸 !").addField("Liste des `ID` whitelist :", whitelist)  ).catch(console.error);
-
-  }
-    
   if (msg.content.startsWith(prefix + 'exec')) {
   
     if (!whitelist.includes(author.id)) return msg.channel.send(nonWhitelist);
       
       const args = msg.content.split(' ');
-
+      const command = args.shift().toLowerCase();
+  
       let evaled;
       try {
         const code = args.join(' ');
@@ -208,6 +216,38 @@ client.on('message',  async message => {
   
       }
     }
+
+  if (msg.content.startsWith(prefix + 'pp') || msg.content.startsWith(prefix + 'avatar')) {
+
+    const userID   = msg.content.substring(msg.content.indexOf(' ') + 1); 
+    const user     = msg.mentions.users.first() || client.users.cache.get(userID) || msg.author;
+    
+    if (user) {
+      if (user && user.id - author.id) return msg.channel.send(embed.setTitle("AVATAR").setDescription(`**Voici la photo de profil de ${user} !** [(LIEN)](${user.displayAvatarURL({dynamic: true})})`).setImage(user.displayAvatarURL({dynamic: true, size: 1024}))).setFooter(Copyright, avatarbot).catch(console.error);
+    }    
+    
+    if (!user) return msg.channel.send(embed.setTitle("AVATAR").setDescription(`**Voici votre photo de profil !** [(LIEN)](${user.displayAvatarURL({dynamic: true})})`).setImage(user.displayAvatarURL({dynamic: true, size: 1024}))).catch(console.error);
+    if (user && user.id == author.id) return msg.channel.send(embed.setTitle("AVATAR").setDescription(`**Voici votre photo de profil !** [(LIEN)](${user.displayAvatarURL({dynamic: true})})`).setImage(user.displayAvatarURL({format: 'png', dynamic: true, size: 1024}))).catch(console.error);
+  }
+
+  if (msg.content.startsWith(prefix + 'whitelist')) {
+
+    const userID   = msg.content.substring(msg.content.indexOf(' ') + 1); 
+    const user     = msg.mentions.users.first() || client.users.cache.get(userID);
+
+    if (user) {
+
+      if (user && user.id - author.id && !whitelist.includes(user.id)) return msg.channel.send(embed.setTitle("NON WHITELIST").setDescription("❌ "+user.toString()+" ne figure pas dans la liste des administrateurs de **Rick\🛸**").addField("Liste des `ID` whitelist :", whitelist)).catch(console.error);
+      if (user && user.id - author.id && whitelist.includes(user.id)) return msg.channel.send(embed.setTitle("WHITELIST").setDescription("✅ "+user.toString()+" est certifié **whitelist** \🛸 !").addField("Liste des `ID` whitelist :", whitelist)).catch(console.error);
+    }     
+
+    if (!user && !whitelist.includes(author.id)) return msg.channel.send(embed.setTitle("NON WHITELIST").setDescription("❌ Votre **ID** ne figure pas dans la liste des administrateurs de **Rick\🛸**").addField("Liste des `ID` whitelist :", whitelist)).catch(console.error);
+    if (!user && whitelist.includes(author.id)) return msg.channel.send(embed.setTitle("WHITELIST").setDescription("✅ Vous êtes certifié **whitelist** \🛸 !").addField("Liste des `ID` whitelist :", whitelist)  ).catch(console.error);
+
+    if (user && user.id == author.id && !whitelist.includes(user.id)) return msg.channel.send(embed.setTitle("NON WHITELIST").setDescription("❌ Votre **ID** ne figure pas dans la liste des administrateurs de **Rick\🛸**").addField("Liste des `ID` whitelist :", whitelist)).catch(console.error);
+    if (user && user.id == author.id && whitelist.includes(user.id)) return msg.channel.send(embed.setTitle("WHITELIST").setDescription("✅ Vous êtes certifié **whitelist** \🛸 !").addField("Liste des `ID` whitelist :", whitelist)  ).catch(console.error);
+
+  }
 
   if (msg.content === prefix + 'ping') {
     
@@ -300,8 +340,15 @@ client.on('message',  async message => {
 
   if (msg.content.startsWith(prefix + "8ball")) {
 
+    cv =  ["çava", "cv", "ça va", "wsh bien"];
+    tfq = ["sfk", "tfk", "tfq", "sfq", "tu fais quoi", "tu fou quoi"];
+
+    decv  = msg.content.toLowerCase().includes("çava") || msg.content.toLowerCase().includes("cv") || msg.content.toLowerCase().includes("ça va") || msg.content.toLowerCase().includes("wsh bien");
+    detfq = msg.content.toLowerCase().includes("tfq") || msg.content.toLowerCase().includes("sfq") || msg.content.toLowerCase().includes("tfk") || msg.content.toLowerCase().includes("sfk") || msg.content.toLowerCase().includes("tu fais quoi") || msg.content.toLowerCase().includes("tu fou quoi");
+
     let replies  = ['Oui !', 'Absolument !', 'Je suis totalement d\'accord !', "Je ne sais pas !", "Je ne sais pas quoi répondre !", "Non !"];
     let çava     = ["Je vais bien merci !", "ça va et toi ?", "je vais bien merci et toi ?", "trql et toi ?", "Je vais très bien merci !", "ça va nickel et toi ?"];
+    let tufq     = ["Je me fais dev par mon créateur <@509115921156014081> !", "Je fais rien de spéciale et toi ?", "Je m'apprêté à lancer Minecraft<:minecraft:740957759339626567> !", "Alors la je fais trop de chose en même temps j'pourrais pas tout dire mais sinon toi tfq ?"];
     let args     = msg.content.split(" ").slice(1),
         question = args.join(" ");
 
@@ -312,10 +359,9 @@ client.on('message',  async message => {
               .setFooter(Copyright, avatarbot)
 
     if (!question) return msg.channel.send(NoQuestion);
-    if (!msg.content.includes("?")) return msg.channel.send(NoQuestion);
-    if (msg.content.includes("ça va")) return msg.channel.send(çava[Math.floor(Math.random() * (çava.length))]);
-    if (msg.content.includes("cv")) return msg.channel.send(çava[Math.floor(Math.random() * (çava.length))]);
-    //if (message.content.includes(tfqcase.toLowerCase())) return msg.channel.send(tfq[Math.floor(Math.random() * (tfq.length))]);
+    //if (!msg.content.includes("?")) return msg.channel.send(NoQuestion);
+    if (decv) return msg.channel.send(çava[Math.floor(Math.random() * (çava.length))]);
+    if (detfq) return msg.channel.send(tufq[Math.floor(Math.random() * (tufq.length))]);
     if (question) return msg.channel.send(replies[Math.floor(Math.random() * (replies.length))])    
   }
 
@@ -1233,7 +1279,7 @@ if (msg.content.startsWith(prefix + 'mdp')) {
 
   let erreur = new Discord.MessageEmbed()
         .setColor(couleur)
-        .setTitle("GEN-MDP ERREUR")
+        .setTitle("MDP ERREUR")
         .setDescription("❌ Veuillez indiquer un nombre de charactère que le **mot-de-passe** doit contenir !\n\n(option indiqué dans l'exemple)\n\nCorrection : `r!mdp (N) (S) 10`")
         .setFooter(Copyright, avatarbot)    
 
@@ -1259,7 +1305,7 @@ if (msg.content.startsWith(prefix + 'mdp')) {
 
   let passwordEmN = new Discord.MessageEmbed()
   .setColor(couleur)
-  .setTitle("MDP")
+  .setTitle("MOT-DE-PASSE")
   .setDescription("Mot de passe généré :"+"```"+password+"```"+"")
   .addField("Nombre de charactère :", nlenght)
   .addField("Contient des chiffres :", ifN)
@@ -1268,7 +1314,7 @@ if (msg.content.startsWith(prefix + 'mdp')) {
 
   let check = new Discord.MessageEmbed()
   .setColor(couleur)
-  .setTitle("MDP")
+  .setTitle("MOT-DE-PASSE")
   .setDescription("✅ Le mot de passe vous a bien été envoyé par mp !")
   .setFooter(Copyright, avatarbot)
 
@@ -1336,17 +1382,6 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   .setFooter(Copyright, avatarbot)
   if (!message.content.includes("Paris", "London", "Alger", "Casablanca")) return msg.channel.send(noville).catch(console.error);
   */
- 
-/*
-
-    .addField(":flag_eu: Europe :", europeV)
-    .addField("<:afu:734595847404388434> Afrique :", afriqueV)
-    .addField(":flag_au: Australie : ", australieV)
-    .addField(":flag_us: Amérique :", americaV)
-    .addField(":flag_aq: Antarctique :", antarctiqueV)
-    .addField(":flag_gb: Royaume-Uni :", royaumeuniV)
-
-*/
 
   //Europe
   var paris = moment.tz("Europe/Paris").format("DD/MM/YYYY - hh:mm:ss");
@@ -1374,8 +1409,8 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   .addField("Continent :", ":flag_eu: Europe")     
   .setFooter(Copyright, avatarbot)
 
-  if (msg.content.includes("Paris") + msg.content.includes("paris")) return msg.channel.send(ParisEu).catch(console.error);
-  if (msg.content.includes("London") + msg.content.includes("london")) return msg.channel.send(LondonEu).catch(console.error);
+  if (msg.content.toLowerCase().includes("paris")) return msg.channel.send(ParisEu).catch(console.error);
+  if (msg.content.toLowerCase().includes("london")) return msg.channel.send(LondonEu).catch(console.error);
 
   //Afrique
   var alger = moment.tz("Africa/Algiers").format("DD/MM/YYYY - hh:mm:ss");
@@ -1404,8 +1439,8 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   .addField("Continent :", "<:afu:734595847404388434> Afrique")     
   .setFooter(Copyright, avatarbot)
 
-  if (msg.content.includes("Alger") + msg.content.includes("alger")) return msg.channel.send(AlgerAf).catch(console.error);
-  if (msg.content.includes("Casablanca") + msg.content.includes("casablanca")) return msg.channel.send(CasablancaAf).catch(console.error);
+  if (msg.content.toLowerCase().includes("alger")) return msg.channel.send(AlgerAf).catch(console.error);
+  if (msg.content.toLowerCase().includes("casablanca")) return msg.channel.send(CasablancaAf).catch(console.error);
 
   //Australie 
   var sydney = moment.tz("Australia/Sydney").format("DD/MM/YYYY - hh:mm:ss");
@@ -1421,7 +1456,7 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   .addField("Continent :", ":flag_au: Australie") 
   .setFooter(Copyright, avatarbot)
 
-  if (msg.content.includes("Sydney") + msg.content.includes("sydney")) return msg.channel.send(Sydney).catch(console.error);
+  if (msg.content.toLowerCase().includes("sydney")) return msg.channel.send(Sydney).catch(console.error);
 
   //Antarctique
   var troll = moment.tz("Antarctica/Troll").format("DD/MM/YYYY - hh:mm:ss");
@@ -1438,7 +1473,7 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   .addField("Continent :", ":flag_aq: Antarctique") 
   .setFooter(Copyright, avatarbot)
 
-  if (msg.content.includes("Troll") + msg.content.includes("troll")) return msg.channel.send(Troll).catch(console.error);
+  if (msg.content.toLowerCase().includes("troll")) return msg.channel.send(Troll).catch(console.error);
 
   //America
   var denver = moment.tz("America/Denver").format("DD/MM/YYYY - hh:mm:ss")
@@ -1448,7 +1483,7 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   var puerto_rico = moment.tz("America/Puerto_Rico").format("DD/MM/YYYY - hh:mm:ss")
   var puerto_ricod = moment.tz("America/Puerto_Rico").format("DD/MM/YYYY")
   var puerto_ricoh = moment.tz("America/Puerto_Rico").format("hh:mm:ss")
-
+  
   let Denver = new Discord.MessageEmbed()
   .setColor(couleur)
   .setTitle("DENVER")
@@ -1467,17 +1502,36 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   .addField("Continent :", ":flag_us: Amérique du Nord")
   .setFooter(Copyright, avatarbot)
 
-  if (msg.content.includes("portorico") + msg.content.includes("Puerto_Rico") + msg.content.includes("Puerto_rico") + msg.content.includes("pr") + msg.content.includes("puertorico") + msg.content.includes("Puertorico") + msg.content.includes("puerto_rico")) return msg.channel.send(Puerto_Rico).catch(console.error);
-  if (msg.content.includes("Denver") + msg.content.includes("denver")) return msg.channel.send(Denver).catch(console.error);
+  if (msg.content.toLowerCase().includes("portorico") + msg.content.toLowerCase().includes("puerto_rico") + msg.content.toLowerCase().includes("pr") + msg.content.toLowerCase().includes("puertorico")) return msg.channel.send(Puerto_Rico).catch(console.error);
+  if (msg.content.toLowerCase().includes("denver")) return msg.channel.send(Denver).catch(console.error);
 }
 
   if (message.author.bot) return;
   if (!message.content.startsWith(prefix)) return;
-  
+
+  const args = message.content.split(" ");
+  const recherche = args.join(" ");
   const serverQueue = queue.get(message.guild.id);
-  
-  if (message.content.startsWith(`${prefix}play`) || message.content.startsWith(`${prefix}p`)) {
-    execute(message, serverQueue);
+
+  const r = await yts(recherche)
+  const videos = r.videos;
+
+  let link = msg.content.toLowerCase().includes("https://www.youtube.com/") || 
+  msg.content.toLowerCase().includes("https://www.youtu.be/")    || 
+  msg.content.toLowerCase().includes("https://youtube.com/")     || 
+  msg.content.toLowerCase().includes("https://youtu.be/")        || 
+  msg.content.toLowerCase().includes("http://www.youtube.com/")  || 
+  msg.content.toLowerCase().includes("http://www.youtu.be/")     || 
+  msg.content.toLowerCase().includes("http://youtube.com/")      || 
+  msg.content.toLowerCase().includes("http://youtu.be/")         || 
+  msg.content.toLowerCase().includes("www.youtube.com/")         || 
+  msg.content.toLowerCase().includes("www.youtu.be/")            || 
+  msg.content.toLowerCase().includes("youtube.com/")             || 
+  msg.content.toLowerCase().includes("youtu.be/");
+
+  if (message.content.startsWith(prefix+'play')) {
+    if (link) return execute(message, serverQueue);
+    if (!link) return execute(message, serverQueue);
     return;
   } else if (message.content.startsWith(`${prefix}skip`)) {
     skip(message, serverQueue);
@@ -1485,66 +1539,113 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   } else if (message.content.startsWith(`${prefix}stop`)) {
     stop(message, serverQueue);
     return;
+  } else if (message.content.startsWith(`${prefix}volume`) || (message.content.startsWith(`${prefix}vol`))) {
+    volume(message, serverQueue);
+    return;
+  } else if (message.content.startsWith(`${prefix}pause`)) {
+    pause(message, serverQueue);
+    return;
+  } else if (message.content.startsWith(`${prefix}resume`)) {
+    resume(message, serverQueue);
+    return;
   }
-  
+
   async function execute(message, serverQueue) {
-    const args = message.content.split(" ");
-  
+
     const voiceChannel = message.member.voice.channel;
     const permissions = voiceChannel.permissionsFor(message.client.user);
 
+    //if (!url.match(/(youtube.com|youtu.be)\/(watch)?(\?v=)?(\S+)?/)) return message.channel.send("❌ Veuillez stipulez un lien valide !");
     if (!voiceChannel) return (embed.setTitle("ERREUR").setDescription("❌ Vous devez rejoindre un salon vocal pour jouer de la musique !")).catch(console.error);
     if (!permissions.has("CONNECT")) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Je n'ai pas la permission `Se connecter` dans ce channel !")).catch(console.error); 
     if (!permissions.has("SPEAK")) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Je n'ai pas la permission `Parler` dans ce channel !")).catch(console.error);
 
-    const songInfo = await ytdl.getInfo(args[1]);
-    const song = {
-      title: songInfo.videoDetails.title,
-      url: songInfo.videoDetails.video_url
-    }
-    
-    if (!serverQueue) {
-      const queueContruct = {
-        textChannel: message.channel,
-        voiceChannel: voiceChannel,
-        connection: null,
-        songs: [],
-        volume: 1,
-        playing: true
+    if (link) {
+      const songInfo = await ytdl.getInfo(args[1]);
+      const song = {
+        title: songInfo.videoDetails.title,
+        url: songInfo.videoDetails.video_url
       };
-  
-      queue.set(message.guild.id, queueContruct);
-  
-      queueContruct.songs.push(song);
-  
-      try {
-        var connection = await voiceChannel.join();
-        queueContruct.connection = connection;
-        play(message.guild, queueContruct.songs[0]);
-      } catch (err) {
-        console.log(err);
-        queue.delete(message.guild.id);
-        return message.channel.send(err);
+    
+      if (!serverQueue) {
+        const queueContruct = {
+          textChannel: message.channel,
+          voiceChannel: voiceChannel,
+          connection: null,
+          songs: [],
+          volume: 1,
+          playing: true
+        };
+    
+        queue.set(message.guild.id, queueContruct);
+    
+        queueContruct.songs.push(song);
+    
+        try {
+          var connection = await voiceChannel.join();
+          queueContruct.connection = connection;
+          play(message.guild, queueContruct.songs[0]);
+        } catch (err) {
+          console.log(err);
+          queue.delete(message.guild.id);
+          return message.channel.send(err);
+        }
+      } else {
+
+        serverQueue.songs.push(song);
+        return msg.channel.send(embed.setTitle("MUSIQUE").setDescription('**'+`[${song.title}](${song.url})`+'**'+" a bien été ajouté à la queue !")).catch(console.error);    
       }
-    } else {
-      serverQueue.songs.push(song);
-      return msg.channel.send(embed.setTitle("MUSIQUE").setDescription('**'+`[${song.title}](${song.url})`+'**'+" a bien été ajouté à la queue !")).catch(console.error);
+    }
+
+    if (!link) {
+      if (!serverQueue) {
+        const queueContruct = {
+          textChannel: message.channel,
+          voiceChannel: voiceChannel,
+          connection: null,
+          songs: [],
+          volume: 1,
+          playing: true
+        };
+    
+        queue.set(message.guild.id, queueContruct);
+    
+        queueContruct.songs.push(videos[0]);
+    
+        try {
+          var connection = await voiceChannel.join();
+          queueContruct.connection = connection;
+          play(message.guild, queueContruct.songs[0]);
+        } catch (err) {
+          console.log(err);
+          queue.delete(message.guild.id);
+          return message.channel.send(err);
+        }
+      } else {
+
+        serverQueue.songs.push(videos[0]);
+        return msg.channel.send(embed.setTitle("MUSIQUE").setDescription('**'+`[${videos[0].title}](${videos[0].url})`+'**'+" a bien été ajouté à la queue !")).catch(console.error);    
+      }
     }
   }
+
   
   function skip(message, serverQueue) {
     if (!message.member.voice.channel) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Vous devez rejoindre un salon vocal pour jouer de la musique !")).catch(console.error);
     if (!serverQueue) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Il n'y a pas de musique dans la queue !")).catch(console.error);
     serverQueue.connection.dispatcher.end();
+    msg.channel.send(embed.setTitle("MUSIQUE").setDescription("✅ La musique vient d'être skippé !\n\n(si il n'y a pas de musique dans la queue le bot se déconnectera)"))
   }
   
   function stop(message, serverQueue) {
     if (!message.member.voice.channel) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Vous devez rejoindre un salon vocal pour stopper de la musique !")).catch(console.error);
     serverQueue.songs = [];
     serverQueue.connection.dispatcher.end();
+    msg.channel.send(embed.setTitle("MUSIQUE").setDescription("✅ La musique vient d'être stoppé !\n\n(déconnexion du bot)"))
   }
 
   function play(guild, song) {
+    if (!message.member.voice.channel) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Vous devez rejoindre un salon vocal pour jouer de la musique !")).catch(console.error);
     const serverQueue = queue.get(guild.id);
     if (!song) {
       serverQueue.voiceChannel.leave();
@@ -1553,6 +1654,48 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
     }
     dispatcher = serverQueue.connection.play(ytdl(song.url)).on("finish", () => {serverQueue.songs.shift();play(guild, serverQueue.songs[0]);}).on("error", error => console.error(error)); dispatcher.setVolumeLogarithmic(serverQueue.volume / 1);serverQueue.textChannel.send(embed.setTitle("MUSIQUE").setDescription('**'+`[${song.title}](${song.url})`+'**'+" vient d'être mise en lecture !"));
   }
+ 
+  function search(guild, song, videos) {
+    if (!message.member.voice.channel) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Vous devez rejoindre un salon vocal pour jouer de la musique !")).catch(console.error);
+    const serverQueue = queue.get(guild.id);
+    if (!song) {
+      serverQueue.voiceChannel.leave();
+      queue.delete(guild.id);
+      return;
+    }
+    dispatcher = serverQueue.connection.play(ytdl(videos[0].url)).on("finish", () => {serverQueue.songs.shift();search(guild, serverQueue.songs[0]);}).on("error", error => console.error(error)); dispatcher.setVolumeLogarithmic(serverQueue.volume / 1);serverQueue.textChannel.send(embed.setTitle("MUSIQUE").setDescription('**'+`[${videos[0].title}](${videos[0].url})`+'**'+" vient d'être mise en lecture !"));
+  }
+
+  function volume(song) {
+    if (connection.channel) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Vous devez rejoindre le salon vocal "+"`"+connection.channel.name+"`"+" !\n\nPour pouvoir changer le volume de la musique en cours de lecture !")).catch(console.error);
+    msgToArray = message.content.split(' ');
+
+    let vol = Number(msgToArray.pop());
+
+    if (!song) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Il n'y aucune musique en cours de lecture !")).catch(console.error);
+    if (!vol) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Veuillez saisir un volume valide !"))
+
+    vol2 = dispatcher.setVolume(vol / 100)
+    msg.channel.send(embed.setTitle("MUSIQUE").setDescription("✅ Le volume vient d'être changer pour : "+"**"+vol+"%**"))
+  }
+
+  function pause(song) {
+    if (connection.channel) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Vous devez rejoindre le salon vocal "+"`"+connection.channel.name+"`"+" !\n\nPour pouvoir changer le volume de la musique en cours de lecture !")).catch(console.error);
+    if (!message.member.voice.channel) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Vous devez rejoindre un salon vocal pour jouer de la musique !")).catch(console.error);
+    if (!song) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Il n'y aucune musique en cours de lecture !")).catch(console.error);
+
+    dispatcher.pause()
+    msg.channel.send(embed.setTitle("MUSIQUE").setDescription("✅ La musique à bien été mise en pause !"))
+  }
+
+  function resume(song) {
+    if (connection.channel) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Vous devez rejoindre le salon vocal "+"`"+connection.channel.name+"`"+" !\n\nPour pouvoir changer le volume de la musique en cours de lecture !")).catch(console.error);
+    if (!song) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Il n'y aucune musique en cours de lecture !")).catch(console.error);
+
+    dispatcher.resume()
+    msg.channel.send(embed.setTitle("MUSIQUE").setDescription("✅ La musique à bien été mise en lecture !"))
+  }  
+
 });
 
 client.login(token);
