@@ -6,7 +6,7 @@ const snekfetch                                       = require('snekfetch');
 const p                                               = require('pixula-v2');
 const generator                                       = require('generate-password');
 const TM                                              = require('temp-mail-api');
-const { error }                                       = require('console');
+const { error, timeLog }                              = require('console');
 const moment                                          = require('moment');
 const tz                                              = require('moment-timezone');
 const fs                                              = require('fs');
@@ -14,7 +14,10 @@ const Pornsearch                                      = require('pornsearch');
 const akaneko                                         = require('akaneko');
 const tnai                                            = require("tnai");
 const { url }                                         = require('inspector');
+const ytdl                                            = require('ytdl-core');
 const { serialize }                                   = require('v8');
+const { title }                                       = require('process');
+const yts                                             = require( 'yt-search' )
 const client                                          = new Discord.Client({disableMentions: "everyone"});
 
 client.commands = new Discord.Collection()
@@ -42,6 +45,8 @@ client.on('ready', () => {
         }, 15000);
       });
 
+const queue = new Map();
+
 client.on('message',  async message => {
 
   let avatarbot        = client.user.avatarURL({dynamic: true}),
@@ -63,6 +68,9 @@ client.on('message',  async message => {
       let embed = new Discord.MessageEmbed()
       .setColor(couleur)
       .setFooter(Copyright, avatarbot)
+
+  if (message.author.bot) return;
+  if (!message.content.startsWith(prefix)) return;
 
   if (msg.content === prefix + 'help' || msg.content === prefix + 'h') {
 
@@ -163,7 +171,6 @@ client.on('message',  async message => {
     if (!whitelist.includes(author.id)) return msg.channel.send(nonWhitelist);
       
       const args = msg.content.split(' ');
-      const command = args.shift().toLowerCase();
 
       let evaled;
       try {
@@ -1463,6 +1470,89 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   if (msg.content.includes("portorico") + msg.content.includes("Puerto_Rico") + msg.content.includes("Puerto_rico") + msg.content.includes("pr") + msg.content.includes("puertorico") + msg.content.includes("Puertorico") + msg.content.includes("puerto_rico")) return msg.channel.send(Puerto_Rico).catch(console.error);
   if (msg.content.includes("Denver") + msg.content.includes("denver")) return msg.channel.send(Denver).catch(console.error);
 }
+
+  if (message.author.bot) return;
+  if (!message.content.startsWith(prefix)) return;
+  
+  const serverQueue = queue.get(message.guild.id);
+  
+  if (message.content.startsWith(`${prefix}play`) || message.content.startsWith(`${prefix}p`)) {
+    execute(message, serverQueue);
+    return;
+  } else if (message.content.startsWith(`${prefix}skip`)) {
+    skip(message, serverQueue);
+    return;
+  } else if (message.content.startsWith(`${prefix}stop`)) {
+    stop(message, serverQueue);
+    return;
+  }
+  
+  async function execute(message, serverQueue) {
+    const args = message.content.split(" ");
+  
+    const voiceChannel = message.member.voice.channel;
+    const permissions = voiceChannel.permissionsFor(message.client.user);
+
+    if (!voiceChannel) return (embed.setTitle("ERREUR").setDescription("❌ Vous devez rejoindre un salon vocal pour jouer de la musique !")).catch(console.error);
+    if (!permissions.has("CONNECT")) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Je n'ai pas la permission `Se connecter` dans ce channel !")).catch(console.error); 
+    if (!permissions.has("SPEAK")) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Je n'ai pas la permission `Parler` dans ce channel !")).catch(console.error);
+
+    const songInfo = await ytdl.getInfo(args[1]);
+    const song = {
+      title: songInfo.videoDetails.title,
+      url: songInfo.videoDetails.video_url
+    }
+    
+    if (!serverQueue) {
+      const queueContruct = {
+        textChannel: message.channel,
+        voiceChannel: voiceChannel,
+        connection: null,
+        songs: [],
+        volume: 1,
+        playing: true
+      };
+  
+      queue.set(message.guild.id, queueContruct);
+  
+      queueContruct.songs.push(song);
+  
+      try {
+        var connection = await voiceChannel.join();
+        queueContruct.connection = connection;
+        play(message.guild, queueContruct.songs[0]);
+      } catch (err) {
+        console.log(err);
+        queue.delete(message.guild.id);
+        return message.channel.send(err);
+      }
+    } else {
+      serverQueue.songs.push(song);
+      return msg.channel.send(embed.setTitle("MUSIQUE").setDescription('**'+`[${song.title}](${song.url})`+'**'+" a bien été ajouté à la queue !")).catch(console.error);
+    }
+  }
+  
+  function skip(message, serverQueue) {
+    if (!message.member.voice.channel) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Vous devez rejoindre un salon vocal pour jouer de la musique !")).catch(console.error);
+    if (!serverQueue) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Il n'y a pas de musique dans la queue !")).catch(console.error);
+    serverQueue.connection.dispatcher.end();
+  }
+  
+  function stop(message, serverQueue) {
+    if (!message.member.voice.channel) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Vous devez rejoindre un salon vocal pour stopper de la musique !")).catch(console.error);
+    serverQueue.songs = [];
+    serverQueue.connection.dispatcher.end();
+  }
+
+  function play(guild, song) {
+    const serverQueue = queue.get(guild.id);
+    if (!song) {
+      serverQueue.voiceChannel.leave();
+      queue.delete(guild.id);
+      return;
+    }
+    dispatcher = serverQueue.connection.play(ytdl(song.url)).on("finish", () => {serverQueue.songs.shift();play(guild, serverQueue.songs[0]);}).on("error", error => console.error(error)); dispatcher.setVolumeLogarithmic(serverQueue.volume / 1);serverQueue.textChannel.send(embed.setTitle("MUSIQUE").setDescription('**'+`[${song.title}](${song.url})`+'**'+" vient d'être mise en lecture !"));
+  }
 });
 
 client.login(token);
