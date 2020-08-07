@@ -5,7 +5,6 @@ const superagent                                      = require('superagent');
 const snekfetch                                       = require('snekfetch');
 const p                                               = require('pixula-v2');
 const generator                                       = require('generate-password');
-const TM                                              = require('temp-mail-api');
 const { error, timeLog }                              = require('console');
 const moment                                          = require('moment');
 const tz                                              = require('moment-timezone');
@@ -30,10 +29,9 @@ let token     = TOKEN,
 
 client.on('ready', () => {
 
-  let membersCount = client.users.cache.size;
-  let test = client.guilds.cache.map(guild => guild.memberCount).reduce((a, b) => a + b, 0);
+  let membersCount = client.guilds.cache.map(guild => guild.memberCount).reduce((a, b) => a + b, 0);
 
-  console.log("Bot : " + client.user.tag + " est connecté !"+"\n\nUtilisateurs : "+test+`\n\nServeur${client.guilds.cache.size > 1 ? "s" : "️"} : ${client.guilds.cache.size}`+"\n\nToken : "+token+"\n\nVersion : "+version);
+  console.log("Bot : " + client.user.tag + " est connecté !"+"\n\nUtilisateurs : "+membersCount+`\n\nServeur${client.guilds.cache.size > 1 ? "s" : "️"} : ${client.guilds.cache.size}`+"\n\nToken : "+token+"\n\nVersion : "+version);
 
   let statuses  =  [PREFIX+'help'],
       types     = ["LISTENING", "WATCHING", "PLAYING"];
@@ -57,7 +55,7 @@ client.on('message',  async message => {
       msg              = message,
       guild            = msg.guild,
       author           = msg.author,
-      totalpage        = "8",
+      totalpage        = "9",
       villetz          = "Paris/London/Alger/Casablanca/Sydney/Troll/Denver/Puerto_Rico",  
       europeV          = "Paris/London",
       afriqueV         = "Alger/Casablanca",
@@ -87,6 +85,7 @@ client.on('message',  async message => {
     .addField(`\`${PREFIX}help utile\``,    "Affiche la page des commandes utiles")
     .addField(`\`${PREFIX}help nsfw\``,     "Affiche la page des commandes nsfw🔞")
     .addField(`\`${PREFIX}help musique\``,  "Affiche la page des commandes musicale🎵")
+    .addField(`\`${PREFIX}help timezone\``, "Affiche la page d'aide de la commande timezone")
     .setFooter(Copyright, avatarbot)
 
     if (!whitelist.includes(author.id)) return msg.channel.send(standard);
@@ -120,27 +119,27 @@ client.on('message',  async message => {
 
   /*\ -------------------------- *\*/
 
-  /*if (msg.content === prefix + 'help timezone' || msg.content === prefix + 'h tz') {
-    msg.channel.send(embed.setTitle("Page 4/"+totalpage+" - Commande INFO :").setDescription(description).addField(`\`${PREFIX}timezone [ville]\``,  "Affiche la date et l'heure de la ville saisie").addField("Ville éligible à la commande :", villetz).addField(":flag_eu: Europe :", europeV).addField("<:afu:734595847404388434> Afrique :", afriqueV).addField(":flag_au: Australie : ", australieV).addField(":flag_us: Amérique :", americaV).addField(":flag_aq: Antarctique :", antarctiqueV)).catch(console.error);
-  }*/
+  if (msg.content === prefix + 'help timezone' || msg.content === prefix + 'h tz') {
+    msg.channel.send(embed.setTitle("Page 5/"+totalpage+" - Commande INFO :").setDescription(description).addField(`\`${PREFIX}timezone [ville]\``,  "Affiche la date et l'heure de la ville saisie").addField("Ville éligible à la commande :", villetz).addField(":flag_eu: Europe :", europeV).addField("<:afu:734595847404388434> Afrique :", afriqueV).addField(":flag_au: Australie : ", australieV).addField(":flag_us: Amérique :", americaV).addField(":flag_aq: Antarctique :", antarctiqueV)).catch(console.error);
+  }
 
   /*\ -------------------------- *\*/
 
   if (msg.content === prefix + 'help fun' || msg.content === prefix + 'h fun') {
-    msg.channel.send(embed.setTitle("Page 5/"+totalpage+" - Commandes FUN :").setDescription(description)
+    msg.channel.send(embed.setTitle("Page 6/"+totalpage+" - Commandes FUN :").setDescription(description)
     .addField(`\`${PREFIX}8ball [question]\``, "Permet de poser n'importe quel question au bot**(IA amélioré)**")).catch(console.error);
   }
 
   /*\ -------------------------- *\*/
 
   if (msg.content === prefix + 'help love' || msg.content === prefix + 'h love') {
-    msg.channel.send(embed.setTitle("Page 6/"+totalpage+" - Commandes love :").setDescription(description).addField(`\`${PREFIX}waifu\``, "Permet d'afficher des images de Waifu").addField(`\`${PREFIX}kitsune\``, "Permet d'afficher des images de Kitsune").addField(`\`${PREFIX}neko\``, "Permet d'afficher des images de Nekomimi").addField(`\`${PREFIX}pat\``, "Permet de vous tapotez ou de tapoter un membre").addField(`\`${PREFIX}smug\``, "Permet de vous satisfaire ou de satisfaire un membre").addField(`\`${PREFIX}cry\``, "Permet de vous faire pleurer ou de faire pleurer un membre").addField(`\`${PREFIX}hug\``, "Permet de vous faire un câlin ou de faire un câlin à un membre").addField(`\`${PREFIX}kiss\``, "Permet de vous faire bisous ou de faire un bisous à un membre").addField(`\`${PREFIX}slap\``, "Permet de vous mettre une gifle ou de mettre une gifle à un membre").addField(`\`${PREFIX}punch\``, "Permet de vous mettre un coup de poing ou de le mettre à un membre")).catch(console.error);
+    msg.channel.send(embed.setTitle("Page 7/"+totalpage+" - Commandes love :").setDescription(description).addField(`\`${PREFIX}waifu\``, "Permet d'afficher des images de Waifu").addField(`\`${PREFIX}kitsune\``, "Permet d'afficher des images de Kitsune").addField(`\`${PREFIX}neko\``, "Permet d'afficher des images de Nekomimi").addField(`\`${PREFIX}pat\``, "Permet de vous tapotez ou de tapoter un membre").addField(`\`${PREFIX}smug\``, "Permet de vous satisfaire ou de satisfaire un membre").addField(`\`${PREFIX}cry\``, "Permet de vous faire pleurer ou de faire pleurer un membre").addField(`\`${PREFIX}hug\``, "Permet de vous faire un câlin ou de faire un câlin à un membre").addField(`\`${PREFIX}kiss\``, "Permet de vous faire bisous ou de faire un bisous à un membre").addField(`\`${PREFIX}slap\``, "Permet de vous mettre une gifle ou de mettre une gifle à un membre").addField(`\`${PREFIX}punch\``, "Permet de vous mettre un coup de poing ou de le mettre à un membre")).catch(console.error);
   } 
 
   /*\ -------------------------- *\*/
 
   if (msg.content === prefix + 'help nsfw' || msg.content === prefix + 'h nsfw') {
-    msg.channel.send(embed.setTitle("Page 7/"+totalpage+" - Commandes NSFW :").setDescription(description)
+    msg.channel.send(embed.setTitle("Page 8/"+totalpage+" - Commandes NSFW :").setDescription(description)
     .addField(`\`${PREFIX}4k\``, "Permet d'afficher des gifs pornographique en 4k(pornhub)")
     .addField(`\`${PREFIX}ass\``, "Permet d'afficher des images pornographique de culs(random)")
     .addField(`\`${PREFIX}anal\``, "Permet d'afficher des gifs pornographique d'acte anal(pornhub)")
@@ -165,12 +164,13 @@ client.on('message',  async message => {
   /*\ -------------------------- *\*/
 
   if (msg.content === prefix + 'help musique' || msg.content === prefix + 'h music') {
-    msg.channel.send(embed.setTitle("Page 8/"+totalpage+" - Commandes musicales :").setDescription(description)
-    .addField(`\`${PREFIX}play [lien]\``, "Permet d'exécuter une musique YouTube")
+    msg.channel.send(embed.setTitle("Page 9/"+totalpage+" - Commandes musicales :").setDescription(description)
+    .addField(`\`${PREFIX}play [lien/titre]\``, "Permet d'exécuter une musique YouTube")
     .addField(`\`${PREFIX}stop\``,   "Permet de stopper une musique en cours de lecture")
     .addField(`\`${PREFIX}skip\``,   "Permet de skipper une musique en cours de lecture")
     .addField(`\`${PREFIX}pause\``,  "Permet de mettre en pause une musique en cours de lecture")
-    .addField(`\`${PREFIX}resume\``, "Permet de mettre en lecture une musique mise en pause")).catch(console.error);
+    .addField(`\`${PREFIX}resume\``, "Permet de mettre en lecture une musique mise en pause")
+    .addField(`\`${PREFIX}volume\``, "Permet de modifier le volume d'une musique en cours de lecture")).catch(console.error);
   }    
 
   if (msg.content.startsWith(prefix + 'exec')) {
@@ -1548,7 +1548,13 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   } else if (message.content.startsWith(`${prefix}resume`)) {
     resume(message, serverQueue);
     return;
-  }
+  } else if (message.content.startsWith(`${prefix}join`)) {
+    join(message);
+    return;
+  } else if (message.content.startsWith(`${prefix}leave`)) {
+    leave(message);
+    return;
+  } 
 
   async function execute(message, serverQueue) {
 
@@ -1557,6 +1563,7 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
 
     //if (!url.match(/(youtube.com|youtu.be)\/(watch)?(\?v=)?(\S+)?/)) return message.channel.send("❌ Veuillez stipulez un lien valide !");
     if (!voiceChannel) return (embed.setTitle("ERREUR").setDescription("❌ Vous devez rejoindre un salon vocal pour jouer de la musique !")).catch(console.error);
+    if (!permissions.has("CONNECT") || !permissions.has("CONNECT")) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Je n'ai pas la permission `Se connecter` et `Parler` dans ce channel !")).catch(console.error); 
     if (!permissions.has("CONNECT")) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Je n'ai pas la permission `Se connecter` dans ce channel !")).catch(console.error); 
     if (!permissions.has("SPEAK")) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Je n'ai pas la permission `Parler` dans ce channel !")).catch(console.error);
 
@@ -1667,7 +1674,11 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   }
 
   function volume(song) {
-    if (connection.channel) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Vous devez rejoindre le salon vocal "+"`"+connection.channel.name+"`"+" !\n\nPour pouvoir changer le volume de la musique en cours de lecture !")).catch(console.error);
+    let connection;
+    if (client.voice) connection = client.voice.connections.find(connection2 => connection2.channel.guild.id === message.guild.id);
+    
+    if (!message.member.voice.channel) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Vous n'êtes pas dans le salon vocal du bot : "+"`"+connection.channel.name+"`")).catch(console.error);
+    if (connection.channel.id !== message.member.voice.channel.id) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Vous n'êtes pas dans le salon vocal du bot : "+"`"+connection.channel.name+"`"))
     msgToArray = message.content.split(' ');
 
     let vol = Number(msgToArray.pop());
@@ -1680,8 +1691,11 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   }
 
   function pause(song) {
-    if (connection.channel) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Vous devez rejoindre le salon vocal "+"`"+connection.channel.name+"`"+" !\n\nPour pouvoir changer le volume de la musique en cours de lecture !")).catch(console.error);
-    if (!message.member.voice.channel) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Vous devez rejoindre un salon vocal pour jouer de la musique !")).catch(console.error);
+    let connection;
+    if (client.voice) connection = client.voice.connections.find(connection2 => connection2.channel.guild.id === message.guild.id);
+    
+    if (!message.member.voice.channel) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Vous n'êtes pas dans le salon vocal du bot : "+"`"+connection.channel.name+"`")).catch(console.error);
+    if (connection.channel.id !== message.member.voice.channel.id) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Vous n'êtes pas dans le salon vocal du bot : "+"`"+connection.channel.name+"`"))
     if (!song) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Il n'y aucune musique en cours de lecture !")).catch(console.error);
 
     dispatcher.pause()
@@ -1689,13 +1703,28 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   }
 
   function resume(song) {
-    if (connection.channel) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Vous devez rejoindre le salon vocal "+"`"+connection.channel.name+"`"+" !\n\nPour pouvoir changer le volume de la musique en cours de lecture !")).catch(console.error);
+    let connection;
+    if (client.voice) connection = client.voice.connections.find(connection2 => connection2.channel.guild.id === message.guild.id);
+    
+    if (!message.member.voice.channel) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Vous n'êtes pas dans le salon vocal du bot : "+"`"+connection.channel.name+"`")).catch(console.error);
+    if (connection.channel.id !== message.member.voice.channel.id) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Vous n'êtes pas dans le salon vocal du bot : "+"`"+connection.channel.name+"`"))
     if (!song) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Il n'y aucune musique en cours de lecture !")).catch(console.error);
 
     dispatcher.resume()
     msg.channel.send(embed.setTitle("MUSIQUE").setDescription("✅ La musique à bien été mise en lecture !"))
   }  
 
+  function join(message) {
+    if (!msg.member.voice.channel) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Vous devez rejoindre un salon vocal pour exécuter cette commande !")).catch(console.error);
+    msg.member.voice.channel.join().then(msg.channel.send(embed.setTitle("MUSIQUE").setDescription("✅ Je viens de rejoindre le channel : "+"`"+msg.member.voice.channel.name+"`"+" !"))).catch(console.error)
+  }
+  
+  function leave(message) {
+    if (!msg.member.voice.channel) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Vous devez rejoindre un salon vocal pour exécuter cette commande !")).catch(console.error);
+    msg.member.voice.channel.leave()
+    msg.channel.send(embed.setTitle("MUSIQUE").setDescription("✅ Je viens de quitter le channel : "+"`"+msg.member.voice.channel.name+"`"+" !")).catch(console.error)
+  }  
+  
 });
 
 client.login(token);
