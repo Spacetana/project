@@ -5,19 +5,15 @@ const superagent                                      = require('superagent');
 const snekfetch                                       = require('snekfetch');
 const p                                               = require('pixula-v2');
 const generator                                       = require('generate-password');
-const { error, timeLog }                              = require('console');
 const moment                                          = require('moment');
 const tz                                              = require('moment-timezone');
 const fs                                              = require('fs');
 const Pornsearch                                      = require('pornsearch');
 const akaneko                                         = require('akaneko');
-const tnai                                            = require("tnai");
-const { url }                                         = require('inspector');
 const ytdl                                            = require('ytdl-core');
-const { serialize }                                   = require('v8');
-const { title }                                       = require('process');
 const yts                                             = require('yt-search');
-const { search } = require('snekfetch');
+const { search }                                      = require('snekfetch');
+const { getVideoID }                                  = require('ytdl-core');
 const client                                          = new Discord.Client({disableMentions: "everyone"});
 
 client.commands = new Discord.Collection()
@@ -33,7 +29,7 @@ client.on('ready', () => {
 
   console.log("Bot : " + client.user.tag + " est connecté !"+"\n\nUtilisateurs : "+membersCount+`\n\nServeur${client.guilds.cache.size > 1 ? "s" : "️"} : ${client.guilds.cache.size}`+"\n\nToken : "+token+"\n\nVersion : "+version);
 
-  let statuses  =  [PREFIX+'help'],
+  let statuses  =  ["Page d'aide : "+PREFIX+'help'],
       types     = ["LISTENING", "WATCHING", "PLAYING"];
     
       setInterval(function() {
@@ -49,19 +45,21 @@ const queue = new Map();
 client.on('message',  async message => {
 
   let avatarbot        = client.user.avatarURL({dynamic: true}),
-      description      = "**Pour plus d'information dirigez vous vers le support de Rick\\🛸 :** [CLIQUE ICI](https://discord.gg/5Zbr2Hc)",
+      suppinvite       = "[CLIQUE ICI](https://discord.gg/5Zbr2Hc)",
+      description      = "**Pour plus d'information dirigez vous vers le support de Rick\\🛸 :** "+suppinvite,
       Copyright        = "Rick🛸 ©️ Copyright : Atsuki \\/ Needles",
       couleur          = "BLUE",
       msg              = message,
       guild            = msg.guild,
       author           = msg.author,
       totalpage        = "9",
-      villetz          = "Paris/London/Alger/Casablanca/Sydney/Troll/Denver/Puerto_Rico",  
+      villetz          = "Paris/London/Alger/Casablanca/Sydney/Troll/Denver/Puerto_Rico/Jérusalem",  
       europeV          = "Paris/London",
       afriqueV         = "Alger/Casablanca",
       australieV       = "Sydney",
       antarctiqueV     = "Troll",
       americaV         = "Denver/Puerto_Rico",
+      asiaV            = "Jérusalem",
       mod              = ["ban", "kick", "mute en dev", "clear en dev"];
 
     let embed = new Discord.MessageEmbed()
@@ -96,8 +94,10 @@ client.on('message',  async message => {
 
   if (msg.content === prefix + 'help mod' || msg.content === prefix + 'h mod') {
     msg.channel.send(embed.setTitle("Page 2/"+totalpage+" - Commandes modérations :").setDescription(description)
-    .addField(`\`${PREFIX}ban [@user - id] (raison)\``, "Permet de ban une mention ou l'id d'un membre")
-    .addField(`\`${PREFIX}kick [@user - id] (raison)\``, "Permet de kick une mention ou l'id d'un membre")
+    .addField(`\`${PREFIX}ban [@user - id] (raison)\``, " Permet de ban une mention ou l'id d'un membre")
+    .addField(`\`${PREFIX}kick [@user - id] (raison)\``,  "Permet de kick une mention ou l'id d'un membre")
+    .addField(`\`${PREFIX}deletetext\``, "Permet de supprimer le channel ou la commande sera effectué")
+    .addField(`\`${PREFIX}createchannel [type] [nom]\``, "Permet de créer un channel avec des options(types)\n**Type = texte/vocal/catégorie**\n**Exemple : `"+prefix+"cch texte général`**")
     ).catch(console.error);
   }
 
@@ -114,13 +114,22 @@ client.on('message',  async message => {
   if (msg.content === prefix + 'help utile' || msg.content === prefix + 'h util') {
     msg.channel.send(embed.setTitle("Page 4/"+totalpage+" - Commandes utiles :").setDescription(description)
     .addField(`\`${PREFIX}invisible\``, "Permet de faire envoyer un msg invisible par le bot")
-    .addField(`\`${PREFIX}mdp (N) (S) [nombre de charactère]\``, "Permet de générer un Mot-de-Passe aléatoire\n(**N = ajout de nombre** | **S = ajout de symbole** | **Sans = que des lettres**)")).catch(console.error);
+    .addField(`\`${PREFIX}mdp (N) (S) [nombre de charactère]\``, "Permet de générer un Mot-de-Passe aléatoire\n**(N = ajout de nombre | S = ajout de symbole | Sans = que des lettres)**\n**Exemple : `"+prefix+"mdp N 10`**")).catch(console.error);
   }
 
   /*\ -------------------------- *\*/
 
   if (msg.content === prefix + 'help timezone' || msg.content === prefix + 'h tz') {
-    msg.channel.send(embed.setTitle("Page 5/"+totalpage+" - Commande INFO :").setDescription(description).addField(`\`${PREFIX}timezone [ville]\``,  "Affiche la date et l'heure de la ville saisie").addField("Ville éligible à la commande :", villetz).addField(":flag_eu: Europe :", europeV).addField("<:afu:734595847404388434> Afrique :", afriqueV).addField(":flag_au: Australie : ", australieV).addField(":flag_us: Amérique :", americaV).addField(":flag_aq: Antarctique :", antarctiqueV)).catch(console.error);
+    msg.channel.send(embed.setTitle("Page 5/"+totalpage+" - Commande INFO :")
+    .setDescription(description)
+    .addField(`\`${PREFIX}timezone [ville]\``,  "Affiche la date et l'heure de la ville saisie")
+    .addField("Ville éligible à la commande :", villetz)
+    .addField(":flag_eu: Europe :", europeV)
+    .addField("<:afu:734595847404388434> Afrique :", afriqueV)
+    .addField(":flag_au: Australie : ", australieV)
+    .addField(":flag_us: Amérique :", americaV)
+    .addField(":flag_aq: Antarctique :", antarctiqueV)
+    .addField("<:ua:741271273359015947> Asie :", asiaV)).catch(console.error);
   }
 
   /*\ -------------------------- *\*/
@@ -170,7 +179,9 @@ client.on('message',  async message => {
     .addField(`\`${PREFIX}skip\``,   "Permet de skipper une musique en cours de lecture")
     .addField(`\`${PREFIX}pause\``,  "Permet de mettre en pause une musique en cours de lecture")
     .addField(`\`${PREFIX}resume\``, "Permet de mettre en lecture une musique mise en pause")
-    .addField(`\`${PREFIX}volume\``, "Permet de modifier le volume d'une musique en cours de lecture")).catch(console.error);
+    .addField(`\`${PREFIX}volume\``, "Permet de modifier le volume d'une musique en cours de lecture")
+    .addField(`\`${PREFIX}join\``,   "Permet de faire rejoindre le bot à votre salon vocal")
+    .addField(`\`${PREFIX}leave\``,  "Permet de faire quitter le bot de votre salon vocal")).catch(console.error);
   }    
 
   if (msg.content.startsWith(prefix + 'exec')) {
@@ -320,7 +331,7 @@ client.on('message',  async message => {
 
     if (!msg.member.hasPermission("KICK_MEMBERS")) return msg.channel.send(embed.setTitle("BAN ERREUR").setDescription("❌ Vous n'avez pas la permission `Bannir des membres` !")).catch(console.error); 
     if (!guild.me.hasPermission("KICK_MEMBERS")) return msg.channel.send(embed.setTitle("BAN ERREUR").setDescription("❌ Je n'ai pas la permission `Bannir des membres` !")).catch(console.error); 
-    if (!user) return msg.channel.send(embed.setTitle("BAN ERREUR").setDescription("❌ Vous n'avez pas mentionné l'utilisateur à **ban** !")).catch(console.error); 
+    if (!user) return msg.channel.send(embed.setTitle("BAN ERREUR").setDescription("❌ Vous n'avez pas mentionné l'utilisateur à **ban** !")).catch(console.error);
 
     if (user) {
       const member = guild.member(user);
@@ -346,9 +357,9 @@ client.on('message',  async message => {
     decv  = msg.content.toLowerCase().includes("çava") || msg.content.toLowerCase().includes("cv") || msg.content.toLowerCase().includes("ça va") || msg.content.toLowerCase().includes("wsh bien");
     detfq = msg.content.toLowerCase().includes("tfq") || msg.content.toLowerCase().includes("sfq") || msg.content.toLowerCase().includes("tfk") || msg.content.toLowerCase().includes("sfk") || msg.content.toLowerCase().includes("tu fais quoi") || msg.content.toLowerCase().includes("tu fou quoi");
 
-    let replies  = ['Oui !', 'Absolument !', 'Je suis totalement d\'accord !', "Je ne sais pas !", "Je ne sais pas quoi répondre !", "Non !"];
-    let çava     = ["Je vais bien merci !", "ça va et toi ?", "je vais bien merci et toi ?", "trql et toi ?", "Je vais très bien merci !", "ça va nickel et toi ?"];
-    let tufq     = ["Je me fais dev par mon créateur <@509115921156014081> !", "Je fais rien de spéciale et toi ?", "Je m'apprêté à lancer Minecraft<:minecraft:740957759339626567> !", "Alors la je fais trop de chose en même temps j'pourrais pas tout dire mais sinon toi tfq ?"];
+    let replies  = ['Oui !', 'Absolument !', 'Je suis totalement d\'accord !', "Je ne sais pas !", "Je ne sais pas quoi répondre !", "Non !", "Askip oui !"];
+    let çava     = ["Je vais bien merci !", "ça va et toi ?", "je vais bien merci et toi ?", "trql et toi ?", "Je vais très bien merci !", "ça va nickel et toi ?", "oklm et toi ?", "j'vais super bien !"];
+    let tufq     = ["Je me fais dev par mon créateur <@509115921156014081> !", "Je fais rien de spéciale et toi ?", "Je m'apprêté à lancer Minecraft<:minecraft:740957759339626567> !", "Alors la je fais trop de chose en même temps j'pourrais pas tout dire mais sinon toi tfq ?", "En ce moment je fais pas grand chose et toi ?"];
     let args     = msg.content.split(" ").slice(1),
         question = args.join(" ");
 
@@ -1273,14 +1284,13 @@ if (msg.content.startsWith(prefix + 'mdp')) {
 
         msgToArray = msg.content.split(' ');
   const nlenght = Number(msgToArray.pop()),
-        N       = msg.content.includes("N"),
-        S       = msg.content.includes("S");
-
+        N       = msg.content.toLowerCase().includes("N"),
+        S       = msg.content.toLowerCase().includes("S");
 
   let erreur = new Discord.MessageEmbed()
         .setColor(couleur)
         .setTitle("MDP ERREUR")
-        .setDescription("❌ Veuillez indiquer un nombre de charactère que le **mot-de-passe** doit contenir !\n\n(option indiqué dans l'exemple)\n\nCorrection : `r!mdp (N) (S) 10`")
+        .setDescription("❌ Veuillez indiquer un nombre de charactère que le **mot-de-passe** doit contenir !\n\nOption : N/S(N = Nombre/S = Symbole)\n\nCorrection : `r!mdp S 10`")
         .setFooter(Copyright, avatarbot)    
 
   if (!nlenght) return msg.channel.send(erreur).catch(console.error);
@@ -1323,7 +1333,7 @@ if (msg.content.startsWith(prefix + 'mdp')) {
 
 }
 
-if (msg.content.startsWith(prefix + 'userinfo') || msg.content.startsWith(prefix + 'ui') || msg.content.startsWith(prefix + 'userInfo')) {
+if (msg.content.toLowerCase().startsWith(prefix + 'userinfo') || msg.content.toLowerCase().startsWith(prefix + 'ui')) {
 
   const userID   = msg.content.substring(msg.content.indexOf(' ') + 1); 
   const user     = msg.mentions.users.first() || client.users.cache.get(userID) || msg.author;
@@ -1504,6 +1514,53 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
 
   if (msg.content.toLowerCase().includes("portorico") + msg.content.toLowerCase().includes("puerto_rico") + msg.content.toLowerCase().includes("pr") + msg.content.toLowerCase().includes("puertorico")) return msg.channel.send(Puerto_Rico).catch(console.error);
   if (msg.content.toLowerCase().includes("denver")) return msg.channel.send(Denver).catch(console.error);
+
+  //Asia
+
+  var jeru = moment.tz("Asia/Jerusalem").format("DD/MM/YYYY - hh:mm:ss")
+  var jerud = moment.tz("Asia/Jerusalem").format("DD/MM/YYYY")
+  var jeruh = moment.tz("Asia/Jerusalem").format("hh:mm:ss")
+
+  if (msg.content.toLowerCase().includes("jerusalem") || msg.content.toLowerCase().includes("jérusalem")) return msg.channel.send(embed.setTitle("JÉRUSALEM")
+  .setDescription("Date et heure actuel à **Jérusalem** : "+jeru)
+  .addField("Date :", jerud)
+  .addField("Heure :", jeruh)
+  .addField("Continent :", "<:ua:741271273359015947> Asie")).catch(console.error);
+
+}
+
+if (message.content.startsWith(prefix + 'createchannel') || message.content.startsWith(prefix + 'cch')) {
+
+  if (!message.member.hasPermission("MANAGE_CHANNELS")) return msg.channel.send(embed.setTitle("ERREUR").setDescription(`❌ Vous avez pas la permission \`Gérer les channels\` pour exécuter cette commande !`)).catch(console.error)
+  if (!guild.me.hasPermission("MANAGE_CHANNELS")) return msg.channel.send(embed.setTitle("ERREUR").setDescription(`❌ Je n'ai pas la permission \`Gérer les channels\` pour exécuter cette commande !`)).catch(console.error)
+
+  const args = message.content.toLowerCase().split(" ").slice(2);
+  const name = args.join(" ");
+
+  if (!name) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Vous devez stipulez un nom et un type de channel à créer !\n\n**Type = texte/vocal/catégorie**\n\n**Exemple : `"+prefix+"cch texte général`**")).catch(console.error);
+
+  if (msg.content.toLowerCase().includes("vocal")) { 
+    guild.channels.create(name, {type: 'voice'}).then(msg.channel.send(embed.setTitle("CRÉATION D'UN CHANNEL").setDescription(`✅ Le channel de type **voice** nommé \`${name}\` a bien été crée !`))).catch(console.error);
+  }
+
+  if (msg.content.toLowerCase().includes("texte")) { 
+    guild.channels.create(name, {type: 'text'}).then(msg.channel.send(embed.setTitle("CRÉATION D'UN CHANNEL").setDescription(`✅ Le channel de type **text** nommé \`${name}\` a bien été crée !`))).catch(console.error);
+  }
+
+  if (msg.content.toLowerCase().includes("catégorie")) { 
+    guild.channels.create(name, {type: 'category'}).then(msg.channel.send(embed.setTitle("CRÉATION D'UN CHANNEL").setDescription(`✅ Le channel de type **category** nommé \`${name}\` a bien été crée !`))).catch(console.error);
+  }
+}
+
+if (message.content.startsWith(prefix + 'deletetext') || message.content.startsWith(prefix + 'dt')) {
+
+  if (!message.member.hasPermission("MANAGE_CHANNELS")) return msg.channel.send(embed.setTitle("ERREUR").setDescription(`❌ Vous avez pas la permission \`Gérer les channels\` pour exécuter cette commande !`)).catch(console.error)
+  if (!guild.me.hasPermission("MANAGE_CHANNELS")) return msg.channel.send(embed.setTitle("ERREUR").setDescription(`❌ Je n'ai pas la permission \`Gérer les channels\` pour exécuter cette commande !`)).catch(console.error)
+  
+  const args = message.content.split(" ").slice(1);
+  const name = args.join(" ");
+  
+  msg.channel.delete(name).then(msg.channel.send(embed.setTitle("SUPPRÉSSION D'UN CHANNEL").setDescription(`✅ Le channel de type **text** nommé \`${name}\` a bien été supprimé !`))).catch(console.error);
 }
 
   if (message.author.bot) return;
@@ -1511,6 +1568,7 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
 
   const args = message.content.split(" ");
   const recherche = args.join(" ");
+
   const serverQueue = queue.get(message.guild.id);
 
   const r = await yts(recherche)
@@ -1528,8 +1586,16 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
   msg.content.toLowerCase().includes("www.youtu.be/")            || 
   msg.content.toLowerCase().includes("youtube.com/")             || 
   msg.content.toLowerCase().includes("youtu.be/");
+    
+  if (msg.content.startsWith(prefix+'play')) {
 
-  if (message.content.startsWith(prefix+'play')) {
+    const voiceChannel = message.member.voice.channel;
+
+    if (!guild.me.hasPermission("CONNECT") || !guild.me.hasPermission("CONNECT")) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Je n'ai pas la permission `Se connecter` et `Parler` dans ce channel !")).catch(console.error); 
+    if (!guild.me.hasPermission("CONNECT")) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Je n'ai pas la permission `Se connecter` dans ce channel !")).catch(console.error); 
+    if (!guild.me.hasPermission("SPEAK")) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Je n'ai pas la permission `Parler` dans ce channel !")).catch(console.error);
+    if (!voiceChannel) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Vous devez rejoindre un salon vocal pour jouer de la musique !")).catch(console.error);
+    
     if (link) return execute(message, serverQueue);
     if (!link) return execute(message, serverQueue);
     return;
@@ -1552,28 +1618,31 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
     join(message);
     return;
   } else if (message.content.startsWith(`${prefix}leave`)) {
-    leave(message);
+    leave(message, serverQueue);
     return;
   } 
 
   async function execute(message, serverQueue) {
 
     const voiceChannel = message.member.voice.channel;
-    const permissions = voiceChannel.permissionsFor(message.client.user);
-
-    //if (!url.match(/(youtube.com|youtu.be)\/(watch)?(\?v=)?(\S+)?/)) return message.channel.send("❌ Veuillez stipulez un lien valide !");
-    if (!voiceChannel) return (embed.setTitle("ERREUR").setDescription("❌ Vous devez rejoindre un salon vocal pour jouer de la musique !")).catch(console.error);
-    if (!permissions.has("CONNECT") || !permissions.has("CONNECT")) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Je n'ai pas la permission `Se connecter` et `Parler` dans ce channel !")).catch(console.error); 
-    if (!permissions.has("CONNECT")) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Je n'ai pas la permission `Se connecter` dans ce channel !")).catch(console.error); 
-    if (!permissions.has("SPEAK")) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Je n'ai pas la permission `Parler` dans ce channel !")).catch(console.error);
 
     if (link) {
-      const songInfo = await ytdl.getInfo(args[1]);
+
+      const songInfo = await ytdl.getBasicInfo(args[1]);
+
       const song = {
         title: songInfo.videoDetails.title,
-        url: songInfo.videoDetails.video_url
+        url: songInfo.videoDetails.video_url,
+        pegi: songInfo.videoDetails.age_restricted
       };
-    
+
+      /*if (song.pegi) pegi = true; 
+      if (!song.pegi) pegi = false; 
+      
+      console.log(pegi)*/
+
+      //console.log(song.title, song.url, song.pegi);
+  
       if (!serverQueue) {
         const queueContruct = {
           textChannel: message.channel,
@@ -1584,7 +1653,7 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
           playing: true
         };
     
-        queue.set(message.guild.id, queueContruct);
+        queue.set(msg.guild.id, queueContruct);
     
         queueContruct.songs.push(song);
     
@@ -1598,7 +1667,6 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
           return message.channel.send(err);
         }
       } else {
-
         serverQueue.songs.push(song);
         return msg.channel.send(embed.setTitle("MUSIQUE").setDescription('**'+`[${song.title}](${song.url})`+'**'+" a bien été ajouté à la queue !")).catch(console.error);    
       }
@@ -1635,7 +1703,6 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
       }
     }
   }
-
   
   function skip(message, serverQueue) {
     if (!message.member.voice.channel) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Vous devez rejoindre un salon vocal pour jouer de la musique !")).catch(console.error);
@@ -1659,7 +1726,8 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
       queue.delete(guild.id);
       return;
     }
-    dispatcher = serverQueue.connection.play(ytdl(song.url)).on("finish", () => {serverQueue.songs.shift();play(guild, serverQueue.songs[0]);}).on("error", error => console.error(error)); dispatcher.setVolumeLogarithmic(serverQueue.volume / 1);serverQueue.textChannel.send(embed.setTitle("MUSIQUE").setDescription('**'+`[${song.title}](${song.url})`+'**'+" vient d'être mise en lecture !"));
+
+    dispatcher = serverQueue.connection.play(ytdl(song.url, {filter: 'audioonly'})).on("finish", () => {serverQueue.songs.shift();play(guild, serverQueue.songs[0]);}).on("error", error => console.error(error)); dispatcher.setVolumeLogarithmic(serverQueue.volume / 1);serverQueue.textChannel.send(embed.setTitle("MUSIQUE").setDescription('**'+`[${song.title}](${song.url})`+'**'+" vient d'être mise en lecture !"));
   }
  
   function search(guild, song, videos) {
@@ -1670,6 +1738,7 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
       queue.delete(guild.id);
       return;
     }
+    
     dispatcher = serverQueue.connection.play(ytdl(videos[0].url)).on("finish", () => {serverQueue.songs.shift();search(guild, serverQueue.songs[0]);}).on("error", error => console.error(error)); dispatcher.setVolumeLogarithmic(serverQueue.volume / 1);serverQueue.textChannel.send(embed.setTitle("MUSIQUE").setDescription('**'+`[${videos[0].title}](${videos[0].url})`+'**'+" vient d'être mise en lecture !"));
   }
 
@@ -1714,17 +1783,38 @@ if (msg.content.startsWith(prefix + 'tz') || msg.content.startsWith(prefix + 'ti
     msg.channel.send(embed.setTitle("MUSIQUE").setDescription("✅ La musique à bien été mise en lecture !"))
   }  
 
-  function join(message) {
+  function join() {
     if (!msg.member.voice.channel) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Vous devez rejoindre un salon vocal pour exécuter cette commande !")).catch(console.error);
     msg.member.voice.channel.join().then(msg.channel.send(embed.setTitle("MUSIQUE").setDescription("✅ Je viens de rejoindre le channel : "+"`"+msg.member.voice.channel.name+"`"+" !"))).catch(console.error)
   }
   
-  function leave(message) {
+  function leave(song, queue) {
     if (!msg.member.voice.channel) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Vous devez rejoindre un salon vocal pour exécuter cette commande !")).catch(console.error);
-    msg.member.voice.channel.leave()
-    msg.channel.send(embed.setTitle("MUSIQUE").setDescription("✅ Je viens de quitter le channel : "+"`"+msg.member.voice.channel.name+"`"+" !")).catch(console.error)
+    if (song) {
+      queue.delete(guild.id);
+      return;
+    } 
+    msg.member.voice.channel.leave().then(msg.channel.send(embed.setTitle("MUSIQUE").setDescription("✅ Je viens de quitter le channel : "+"`"+msg.member.voice.channel.name+"`"+" !"))).catch(console.error)
   }  
-  
+
+  if (msg.content.startsWith(prefix + 'setperm')) {
+
+    let args  = msg.content.split(" ").slice(1),
+        rname = args.join(" "); 
+
+    if (!guild.me.hasPermission("ADMINISTRATOR")) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Je n'ai pas la permission `administrateur` pour exécuter cette commande !")).catch(console.error); 
+    if (!rname) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Vous devez saisir le nom ou mentionner un rôle valide !")).catch(console.error);
+
+    let frole = message.guild.roles.cache.find(role => role.position < message.guild.me.roles.highest.position && role.name === rname);
+
+    if (!msg.member.hasPermission("ADMNISTRATOR")) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Vous devez posséder la permission **administrateur** !\n\nPour ajouter une permission à un rôle, vous devez posséder la permission !")).catch(console.error);
+    if (msg.content.toLowerCase().includes("admin") || msg.content.toLowerCase().includes("administrateur") || msg.content.toLowerCase().includes("administrator")) return frole.setPermission(['ADMINISTRATOR']).then(msg.channel.send("Permissions **administrateur** ajouté au role "+"**"+frole.toString+"**")).catch(console.error);
+    
+    if (msg.content.toLowerCase().includes("logs du serveur") || msg.content.toLowerCase().includes("logs du serv") || msg.content.toLowerCase().includes("logs")|| !msg.member.hasPermission("VIEW_AUDIT_LOG")) return msg.channel.send(embed.setTitle("ERREUR").setDescription("❌ Vous devez posséder la permission **voir les logs du serveur** !\n\nPour ajouter une permission à un rôle, vous devez posséder la permission !")).catch(console.error);
+    if (msg.content.toLowerCase().includes("logs du serveur") || msg.content.toLowerCase().includes("logs du serv") || msg.content.toLowerCase().includes("logs")) return frole.setPermission(['VIEW_AUDIT_LOG']).then(msg.channel.send("Permissions **voir les logs du serveur** ajouté au role "+"**"+frole.toString+"**")).catch(console.error);
+
+  }
+
 });
 
 client.login(token);
